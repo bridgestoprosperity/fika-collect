@@ -1,0 +1,36 @@
+{
+  "id": "quick_report",
+  "title": "Quick Report Survey",
+  "description": "Make a quick report of an obstacle",
+  "questions": [
+    {
+      "id": "severity",
+      "type": "multiple_choice",
+      "question": "What is the severity of the obstacle?",
+      "options": [
+        "Level 1 - Minor",
+        "Level 2 - Moderate",
+        "Level 3 - Significant",
+        "Level 4 - Major"
+      ]
+    },
+    {
+      "id": "at_obstacle",
+      "type": "boolean",
+      "question": "Are you currently at the obstacle?",
+      "hint": "Select Yes if you are at the obstacle location"
+    },
+    {
+      "id": "location",
+      "type": "short_answer",
+      "question": "What is the location of the obstacle?",
+      "hint": "Enter location description"
+    },
+    {
+      "id": "description",
+      "type": "long_answer",
+      "question": "Please describe the obstacle in detail:",
+      "hint": "Provide any additional details about the obstacle"
+    }
+  ]
+}
