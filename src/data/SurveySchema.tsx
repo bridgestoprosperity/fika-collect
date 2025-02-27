@@ -1,4 +1,4 @@
-type SurveySchemaQuestionType =
+export type SurveySchemaQuestionType =
   | 'multiple_choice'
   | 'short_answer'
   | 'long_answer'

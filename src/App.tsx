@@ -11,10 +11,6 @@ export type RootStackParamList = {
   survey: SurveyParams;
 };
 
-import * as RNFS from '@dr.pogodin/react-native-fs';
-
-console.log(RNFS.DocumentDirectoryPath);
-
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
 const RootStack = createNativeStackNavigator({

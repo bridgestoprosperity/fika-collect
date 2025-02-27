@@ -2,21 +2,26 @@ import {SurveySchema, SurveyQuestionSchema} from './SurveySchema';
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 
+import {type SurveySchemaQuestionType} from './SurveySchema';
+
 export class SurveyQuestionResponse {
   question: SurveyQuestionSchema;
+  type: SurveySchemaQuestionType;
   _value: string = '';
 
   constructor(question: SurveyQuestionSchema) {
     this.question = question;
+    this.type = this.question.type;
 
-    switch (this.question.type) {
+    switch (this.type) {
       case 'multiple_choice':
         this._value = this.question.options[0];
         break;
       case 'boolean':
-        this._value = 'false';
+        this._value = 'no';
         break;
     }
+    this._value = this._value || 'REMOVE ME';
   }
 
   get hasResponse() {
@@ -32,10 +37,18 @@ export class SurveyQuestionResponse {
   }
 
   serialize() {
-    return {
-      question: this.question.question,
-      value: this._value,
-    };
+    switch (this.type) {
+      case 'boolean':
+        return {
+          id: this.question.id,
+          value: this._value === 'yes',
+        };
+      default:
+        return {
+          id: this.question.id,
+          value: this._value,
+        };
+    }
   }
 }
 
@@ -58,6 +71,7 @@ export class SurveyResponse {
     return {
       id: this.id,
       responses: this.responses.map(response => response.serialize()),
+      submitted_at: new Date().toISOString(),
     };
   }
 }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,8 @@ import {
   Alert,
   Switch,
 } from 'react-native';
+import {type SurveyResponseManager} from '../data/SurveyResponseManager';
+import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
 import {Picker} from '@react-native-picker/picker';
 import {type SurveyParams} from '../types.d';
 import {SurveyQuestionResponse} from '../data/SurveyResponse';
@@ -34,6 +36,7 @@ function ShortAnswerQuestion({response, onChange}: SurveyQuestionProps) {
         value={response.value}
         onChangeText={text => onChange(text)}
         placeholder={question.hint}
+        placeholderTextColor={'#666'}
       />
     </View>
   );
@@ -41,7 +44,6 @@ function ShortAnswerQuestion({response, onChange}: SurveyQuestionProps) {
 
 function LongAnswerQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
-  console.log(question.hint);
   return (
     <View style={styles.surveyQuestion}>
       <Text style={styles.surveyQuestionText}>{question.question}</Text>
@@ -142,8 +144,12 @@ function SurveyQuestion({response, onChange}: SurveyQuestionProps) {
 }
 
 export default function SurveyScreen(props: SurveyScreenProps) {
-  const [questionIndex, setQuestionIndex] = React.useState(0);
-  const [revision, setRevision] = React.useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [revision, setRevision] = useState(0);
+
+  const surveyResponseManager = useContext<SurveyResponseManager>(
+    SurveyResponseManagerContext,
+  );
 
   const {
     route: {
@@ -205,7 +211,6 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   };
 
   const submit = () => {
-    console.log('submit!');
     Alert.alert(
       'Submit response',
       'Are you sure you want to submit this survey response?',
@@ -217,7 +222,12 @@ export default function SurveyScreen(props: SurveyScreenProps) {
         },
         {
           text: 'Submit',
-          onPress: () => navigation.goBack(),
+          onPress: () => {
+            surveyResponseManager.storeResponse(response).then(() => {
+              console.log('Successfully stored survey!');
+              navigation.goBack();
+            });
+          },
           style: 'destructive',
         },
       ],
