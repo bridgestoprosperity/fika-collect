@@ -29,15 +29,17 @@ const HomeStack = createBottomTabNavigator({
       color: 'white',
     },
     headerTintColor: 'white',
-    tabBarIcon: ({size}) => {
+    tabBarIcon: ({size, focused, color}) => {
       let iconName;
       if (route.name === 'surveys') {
         iconName = '☑';
       } else if (route.name === 'responses') {
         iconName = '✎';
       }
-      return <Text style={{fontSize: size}}>{iconName}</Text>;
+      return <Text style={{fontSize: size, color}}>{iconName}</Text>;
     },
+    tabBarActiveTintColor: '#367845',
+    tabBarInactiveTintColor: '#888',
   }),
   screens: {
     surveys: {
