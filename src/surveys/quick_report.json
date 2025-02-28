@@ -4,6 +4,12 @@
   "description": "Make a quick report of an obstacle",
   "questions": [
     {
+      "id": "photos",
+      "type": "photos",
+      "question": "Take photos of the obstacle",
+      "hint": "Take photos of the obstacle from different angles"
+    },
+    {
       "id": "severity",
       "type": "multiple_choice",
       "question": "What is the severity of the obstacle?",

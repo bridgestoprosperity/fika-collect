@@ -15,6 +15,8 @@ import {Picker} from '@react-native-picker/picker';
 import {type SurveyParams} from '../types.d';
 import {SurveyQuestionResponse} from '../data/SurveyResponse';
 import {useNavigation} from '@react-navigation/native';
+import sharedStyles from '../styles';
+import {useCameraDevice, Camera} from 'react-native-vision-camera';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -115,10 +117,21 @@ function LocationQuestion({response}: SurveyQuestionProps) {
 
 function PhotosQuestion({response}: SurveyQuestionProps) {
   const {question} = response;
+  const device = useCameraDevice('back');
+
+  if (!device) {
+    return (
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>{question.question}</Text>
+        <Text>No camera available!</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.surveyQuestion}>
       <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Camera style={StyleSheet.absoluteFill} device={device} isActive={true} />
     </View>
   );
 }
@@ -199,10 +212,6 @@ export default function SurveyScreen(props: SurveyScreenProps) {
     }
   };
 
-  const continueBtnStyle = canContinue
-    ? styles.submitButton
-    : styles.submitButtonDisabled;
-
   const navigation = useNavigation();
 
   const setResponse = (value: string) => {
@@ -251,31 +260,41 @@ export default function SurveyScreen(props: SurveyScreenProps) {
       </ScrollView>
 
       <View style={styles.buttonContainer}>
-        {questionIndex > 0 ? (
-          <Pressable style={styles.cancelButton} onPress={prev}>
-            <Text style={styles.buttonText}>Previous</Text>
-          </Pressable>
-        ) : (
-          <Pressable style={styles.cancelButton} onPress={prev}>
-            <Text style={styles.buttonText}>Back</Text>
-          </Pressable>
-        )}
+        <Pressable
+          style={({pressed}) => [
+            sharedStyles.button,
+            sharedStyles.buttonSecondary,
+            pressed ? sharedStyles.buttonSecondaryPressed : {},
+          ]}
+          onPress={prev}>
+          <Text style={sharedStyles.buttonText}>
+            {questionIndex > 0 ? 'Previous' : 'Back'}
+          </Text>
+        </Pressable>
         <Text style={styles.feedbackText}>
           Question {questionIndex + 1} / {questionCount}
         </Text>
         {questionIndex === questionCount - 1 ? (
           <Pressable
-            style={continueBtnStyle}
+            style={({pressed}) => [
+              sharedStyles.button,
+              canContinue ? {} : sharedStyles.buttonDisabled,
+              pressed ? sharedStyles.buttonPressed : {},
+            ]}
             disabled={!canContinue}
             onPress={submit}>
-            <Text style={styles.buttonText}>Submit</Text>
+            <Text style={sharedStyles.buttonText}>Submit</Text>
           </Pressable>
         ) : (
           <Pressable
-            style={continueBtnStyle}
+            style={({pressed}) => [
+              sharedStyles.button,
+              canContinue ? {} : sharedStyles.buttonDisabled,
+              pressed ? sharedStyles.buttonPressed : {},
+            ]}
             disabled={!canContinue}
             onPress={next}>
-            <Text style={styles.buttonText}>Next</Text>
+            <Text style={sharedStyles.buttonText}>Next</Text>
           </Pressable>
         )}
       </View>
@@ -303,35 +322,6 @@ const styles = StyleSheet.create({
   surveyQuestionText: {
     marginBottom: 25,
     fontSize: 16,
-  },
-  cancelButton: {
-    backgroundColor: '#666',
-    padding: 10,
-    borderRadius: 5,
-    marginLeft: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  submitButton: {
-    backgroundColor: 'green',
-    padding: 10,
-    borderRadius: 5,
-    marginLeft: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  submitButtonDisabled: {
-    backgroundColor: 'green',
-    opacity: 0.5,
-    padding: 10,
-    borderRadius: 5,
-    marginLeft: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  buttonText: {
-    fontSize: 18,
-    color: 'white',
   },
   feedbackText: {
     fontSize: 18,
