@@ -18,16 +18,19 @@ function SurveyButton({survey}: {survey: SurveySchema}) {
   };
 
   return (
-    <View style={styles.surveyButton}>
-      <Pressable onPress={() => beginSurvey()}>
-        <Text style={styles.surveyTitle}>{survey.title}</Text>
-        <Text>{survey.description}</Text>
-      </Pressable>
-    </View>
+    <Pressable
+      onPress={() => beginSurvey()}
+      style={({pressed}) => [
+        styles.surveyButton,
+        pressed ? styles.surveyButtonPressed : {},
+      ]}>
+      <Text style={styles.surveyTitle}>{survey.title}</Text>
+      <Text>{survey.description}</Text>
+    </Pressable>
   );
 }
 
-export default function HomeScreen() {
+export default function SurveysScreen() {
   const surveyManager = useContext<SurveySchemaManager>(
     SurveySchemaManagerContext,
   );
@@ -69,6 +72,9 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 3,
+  },
+  surveyButtonPressed: {
+    backgroundColor: 'darkgray',
   },
   surveyDescription: {},
   surveyTitle: {

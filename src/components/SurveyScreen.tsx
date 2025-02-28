@@ -224,7 +224,6 @@ export default function SurveyScreen(props: SurveyScreenProps) {
           text: 'Submit',
           onPress: () => {
             surveyResponseManager.storeResponse(response).then(() => {
-              console.log('Successfully stored survey!');
               navigation.goBack();
             });
           },

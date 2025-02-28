@@ -44,4 +44,19 @@ export class SurveySchema {
       (questionJSON: any) => new SurveyQuestionSchema(questionJSON),
     );
   }
+
+  serialize() {
+    return {
+      id: this.id,
+      title: this.title,
+      description: this.description,
+      questions: this.questions.map(question => ({
+        id: question.id,
+        type: question.type,
+        question: question.question,
+        hint: question.hint,
+        options: question.options,
+      })),
+    };
+  }
 }
