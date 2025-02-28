@@ -1,10 +1,11 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useState, useCallback} from 'react';
 import {View, ScrollView, StyleSheet, Text} from 'react-native';
 import {type ReadResponse} from '../data/SurveyResponseManager';
 import {type SurveyResponse} from '../data/SurveyResponse';
 
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
+import {useFocusEffect} from '@react-navigation/native';
 
 interface ResponseProps {
   response: SurveyResponse;
@@ -31,7 +32,7 @@ export default function ResponsesScreen() {
     SurveyResponseManagerContext,
   );
 
-  useEffect(() => {
+  const fetchResponses = () => {
     responseManager
       .getResponses()
       .then(fetchedResponses => {
@@ -47,7 +48,13 @@ export default function ResponsesScreen() {
       .catch(error => {
         console.error('error fetching responses', error);
       });
-  }, [responseManager, responses]);
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchResponses();
+    }, [responseManager]),
+  );
 
   console.log(responses);
 
