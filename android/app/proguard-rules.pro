@@ -8,3 +8,8 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+# Add any specific Proguard rules here
+# For example, to keep certain classes or methods:
+# -keep class com.example.MyClass { *; }
+# -keepclassmembers class com.example.MyClass { *; }

@@ -29,7 +29,7 @@ const HomeStack = createBottomTabNavigator({
       color: 'white',
     },
     headerTintColor: 'white',
-    tabBarIcon: ({size, focused, color}) => {
+    tabBarIcon: ({size, color}) => {
       let iconName;
       if (route.name === 'surveys') {
         iconName = '☑';
