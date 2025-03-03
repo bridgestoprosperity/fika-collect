@@ -1,0 +1,19 @@
+{
+  "name": "fika-collect-lambda",
+  "version": "1.0.0",
+  "main": "lambda.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "tape": "^5.9.0",
+    "zod": "^3.24.2",
+    "zod-validation-error": "^3.4.0"
+  }
+}
