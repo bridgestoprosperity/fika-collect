@@ -5,6 +5,7 @@ import {responseSchema} from './src/response-schema.js';
 
 /**
  * Lambda handler function to generate a pre-signed upload URL.
+ * @module handler
  *
  * @param {Object} event - The event object containing the request data.
  * @param {string} event.body - The JSON stringified body of the request.

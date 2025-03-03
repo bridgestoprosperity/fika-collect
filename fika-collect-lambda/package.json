@@ -4,7 +4,8 @@
   "main": "lambda.js",
   "type": "module",
   "scripts": {
-    "test": "tape test/test-*.js"
+    "test": "tape test/test-*.js",
+    "swagger": "node docs/swagger-setup.js"
   },
   "keywords": [],
   "author": "",
@@ -12,9 +13,14 @@
   "description": "",
   "dependencies": {
     "aws-sdk": "^2.1692.0",
-    "sinon": "^19.0.2",
-    "tape": "^5.9.0",
     "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
+  },
+  "devDependencies": {
+    "sinon": "^19.0.2",
+    "swagger-ui-express": "^5.0.1",
+    "express": "^4.21.2",
+    "yamljs": "^0.3.0",
+    "tape": "^5.9.0"
   }
 }
