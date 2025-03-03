@@ -18,12 +18,12 @@ npx react-native build-android --mode=release
 npx react-native build-ios --mode=Release
 ```
 
-Android outputs may be found in `android/app/build/outputs/apk/release`. All APKs should be sent to Google Play store.
+Android outputs may be found in `android/app/build/outputs/apk/release`. To reduce the size of binaries, per-CPU binaries are built as separate APKs. All APKs should be sent to Google Play store.
 
 ## To do
 
 - [x] check size of binary
-  - Seems in the ballpack of 15-20 MB for Android builds, which is larger than flutter but seems acceptable
+  - Seems in the ballpark of 15-20 MB for Android builds, which is larger than flutter but seems acceptable
 - [x] write lambda to generate pre-signed S3 URLs
 - [ ] configure S3 bucket
 - [ ] deploy lambda to AWS
