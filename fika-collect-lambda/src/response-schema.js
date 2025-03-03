@@ -1,9 +1,9 @@
 import z from 'zod';
 
 const responseSchema = z.object({
-  status: z.number().required(),
-  body: z.string().required(),
-  error: z.string(),
+  statusCode: z.number(),
+  body: z.string(),
+  error: z.string().optional(),
 });
 
 export {responseSchema};

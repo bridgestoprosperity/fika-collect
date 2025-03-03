@@ -1,5 +1,5 @@
 import generateUploadURL from './src/generate-upload-url.js';
-import requestSchema from './src/request-schema.js';
+import {requestSchema} from './src/request-schema.js';
 import {fromError} from 'zod-validation-error';
 import {responseSchema} from './src/response-schema.js';
 
@@ -24,16 +24,20 @@ export default async function handler(event) {
     const requestBody = JSON.parse(event.body);
     const requestParams = requestSchema.safeParse(requestBody);
 
+    console.log(fromError(requestParams.error).toString());
+
     if (!requestParams.success) {
-      return responseSchema.safeParse({
+      return responseSchema.parse({
         statusCode: 400,
-        body: JSON.stringify({error: fromError(requestParams.error)}),
+        body: JSON.stringify({
+          error: fromError(requestParams.error).toString(),
+        }),
       });
     }
 
     const uploadURL = await generateUploadURL(requestParams.data);
 
-    return responseSchema.safeParse({
+    return responseSchema.parse({
       statusCode: 200,
       body: JSON.stringify({uploadURL}),
     });
