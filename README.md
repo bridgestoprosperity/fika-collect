@@ -22,7 +22,10 @@ Android outputs may be found in `android/app/build/outputs/apk/release`. All APK
 
 ## To do
 
+- [x] check size of binary
+  - Seems in the ballpack of 15-20 MB for Android builds, which is larger than flutter but seems acceptable
 - [x] write lambda to generate pre-signed S3 URLs
+- [ ] configure S3 bucket
 - [ ] deploy lambda to AWS
 - [ ] integrate camera utility into survey
 - [ ] implement state management for uploads
