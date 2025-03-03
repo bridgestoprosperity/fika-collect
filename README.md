@@ -4,26 +4,28 @@ React Native implementation of our Fika Collect application.
 
 ## Getting started
 
-To get started, follow the docs in [getting-started.md](./docs/getting-started.md).
+To configure your environment and get started, follow the React Native template docs in [getting-started.md](./docs/getting-started.md).
 
 ## Building
 
-To build for Android/iOS:
-
-```bash
-npx react-native build-android --mode=release
-```
+To build for iOS and Android, respectively:
 
 ```bash
 npx react-native build-ios --mode=Release
+```
+
+```bash
+npx react-native build-android --mode=release
 ```
 
 Android outputs may be found in `android/app/build/outputs/apk/release`. To reduce the size of binaries, per-CPU binaries are built as separate APKs. All APKs should be sent to Google Play store.
 
 ## To do
 
-- [x] check size of binary
-  - Seems in the ballpark of 15-20 MB for Android builds, which is larger than flutter but seems acceptable
+- [x] check size of app binary
+  - Baseline Flutter apps are around 4-5 MB.
+  - Baseline React Native apps are around 10-14 MB.
+  - The app in its current form is about 15-20 MB for Android. This is larger than for Flutter but within tolerance.
 - [x] write lambda to generate pre-signed S3 URLs
 - [ ] configure S3 bucket
 - [ ] deploy lambda to AWS
