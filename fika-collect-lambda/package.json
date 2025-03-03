@@ -4,7 +4,7 @@
   "main": "lambda.js",
   "type": "module",
   "scripts": {
-    "test": "tape test/test-*.js",
+    "test": "tape test/test-*.js | tap-spec",
     "swagger": "node docs/swagger-setup.js"
   },
   "keywords": [],
@@ -17,10 +17,9 @@
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
+    "openapi-to-md": "^1.0.25",
     "sinon": "^19.0.2",
-    "swagger-ui-express": "^5.0.1",
-    "express": "^4.21.2",
-    "yamljs": "^0.3.0",
+    "tap-spec": "^5.0.0",
     "tape": "^5.9.0"
   }
 }

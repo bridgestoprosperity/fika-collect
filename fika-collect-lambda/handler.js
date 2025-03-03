@@ -25,8 +25,6 @@ export default async function handler(event) {
     const requestBody = JSON.parse(event.body);
     const requestParams = requestSchema.safeParse(requestBody);
 
-    console.log(fromError(requestParams.error).toString());
-
     if (!requestParams.success) {
       return responseSchema.parse({
         statusCode: 400,

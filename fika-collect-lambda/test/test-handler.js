@@ -20,8 +20,6 @@ test('handler', function (t) {
     };
 
     const result = await handler(event);
-    console.log(result);
-
     t.equal(result.body, JSON.stringify({uploadURL: 'https://example.com'}));
     t.equal(result.statusCode, 200, 'Status code should be 200');
     t.ok(stub.calledOnce, 'S3 getSignedUrlPromise should be called once');
