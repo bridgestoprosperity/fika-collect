@@ -35,10 +35,16 @@ Android outputs may be found in `android/app/build/outputs/apk/release`. To redu
 
 ## AWS Resources
 
-The following AWS resources have been allocated to make this work.
+The following AWS resources have been allocated to make the lambda run.
 
-- *IAM* [fika-collect-lambda-role](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/roles/details/fika-collect-lambda-role?section=permissions): IAM role for Lambda which generates pre-signed S3 upload URLs. Has Lambda and S3 policies.
-- *S3* [fika-collect](https://us-west-1.console.aws.amazon.com/s3/buckets/fika-collect?region=us-west-1&bucketType=general&tab=objects): Bucket for uploaded surveys and photos
+- *Lambda*
+  - [fikaCollectUploadLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectUploadLambda?tab=code): AWS Lambda for creating signed upload URLs
+- *IAM*
+  - [fika-collect-lambda-role](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/roles/details/fika-collect-lambda-role?section=permissions): IAM role for fikaCollectUploadLambda. Has sufficient permissions to generate pre-signed S3 upload URLs.
+  - [fika-collect-deploy-user](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-lambda-deploy?section=permissions): IAM user (with access/secret keys) for deploying lambda via SAM. [AWS SSO](https://aws.amazon.com/iam/identity-center/) would be a preferable alternative.
+- *S3*
+  - [fika-collect](https://us-west-1.console.aws.amazon.com/s3/buckets/fika-collect?region=us-west-1&bucketType=general&tab=objects): Bucket for uploaded surveys JSON and associated photos
+  - [aws-sam-cli-managed-default-samclisourcebucket-ur3ghtnobrtr](https://us-west-1.console.aws.amazon.com/s3/buckets/aws-sam-cli-managed-default-samclisourcebucket-ur3ghtnobrtr?region=us-west-1&bucketType=general&tab=objects): Bucket for [SAM](https://aws.amazon.com/serverless/sam/)-managed deployment of fikaCollectUploadLambda
 
 ## License
 

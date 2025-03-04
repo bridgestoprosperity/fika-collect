@@ -31,7 +31,8 @@ export default async function generateSignedURL({fileType, surveyId}) {
     ContentType: fileType,
     ACL: 'private',
     Expires: 5 * 60, // seconds
-    Conditions: [['content-length-range', 0, MaxFileSize]],
+    // Temporarily remove size restriction
+    //Conditions: [['content-length-range', 0, MaxFileSize]],
   };
 
   return await s3.getSignedUrlPromise('putObject', params);
