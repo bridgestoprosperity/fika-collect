@@ -33,6 +33,13 @@ Android outputs may be found in `android/app/build/outputs/apk/release`. To redu
 - [ ] implement state management for uploads
 - [ ] iterate on survey questions
 
+## AWS Resources
+
+The following AWS resources have been allocated to make this work.
+
+- *IAM* [fika-collect-lambda-role](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/roles/details/fika-collect-lambda-role?section=permissions): IAM role for Lambda which generates pre-signed S3 upload URLs. Has Lambda and S3 policies.
+- *S3* [fika-collect](https://us-west-1.console.aws.amazon.com/s3/buckets/fika-collect?region=us-west-1&bucketType=general&tab=objects): Bucket for uploaded surveys and photos
+
 ## License
 
 &copy; 2025 Bridges To Prosperity. MIT License.

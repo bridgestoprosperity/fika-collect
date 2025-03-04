@@ -1,11 +1,11 @@
 {
   "name": "fika-collect-lambda",
   "version": "1.0.0",
-  "main": "lambda.js",
+  "main": "handler.js",
   "type": "module",
   "scripts": {
     "test": "tape test/test-*.js | tap-spec",
-    "swagger": "node docs/swagger-setup.js"
+    "build:docs": "openapi-to-md openapi.yaml > API.md"
   },
   "keywords": [],
   "author": "",
