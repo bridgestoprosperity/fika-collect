@@ -20,19 +20,6 @@ npx react-native build-android --mode=release
 
 Android outputs may be found in `android/app/build/outputs/apk/release`. To reduce the size of binaries, per-CPU binaries are built as separate APKs. All APKs should be sent to Google Play store.
 
-## To do
-
-- [x] check size of app binary
-  - Baseline Flutter apps are around 4-5 MB.
-  - Baseline React Native apps are around 10-14 MB.
-  - The app in its current form is about 15-20 MB for Android. This is larger than for Flutter but within tolerance.
-- [x] write lambda to generate pre-signed S3 URLs
-- [x] configure S3 bucket
-- [x] deploy lambda to AWS
-- [ ] integrate camera utility into survey
-- [ ] implement state management for uploads
-- [ ] iterate on survey questions
-
 ## AWS Resources
 
 The following AWS resources have been allocated to make the lambda run.
