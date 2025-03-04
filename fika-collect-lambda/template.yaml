@@ -9,7 +9,7 @@ Resources:
       Description: 'Fika Collect upload Lambda'
       MemorySize: 128
       Timeout: 3
-      Handler: index.handler
+      Handler: handler.default
       Runtime: nodejs22.x
       Architectures:
         - x86_64
