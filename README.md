@@ -27,8 +27,8 @@ Android outputs may be found in `android/app/build/outputs/apk/release`. To redu
   - Baseline React Native apps are around 10-14 MB.
   - The app in its current form is about 15-20 MB for Android. This is larger than for Flutter but within tolerance.
 - [x] write lambda to generate pre-signed S3 URLs
-- [ ] configure S3 bucket
-- [ ] deploy lambda to AWS
+- [x] configure S3 bucket
+- [x] deploy lambda to AWS
 - [ ] integrate camera utility into survey
 - [ ] implement state management for uploads
 - [ ] iterate on survey questions
