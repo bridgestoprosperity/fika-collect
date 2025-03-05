@@ -77,11 +77,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'darkgray',
   },
   surveyTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 5,
   },
   surveyDescription: {
-    fontSize: 18,
+    fontSize: 16,
   },
 });

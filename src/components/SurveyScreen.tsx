@@ -8,6 +8,7 @@ import {
   Pressable,
   Alert,
   Switch,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
@@ -254,55 +255,57 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   };
 
   return (
-    <View style={{flexDirection: 'column', flex: 1}}>
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.surveyTitle}>{schema.description}</Text>
+    <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
+      <View style={{flexDirection: 'column', flex: 1}}>
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={styles.surveyTitle}>{schema.description}</Text>
 
-          <SurveyQuestion response={currentResponse} onChange={setResponse} />
-        </View>
-      </ScrollView>
+            <SurveyQuestion response={currentResponse} onChange={setResponse} />
+          </View>
+        </ScrollView>
 
-      <View style={styles.buttonContainer}>
-        <Pressable
-          style={({pressed}) => [
-            sharedStyles.button,
-            sharedStyles.buttonSecondary,
-            pressed ? sharedStyles.buttonSecondaryPressed : {},
-          ]}
-          onPress={prev}>
-          <Text style={sharedStyles.buttonText}>
-            {questionIndex > 0 ? 'Previous' : 'Back'}
+        <View style={styles.buttonContainer}>
+          <Pressable
+            style={({pressed}) => [
+              sharedStyles.button,
+              sharedStyles.buttonSecondary,
+              pressed ? sharedStyles.buttonSecondaryPressed : {},
+            ]}
+            onPress={prev}>
+            <Text style={sharedStyles.buttonText}>
+              {questionIndex > 0 ? 'Previous' : 'Back'}
+            </Text>
+          </Pressable>
+          <Text style={styles.feedbackText}>
+            Question {questionIndex + 1} / {questionCount}
           </Text>
-        </Pressable>
-        <Text style={styles.feedbackText}>
-          Question {questionIndex + 1} / {questionCount}
-        </Text>
-        {questionIndex === questionCount - 1 ? (
-          <Pressable
-            style={({pressed}) => [
-              sharedStyles.button,
-              canContinue ? {} : sharedStyles.buttonDisabled,
-              pressed ? sharedStyles.buttonPressed : {},
-            ]}
-            disabled={!canContinue}
-            onPress={submit}>
-            <Text style={sharedStyles.buttonText}>Submit</Text>
-          </Pressable>
-        ) : (
-          <Pressable
-            style={({pressed}) => [
-              sharedStyles.button,
-              canContinue ? {} : sharedStyles.buttonDisabled,
-              pressed ? sharedStyles.buttonPressed : {},
-            ]}
-            disabled={!canContinue}
-            onPress={next}>
-            <Text style={sharedStyles.buttonText}>Next</Text>
-          </Pressable>
-        )}
+          {questionIndex === questionCount - 1 ? (
+            <Pressable
+              style={({pressed}) => [
+                sharedStyles.button,
+                canContinue ? {} : sharedStyles.buttonDisabled,
+                pressed ? sharedStyles.buttonPressed : {},
+              ]}
+              disabled={!canContinue}
+              onPress={submit}>
+              <Text style={sharedStyles.buttonText}>Submit</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={({pressed}) => [
+                sharedStyles.button,
+                canContinue ? {} : sharedStyles.buttonDisabled,
+                pressed ? sharedStyles.buttonPressed : {},
+              ]}
+              disabled={!canContinue}
+              onPress={next}>
+              <Text style={sharedStyles.buttonText}>Next</Text>
+            </Pressable>
+          )}
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -315,7 +318,7 @@ const styles = StyleSheet.create({
   },
   surveyTitle: {
     color: '#333',
-    fontSize: 22,
+    fontSize: 24,
     marginTop: 25,
     marginBottom: 50,
   },
@@ -325,7 +328,7 @@ const styles = StyleSheet.create({
   },
   surveyQuestionText: {
     marginBottom: 25,
-    fontSize: 16,
+    fontSize: 20,
   },
   feedbackText: {
     fontSize: 18,
@@ -341,12 +344,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   textInputBox: {
+    fontSize: 18,
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
     padding: 10,
   },
   multiLineTextInputBox: {
+    fontSize: 18,
     height: 200,
     borderColor: 'gray',
     borderWidth: 1,
@@ -354,7 +359,7 @@ const styles = StyleSheet.create({
   },
   picker: {
     color: 'black',
-    fontSize: 16,
+    fontSize: 20,
     height: 200,
   },
   booleanRow: {
@@ -364,11 +369,11 @@ const styles = StyleSheet.create({
   },
   booleanValue: {
     marginLeft: 10,
-    fontSize: 18,
+    fontSize: 20,
     minWidth: 50,
   },
   hint: {
-    fontSize: 14,
+    fontSize: 18,
     color: '#666',
     fontStyle: 'italic',
   },
