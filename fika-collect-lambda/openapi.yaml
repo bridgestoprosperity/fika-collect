@@ -3,9 +3,56 @@ info:
   title: Fika Collect Lambda API
   version: 1.0.0
 paths:
+  /submit-survey:
+    post:
+      summary: Submit a survey response
+      description: Puts survey response object on S3 with key `{survey_id}/{response_id}/response.json`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                response:
+                  type: object
+                  required: true
+                  description: The survey response
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uploadURL:
+                    type: string
+                    description: The pre-signed URL for file upload
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
   /generate-upload-url:
     post:
       summary: Generate a pre-signed upload URL
+      description: Returns pre-signed URL for file upload to S3 under key `{survey_id}/{response_id}/{image_id}.{file_type}`. Survey response *must* be succesfully uploaded to S3 before calling this endpoint.
       requestBody:
         required: true
         content:
@@ -15,7 +62,6 @@ paths:
               properties:
                 file_type:
                   type: string
-                  required: true
                   description: The type of the file to be uploaded
                   enum:
                     - image/jpeg
@@ -24,11 +70,18 @@ paths:
                     - image/png
                 survey_id:
                   type: string
-                  required: true
                   description: The ID of the survey associated with the file
+                response_id:
+                  type: string
+                  description: The ID of the survey response
+                image_id:
+                  type: string
+                  description: The ID of the image to be associated with the survey
               required:
                 - file_type
                 - survey_id
+                - response_id
+                - image_id
       responses:
         '200':
           description: Successful response

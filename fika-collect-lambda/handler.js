@@ -18,6 +18,7 @@ const s3 = new AWS.S3({region: Region});
  *
  * @param {Object} event - The event object containing the request data.
  * @param {string} event.body - The JSON stringified body of the request.
+ * @param {Object} event.body.response - The survey response json
  *
  * @returns {Object} The response object.
  * @returns {number} response.statusCode - The HTTP status code.
