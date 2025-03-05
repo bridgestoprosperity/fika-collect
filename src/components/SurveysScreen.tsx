@@ -25,7 +25,7 @@ function SurveyButton({survey}: {survey: SurveySchema}) {
         pressed ? styles.surveyButtonPressed : {},
       ]}>
       <Text style={styles.surveyTitle}>{survey.title}</Text>
-      <Text>{survey.description}</Text>
+      <Text style={styles.surveyDescription}>{survey.description}</Text>
     </Pressable>
   );
 }
@@ -76,10 +76,12 @@ const styles = StyleSheet.create({
   surveyButtonPressed: {
     backgroundColor: 'darkgray',
   },
-  surveyDescription: {},
   surveyTitle: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 5,
+  },
+  surveyDescription: {
+    fontSize: 18,
   },
 });

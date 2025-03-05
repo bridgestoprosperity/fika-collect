@@ -131,7 +131,11 @@ function PhotosQuestion({response}: SurveyQuestionProps) {
   return (
     <View style={styles.surveyQuestion}>
       <Text style={styles.surveyQuestionText}>{question.question}</Text>
-      <Camera style={StyleSheet.absoluteFill} device={device} isActive={true} />
+      <Camera
+        style={[StyleSheet.absoluteFill, styles.camera]}
+        device={device}
+        isActive={true}
+      />
     </View>
   );
 }
@@ -367,5 +371,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
     fontStyle: 'italic',
+  },
+  camera: {
+    height: 400,
   },
 });

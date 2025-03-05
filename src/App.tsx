@@ -27,6 +27,7 @@ const HomeStack = createBottomTabNavigator({
     },
     headerTitleStyle: {
       color: 'white',
+      fontSize: 22,
     },
     headerTintColor: 'white',
     tabBarIcon: ({size, color}) => {
@@ -37,6 +38,9 @@ const HomeStack = createBottomTabNavigator({
         iconName = '✎';
       }
       return <Text style={{fontSize: size, color}}>{iconName}</Text>;
+    },
+    tabBarLabelStyle: {
+      fontSize: 14, // Increase the font size of the tab label
     },
     tabBarActiveTintColor: '#367845',
     tabBarInactiveTintColor: '#888',
