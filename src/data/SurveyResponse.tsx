@@ -1,6 +1,6 @@
 import {SurveySchema, SurveyQuestionSchema} from './SurveySchema';
 import 'react-native-get-random-values';
-import {v4 as uuidv4} from 'uuid';
+import {nanoid} from 'nanoid';
 
 import {type SurveySchemaQuestionType} from './SurveySchema';
 
@@ -61,7 +61,7 @@ export class SurveyResponse {
 
   constructor(schema: SurveySchema) {
     this.schema = schema;
-    this.id = uuidv4();
+    this.id = nanoid();
     this.submittedAt = null;
     this.responses = schema.questions.map(
       question => new SurveyQuestionResponse(question),

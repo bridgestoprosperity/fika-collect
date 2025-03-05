@@ -1,10 +1,10 @@
 import test from 'tape';
-import {requestSchema} from '../src/request-schema.js';
+import {uploadPresignerRequestSchema} from '../src/request-schema.js';
 import {fromError} from 'zod-validation-error';
 
 test('request parameter parsing', function (t) {
   t.test('a successful request', function (t) {
-    const parsedRequest = requestSchema.safeParse({
+    const parsedRequest = uploadPresignerRequestSchema.safeParse({
       survey_id: 'foo',
       file_type: 'image/jpeg',
     });
@@ -15,14 +15,14 @@ test('request parameter parsing', function (t) {
     );
     t.deepEqual(
       parsedRequest.data,
-      {surveyId: 'foo', fileType: 'image/jpeg'},
+      {survey_id: 'foo', file_type: 'image/jpeg'},
       'Valid request should return the same values',
     );
     t.end();
   });
 
   t.test('a request with missing survey_id', function (t) {
-    const parsedRequest = requestSchema.safeParse({
+    const parsedRequest = uploadPresignerRequestSchema.safeParse({
       file_type: 'image/jpeg',
     });
     t.equal(
@@ -39,7 +39,7 @@ test('request parameter parsing', function (t) {
   });
 
   t.test('a request with invalid file_type', function (t) {
-    const parsedRequest = requestSchema.safeParse({
+    const parsedRequest = uploadPresignerRequestSchema.safeParse({
       survey_id: 'foo',
       file_type: 'invalid/type',
     });
@@ -57,7 +57,7 @@ test('request parameter parsing', function (t) {
   });
 
   t.test('a request with extra parameters', function (t) {
-    const parsedRequest = requestSchema.safeParse({
+    const parsedRequest = uploadPresignerRequestSchema.safeParse({
       survey_id: 'foo',
       file_type: 'image/jpeg',
       extra_param: 'extra',
@@ -76,7 +76,7 @@ test('request parameter parsing', function (t) {
   });
 
   t.test('empty request', function (t) {
-    const parsedRequest = requestSchema.safeParse(null);
+    const parsedRequest = uploadPresignerRequestSchema.safeParse(null);
     t.equal(
       parsedRequest.success,
       false,
