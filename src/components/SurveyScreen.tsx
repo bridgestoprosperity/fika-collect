@@ -9,6 +9,8 @@ import {
   Alert,
   Switch,
   KeyboardAvoidingView,
+  Modal,
+  Button,
 } from 'react-native';
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
@@ -17,7 +19,8 @@ import {type SurveyParams} from '../types.d';
 import {SurveyQuestionResponse} from '../data/SurveyResponse';
 import {useNavigation} from '@react-navigation/native';
 import sharedStyles from '../styles';
-import {useCameraDevice, Camera} from 'react-native-vision-camera';
+import CameraController from './CameraController';
+import {useCameraDevice} from 'react-native-vision-camera';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -117,26 +120,31 @@ function LocationQuestion({response}: SurveyQuestionProps) {
 }
 
 function PhotosQuestion({response}: SurveyQuestionProps) {
+  const [cameraVisible, setCameraVisible] = useState(false);
   const {question} = response;
   const device = useCameraDevice('back');
 
-  if (!device) {
-    return (
-      <View style={styles.surveyQuestion}>
-        <Text style={styles.surveyQuestionText}>{question.question}</Text>
-        <Text>No camera available!</Text>
-      </View>
-    );
-  }
+  const cancel = () => {
+    setCameraVisible(false);
+  };
 
   return (
     <View style={styles.surveyQuestion}>
       <Text style={styles.surveyQuestionText}>{question.question}</Text>
-      <Camera
-        style={[StyleSheet.absoluteFill, styles.camera]}
-        device={device}
-        isActive={true}
-      />
+      {device ? (
+        <View>
+          <Button onPress={() => setCameraVisible(true)} title="Take photo" />
+          <Modal
+            visible={cameraVisible}
+            onRequestClose={() => setCameraVisible(false)}
+            animationType="slide"
+            presentationStyle="fullScreen">
+            <CameraController device={device} cancel={cancel} />
+          </Modal>
+        </View>
+      ) : (
+        <Text style={styles.hint}>No camera available!</Text>
+      )}
     </View>
   );
 }
