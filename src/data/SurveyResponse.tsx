@@ -52,6 +52,15 @@ export class SurveyQuestionResponse {
   }
 }
 
+function createRandomId() {
+  const date = new Date();
+  const formattedDate = (
+    date.toISOString().split('T')[0] +
+    date.toTimeString().split(' ')[0].replace(/:/g, '').slice(0, 6)
+  ).replace(/-/g, '');
+  return `${formattedDate}-${nanoid(8)}`;
+}
+
 export class SurveyResponse {
   id: string;
   schema: SurveySchema;
@@ -61,7 +70,7 @@ export class SurveyResponse {
 
   constructor(schema: SurveySchema) {
     this.schema = schema;
-    this.id = nanoid();
+    this.id = createRandomId();
     this.submittedAt = null;
     this.responses = schema.questions.map(
       question => new SurveyQuestionResponse(question),
@@ -75,7 +84,6 @@ export class SurveyResponse {
       ? new Date(json.submitted_at)
       : null;
     const responses = json.responses.map((responseJSON: any) => {
-      console.log({responseJSON});
       const question = response.schema.questions.find(
         (q: SurveyQuestionSchema) => q.id === responseJSON.question_id,
       );

@@ -10,8 +10,6 @@ const STORAGE_DIR =
 const TO_UPLOAD_DIR = `to_upload`;
 const UPLOADED_DIR = `uploaded`;
 
-console.log({STORAGE_DIR});
-
 export type ReadResponse = {
   response: SurveyResponse;
   uploaded: boolean;
@@ -19,13 +17,11 @@ export type ReadResponse = {
 
 export class SurveyResponseManager {
   async storeResponse(response: SurveyResponse) {
-    const dir = `${STORAGE_DIR}/${response.schema.id}/${TO_UPLOAD_DIR}`;
+    const dir = `${STORAGE_DIR}/${response.schema.id}/${response.id}/${TO_UPLOAD_DIR}`;
     await RNFS.mkdir(dir);
-
     response.submittedAt = new Date();
-
     return RNFS.writeFile(
-      `${dir}/${response.id}.json`,
+      `${dir}/response.json`,
       JSON.stringify(response.serialize()),
       'utf8',
     );
@@ -54,13 +50,14 @@ export class SurveyResponseManager {
   async getResponses(): Promise<ReadResponse[]> {
     const responses: Array<ReadResponse> = [];
 
-    console.log('get responses', STORAGE_DIR);
-    console.log('wtf');
-    const dirs = await RNFS.readDir(STORAGE_DIR);
-    for (const dir of dirs) {
-      console.log(dir);
-      if (dir.isDirectory()) {
-        const toUploadDir = `${dir.path}/${TO_UPLOAD_DIR}`;
+    const surveyDirs = await RNFS.readDir(STORAGE_DIR);
+    for (const surveyDir of surveyDirs) {
+      if (!(await surveyDir.isDirectory())) continue;
+
+      for (const responseDir of await RNFS.readDir(surveyDir.path)) {
+        if (!(await responseDir.isDirectory())) continue;
+
+        const toUploadDir = `${responseDir.path}/${TO_UPLOAD_DIR}`;
         if (await RNFS.exists(toUploadDir)) {
           const toUploadFiles = await RNFS.readDir(toUploadDir);
           for (const file of toUploadFiles) {
@@ -72,7 +69,7 @@ export class SurveyResponseManager {
           }
         }
 
-        const uploadedDir = `${dir.path}/${UPLOADED_DIR}`;
+        const uploadedDir = `${responseDir.path}/${UPLOADED_DIR}`;
         if (await RNFS.exists(uploadedDir)) {
           const uploadedFiles = await RNFS.readDir(uploadedDir);
           for (const file of uploadedFiles) {
