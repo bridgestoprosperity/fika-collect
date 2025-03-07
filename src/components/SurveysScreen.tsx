@@ -24,8 +24,13 @@ function SurveyButton({survey}: {survey: SurveySchema}) {
         styles.surveyButton,
         pressed ? styles.surveyButtonPressed : {},
       ]}>
-      <Text style={styles.surveyTitle}>{survey.title}</Text>
-      <Text style={styles.surveyDescription}>{survey.description}</Text>
+      <View style={{flex: 1}}>
+        <Text style={styles.surveyTitle}>{survey.title}</Text>
+        <Text style={styles.surveyDescription}>{survey.description}</Text>
+      </View>
+      <View style={styles.chevronContainer}>
+        <Text style={styles.chevron}>〉</Text>
+      </View>
     </Pressable>
   );
 }
@@ -61,12 +66,13 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   surveyButton: {
+    flexDirection: 'row',
     borderColor: '#aaa',
     borderWidth: 1,
     marginBottom: 10,
     width: '100%',
     padding: 15,
-    backgroundColor: 'lightgray',
+    backgroundColor: 'white',
     borderRadius: 4,
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
@@ -74,7 +80,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   surveyButtonPressed: {
-    backgroundColor: 'darkgray',
+    backgroundColor: 'lightgray',
   },
   surveyTitle: {
     fontSize: 22,
@@ -83,5 +89,14 @@ const styles = StyleSheet.create({
   },
   surveyDescription: {
     fontSize: 16,
+  },
+  chevronContainer: {
+    flex: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  chevron: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
