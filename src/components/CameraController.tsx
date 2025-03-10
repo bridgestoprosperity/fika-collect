@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react';
+import {useRef} from 'react';
 import {
   View,
   Text,
@@ -20,6 +20,8 @@ export default function CameraController({
   device,
   cancel,
 }: CameraControllerProps) {
+  const camera = useRef<Camera>(null);
+
   if (!device) {
     return (
       <View style={[StyleSheet.absoluteFill, styles.errorContainer]}>
@@ -28,16 +30,31 @@ export default function CameraController({
       </View>
     );
   }
+
+  const capture = async () => {
+    if (!camera.current) return;
+    const photo = await camera.current.takePhoto();
+    console.log(photo);
+  };
+
   return (
     <SafeAreaView style={styles.cameraContainer}>
       <View style={styles.topRow}></View>
-      <Camera style={styles.camera} device={device} isActive={true} />
+      <Camera
+        style={styles.camera}
+        device={device}
+        isActive={true}
+        photo={true}
+        ref={camera}
+      />
       <View style={styles.bottomRow}>
         <View style={styles.captureRowLeft}>
           <Button title="Cancel" onPress={cancel} color="white" />
         </View>
         <View style={styles.captureRowCenter}>
-          <Pressable style={({pressed}) => [{opacity: pressed ? 0.5 : 1}]}>
+          <Pressable
+            onPress={capture}
+            style={({pressed}) => [{opacity: pressed ? 0.5 : 1}]}>
             <View style={styles.captureButtonOuter}>
               <View style={styles.captureButtonMiddle}>
                 <View style={styles.captureButtonInner} />

@@ -7,6 +7,8 @@ import SurveyScreen from './components/SurveyScreen';
 import ResponsesScreen from './components/ResponsesScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {type SurveyParams} from './types.d';
+import {Provider} from 'react-redux';
+import {store} from './data/store';
 
 export type ScreenNames = ['surveys', 'responses', 'survey'];
 
@@ -86,5 +88,9 @@ const RootStack = createStackNavigator({
 const Navigation = createStaticNavigation(RootStack);
 
 export default function Home() {
-  return <Navigation />;
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  );
 }

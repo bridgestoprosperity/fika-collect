@@ -7,6 +7,7 @@ import SurveySchemaManagerContext from '../data/SurveySchemaManagerContext';
 import {SurveySchema} from '../data/SurveySchema';
 import {SurveySchemaManager} from '../data/SurveySchemaManager';
 import {SurveyResponse} from '../data/SurveyResponse';
+import Announcements from './Announcements';
 
 function SurveyButton({survey}: {survey: SurveySchema}) {
   const navigation = useNavigation<StackNavigation>();
@@ -49,6 +50,7 @@ export default function SurveysScreen() {
 
   return (
     <ScrollView>
+      <Announcements />
       <View style={styles.container}>
         {surveys.map(survey => (
           <SurveyButton key={survey.id} survey={survey} />
