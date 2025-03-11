@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
   Modal,
   Button,
+  Dimensions,
 } from 'react-native';
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
@@ -21,6 +22,8 @@ import {useNavigation} from '@react-navigation/native';
 import sharedStyles from '../styles';
 import CameraController from './CameraController';
 import {useCameraDevice} from 'react-native-vision-camera';
+import {type PhotoFile} from 'react-native-vision-camera';
+import BlastedImage from 'react-native-blasted-image';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -119,10 +122,16 @@ function LocationQuestion({response}: SurveyQuestionProps) {
   );
 }
 
-function PhotosQuestion({response}: SurveyQuestionProps) {
+function PhotosQuestion({response, onChange}: SurveyQuestionProps) {
   const [cameraVisible, setCameraVisible] = useState(false);
   const {question} = response;
   const device = useCameraDevice('back');
+  const filePath = response.value;
+
+  const onCapture = async (file: PhotoFile) => {
+    setCameraVisible(false);
+    onChange(file.path);
+  };
 
   const cancel = () => {
     setCameraVisible(false);
@@ -133,13 +142,39 @@ function PhotosQuestion({response}: SurveyQuestionProps) {
       <Text style={styles.surveyQuestionText}>{question.question}</Text>
       {device ? (
         <View>
-          <Button onPress={() => setCameraVisible(true)} title="Take photo" />
+          {filePath ? (
+            <View style={styles.previewContainer}>
+              <BlastedImage
+                source={{uri: filePath}}
+                style={styles.imagePreview}
+                resizeMode="cover"
+                width={Dimensions.get('window').width * 0.5}
+                height={Dimensions.get('window').width * 0.8}
+              />
+            </View>
+          ) : null}
+
+          {filePath ? (
+            <Button
+              onPress={() => onChange('')}
+              title="Use a different photo"
+            />
+          ) : (
+            <Button
+              onPress={() => setCameraVisible(true)}
+              title={filePath ? 'Retake photo' : 'Take photo'}
+            />
+          )}
           <Modal
             visible={cameraVisible}
             onRequestClose={() => setCameraVisible(false)}
             animationType="slide"
             presentationStyle="fullScreen">
-            <CameraController device={device} cancel={cancel} />
+            <CameraController
+              device={device}
+              cancel={cancel}
+              onCapture={onCapture}
+            />
           </Modal>
         </View>
       ) : (
@@ -387,5 +422,11 @@ const styles = StyleSheet.create({
   },
   camera: {
     height: 400,
+  },
+  imagePreview: {},
+  previewContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
   },
 });

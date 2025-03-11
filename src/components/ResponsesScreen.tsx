@@ -32,7 +32,7 @@ export default function ResponsesScreen() {
     SurveyResponseManagerContext,
   );
 
-  const fetchResponses = () => {
+  const fetchResponses = useCallback(() => {
     responseManager
       .getResponses()
       .then(fetchedResponses => {
@@ -48,13 +48,9 @@ export default function ResponsesScreen() {
       .catch(error => {
         console.error('error fetching responses', error);
       });
-  };
+  }, [responseManager, responses]);
 
-  useFocusEffect(
-    useCallback(() => {
-      fetchResponses();
-    }, [responseManager]),
-  );
+  useFocusEffect(fetchResponses);
 
   console.log(responses);
 

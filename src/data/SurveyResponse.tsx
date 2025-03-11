@@ -20,8 +20,11 @@ export class SurveyQuestionResponse {
       case 'boolean':
         this._value = 'no';
         break;
+      case 'short_answer':
+      case 'long_answer':
+        this._value = 'REMOVE ME';
+        break;
     }
-    this._value = this._value || 'REMOVE ME';
   }
 
   get hasResponse() {

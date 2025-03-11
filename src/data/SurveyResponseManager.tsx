@@ -7,6 +7,8 @@ const STORAGE_DIR =
     ? RNFS.DocumentDirectoryPath
     : RNFS.ExternalDirectoryPath;
 
+console.log(`iOS storage directory: ${RNFS.DocumentDirectoryPath}`);
+
 const TO_UPLOAD_DIR = `to_upload`;
 const UPLOADED_DIR = `uploaded`;
 

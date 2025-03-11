@@ -1,4 +1,4 @@
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import {
   View,
   Text,
@@ -6,21 +6,55 @@ import {
   Button,
   SafeAreaView,
   Pressable,
+  Dimensions,
 } from 'react-native';
 
 import {Camera} from 'react-native-vision-camera';
-import {type CameraDevice} from 'react-native-vision-camera';
+import {type CameraDevice, type PhotoFile} from 'react-native-vision-camera';
+import BlastedImage from 'react-native-blasted-image';
+
+interface ConfirmPhotoProps {
+  file: PhotoFile;
+  onConfirm: () => void;
+  onRetake: () => void;
+}
+
+function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
+  return (
+    <SafeAreaView style={styles.cameraContainer}>
+      <View style={styles.topRow}></View>
+      <BlastedImage
+        source={{uri: file.path}}
+        width={Dimensions.get('window').width}
+        height={Dimensions.get('window').width * 1.4}
+        style={styles.camera}
+        resizeMode="contain"
+      />
+      <View style={styles.bottomRow}>
+        <View style={styles.captureRowLeft}>
+          <Button title="Retake" onPress={onRetake} color="white" />
+        </View>
+        <View style={styles.captureRowRight}>
+          <Button title="Use photo" onPress={onConfirm} color="white" />
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
 
 interface CameraControllerProps {
   device: CameraDevice | undefined;
   cancel: () => void;
+  onCapture: (file: PhotoFile) => void;
 }
 
 export default function CameraController({
   device,
   cancel,
+  onCapture,
 }: CameraControllerProps) {
   const camera = useRef<Camera>(null);
+  const [file, setFile] = useState<PhotoFile | null>(null);
 
   if (!device) {
     return (
@@ -33,9 +67,19 @@ export default function CameraController({
 
   const capture = async () => {
     if (!camera.current) return;
-    const photo = await camera.current.takePhoto();
-    console.log(photo);
+    setFile(await camera.current.takePhoto());
+    //onCapture && onCapture(await camera.current.takePhoto());
   };
+
+  const retake = () => setFile(null);
+  const confirm = () => {
+    if (!file) return;
+    onCapture(file);
+  };
+
+  if (file) {
+    return <ConfirmPhoto file={file} onRetake={retake} onConfirm={confirm} />;
+  }
 
   return (
     <SafeAreaView style={styles.cameraContainer}>
@@ -82,11 +126,14 @@ const styles = StyleSheet.create({
   },
   cameraContainer: {
     flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
     backgroundColor: 'black',
   },
   camera: {
     flex: 1,
-    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   cancelButton: {
     color: 'white',
