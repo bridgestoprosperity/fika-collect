@@ -76,6 +76,8 @@ This command will upload the survey to `surveys/{survey_id}.json` and update the
 node bin/upload-survey.js surveys/quick_report.json --replace
 ```
 
+Note that the bucket is *versioned*, so that previous revisions of surveys can be accessed either programatically or visually through the AWS console.
+
 ### Deactivate a survey
 
 You may deactivate a survey by removing it from the manifest. This only removes it from the manifest and does not remove the survey JSON definition from the bucket or make it inaccessible.
