@@ -22,7 +22,7 @@ export class SurveyQuestionResponse {
         break;
       case 'short_answer':
       case 'long_answer':
-        this._value = 'REMOVE ME';
+        //this._value = 'REMOVE ME';
         break;
     }
   }

@@ -1,0 +1,20 @@
+{
+  "name": "fika-collect-surveys",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "upload-survey": "bin/upload-survey.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.758.0",
+    "yargs": "^17.7.2"
+  }
+}

@@ -19,6 +19,7 @@ const surveySchema = z.object({
         'boolean',
         'short_answer',
         'long_answer',
+        'photo',
       ]),
       question: z.string(),
       hint: z.string().optional(),
@@ -57,4 +58,5 @@ export {
   uploadPresignerRequestSchema,
   surveySubmissionRequestSchema,
   fileTypeSchema,
+  surveySchema,
 };

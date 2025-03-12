@@ -1,0 +1,53 @@
+{
+  "id": "detailed_report",
+  "title": "Detailed Report Survey",
+  "description": "Provide detailed information about an obstacle",
+  "questions": [
+    {
+      "id": "frequency",
+      "type": "multiple_choice",
+      "question": "How frequently do you cross the location where the bridge is needed?",
+      "options": ["Daily", "Weekly", "Monthly", "Yearly", "Never"]
+    },
+    {
+      "id": "phone",
+      "type": "short_answer",
+      "question": "What is your phone number?"
+    },
+    {
+      "id": "email",
+      "type": "short_answer",
+      "question": "What is your email address?"
+    },
+    {
+      "id": "country",
+      "type": "short_answer",
+      "question": "What country are you in?"
+    },
+    {
+      "id": "closest_community",
+      "type": "short_answer",
+      "question": "What is the name of the closest community that is requesting the bridge?"
+    },
+    {
+      "id": "closest_community_opposite",
+      "type": "short_answer",
+      "question": "What is the name of the closest community on the opposite side of the crossing?"
+    },
+    {
+      "id": "photo_crossing_point",
+      "type": "photo",
+      "question": "Take a picture of the current crossing point"
+    },
+    {
+      "id": "photo_crossing_point_opposite",
+      "type": "photo",
+      "question": "Take a picture of the current crossing point"
+    },
+    {
+      "id": "other_info",
+      "type": "long_answer",
+      "question": "Please include any other information you would like for us to know"
+    }
+  ]
+}

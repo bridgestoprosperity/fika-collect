@@ -1,9 +1,9 @@
-import {Bucket} from './config.js';
+import {Bucket, Prefix} from './config.js';
 
-async function uploadSurveyToS3(payload, {s3}) {
+async function uploadResponseToS3(payload, {s3}) {
   const {survey_id, id} = payload;
 
-  const key = `responses/${survey_id}/${id}/response.json`;
+  const key = `${Prefix}/${survey_id}/${id}/response.json`;
 
   const params = {
     Bucket,
@@ -16,4 +16,4 @@ async function uploadSurveyToS3(payload, {s3}) {
   return {key};
 }
 
-export {uploadSurveyToS3};
+export {uploadResponseToS3};

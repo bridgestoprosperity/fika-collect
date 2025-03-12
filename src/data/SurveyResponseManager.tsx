@@ -46,7 +46,7 @@ export class SurveyResponseManager extends EventEmitter {
       const questionDef = response.schema.questions.find(
         q => q.id === resp.question.id,
       );
-      if (questionDef && questionDef.type === 'photos') {
+      if (questionDef && questionDef.type === 'photo') {
         const imageUrl = resp.value;
         const extension = imageUrl.split('.').pop();
         const newFilename = `${nanoid()}.${extension}`;
@@ -115,7 +115,7 @@ export class SurveyResponseManager extends EventEmitter {
             const questionDef = parsedResponse.schema.questions.find(
               (q: any) => q.id === resp.question_id,
             );
-            if (questionDef && questionDef.type === 'photos') {
+            if (questionDef && questionDef.type === 'photo') {
               expectedImages.push(resp.value);
             }
           }

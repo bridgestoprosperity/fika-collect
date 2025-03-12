@@ -4,7 +4,7 @@ export type SurveySchemaQuestionType =
   | 'long_answer'
   | 'location'
   | 'boolean'
-  | 'photos';
+  | 'photo';
 
 export class SurveyQuestionSchema {
   id: string;

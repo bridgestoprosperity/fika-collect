@@ -209,7 +209,7 @@ function SurveyQuestion({response, onChange}: SurveyQuestionProps) {
       return <MultipleChoiceQuestion response={response} onChange={onChange} />;
     case 'location':
       return <LocationQuestion response={response} onChange={onChange} />;
-    case 'photos':
+    case 'photo':
       return <PhotoQuestion response={response} onChange={onChange} />;
     default:
       return null;
@@ -327,7 +327,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
       <View style={{flexDirection: 'column', flex: 1}}>
         <ScrollView>
           <View style={styles.container}>
-            <Text style={styles.surveyTitle}>{schema.description}</Text>
+            <Text style={styles.surveyTitle}>{schema.title}</Text>
 
             <SurveyQuestion response={currentResponse} onChange={setResponse} />
           </View>
@@ -386,9 +386,10 @@ const styles = StyleSheet.create({
   },
   surveyTitle: {
     color: '#333',
-    fontSize: 24,
-    marginTop: 25,
+    fontSize: 22,
+    marginTop: 15,
     marginBottom: 50,
+    fontWeight: 700,
   },
   surveyQuestion: {
     marginBottom: 25,

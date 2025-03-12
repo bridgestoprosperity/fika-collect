@@ -6,7 +6,7 @@ import {
 } from './src/request-schema.js';
 import {fromError} from 'zod-validation-error';
 import {responseSchema} from './src/response-schema.js';
-import {uploadSurveyToS3} from './src/upload-survey.js';
+import {uploadResponseToS3} from './src/upload-response.js';
 import HttpError from './src/http-error.js';
 
 import {Region} from './src/config.js';
@@ -36,7 +36,7 @@ async function submitSurvey(event) {
       );
     }
 
-    await uploadSurveyToS3(requestParams.data.response, {s3});
+    await uploadResponseToS3(requestParams.data.response, {s3});
 
     return responseSchema.parse({
       statusCode: 200,
