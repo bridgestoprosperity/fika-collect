@@ -4,7 +4,15 @@ This directory contains some basic (currently, *very* basic) infrastructure for 
 
 The official list of current surveys is stored in the `fika-collect` S3 bucket under the key `surveys/mainfest.json`. A bucket policy makes objects under the prefix `surveys/` publicly visible, so this manifest is visible at https://fika-collect.s3.us-west-1.amazonaws.com/surveys/manifest.json. (Note that survey *responses* are *not* publicly visible, as they are stored under `responses/`.)
 
-## CLI Commands
+## App updates
+
+Each time the app loads, it loads currently known surveys from local app storage. If the device is not connected to the internet, the user will be able to respond to existing surveys.
+
+At the same time upon app load, the app attempts to fetch an updated manifest from S3. Opimization will follow, but it re-fetches each survey schema from S3 and updates the listing in the app immediately. No action or publishing step is necessary beyond updating the manifest below.
+
+The process is just a bit clunky and does not currently permit reordering the surveys. I plan to roll this up into a nicer, _single_ command which offers a bit better state management.
+
+## CLI commands
 
 This script contains some basic commands which will eventually get rolled up into a nicer CLI utility.
 
@@ -53,6 +61,3 @@ You may deactivate a survey by removing it from the manifest. This only removes 
 ```
 node bin/deactivate-survey.js quick_report
 ```
-
-The process is just a bit clunky and does not currently permit reordering the surveys.
-
