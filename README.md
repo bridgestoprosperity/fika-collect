@@ -35,6 +35,8 @@ The following AWS resources have been allocated to make the lambda run.
 - **CloudFormation**
   - [aws-sam-cli-managed-default](https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/stackinfo?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aus-west-1%3A530198286110%3Astack%2Faws-sam-cli-managed-default%2F3425f030-f931-11ef-a23c-02a70af48729): Stack for managing SAM deployments
   - [fika-collect-upload-signer](https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/stackinfo?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aus-west-1%3A530198286110%3Astack%2Ffika-collect-upload-signer%2F5704f0b0-f931-11ef-adc1-029a61d41e27): Stack for fikaCollectUploadLambda
+- **API Gateway**
+  - [fika-collect-api](https://us-west-1.console.aws.amazon.com/apigateway/main/develop/routes?api=f54u12dkn2&region=us-west-1). An API Gateway allows to orgzniae multiple lambda functions as a coherent API instead of sending every request to a different lambda URL.
 
 
 ## License
