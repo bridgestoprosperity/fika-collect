@@ -12,6 +12,28 @@ At the same time upon app load, the app attempts to fetch an updated manifest fr
 
 The process is just a bit clunky and does not currently permit reordering the surveys. I plan to roll this up into a nicer, _single_ command which offers a bit better state management.
 
+## Credentials
+
+You will need to configure AWS credentials to use these scripts. You can do this by creating an IAM user and/or attaching the following policy:
+
+```json
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Sid": "Statement3",
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutObject",
+				"s3:GetObject"
+			],
+			"Resource": [
+				"arn:aws:s3:::fika-collect/*"
+			]
+		}
+	]
+}
+```
+
 ## CLI commands
 
 This script contains some basic commands which will eventually get rolled up into a nicer CLI utility.
