@@ -1,13 +1,15 @@
 import {Platform} from 'react-native';
 import {SurveyResponse} from './SurveyResponse';
 import * as RNFS from '@dr.pogodin/react-native-fs';
+import {nanoid} from 'nanoid';
+//import {EventEmitter} from 'events';
 
 const STORAGE_DIR =
   Platform.OS === 'ios'
     ? RNFS.DocumentDirectoryPath
     : RNFS.ExternalDirectoryPath;
 
-console.log(`iOS storage directory: ${RNFS.DocumentDirectoryPath}`);
+console.log(STORAGE_DIR);
 
 const TO_UPLOAD_DIR = `to_upload`;
 const UPLOADED_DIR = `uploaded`;
@@ -21,7 +23,25 @@ export class SurveyResponseManager {
   async storeResponse(response: SurveyResponse) {
     const dir = `${STORAGE_DIR}/${response.schema.id}/${response.id}/${TO_UPLOAD_DIR}`;
     await RNFS.mkdir(dir);
+
+    // Copy the images to the new directory, renaming them to a unique name and
+    // updating the response object with the new file paths
+    for (const resp of response.responses) {
+      const questionDef = response.schema.questions.find(
+        q => q.id === resp.question.id,
+      );
+      if (questionDef && questionDef.type === 'photos') {
+        const imageUrl = resp.value;
+        const extension = imageUrl.split('.').pop();
+        const newFilename = `${nanoid()}.${extension}`;
+        const newFilePath = `${dir}/${newFilename}`;
+        await RNFS.copyFile(imageUrl, newFilePath);
+        resp.value = newFilename;
+      }
+    }
+
     response.submittedAt = new Date();
+
     return RNFS.writeFile(
       `${dir}/response.json`,
       JSON.stringify(response.serialize()),

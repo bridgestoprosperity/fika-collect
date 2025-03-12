@@ -39,7 +39,8 @@ export default function ResponsesScreen() {
         const fetchedIds = fetchedResponses.map(item => item.response.id);
         const currentIds = responses
           ? responses.map(item => item.response.id)
-          : [];
+          : null;
+        console.log(fetchedIds, currentIds);
         if (JSON.stringify(currentIds) === JSON.stringify(fetchedIds)) {
           return;
         }
@@ -52,14 +53,12 @@ export default function ResponsesScreen() {
 
   useFocusEffect(fetchResponses);
 
-  console.log(responses);
-
   return (
     <ScrollView>
       <View style={styles.container}>
         {responses === null && <Text>Loading...</Text>}
         {responses !== null && responses.length === 0 && (
-          <Text>No responses</Text>
+          <Text style={styles.noResp}>No submitted surveys</Text>
         )}
         {responses !== null &&
           responses.length > 0 &&
@@ -92,5 +91,11 @@ const styles = StyleSheet.create({
   submittedResponseDate: {
     fontSize: 14,
     color: '#666',
+  },
+  noResp: {
+    fontStyle: 'italic',
+    fontSize: 18,
+    color: '#666',
+    marginTop: 50,
   },
 });

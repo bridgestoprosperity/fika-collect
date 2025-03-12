@@ -24,6 +24,8 @@ import CameraController from './CameraController';
 import {useCameraDevice} from 'react-native-vision-camera';
 import {type PhotoFile} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {useNetInfo} from '@react-native-community/netinfo';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -122,7 +124,7 @@ function LocationQuestion({response}: SurveyQuestionProps) {
   );
 }
 
-function PhotosQuestion({response, onChange}: SurveyQuestionProps) {
+function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
   const [cameraVisible, setCameraVisible] = useState(false);
   const {question} = response;
   const device = useCameraDevice('back');
@@ -140,45 +142,55 @@ function PhotosQuestion({response, onChange}: SurveyQuestionProps) {
   return (
     <View style={styles.surveyQuestion}>
       <Text style={styles.surveyQuestionText}>{question.question}</Text>
-      {device ? (
+      {filePath ? (
         <View>
-          {filePath ? (
-            <View style={styles.previewContainer}>
-              <BlastedImage
-                source={{uri: filePath}}
-                style={styles.imagePreview}
-                resizeMode="cover"
-                width={Dimensions.get('window').width * 0.5}
-                height={Dimensions.get('window').width * 0.8}
-              />
-            </View>
-          ) : null}
-
-          {filePath ? (
-            <Button
-              onPress={() => onChange('')}
-              title="Use a different photo"
+          <View style={styles.previewContainer}>
+            <BlastedImage
+              source={{uri: filePath}}
+              style={styles.imagePreview}
+              resizeMode="cover"
+              width={Dimensions.get('window').width * 0.5}
+              height={Dimensions.get('window').width * 0.8}
             />
-          ) : (
-            <Button
-              onPress={() => setCameraVisible(true)}
-              title={filePath ? 'Retake photo' : 'Take photo'}
-            />
-          )}
-          <Modal
-            visible={cameraVisible}
-            onRequestClose={() => setCameraVisible(false)}
-            animationType="slide"
-            presentationStyle="fullScreen">
-            <CameraController
-              device={device}
-              cancel={cancel}
-              onCapture={onCapture}
-            />
-          </Modal>
+          </View>
+          <Button onPress={() => onChange('')} title="Use a different photo" />
         </View>
       ) : (
-        <Text style={styles.hint}>No camera available!</Text>
+        <View>
+          {device ? (
+            <View>
+              <Button
+                onPress={() => setCameraVisible(true)}
+                title="Take photo"
+              />
+              <Modal
+                visible={cameraVisible}
+                onRequestClose={() => setCameraVisible(false)}
+                animationType="slide"
+                presentationStyle="fullScreen">
+                <CameraController
+                  device={device}
+                  cancel={cancel}
+                  onCapture={onCapture}
+                />
+              </Modal>
+            </View>
+          ) : (
+            <Text style={styles.warning}>No camera available!</Text>
+          )}
+          <Button
+            onPress={async () => {
+              const result = await launchImageLibrary({
+                mediaType: 'photo',
+                selectionLimit: 1,
+              });
+              const uri = result?.assets?.[0]?.uri;
+              if (!uri) return;
+              onChange(uri);
+            }}
+            title="Select from library"
+          />
+        </View>
       )}
     </View>
   );
@@ -198,7 +210,7 @@ function SurveyQuestion({response, onChange}: SurveyQuestionProps) {
     case 'location':
       return <LocationQuestion response={response} onChange={onChange} />;
     case 'photos':
-      return <PhotosQuestion response={response} onChange={onChange} />;
+      return <PhotoQuestion response={response} onChange={onChange} />;
     default:
       return null;
   }
@@ -207,6 +219,7 @@ function SurveyQuestion({response, onChange}: SurveyQuestionProps) {
 export default function SurveyScreen(props: SurveyScreenProps) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [revision, setRevision] = useState(0);
+  const netInfo = useNetInfo();
 
   const surveyResponseManager = useContext<SurveyResponseManager>(
     SurveyResponseManagerContext,
@@ -280,9 +293,21 @@ export default function SurveyScreen(props: SurveyScreenProps) {
         {
           text: 'Submit',
           onPress: () => {
-            surveyResponseManager.storeResponse(response).then(() => {
-              navigation.goBack();
-            });
+            surveyResponseManager
+              .storeResponse(response)
+              .then(() => {
+                if (netInfo.isConnected) {
+                  surveyResponseManager.uploadResponses();
+                } else {
+                  Alert.alert(
+                    'No internet connection',
+                    'Your response will be uploaded when you are back online.',
+                  );
+                }
+              })
+              .then(() => {
+                navigation.goBack();
+              });
           },
           style: 'destructive',
         },
@@ -427,6 +452,13 @@ const styles = StyleSheet.create({
   previewContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 20,
+  },
+  warning: {
+    fontSize: 18,
+    color: '#666',
+    fontStyle: 'italic',
+    alignSelf: 'center',
     marginBottom: 20,
   },
 });
