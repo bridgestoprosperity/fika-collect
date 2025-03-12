@@ -1,8 +1,8 @@
 version = 0.1
 [default.deploy.parameters]
-stack_name = "fika-collect-upload-signer"
+stack_name = "fika-collect-lambda"
 resolve_s3 = true
-s3_prefix = "fika-collect-upload-signer"
+s3_prefix = "fika-collect-lambda"
 region = "us-west-1"
 capabilities = "CAPABILITY_IAM"
 image_repositories = []

@@ -1,4 +1,4 @@
-import {Bucket} from './config.js';
+import {Bucket, Prefix} from './config.js';
 import HttpError from './http-error.js';
 
 function extensionFromFileType(file_type) {
@@ -35,7 +35,7 @@ export default async function generatePresignedUrl(
     throw error;
   }
 
-  const Key = `${survey_id}/${response_id}.${image_id}.${ext}`;
+  const Key = `${Prefix}/${survey_id}/${response_id}.${image_id}.${ext}`;
 
   const params = {
     Bucket,

@@ -296,7 +296,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
             surveyResponseManager
               .storeResponse(response)
               .then(() => {
-                if (netInfo.isConnected) {
+                if (netInfo.isInternetReachable) {
                   surveyResponseManager.uploadResponses();
                 } else {
                   Alert.alert(

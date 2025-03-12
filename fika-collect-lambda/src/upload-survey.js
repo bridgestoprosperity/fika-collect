@@ -3,7 +3,7 @@ import {Bucket} from './config.js';
 async function uploadSurveyToS3(payload, {s3}) {
   const {survey_id, id} = payload;
 
-  const key = `${survey_id}/${id}/response.json`;
+  const key = `responses/${survey_id}/${id}/response.json`;
 
   const params = {
     Bucket,

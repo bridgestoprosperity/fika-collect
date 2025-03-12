@@ -13,7 +13,6 @@ interface ResponseProps {
 }
 
 function SubmittedResponse(props: ResponseProps) {
-  console.log(props);
   const {response} = props;
   return (
     <View key={response.id} style={styles.submittedResponseCard}>
@@ -40,7 +39,6 @@ export default function ResponsesScreen() {
         const currentIds = responses
           ? responses.map(item => item.response.id)
           : null;
-        console.log(fetchedIds, currentIds);
         if (JSON.stringify(currentIds) === JSON.stringify(fetchedIds)) {
           return;
         }

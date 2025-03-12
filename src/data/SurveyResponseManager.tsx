@@ -2,7 +2,7 @@ import {Platform} from 'react-native';
 import {SurveyResponse} from './SurveyResponse';
 import * as RNFS from '@dr.pogodin/react-native-fs';
 import {nanoid} from 'nanoid';
-//import {EventEmitter} from 'events';
+import {EventEmitter} from 'event-emitter3';
 
 const STORAGE_DIR =
   Platform.OS === 'ios'
@@ -13,13 +13,29 @@ console.log(STORAGE_DIR);
 
 const TO_UPLOAD_DIR = `to_upload`;
 const UPLOADED_DIR = `uploaded`;
+const RESPONSE_ID_REGEX = /^[\d]{14}-[A-Za-z0-9_-]+$/;
 
 export type ReadResponse = {
   response: SurveyResponse;
   uploaded: boolean;
 };
 
-export class SurveyResponseManager {
+class ResponseUpload {
+  responseId: string;
+  surveyId: string;
+  responseDir: string;
+  filesToUpload: string[] = [];
+
+  constructor(responseId: string, surveyId: string, responseDir: string) {
+    this.responseId = responseId;
+    this.surveyId = surveyId;
+    this.responseDir = responseDir;
+  }
+}
+
+export class SurveyResponseManager extends EventEmitter {
+  responseUploads = new Map<string, ResponseUpload>();
+
   async storeResponse(response: SurveyResponse) {
     const dir = `${STORAGE_DIR}/${response.schema.id}/${response.id}/${TO_UPLOAD_DIR}`;
     await RNFS.mkdir(dir);
@@ -51,22 +67,77 @@ export class SurveyResponseManager {
 
   async uploadResponses() {
     const dirs = await RNFS.readDir(STORAGE_DIR);
-    for (const dir of dirs) {
-      if (dir.isDirectory() && dir.name !== UPLOADED_DIR) {
-        const files = await RNFS.readDir(`${dir.path}/${TO_UPLOAD_DIR}`);
-        for (const file of files) {
-          //const contents = await RNFS.readFile(file.path);
-          // Upload the contents to a server
-          // ...
-          // Move the file to the uploaded directory
-          await RNFS.mkdir(`${dir.path}/${UPLOADED_DIR}`);
-          await RNFS.moveFile(
-            file.path,
-            `${dir.path}/${UPLOADED_DIR}/${file.name}`,
+    for (const surveyDir of dirs) {
+      if (!surveyDir.isDirectory()) {
+        continue;
+      }
+
+      const responses = await RNFS.readDir(surveyDir.path);
+      for (const response of responses) {
+        if (!response.isDirectory() || !RESPONSE_ID_REGEX.test(response.name)) {
+          continue;
+        }
+
+        const responseId = response.name;
+        const surveyId = surveyDir.name;
+        const responseDir = response.path;
+
+        // Find or create a response upload
+        let responseUpload = this.responseUploads.get(responseId);
+        if (!responseUpload) {
+          responseUpload = new ResponseUpload(
+            responseId,
+            surveyId,
+            responseDir,
           );
+          this.responseUploads.set(responseId, responseUpload);
+        }
+
+        const toUploadDir = `${response.path}/${TO_UPLOAD_DIR}`;
+        const uploadedDir = `${response.path}/${UPLOADED_DIR}`;
+        await RNFS.mkdir(uploadedDir);
+
+        let responseJsonPath = `${uploadedDir}/response.json`;
+        if (!(await RNFS.exists(responseJsonPath))) {
+          responseJsonPath = `${toUploadDir}/response.json`;
+          if (!(await RNFS.exists(responseJsonPath))) {
+            console.warn('No response.json found in either directory');
+            continue;
+          }
+          responseUpload.filesToUpload.push(responseJsonPath);
+        }
+
+        const expectedImages: string[] = [];
+        if (await RNFS.exists(responseJsonPath)) {
+          const responseJson = await RNFS.readFile(responseJsonPath, 'utf8');
+          const parsedResponse = JSON.parse(responseJson);
+          for (const resp of parsedResponse.responses) {
+            const questionDef = parsedResponse.schema.questions.find(
+              (q: any) => q.id === resp.question_id,
+            );
+            if (questionDef && questionDef.type === 'photos') {
+              expectedImages.push(resp.value);
+            }
+          }
+        }
+
+        const files = await RNFS.readDir(toUploadDir);
+        for (const file of files) {
+          if (file.name.endsWith('.json')) {
+            continue;
+          }
+          if (!expectedImages.includes(file.name)) {
+            console.warn('Unexpected file:', file.name);
+            continue;
+          }
+
+          if (!responseUpload.filesToUpload.includes(file.path)) {
+            responseUpload.filesToUpload.push(file.path);
+          }
         }
       }
     }
+    console.log([...this.responseUploads.values()]);
   }
 
   async getResponses(): Promise<ReadResponse[]> {
