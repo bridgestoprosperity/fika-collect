@@ -185,7 +185,6 @@ export class SurveyResponseManager extends EventEmitter {
             response_id: responseId,
             image_id: imageId,
           };
-          console.log({body});
           const presignResponse = await fetch(`${BASE_URL}/presign-upload`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -299,7 +298,6 @@ export class SurveyResponseManager extends EventEmitter {
         }
       }
     }
-    console.log([...this.responseUploads.values()]);
   }
 
   async getResponses(): Promise<ReadResponse[]> {

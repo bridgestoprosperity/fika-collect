@@ -309,20 +309,14 @@ export default function SurveyScreen(props: SurveyScreenProps) {
             } else {
               Alert.alert(
                 'No internet connection',
-                'Your response will be uploaded when you are back online.',
+                'Your response has been saved locally. To submit the response, please re-open the app and check the Responses tab when you have an internet connection.',
               );
+              navigation.goBack();
             }
           },
           style: 'destructive',
         },
       ],
-      {
-        cancelable: true,
-        onDismiss: () =>
-          Alert.alert(
-            'This alert was dismissed by tapping outside of the alert dialog.',
-          ),
-      },
     );
   };
 
@@ -341,7 +335,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
         setSubmitting(false);
         Alert.alert(
           'Error submitting survey',
-          'An error occurred while submitting your survey response. Please try again later.',
+          'Your response has been saved locally. To submit the response, please re-open the app and check the Responses tab when you have an internet connection.',
         );
       });
   }, [submitting, submitted, surveyResponseManager, navigation, response]);
