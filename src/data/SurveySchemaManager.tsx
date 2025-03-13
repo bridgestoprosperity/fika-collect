@@ -48,8 +48,9 @@ export class SurveySchemaManager {
       }
     }
 
-    console.log(devSampleSurvey);
-    this.schemas.set('dev', new SurveySchema(devSampleSurvey));
+    if (__DEV__) {
+      this.schemas.set('dev', new SurveySchema(devSampleSurvey));
+    }
 
     // Persist fetched schemas to local storage
     await surveySchemaStorage.setMapAsync(
