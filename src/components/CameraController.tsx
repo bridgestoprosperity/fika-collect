@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-import {Camera} from 'react-native-vision-camera';
+import {Camera, useCameraPermission} from 'react-native-vision-camera';
 import {type CameraDevice, type PhotoFile} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
 
@@ -55,7 +55,18 @@ export default function CameraController({
 }: CameraControllerProps) {
   const camera = useRef<Camera>(null);
   const [file, setFile] = useState<PhotoFile | null>(null);
+  const {hasPermission} = useCameraPermission();
 
+  if (hasPermission) {
+    return (
+      <View style={[StyleSheet.absoluteFill, styles.errorContainer]}>
+        <Text style={styles.errorMessage}>
+          Permission to access camera was denied!
+        </Text>
+        <Button title="Cancel" onPress={cancel} />
+      </View>
+    );
+  }
   if (!device) {
     return (
       <View style={[StyleSheet.absoluteFill, styles.errorContainer]}>

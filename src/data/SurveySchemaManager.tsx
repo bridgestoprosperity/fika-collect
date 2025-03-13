@@ -1,5 +1,6 @@
 import {SurveySchema} from './SurveySchema';
 import {MMKVLoader} from 'react-native-mmkv-storage';
+import devSampleSurvey from '../surveys/dev_sample_survey.json';
 
 const surveySchemaStorage = new MMKVLoader()
   .withInstanceID('surveys')
@@ -46,6 +47,9 @@ export class SurveySchemaManager {
         console.error(e);
       }
     }
+
+    console.log(devSampleSurvey);
+    this.schemas.set('dev', new SurveySchema(devSampleSurvey));
 
     // Persist fetched schemas to local storage
     await surveySchemaStorage.setMapAsync(

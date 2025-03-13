@@ -9,6 +9,12 @@ export class SurveyQuestionResponse {
   type: SurveySchemaQuestionType;
   _value: string = '';
 
+  // This is used for photo questions, where we want to replace the value with the photo path
+  // when serializing the response without modifying the original value. Otherwise,
+  // we would modify the original fileURI and break the photo question.
+  replaceValueOnSerialization: boolean = false;
+  _valueForSerialization: string = '';
+
   constructor(question: SurveyQuestionSchema) {
     this.question = question;
     this.type = this.question.type;
@@ -22,8 +28,21 @@ export class SurveyQuestionResponse {
         break;
       case 'short_answer':
       case 'long_answer':
-        //this._value = 'REMOVE ME';
+        this._value = 'REMOVE ME';
         break;
+    }
+  }
+
+  set valueForSerialization(value: string) {
+    this.replaceValueOnSerialization = true;
+    this._valueForSerialization = value;
+  }
+
+  get valueForSerialization() {
+    if (this.replaceValueOnSerialization) {
+      return this._valueForSerialization;
+    } else {
+      return this._value;
     }
   }
 
@@ -44,12 +63,12 @@ export class SurveyQuestionResponse {
       case 'boolean':
         return {
           question_id: this.question.id,
-          value: this._value === 'yes',
+          value: this.value === 'yes',
         };
       default:
         return {
           question_id: this.question.id,
-          value: this._value,
+          value: this.value,
         };
     }
   }

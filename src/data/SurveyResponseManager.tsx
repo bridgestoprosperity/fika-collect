@@ -25,6 +25,7 @@ class ResponseUpload {
   surveyId: string;
   responseDir: string;
   filesToUpload: string[] = [];
+  jsonToUpload: string | undefined;
 
   constructor(responseId: string, surveyId: string, responseDir: string) {
     this.responseId = responseId;
@@ -52,7 +53,11 @@ export class SurveyResponseManager extends EventEmitter {
         const newFilename = `${nanoid()}.${extension}`;
         const newFilePath = `${dir}/${newFilename}`;
         await RNFS.copyFile(imageUrl, newFilePath);
-        resp.value = newFilename;
+
+        // Images break if we overwrite the value with a new path, so we use this
+        // workaround to store the new filename in the response object without
+        // changing the original value.
+        resp.valueForSerialization = newFilename;
       }
     }
 
@@ -63,6 +68,72 @@ export class SurveyResponseManager extends EventEmitter {
       JSON.stringify(response.serialize()),
       'utf8',
     );
+  }
+
+  async uploadResponse(response: SurveyResponse) {
+    const responseId = response.id;
+    const surveyId = response.schema.id;
+    const responseDir = `${STORAGE_DIR}/${surveyId}/${responseId}`;
+
+    console.log(
+      `Starting upload for response ${responseId} of survey ${surveyId}`,
+    );
+
+    // Find or create a response upload
+    let responseUpload = this.responseUploads.get(responseId);
+    if (!responseUpload) {
+      responseUpload = new ResponseUpload(responseId, surveyId, responseDir);
+      this.responseUploads.set(responseId, responseUpload);
+    }
+
+    const toUploadDir = `${responseDir}/${TO_UPLOAD_DIR}`;
+    const uploadedDir = `${responseDir}/${UPLOADED_DIR}`;
+    await RNFS.mkdir(uploadedDir);
+
+    let responseJsonUploaded = true;
+    let responseJsonPath = `${uploadedDir}/response.json`;
+    if (!(await RNFS.exists(responseJsonPath))) {
+      responseJsonUploaded = false;
+      responseJsonPath = `${toUploadDir}/response.json`;
+      if (!(await RNFS.exists(responseJsonPath))) {
+        console.warn('No response.json found in either directory');
+        return;
+      }
+      responseUpload.jsonToUpload = responseJsonPath;
+    }
+
+    const expectedImages: string[] = [];
+    if (await RNFS.exists(responseJsonPath)) {
+      const responseJson = await RNFS.readFile(responseJsonPath, 'utf8');
+      const parsedResponse = JSON.parse(responseJson);
+      for (const resp of parsedResponse.responses) {
+        const questionDef = parsedResponse.schema.questions.find(
+          (q: any) => q.id === resp.question_id,
+        );
+        if (questionDef && questionDef.type === 'photo') {
+          expectedImages.push(resp.value);
+        }
+      }
+    }
+
+    const files = await RNFS.readDir(toUploadDir);
+    for (const file of files) {
+      if (file.name.endsWith('.json')) continue;
+      if (!expectedImages.includes(file.name)) continue;
+
+      if (!responseUpload.filesToUpload.includes(file.path)) {
+        responseUpload.filesToUpload.push(file.path);
+      }
+    }
+
+    console.log(responseUpload);
+
+    // Here you would add the actual upload logic, e.g., sending files to a server
+    console.log(`Uploading response ${responseId} for survey ${surveyId}`);
+    for (const filePath of responseUpload.filesToUpload) {
+      console.log(`Uploading file: ${filePath}`);
+      // Add your file upload logic here
+    }
   }
 
   async uploadResponses() {

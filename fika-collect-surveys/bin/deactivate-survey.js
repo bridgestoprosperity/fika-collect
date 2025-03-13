@@ -35,7 +35,7 @@ try {
   const manifest = JSON.parse(await streamToString(data.Body));
 
   const surveyIndex = manifest.surveys.findIndex(
-    survey => survey === `${Prefix}/${surveyId}.json`,
+    survey => survey.key === `${Prefix}/${surveyId}.json`,
   );
 
   if (surveyIndex === -1) {

@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import {
   View,
   Text,
@@ -21,6 +21,7 @@ import {SurveyQuestionResponse} from '../data/SurveyResponse';
 import {useNavigation} from '@react-navigation/native';
 import sharedStyles from '../styles';
 import CameraController from './CameraController';
+import {useCameraPermission} from 'react-native-vision-camera';
 import {useCameraDevice} from 'react-native-vision-camera';
 import {type PhotoFile} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
@@ -129,6 +130,7 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
   const device = useCameraDevice('back');
   const filePath = response.value;
+  const hasCameraPermission = useCameraPermission();
 
   const onCapture = async (file: PhotoFile) => {
     setCameraVisible(false);
@@ -157,26 +159,32 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
         </View>
       ) : (
         <View>
-          {device ? (
-            <View>
-              <Button
-                onPress={() => setCameraVisible(true)}
-                title="Take photo"
-              />
-              <Modal
-                visible={cameraVisible}
-                onRequestClose={() => setCameraVisible(false)}
-                animationType="slide"
-                presentationStyle="fullScreen">
-                <CameraController
-                  device={device}
-                  cancel={cancel}
-                  onCapture={onCapture}
+          {hasCameraPermission ? (
+            device ? (
+              <View style={{marginBottom: 15}}>
+                <Button
+                  onPress={() => setCameraVisible(true)}
+                  title="Take photo"
                 />
-              </Modal>
-            </View>
+                <Modal
+                  visible={cameraVisible}
+                  onRequestClose={() => setCameraVisible(false)}
+                  animationType="slide"
+                  presentationStyle="fullScreen">
+                  <CameraController
+                    device={device}
+                    cancel={cancel}
+                    onCapture={onCapture}
+                  />
+                </Modal>
+              </View>
+            ) : (
+              <Text style={styles.warning}>No camera available!</Text>
+            )
           ) : (
-            <Text style={styles.warning}>No camera available!</Text>
+            <Text style={styles.warning}>
+              Camera permission is required to take a photo!
+            </Text>
           )}
           <Button
             onPress={async () => {
@@ -220,6 +228,8 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [revision, setRevision] = useState(0);
   const netInfo = useNetInfo();
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const surveyResponseManager = useContext<SurveyResponseManager>(
     SurveyResponseManagerContext,
@@ -292,22 +302,16 @@ export default function SurveyScreen(props: SurveyScreenProps) {
         },
         {
           text: 'Submit',
-          onPress: () => {
-            surveyResponseManager
-              .storeResponse(response)
-              .then(() => {
-                if (netInfo.isInternetReachable) {
-                  surveyResponseManager.uploadResponses();
-                } else {
-                  Alert.alert(
-                    'No internet connection',
-                    'Your response will be uploaded when you are back online.',
-                  );
-                }
-              })
-              .then(() => {
-                navigation.goBack();
-              });
+          onPress: async () => {
+            await surveyResponseManager.storeResponse(response);
+            if (netInfo.isInternetReachable) {
+              setSubmitting(true);
+            } else {
+              Alert.alert(
+                'No internet connection',
+                'Your response will be uploaded when you are back online.',
+              );
+            }
           },
           style: 'destructive',
         },
@@ -321,6 +325,26 @@ export default function SurveyScreen(props: SurveyScreenProps) {
       },
     );
   };
+
+  useEffect(() => {
+    if (!submitting || submitted) return;
+    surveyResponseManager
+      .uploadResponse(response)
+      .then(() => {
+        setSubmitting(false);
+        setSubmitted(true);
+        Alert.alert('Survey response submitted successfully!');
+        navigation.goBack();
+      })
+      .catch(error => {
+        console.error(error);
+        setSubmitting(false);
+        Alert.alert(
+          'Error submitting survey',
+          'An error occurred while submitting your survey response. Please try again later.',
+        );
+      });
+  }, [submitting, submitted, surveyResponseManager, navigation, response]);
 
   return (
     <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
@@ -372,6 +396,9 @@ export default function SurveyScreen(props: SurveyScreenProps) {
             </Pressable>
           )}
         </View>
+        <Modal visible={submitting}>
+          <Text>Submitting!</Text>
+        </Modal>
       </View>
     </KeyboardAvoidingView>
   );

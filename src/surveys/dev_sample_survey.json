@@ -1,11 +1,11 @@
 {
-  "id": "quick_report",
-  "title": "Quick Report Survey",
-  "description": "Make a quick report of an obstacle",
+  "id": "dev_sample_survey",
+  "title": "Dev sample survey",
+  "description": "Sample survey for local development",
   "questions": [
     {
       "id": "photo",
-      "type": "photos",
+      "type": "photo",
       "question": "Take a photo of the obstacle",
       "hint": ""
     },

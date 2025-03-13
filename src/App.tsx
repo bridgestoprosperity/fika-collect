@@ -81,7 +81,6 @@ const RootStack = createStackNavigator({
       options: {
         title: 'Survey',
         presentation: 'modal',
-        headerLeft: () => null, // Hide the back button
       },
     },
   },
