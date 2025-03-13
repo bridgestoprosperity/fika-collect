@@ -21,7 +21,7 @@ export default async function generatePresignedUrl(
   {s3},
 ) {
   const ext = extensionFromFileType(file_type);
-  const responseKey = `${survey_id}/${response_id}/response.json`;
+  const responseKey = `${Prefix}/${survey_id}/${response_id}/response.json`;
 
   try {
     await s3.headObject({Bucket, Key: responseKey}).promise();
@@ -35,7 +35,7 @@ export default async function generatePresignedUrl(
     throw error;
   }
 
-  const Key = `${Prefix}/${survey_id}/${response_id}.${image_id}.${ext}`;
+  const Key = `${Prefix}/${survey_id}/${response_id}/${image_id}.${ext}`;
 
   const params = {
     Bucket,

@@ -6,7 +6,7 @@ paths:
   /submit-survey:
     post:
       summary: Submit a survey response
-      description: Puts survey response object on S3 with key `{survey_id}/{response_id}/response.json`.
+      description: Puts survey response object on S3 with key `responses/{survey_id}/{response_id}/response.json`.
       requestBody:
         required: true
         content:
@@ -49,7 +49,7 @@ paths:
                   error:
                     type: string
                     description: The error message
-  /generate-upload-url:
+  /presign-upload:
     post:
       summary: Generate a pre-signed upload URL
       description: Returns pre-signed URL for file upload to S3 under key `{survey_id}/{response_id}/{image_id}.{file_type}`. Survey response *must* be succesfully uploaded to S3 before calling this endpoint.

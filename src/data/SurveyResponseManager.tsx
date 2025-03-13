@@ -11,6 +11,8 @@ const STORAGE_DIR =
 
 console.log(STORAGE_DIR);
 
+const BASE_URL = 'https://f54u12dkn2.execute-api.us-west-1.amazonaws.com/';
+
 const TO_UPLOAD_DIR = `to_upload`;
 const UPLOADED_DIR = `uploaded`;
 const RESPONSE_ID_REGEX = /^[\d]{14}-[A-Za-z0-9_-]+$/;
@@ -19,6 +21,22 @@ export type ReadResponse = {
   response: SurveyResponse;
   uploaded: boolean;
 };
+
+function fileTypeFromExtension(extension: string) {
+  switch (extension.toLowerCase()) {
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
+    case 'gif':
+      return 'image/gif';
+    case 'heic':
+      return 'image/heic';
+    default:
+      return `image/${extension}`;
+  }
+}
 
 class ResponseUpload {
   responseId: string;
@@ -126,13 +144,86 @@ export class SurveyResponseManager extends EventEmitter {
       }
     }
 
-    console.log(responseUpload);
+    if (!responseJsonUploaded) {
+      try {
+        const responseJson = JSON.parse(
+          await RNFS.readFile(responseJsonPath, 'utf8'),
+        );
+        const httpResponse = await fetch(`${BASE_URL}/submit-survey`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({response: responseJson}),
+        });
 
-    // Here you would add the actual upload logic, e.g., sending files to a server
-    console.log(`Uploading response ${responseId} for survey ${surveyId}`);
-    for (const filePath of responseUpload.filesToUpload) {
-      console.log(`Uploading file: ${filePath}`);
-      // Add your file upload logic here
+        if (!httpResponse.ok) {
+          throw new Error(
+            `Failed to upload response JSON: ${httpResponse.statusText}`,
+          );
+        }
+        await RNFS.moveFile(responseJsonPath, `${uploadedDir}/response.json`);
+        responseUpload.jsonToUpload = undefined;
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new Error(`Failed to upload response JSON: ${error.message}`);
+        } else {
+          throw new Error('Failed to upload response JSON: Unknown error');
+        }
+      }
+
+      for (const file of responseUpload.filesToUpload) {
+        try {
+          const filename = file.split('/').pop();
+          if (!filename) {
+            throw new Error(`Failed to extract filename from ${file}`);
+          }
+          const [imageId, extension] = filename.split('.');
+          const fileType = fileTypeFromExtension(extension);
+
+          const body = {
+            file_type: fileType,
+            survey_id: surveyId,
+            response_id: responseId,
+            image_id: imageId,
+          };
+          console.log({body});
+          const presignResponse = await fetch(`${BASE_URL}/presign-upload`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body),
+          });
+
+          if (!presignResponse.ok) {
+            throw new Error(
+              `Failed to get presigned URL: ${presignResponse.statusText}`,
+            );
+          }
+
+          const {uploadURL} = await presignResponse.json();
+
+          const fileData = await RNFS.readFile(file, 'base64');
+          const httpResponse = await fetch(uploadURL, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': fileType,
+              'Content-Transfer-Encoding': 'base64',
+            },
+            body: fileData,
+          });
+
+          if (!httpResponse.ok) {
+            throw new Error(
+              `Failed to upload image ${file}: ${httpResponse.statusText}`,
+            );
+          }
+          await RNFS.moveFile(file, `${uploadedDir}/${file.split('/').pop()}`);
+        } catch (error) {
+          if (error instanceof Error) {
+            throw new Error(`Failed to upload image ${file}: ${error.message}`);
+          } else {
+            throw new Error(`Failed to upload image ${file}: Unknown error`);
+          }
+        }
+      }
     }
   }
 

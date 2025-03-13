@@ -63,12 +63,12 @@ export class SurveyQuestionResponse {
       case 'boolean':
         return {
           question_id: this.question.id,
-          value: this.value === 'yes',
+          value: this.valueForSerialization === 'yes',
         };
       default:
         return {
           question_id: this.question.id,
-          value: this.value,
+          value: this.valueForSerialization,
         };
     }
   }

@@ -396,9 +396,13 @@ export default function SurveyScreen(props: SurveyScreenProps) {
             </Pressable>
           )}
         </View>
-        <Modal visible={submitting}>
-          <Text>Submitting!</Text>
-        </Modal>
+        {submitting && (
+          <View style={styles.overlay}>
+            <View style={styles.progressContainer}>
+              <Text style={styles.progressText}>Submitting...</Text>
+            </View>
+          </View>
+        )}
       </View>
     </KeyboardAvoidingView>
   );
@@ -488,5 +492,39 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     alignSelf: 'center',
     marginBottom: 20,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  progressContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 200,
+    height: 100,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  progressText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#333',
+    marginBottom: 10,
   },
 });

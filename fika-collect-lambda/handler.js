@@ -43,13 +43,13 @@ async function submitSurvey(event) {
       body: JSON.stringify({success: true}),
     });
   } catch (error) {
+    console.error(error);
     if (error instanceof HttpError) {
       return {
         statusCode: error.statusCode,
         body: error.message,
       };
     }
-    console.error(error);
     return {
       statusCode: 500,
       body: JSON.stringify({error: 'Internal server error'}),
@@ -95,13 +95,13 @@ async function presignUpload(event) {
       body: JSON.stringify({uploadURL}),
     });
   } catch (error) {
+    console.error(error);
     if (error instanceof HttpError) {
       return {
         statusCode: error.statusCode,
         body: error.message,
       };
     }
-    console.error(error);
     return {
       statusCode: 500,
       body: JSON.stringify({error: 'Internal server error'}),
