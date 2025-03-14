@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "tape test/test-*.js | tap-spec",
-    "build:docs": "openapi-to-md openapi.yaml > API.md"
+    "build:docs": "openapi-to-md openapi.yaml > API.md",
+    "build": "npm run test && sam build && cd .aws-sam/build/fikaCollectUploadLambda && zip -r ../fikaCollectUploadLambda.zip ./* && cd .. && mv fikaCollectUploadLambda.zip ../../"
   },
   "keywords": [],
   "author": "",
