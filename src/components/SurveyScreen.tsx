@@ -214,9 +214,9 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
   const filePath = response.value;
   const hasCameraPermission = useCameraPermission();
 
-  const onCapture = async (file: PhotoFile) => {
+  const onCapture = async (path: string) => {
     setCameraVisible(false);
-    onChange(file.path);
+    onChange(path);
   };
 
   const cancel = () => {

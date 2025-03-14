@@ -1,9 +1,8 @@
-import {useRef, useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Button,
   SafeAreaView,
   Pressable,
   Dimensions,
@@ -19,12 +18,39 @@ interface ConfirmPhotoProps {
   onRetake: () => void;
 }
 
+function StyledButton({
+  title,
+  onPress,
+  color = 'white',
+  backgroundColor = 'black',
+}: {
+  title: string;
+  onPress: () => void;
+  color?: string;
+  backgroundColor?: string;
+}) {
+  return (
+    <Pressable
+      accessibilityLabel={title}
+      onPress={onPress}
+      style={({pressed}) => [
+        {
+          backgroundColor: pressed ? 'gray' : backgroundColor,
+          padding: 10,
+          borderRadius: 5,
+        },
+      ]}>
+      <Text style={{color}}>{title}</Text>
+    </Pressable>
+  );
+}
+
 function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
   return (
     <SafeAreaView style={styles.cameraContainer}>
       <View style={styles.topRow}></View>
       <BlastedImage
-        source={{uri: file.path}}
+        source={{uri: pathFromFile(file)}}
         width={Dimensions.get('window').width}
         height={Dimensions.get('window').width * 1.4}
         style={styles.camera}
@@ -32,10 +58,10 @@ function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
       />
       <View style={styles.bottomRow}>
         <View style={styles.captureRowLeft}>
-          <Button title="Retake" onPress={onRetake} color="white" />
+          <StyledButton title="Retake" onPress={onRetake} color="white" />
         </View>
         <View style={styles.captureRowRight}>
-          <Button title="Use photo" onPress={onConfirm} color="white" />
+          <StyledButton title="Use photo" onPress={onConfirm} color="white" />
         </View>
       </View>
     </SafeAreaView>
@@ -45,7 +71,15 @@ function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
 interface CameraControllerProps {
   device: CameraDevice | undefined;
   cancel: () => void;
-  onCapture: (file: PhotoFile) => void;
+  onCapture: (path: string) => void;
+}
+
+function pathFromFile(file: PhotoFile) {
+  let path = file.path;
+  if (!path.startsWith('file://')) {
+    path = 'file://' + path;
+  }
+  return path;
 }
 
 export default function CameraController({
@@ -55,15 +89,23 @@ export default function CameraController({
 }: CameraControllerProps) {
   const camera = useRef<Camera>(null);
   const [file, setFile] = useState<PhotoFile | null>(null);
-  const {hasPermission} = useCameraPermission();
+  const [permissionRequested, setPermissionRequested] = useState(false);
+  const {hasPermission, requestPermission} = useCameraPermission();
 
-  if (hasPermission) {
+  useEffect(() => {
+    if (!hasPermission && !permissionRequested) {
+      setPermissionRequested(true);
+      requestPermission();
+    }
+  }, [hasPermission, requestPermission, permissionRequested]);
+
+  if (!hasPermission) {
     return (
       <View style={[StyleSheet.absoluteFill, styles.errorContainer]}>
         <Text style={styles.errorMessage}>
           Permission to access camera was denied!
         </Text>
-        <Button title="Cancel" onPress={cancel} />
+        <StyledButton title="Cancel" onPress={cancel} />
       </View>
     );
   }
@@ -71,7 +113,7 @@ export default function CameraController({
     return (
       <View style={[StyleSheet.absoluteFill, styles.errorContainer]}>
         <Text style={styles.errorMessage}>No camera available!</Text>
-        <Button title="Cancel" onPress={cancel} />
+        <StyledButton title="Cancel" onPress={cancel} />
       </View>
     );
   }
@@ -85,7 +127,7 @@ export default function CameraController({
   const retake = () => setFile(null);
   const confirm = () => {
     if (!file) return;
-    onCapture(file);
+    onCapture(pathFromFile(file));
   };
 
   if (file) {
@@ -104,7 +146,7 @@ export default function CameraController({
       />
       <View style={styles.bottomRow}>
         <View style={styles.captureRowLeft}>
-          <Button title="Cancel" onPress={cancel} color="white" />
+          <StyledButton title="Cancel" onPress={cancel} color="white" />
         </View>
         <View style={styles.captureRowCenter}>
           <Pressable
