@@ -79,3 +79,4 @@ android/app/src/main/
 android/app/_build/
 
 .aws-sam
+keystore.properties
