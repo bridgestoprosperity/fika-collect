@@ -27,7 +27,9 @@ export class SurveySchemaManager {
   }
 
   async fetchSurveys() {
-    const manifestRespones = await fetch(MANIFEST_URL);
+    const manifestRespones = await fetch(
+      `${MANIFEST_URL}?cacheBust=${Math.random().toString(16).slice(2)}`,
+    );
     if (!manifestRespones.ok) {
       console.warn('Failed to fetch survey manifest');
     }
@@ -38,10 +40,13 @@ export class SurveySchemaManager {
 
     for (const survey of manifest.surveys) {
       try {
-        const url = `${S3_BASE_URL}/${survey.key}`;
+        const url = `${S3_BASE_URL}/${survey.key}?cacheBust=${Math.random()
+          .toString(16)
+          .slice(2)}`;
         console.log(`Fetching survey from ${url}`);
         const response = await fetch(url);
         const surveyJSON = await response.json();
+        console.log(surveyJSON);
         this.schemas.set(surveyJSON.id, new SurveySchema(surveyJSON));
       } catch (e) {
         console.error(e);

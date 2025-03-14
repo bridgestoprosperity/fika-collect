@@ -373,7 +373,8 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const schema = response.schema;
   const questionCount = schema.questions.length;
   const currentResponse = response.responses[questionIndex];
-  const canContinue = currentResponse.hasResponse;
+  const canContinue =
+    currentResponse.hasResponse || currentResponse.type === 'multiselect';
 
   const next = () => {
     if (!canContinue) {
@@ -477,7 +478,11 @@ export default function SurveyScreen(props: SurveyScreenProps) {
           <View style={styles.container}>
             <Text style={styles.surveyTitle}>{schema.title}</Text>
 
-            <SurveyQuestion response={currentResponse} onChange={setResponse} />
+            <SurveyQuestion
+              key={questionIndex}
+              response={currentResponse}
+              onChange={setResponse}
+            />
           </View>
         </ScrollView>
 
@@ -553,6 +558,7 @@ const styles = StyleSheet.create({
   surveyQuestionText: {
     marginBottom: 25,
     fontSize: 20,
+    lineHeight: 30,
   },
   feedbackText: {
     fontSize: 18,

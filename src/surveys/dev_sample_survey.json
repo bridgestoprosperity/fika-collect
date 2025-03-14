@@ -16,7 +16,7 @@
         "Daily",
         "More than once per week",
         "Once per week",
-        "1-3 times pe month"
+        "1-3 times per month"
       ]
     },
     {
@@ -24,33 +24,33 @@
       "question": "What country are you in?",
       "type": "multiple_choice",
       "options": [
-        "Rwanda",
-        "Uganda",
-        "Zambia",
+        "Cote d'Ivoire",
         "Ethiopia",
         "Kenya",
+        "Rwanda",
         "Tanzania",
-        "Cote d'Ivoire"
+        "Uganda",
+        "Zambia"
       ]
     },
     {
       "id": "admin_level_1",
-      "question": "What is your Region/Province/State? (Admin level 1)",
+      "question": "What is your Region/Province/State?",
       "type": "short_answer"
     },
     {
       "id": "admin_level_2",
-      "question": "What is your District/Department/Prefecture? (Admin level 2)",
+      "question": "What is your District/Department/Prefecture?",
       "type": "short_answer"
     },
     {
       "id": "admin_level_3",
-      "question": "What is your City/Commune/Subdivision? (Admin level 3)",
+      "question": "What is your City/Commune/Subdivision?",
       "type": "short_answer"
     },
     {
       "id": "admin_level_4",
-      "question": "What is your Neighborhood/Village/Quartier? (Admin level 4)",
+      "question": "What is your Neighborhood/Village/Quartier?",
       "type": "short_answer"
     },
     {
@@ -123,13 +123,13 @@
       "id": "current_method",
       "type": "multiselect",
       "question": "What is the current crossing method?",
-      "options": ["timber bridge", "wading/swimming", "boat"]
+      "options": ["Timber bridge", "Wading/swimming", "Boat"]
     },
     {
       "id": "blocking",
       "type": "multiple_choice",
       "question": "Which best describes what is blocking the path or road?",
-      "options": ["river", "ditch", "swamp", "mudflat", "lake", "ravine/gorge"]
+      "options": ["River", "Ditch", "Swamp", "Mudflat", "Lake", "Ravine/gorge"]
     },
     {
       "id": "width",
