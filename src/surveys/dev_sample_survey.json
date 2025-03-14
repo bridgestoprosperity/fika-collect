@@ -4,56 +4,152 @@
   "description": "Sample survey for local development",
   "questions": [
     {
-      "id": "intensity",
-      "type": "multiselect",
-      "question": "What is the intensity of the obstacle?",
-      "options": [
-        "Level 1 - Minor",
-        "Level 2 - Moderate",
-        "Level 3 - Significant",
-        "Level 4 - Major"
-      ],
-      "hint": "Select all that apply"
+      "id": "phone_number",
+      "type": "short_answer",
+      "question": "What is your phone number?"
     },
     {
-      "id": "photo",
-      "type": "photo",
-      "question": "Take a photo of the obstacle",
-      "hint": ""
+      "id": "frequency",
+      "question": "How frequently do you cross the location where a bridge is needed?",
+      "type": "multiple_choice",
+      "options": [
+        "Daily",
+        "More than once per week",
+        "Once per week",
+        "1-3 times pe month"
+      ]
+    },
+    {
+      "id": "country",
+      "question": "What country are you in?",
+      "type": "multiple_choice",
+      "options": [
+        "Rwanda",
+        "Uganda",
+        "Zambia",
+        "Ethiopia",
+        "Kenya",
+        "Tanzania",
+        "Cote d'Ivoire"
+      ]
+    },
+    {
+      "id": "admin_level_1",
+      "question": "What is your Region/Province/State? (Admin level 1)",
+      "type": "short_answer"
+    },
+    {
+      "id": "admin_level_2",
+      "question": "What is your District/Department/Prefecture? (Admin level 2)",
+      "type": "short_answer"
+    },
+    {
+      "id": "admin_level_3",
+      "question": "What is your City/Commune/Subdivision? (Admin level 3)",
+      "type": "short_answer"
+    },
+    {
+      "id": "admin_level_4",
+      "question": "What is your Neighborhood/Village/Quartier? (Admin level 4)",
+      "type": "short_answer"
+    },
+    {
+      "id": "closest_community",
+      "question": "What is the name of the closest community that is requesting the bridge?",
+      "type": "short_answer"
+    },
+    {
+      "id": "closest_community_opposite",
+      "question": "What is the name of the nearest community on the opposite side of the crossing?",
+      "type": "short_answer"
     },
     {
       "id": "location",
       "type": "location",
-      "question": "Where are you?"
+      "question": "Safely stand near to the crossing where the bridge is needed and record the GPS coordinates by tapping the button below."
     },
     {
-      "id": "severity",
-      "type": "multiple_choice",
-      "question": "What is the severity of the obstacle?",
+      "id": "transportation_modes",
+      "type": "multiselect",
+      "question": "Select the modes of transportation which people use at this location.",
+      "options": ["Walking", "Motorcycle", "Cars/vehicles", "3-wheel carts"]
+    },
+    {
+      "id": "education_destinations",
+      "type": "multiselect",
+      "question": "Which education destinations do people visit using this crossing?",
       "options": [
-        "Level 1 - Minor",
-        "Level 2 - Moderate",
-        "Level 3 - Significant",
-        "Level 4 - Major"
+        "Primary school",
+        "Secondary school",
+        "College/university",
+        "TVET"
       ]
     },
     {
-      "id": "at_obstacle",
-      "type": "boolean",
-      "question": "Are you currently at the obstacle?",
-      "hint": "Select Yes if you are at the obstacle location"
+      "id": "health_destinations",
+      "type": "multiselect",
+      "question": "Which health facilities do people visit using this crossing?",
+      "options": ["Health center", "Hospital", "Pharmacy"]
     },
     {
-      "id": "location",
+      "id": "other_destinations",
+      "type": "multiselect",
+      "question": "Which health facilities do people visit using this crossing?",
+      "options": [
+        "Market",
+        "Farm",
+        "Agriculture processing facility",
+        "Dairy facility",
+        "Place of worship (church/mosque)",
+        "Sports ground"
+      ]
+    },
+    {
+      "id": "additional_destinations",
       "type": "short_answer",
-      "question": "What is the location of the obstacle?",
-      "hint": "Enter location description"
+      "question": "Are there any other destinations which were not listed above that people visit using this crossing?"
     },
     {
-      "id": "description",
+      "id": "detour_duration",
+      "type": "short_answer",
+      "question": "During a flood, when people can not cross at the location, how long does it take to walk to another location where it is safe to cross?"
+    },
+    {
+      "id": "deaths",
+      "type": "short_answer",
+      "question": "How many deaths have occurred from people trying to cross the river/barrier?"
+    },
+    {
+      "id": "current_method",
+      "type": "multiselect",
+      "question": "What is the current crossing method?",
+      "options": ["timber bridge", "wading/swimming", "boat"]
+    },
+    {
+      "id": "blocking",
+      "type": "multiple_choice",
+      "question": "Which best describes what is blocking the path or road?",
+      "options": ["river", "ditch", "swamp", "mudflat", "lake", "ravine/gorge"]
+    },
+    {
+      "id": "width",
+      "type": "short_answer",
+      "question": "During floods, how wide in meters is the river / swamp / mudflat?"
+    },
+    {
+      "id": "photo_of_crossing",
+      "type": "photo",
+      "question": "Take a picture of the current crossing point."
+    },
+    {
+      "id": "photo_opposite_crossing",
+      "type": "photo",
+      "question": "Take a picture of the crossing point from the other side if it is safe to cross"
+    },
+    {
+      "id": "other_information",
       "type": "long_answer",
-      "question": "Please describe the obstacle in detail:",
-      "hint": "Provide any additional details about the obstacle"
+      "question": "Please include any other information you would like for us to know about the need for the bridge."
     }
   ]
 }
