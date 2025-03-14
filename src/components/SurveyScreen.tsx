@@ -115,30 +115,18 @@ function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
   );
 }
 
-interface CheckboxProps {
-  label: string;
-  checked: boolean;
-  onChange: () => void;
-}
-
-function Checkbox({onChange, checked, label}: CheckboxProps) {
-  return (
-    <Pressable style={styles.multiselectRow} onPress={onChange}>
-      <View
-        style={[
-          styles.multiselectCheckbox,
-          checked && styles.multiselectCheckboxChecked,
-        ]}
-      />
-      <Text style={{marginLeft: 8}}>{label}</Text>
-    </Pressable>
-  );
-}
-
 function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
 
-  const initialSelectedState = question.options.map(() => true);
+  const selectedOptions = response.value
+    .split(',')
+    .map(option => option.trim());
+
+  console.log(response.value);
+
+  const initialSelectedState = question.options.map(option =>
+    selectedOptions.includes(option.trim()),
+  );
   const [selectedState, setSelectedValues] =
     useState<boolean[]>(initialSelectedState);
 
@@ -148,10 +136,9 @@ function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
 
       {question.options.map((option, index) => (
         <View key={option} style={styles.booleanRow}>
-          <Checkbox
-            label={option}
-            checked={selectedState[index]}
-            onChange={() => {
+          <Pressable
+            style={styles.multiselectRow}
+            onPress={() => {
               const newSelectedState = [...selectedState];
               newSelectedState[index] = !newSelectedState[index];
               setSelectedValues(newSelectedState);
@@ -159,8 +146,15 @@ function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
                 (_, i) => newSelectedState[i],
               );
               onChange(selectedOptions.join(', '));
-            }}
-          />
+            }}>
+            <View
+              style={[
+                styles.multiselectCheckbox,
+                selectedState[index] && styles.multiselectCheckboxChecked,
+              ]}
+            />
+            <Text style={styles.multiselectCheckboxText}>{option}</Text>
+          </Pressable>
         </View>
       ))}
     </View>
@@ -472,6 +466,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
           'Error submitting survey',
           'Your response has been saved locally. To submit the response, please re-open the app and check the Responses tab when you have an internet connection.',
         );
+        navigation.goBack();
       });
   }, [submitting, submitted, surveyResponseManager, navigation, response]);
 
@@ -661,12 +656,13 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 30,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   multiselectCheckbox: {
     flex: 0,
-    width: 20,
-    height: 20,
+    width: 25,
+    height: 25,
     borderWidth: 1,
     borderColor: '#333',
     backgroundColor: 'white',
@@ -677,5 +673,9 @@ const styles = StyleSheet.create({
   },
   multiselectCheckboxChecked: {
     backgroundColor: '#367845',
+  },
+  multiselectCheckboxText: {
+    marginLeft: 8,
+    fontSize: 16,
   },
 });
