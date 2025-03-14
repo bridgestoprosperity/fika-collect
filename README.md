@@ -14,11 +14,14 @@ To build for iOS and Android, respectively:
 npx react-native build-ios --mode=Release
 ```
 
+An analogous command for Android works, but it builds an APK. What we really want is an AAB. You can build this using the following command:
+
 ```bash
-npx react-native build-android --mode=release
+cd android
+./gradlew buildRelease
 ```
 
-Android outputs may be found in `android/app/build/outputs/apk/release`. To reduce the size of binaries, per-CPU binaries are built as separate APKs. All APKs should be sent to Google Play store.
+The resulting build may be found in `android/app/build/outputs/bundle/release/`.
 
 ## AWS Resources
 
