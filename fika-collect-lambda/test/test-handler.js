@@ -76,7 +76,7 @@ test('presignUpload', function (t) {
     t.equal(result.statusCode, 400, 'Status code should be 400');
     t.equal(
       result.body,
-      'Response at foo/bar/response.json must be submitted before uploading images',
+      'Response at responses/foo/bar/response.json must be submitted before uploading images',
     );
     presignStub.restore();
     headStub.restore();

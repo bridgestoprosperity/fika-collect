@@ -7,6 +7,8 @@ test('request parameter parsing', function (t) {
     const parsedRequest = uploadPresignerRequestSchema.safeParse({
       survey_id: 'foo',
       file_type: 'image/jpeg',
+      response_id: 'response123',
+      image_id: 'image123',
     });
     t.equal(
       parsedRequest.success,
@@ -15,7 +17,12 @@ test('request parameter parsing', function (t) {
     );
     t.deepEqual(
       parsedRequest.data,
-      {survey_id: 'foo', file_type: 'image/jpeg'},
+      {
+        survey_id: 'foo',
+        file_type: 'image/jpeg',
+        response_id: 'response123',
+        image_id: 'image123',
+      },
       'Valid request should return the same values',
     );
     t.end();
@@ -24,6 +31,8 @@ test('request parameter parsing', function (t) {
   t.test('a request with missing survey_id', function (t) {
     const parsedRequest = uploadPresignerRequestSchema.safeParse({
       file_type: 'image/jpeg',
+      response_id: 'response123',
+      image_id: 'image123',
     });
     t.equal(
       parsedRequest.success,
@@ -42,6 +51,8 @@ test('request parameter parsing', function (t) {
     const parsedRequest = uploadPresignerRequestSchema.safeParse({
       survey_id: 'foo',
       file_type: 'invalid/type',
+      response_id: 'response123',
+      image_id: 'image123',
     });
     t.equal(
       parsedRequest.success,
@@ -60,6 +71,8 @@ test('request parameter parsing', function (t) {
     const parsedRequest = uploadPresignerRequestSchema.safeParse({
       survey_id: 'foo',
       file_type: 'image/jpeg',
+      response_id: 'response123',
+      image_id: 'image123',
       extra_param: 'extra',
     });
     t.equal(

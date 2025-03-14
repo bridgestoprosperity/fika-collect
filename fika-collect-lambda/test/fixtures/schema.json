@@ -15,6 +15,16 @@
       ]
     },
     {
+      "id": "severity",
+      "type": "multiselect",
+      "question": "What modes of transportation are used?",
+      "options": [
+        "Walking",
+        "Bicycling",
+        "Vehicle"
+      ]
+    },
+    {
       "id": "at_obstacle",
       "type": "boolean",
       "question": "Are you currently at the obstacle?",
