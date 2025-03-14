@@ -23,7 +23,6 @@ import sharedStyles from '../styles';
 import CameraController from './CameraController';
 import {useCameraPermission} from 'react-native-vision-camera';
 import {useCameraDevice} from 'react-native-vision-camera';
-import {type PhotoFile} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNetInfo} from '@react-native-community/netinfo';
