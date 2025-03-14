@@ -4,6 +4,11 @@
   "description": "Sample survey for local development",
   "questions": [
     {
+      "id": "location",
+      "type": "location",
+      "question": "Where are you?"
+    },
+    {
       "id": "photo",
       "type": "photo",
       "question": "Take a photo of the obstacle",

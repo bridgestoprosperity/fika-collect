@@ -20,6 +20,7 @@ const surveySchema = z.object({
         'short_answer',
         'long_answer',
         'photo',
+        'location',
       ]),
       question: z.string(),
       hint: z.string().optional(),

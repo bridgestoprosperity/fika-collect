@@ -6,6 +6,10 @@
 	<string>This app requires access to your camera to capture and submit photos of geographical obstacles as part of survey questions.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to your photo library to submit photos of geographical obstacles as part of survey questions.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>This app requests access to your location to accurately locate reported obstacles.</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -36,7 +40,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>This app requests access to your location to accurately locate reported obstacles.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

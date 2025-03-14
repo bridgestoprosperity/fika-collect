@@ -27,6 +27,7 @@ import {type PhotoFile} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNetInfo} from '@react-native-community/netinfo';
+import Geolocation from '@react-native-community/geolocation';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -115,12 +116,93 @@ function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
   );
 }
 
-function LocationQuestion({response}: SurveyQuestionProps) {
+let GEOLOCATION_AUTHORIZATION: boolean | null = null;
+
+function LocationQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
+  const [authDenial, setAuthDenial] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const getLocation = async () => {
+    try {
+      console.log({GEOLOCATION_AUTHORIZATION});
+      setStatusMessage('Requesting location...');
+      // Work around this bug in which authorization stalls on subsequent calls:
+      // https://github.com/michalchudziak/react-native-geolocation/issues/335
+      if (GEOLOCATION_AUTHORIZATION === null) {
+        await new Promise((resolve, reject) => {
+          console.log('Requesting authorization...');
+          Geolocation.requestAuthorization(
+            () => {
+              console.log('Auth granted');
+              GEOLOCATION_AUTHORIZATION = true;
+              setAuthDenial(false);
+              resolve(null);
+            },
+            () => {
+              console.log('Auth denied');
+              GEOLOCATION_AUTHORIZATION = false;
+              setAuthDenial(true);
+              setStatusMessage('Location permission denied');
+              reject();
+            },
+          );
+        });
+      } else {
+        if (GEOLOCATION_AUTHORIZATION === false) {
+          setAuthDenial(true);
+          Alert.alert(
+            'Location permission denied',
+            'Please enable location permission in the app settings.',
+          );
+          setStatusMessage('Location permission denied');
+          return;
+        }
+      }
+
+      console.log('Requesting position...');
+      const location = (await new Promise((resolve, reject) => {
+        Geolocation.getCurrentPosition(
+          position => {
+            const {latitude, longitude} = position.coords;
+            const value = `${latitude},${longitude}`;
+            resolve(value);
+          },
+          error => reject(error),
+          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+        );
+      })) as string;
+
+      setStatusMessage('');
+      console.log('Got location:', location);
+
+      response.value = location;
+      onChange && onChange(location);
+    } catch (error) {
+      Alert.alert('Error', 'Unable to get location');
+      console.error(error);
+    }
+  };
 
   return (
     <View style={styles.surveyQuestion}>
       <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Button title="Get location" onPress={getLocation} />
+      {authDenial && (
+        <Text style={styles.warning}>
+          Location permission denied. Please enable location permission in the
+          app settings.
+        </Text>
+      )}
+
+      <View style={{marginTop: 40}}>
+        <TextInput
+          style={styles.textInputBox}
+          value={response.value}
+          editable={false}
+        />
+        <Text style={[styles.warning, {marginTop: 10}]}>{statusMessage}</Text>
+      </View>
     </View>
   );
 }

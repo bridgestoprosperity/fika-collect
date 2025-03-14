@@ -30,6 +30,9 @@ export class SurveyQuestionResponse {
       case 'long_answer':
         this._value = 'REMOVE ME';
         break;
+      case 'location':
+        this._value = 'N/A';
+        break;
     }
   }
 

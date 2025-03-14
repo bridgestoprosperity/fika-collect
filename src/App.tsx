@@ -11,6 +11,14 @@ import {Provider} from 'react-redux';
 import {store} from './data/store';
 import SurveyResponseManagerContext from './data/SurveyResponseManagerContext';
 import {useNetInfo} from '@react-native-community/netinfo';
+import Geolocation from '@react-native-community/geolocation';
+
+Geolocation.setRNConfiguration({
+  skipPermissionRequests: false,
+  authorizationLevel: 'whenInUse',
+  enableBackgroundLocationUpdates: false,
+  locationProvider: 'auto',
+});
 
 export type ScreenNames = ['surveys', 'responses', 'survey'];
 
