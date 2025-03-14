@@ -115,6 +115,58 @@ function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
   );
 }
 
+interface CheckboxProps {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+}
+
+function Checkbox({onChange, checked, label}: CheckboxProps) {
+  return (
+    <Pressable style={styles.multiselectRow} onPress={onChange}>
+      <View
+        style={[
+          styles.multiselectCheckbox,
+          checked && styles.multiselectCheckboxChecked,
+        ]}
+      />
+      <Text style={{marginLeft: 8}}>{label}</Text>
+    </Pressable>
+  );
+}
+
+function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
+  const {question} = response;
+
+  const initialSelectedState = question.options.map(() => true);
+  const [selectedState, setSelectedValues] =
+    useState<boolean[]>(initialSelectedState);
+
+  return (
+    <View style={styles.surveyQuestion}>
+      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+
+      {question.options.map((option, index) => (
+        <View key={option} style={styles.booleanRow}>
+          <Checkbox
+            label={option}
+            checked={selectedState[index]}
+            onChange={() => {
+              const newSelectedState = [...selectedState];
+              newSelectedState[index] = !newSelectedState[index];
+              setSelectedValues(newSelectedState);
+              const selectedOptions = question.options.filter(
+                (_, i) => newSelectedState[i],
+              );
+              onChange(selectedOptions.join(', '));
+            }}
+          />
+        </View>
+      ))}
+    </View>
+  );
+}
+
 let GEOLOCATION_AUTHORIZATION: boolean | null = null;
 
 function LocationQuestion({response, onChange}: SurveyQuestionProps) {
@@ -296,6 +348,8 @@ function SurveyQuestion({response, onChange}: SurveyQuestionProps) {
       return <LongAnswerQuestion response={response} onChange={onChange} />;
     case 'multiple_choice':
       return <MultipleChoiceQuestion response={response} onChange={onChange} />;
+    case 'multiselect':
+      return <MultiSelectQuestion response={response} onChange={onChange} />;
     case 'location':
       return <LocationQuestion response={response} onChange={onChange} />;
     case 'photo':
@@ -601,5 +655,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
     marginBottom: 10,
+  },
+  multiselectRow: {
+    width: '100%',
+    padding: 10,
+    marginLeft: 30,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  multiselectCheckbox: {
+    flex: 0,
+    width: 20,
+    height: 20,
+    borderWidth: 1,
+    borderColor: '#333',
+    backgroundColor: 'white',
+    marginRight: 10,
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  multiselectCheckboxChecked: {
+    backgroundColor: '#367845',
   },
 });

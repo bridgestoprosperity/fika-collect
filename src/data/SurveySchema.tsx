@@ -1,5 +1,6 @@
 export type SurveySchemaQuestionType =
   | 'multiple_choice'
+  | 'multiselect'
   | 'short_answer'
   | 'long_answer'
   | 'location'

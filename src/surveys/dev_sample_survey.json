@@ -4,6 +4,18 @@
   "description": "Sample survey for local development",
   "questions": [
     {
+      "id": "intensity",
+      "type": "multiselect",
+      "question": "What is the intensity of the obstacle?",
+      "options": [
+        "Level 1 - Minor",
+        "Level 2 - Moderate",
+        "Level 3 - Significant",
+        "Level 4 - Major"
+      ],
+      "hint": "Select all that apply"
+    },
+    {
       "id": "photo",
       "type": "photo",
       "question": "Take a photo of the obstacle",

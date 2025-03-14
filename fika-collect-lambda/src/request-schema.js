@@ -15,6 +15,7 @@ const surveySchema = z.object({
     z.object({
       id: z.string().nonempty(),
       type: z.enum([
+        'multiselect',
         'multiple_choice',
         'boolean',
         'short_answer',
