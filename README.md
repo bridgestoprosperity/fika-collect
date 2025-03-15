@@ -28,7 +28,8 @@ The resulting build may be found in `android/app/build/outputs/bundle/release/`.
 The following AWS resources have been allocated to make the lambda run.
 
 - **Lambda**
-  - [fikaCollectUploadLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectUploadLambda?tab=code): AWS Lambda for creating signed upload URLs
+  - [fikaCollectSurveySubmitLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectSurveySubmitLambda?tab=code): AWS Lambda for submitting surveys.
+  - [fikaCollectUploadLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectUploadLambda?tab=code): AWS Lambda for creating signed upload URLs. Ensures a corresponding survey has first been submitted.
 - **IAM**
   - [fika-collect-lambda-role](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/roles/details/fika-collect-lambda-role?section=permissions): IAM role for fikaCollectUploadLambda. Has sufficient permissions to generate pre-signed S3 upload URLs.
   - [fika-collect-deploy-user](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-lambda-deploy?section=permissions): IAM user (with access/secret keys) for deploying lambda via SAM. [AWS SSO](https://aws.amazon.com/iam/identity-center/) would be a preferable alternative.
