@@ -1,4 +1,5 @@
 import {Platform} from 'react-native';
+import {Buffer} from 'buffer';
 import {SurveyResponse} from './SurveyResponse';
 import * as RNFS from '@dr.pogodin/react-native-fs';
 import {nanoid} from 'nanoid';
@@ -11,11 +12,11 @@ const STORAGE_DIR =
 
 console.log(STORAGE_DIR);
 
-const BASE_URL = 'https://f54u12dkn2.execute-api.us-west-1.amazonaws.com/';
+const BASE_URL = 'https://f54u12dkn2.execute-api.us-west-1.amazonaws.com';
 
 const TO_UPLOAD_DIR = `to_upload`;
 const UPLOADED_DIR = `uploaded`;
-const RESPONSE_ID_REGEX = /^[\d]{14}-[A-Za-z0-9_-]+$/;
+//const RESPONSE_ID_REGEX = /^[\d]{14}-[A-Za-z0-9_-]+$/;
 
 export type ReadResponse = {
   response: SurveyResponse;
@@ -133,7 +134,6 @@ export class SurveyResponseManager extends EventEmitter {
         }
       }
     }
-
     const files = await RNFS.readDir(toUploadDir);
     for (const file of files) {
       if (file.name.endsWith('.json')) continue;
@@ -149,6 +149,7 @@ export class SurveyResponseManager extends EventEmitter {
         const responseJson = JSON.parse(
           await RNFS.readFile(responseJsonPath, 'utf8'),
         );
+        console.log(`Uploading response JSON for ${responseId}`);
         const httpResponse = await fetch(`${BASE_URL}/submit-survey`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
@@ -156,10 +157,13 @@ export class SurveyResponseManager extends EventEmitter {
         });
 
         if (!httpResponse.ok) {
+          const errorBody = await httpResponse.text();
+          console.error(`Failed to upload response JSON: ${errorBody}`);
           throw new Error(
             `Failed to upload response JSON: ${httpResponse.statusText}`,
           );
         }
+        console.log(`Successfully uploaded response JSON for ${responseId}`);
         await RNFS.moveFile(responseJsonPath, `${uploadedDir}/response.json`);
         responseUpload.jsonToUpload = undefined;
       } catch (error) {
@@ -169,132 +173,62 @@ export class SurveyResponseManager extends EventEmitter {
           throw new Error('Failed to upload response JSON: Unknown error');
         }
       }
-
-      for (const file of responseUpload.filesToUpload) {
-        try {
-          const filename = file.split('/').pop();
-          if (!filename) {
-            throw new Error(`Failed to extract filename from ${file}`);
-          }
-          const [imageId, extension] = filename.split('.');
-          const fileType = fileTypeFromExtension(extension);
-
-          const body = {
-            file_type: fileType,
-            survey_id: surveyId,
-            response_id: responseId,
-            image_id: imageId,
-          };
-          const presignResponse = await fetch(`${BASE_URL}/presign-upload`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body),
-          });
-
-          if (!presignResponse.ok) {
-            throw new Error(
-              `Failed to get presigned URL: ${presignResponse.statusText}`,
-            );
-          }
-
-          const {uploadURL} = await presignResponse.json();
-
-          const fileData = await RNFS.readFile(file, 'base64');
-          const httpResponse = await fetch(uploadURL, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': fileType,
-              'Content-Transfer-Encoding': 'base64',
-            },
-            body: fileData,
-          });
-
-          if (!httpResponse.ok) {
-            throw new Error(
-              `Failed to upload image ${file}: ${httpResponse.statusText}`,
-            );
-          }
-          await RNFS.moveFile(file, `${uploadedDir}/${file.split('/').pop()}`);
-        } catch (error) {
-          if (error instanceof Error) {
-            throw new Error(`Failed to upload image ${file}: ${error.message}`);
-          } else {
-            throw new Error(`Failed to upload image ${file}: Unknown error`);
-          }
-        }
-      }
     }
-  }
 
-  async uploadResponses() {
-    const dirs = await RNFS.readDir(STORAGE_DIR);
-    for (const surveyDir of dirs) {
-      if (!surveyDir.isDirectory()) {
-        continue;
-      }
-
-      const responses = await RNFS.readDir(surveyDir.path);
-      for (const response of responses) {
-        if (!response.isDirectory() || !RESPONSE_ID_REGEX.test(response.name)) {
-          continue;
+    for (const file of responseUpload.filesToUpload) {
+      try {
+        const filename = file.split('/').pop();
+        if (!filename) {
+          throw new Error(`Failed to extract filename from ${file}`);
         }
+        const [imageId, extension] = filename.split('.');
+        const fileType = fileTypeFromExtension(extension);
 
-        const responseId = response.name;
-        const surveyId = surveyDir.name;
-        const responseDir = response.path;
+        const body = {
+          file_type: fileType,
+          survey_id: surveyId,
+          response_id: responseId,
+          image_id: imageId,
+        };
+        console.log(`Requesting presigned URL for image ${filename}`);
+        const presignResponse = await fetch(`${BASE_URL}/presign-upload`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(body),
+        });
 
-        // Find or create a response upload
-        let responseUpload = this.responseUploads.get(responseId);
-        if (!responseUpload) {
-          responseUpload = new ResponseUpload(
-            responseId,
-            surveyId,
-            responseDir,
+        if (!presignResponse.ok) {
+          console.error(presignResponse);
+          throw new Error(
+            `Failed to get presigned URL: ${presignResponse.statusText}`,
           );
-          this.responseUploads.set(responseId, responseUpload);
         }
 
-        const toUploadDir = `${response.path}/${TO_UPLOAD_DIR}`;
-        const uploadedDir = `${response.path}/${UPLOADED_DIR}`;
-        await RNFS.mkdir(uploadedDir);
+        const {uploadURL} = await presignResponse.json();
+        console.log(`Uploading image ${filename} to presigned URL`);
 
-        let responseJsonPath = `${uploadedDir}/response.json`;
-        if (!(await RNFS.exists(responseJsonPath))) {
-          responseJsonPath = `${toUploadDir}/response.json`;
-          if (!(await RNFS.exists(responseJsonPath))) {
-            console.warn('No response.json found in either directory');
-            continue;
-          }
-          responseUpload.filesToUpload.push(responseJsonPath);
+        const imageData = await RNFS.readFile(file, 'base64');
+        const binaryData = Buffer.from(imageData, 'base64');
+        const httpResponse = await fetch(uploadURL, {
+          method: 'PUT',
+          headers: {'Content-Type': fileType},
+          body: binaryData,
+        });
+
+        if (!httpResponse.ok) {
+          const errorBody = await httpResponse.text();
+          console.error(`Failed to upload response JSON: ${errorBody}`);
+          throw new Error(
+            `Failed to upload image ${file}: ${httpResponse.statusText}`,
+          );
         }
-
-        const expectedImages: string[] = [];
-        if (await RNFS.exists(responseJsonPath)) {
-          const responseJson = await RNFS.readFile(responseJsonPath, 'utf8');
-          const parsedResponse = JSON.parse(responseJson);
-          for (const resp of parsedResponse.responses) {
-            const questionDef = parsedResponse.schema.questions.find(
-              (q: any) => q.id === resp.question_id,
-            );
-            if (questionDef && questionDef.type === 'photo') {
-              expectedImages.push(resp.value);
-            }
-          }
-        }
-
-        const files = await RNFS.readDir(toUploadDir);
-        for (const file of files) {
-          if (file.name.endsWith('.json')) {
-            continue;
-          }
-          if (!expectedImages.includes(file.name)) {
-            console.warn('Unexpected file:', file.name);
-            continue;
-          }
-
-          if (!responseUpload.filesToUpload.includes(file.path)) {
-            responseUpload.filesToUpload.push(file.path);
-          }
+        console.log(`Successfully uploaded image ${filename}`);
+        await RNFS.moveFile(file, `${uploadedDir}/${file.split('/').pop()}`);
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new Error(`Failed to upload image ${file}: ${error.message}`);
+        } else {
+          throw new Error(`Failed to upload image ${file}: Unknown error`);
         }
       }
     }
@@ -329,7 +263,17 @@ export class SurveyResponseManager extends EventEmitter {
             if (file.name.endsWith('.json')) {
               const contents = await RNFS.readFile(file.path, 'utf8');
               const response = SurveyResponse.fromJSON(JSON.parse(contents));
-              responses.push({response, uploaded: true});
+
+              let uploaded = true;
+              for (const {value, type} of response.responses) {
+                if (type !== 'photo') continue;
+                const photoToUploadPath = `${toUploadDir}/${value}`;
+                if (await RNFS.exists(photoToUploadPath)) {
+                  uploaded = false;
+                  break;
+                }
+              }
+              responses.push({response, uploaded});
             }
           }
         }

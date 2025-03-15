@@ -28,7 +28,7 @@ export class SurveyQuestionResponse {
         break;
       case 'short_answer':
       case 'long_answer':
-        //this._value = __DEV__ ? 'REMOVE ME' : '';
+        this._value = __DEV__ ? 'REMOVE ME' : '';
         break;
       case 'location':
         this._value = 'N/A';

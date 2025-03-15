@@ -1,0 +1,13 @@
+{
+  "announcements": [
+    {
+      "id": "welcome",
+      "emoji": "👋",
+      "backgroundColor": "#ffbb88",
+      "title": "Welcome!",
+      "body": "Select a survey below to get started",
+      "urlText": "Learn more →",
+      "url": ""
+    }
+  ]
+}

@@ -10,7 +10,6 @@ interface Announcement {
   id: string;
   title: string;
   body: string;
-  urlText?: string;
   url?: string;
 }
 
@@ -22,7 +21,7 @@ interface AnnouncementsState {
 
 const initialState: AnnouncementsState = {
   announcements: [],
-  dismissedIds: announcementsStorage.getArray('dismissedIds') || [],
+  dismissedIds: [], //announcementsStorage.getArray('dismissedIds') || [],
   status: 'idle',
 };
 
@@ -31,25 +30,15 @@ export const fetchAnnouncements = createAsyncThunk<
   void,
   {state: RootState}
 >('announcements/fetchAnnouncements', async _ => {
-  return Promise.resolve([
-    {
-      id: 'welcome',
-      title: 'Welcome!',
-      body: 'Select a survey below to get started',
-      urlText: 'Read more',
-      url: 'https://example.com',
-    },
-  ]);
-
-  /*
   const response = await fetch(
-    'http://fika-collect.amazonaws.com/announcements.json',
+    'https://fika-collect.s3.us-west-1.amazonaws.com/announcements/announcements.json',
   );
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
-  return await response.json();
-  */
+  const result = await response.json();
+  console.log('Fetched announcements:', result);
+  return result.announcements;
 });
 
 export const announcementsSlice = createSlice({

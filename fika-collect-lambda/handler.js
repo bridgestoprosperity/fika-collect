@@ -45,6 +45,7 @@ async function submitSurvey(event) {
   } catch (error) {
     console.error(error);
     if (error instanceof HttpError) {
+      console.error(error);
       return {
         statusCode: error.statusCode,
         body: error.message,

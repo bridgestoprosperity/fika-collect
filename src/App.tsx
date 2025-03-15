@@ -1,4 +1,3 @@
-import {useContext, useEffect} from 'react';
 import {Text} from 'react-native';
 import {createStaticNavigation, NavigationProp} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -9,9 +8,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {type SurveyParams} from './types.d';
 import {Provider} from 'react-redux';
 import {store} from './data/store';
-import SurveyResponseManagerContext from './data/SurveyResponseManagerContext';
-import {useNetInfo} from '@react-native-community/netinfo';
 import Geolocation from '@react-native-community/geolocation';
+
+//import {useContext, useEffect} from 'react';
+//import SurveyResponseManagerContext from './data/SurveyResponseManagerContext';
+//import {useNetInfo} from '@react-native-community/netinfo';
 
 Geolocation.setRNConfiguration({
   skipPermissionRequests: false,
@@ -97,15 +98,16 @@ const RootStack = createStackNavigator({
 const Navigation = createStaticNavigation(RootStack);
 
 export default function Home() {
+  /*
   const responseManager = useContext(SurveyResponseManagerContext);
   const netInfo = useNetInfo();
-
   useEffect(() => {
     if (!netInfo.isInternetReachable) {
       return;
     }
     responseManager.uploadResponses();
   }, [responseManager, netInfo.isInternetReachable]);
+  */
 
   return (
     <Provider store={store}>
