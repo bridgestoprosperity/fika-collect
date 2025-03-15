@@ -21,7 +21,7 @@ interface AnnouncementsState {
 
 const initialState: AnnouncementsState = {
   announcements: [],
-  dismissedIds: [], //announcementsStorage.getArray('dismissedIds') || [],
+  dismissedIds: announcementsStorage.getArray('dismissedIds') || [],
   status: 'idle',
 };
 
