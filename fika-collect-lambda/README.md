@@ -22,6 +22,8 @@ npm run test
 
 The current deploy procedures are a bit silly since SAM is not debugged, but it gets the job done. We use SAM to generate the build, but we then place it on Lambda manually by uploading a zip.
 
+You will need the [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html) installed.
+
 ```bash
 $ npm run build
 ```
