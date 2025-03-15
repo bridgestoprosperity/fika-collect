@@ -434,7 +434,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
           text: 'Submit',
           onPress: async () => {
             await surveyResponseManager.storeResponse(response);
-            if (false && netInfo.isInternetReachable) {
+            if (netInfo.isInternetReachable) {
               setSubmitting(true);
             } else {
               Alert.alert(
