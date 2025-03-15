@@ -33,7 +33,7 @@ The following AWS resources have been allocated to make the lambda run.
   - [fika-collect-lambda-role](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/roles/details/fika-collect-lambda-role?section=permissions): IAM role for fikaCollectUploadLambda. Has sufficient permissions to generate pre-signed S3 upload URLs.
   - [fika-collect-deploy-user](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-lambda-deploy?section=permissions): IAM user (with access/secret keys) for deploying lambda via SAM. [AWS SSO](https://aws.amazon.com/iam/identity-center/) would be a preferable alternative.
 - **S3**
-  - [fika-collect](https://us-west-1.console.aws.amazon.com/s3/buckets/fika-collect?region=us-west-1&bucketType=general&tab=objects): Bucket for uploaded surveys JSON and associated photos. There are three subdirectories:
+  - [fika-collect](https://us-west-1.console.aws.amazon.com/s3/buckets/fika-collect?region=us-west-1&bucketType=general&tab=objects): Bucket for uploaded surveys JSON and associated photos. There are three subdirectories, public visibility of which is handled by way of a bucket policy:
     - `announcements/*`: ***Publicly accessible*** directory containing app announcements
     - `surveys/*`: ***Publicly accessible*** directory containing survey definitions and the active `manifest.json`.
     - `responses/*`: Private directory containing survey responses.
