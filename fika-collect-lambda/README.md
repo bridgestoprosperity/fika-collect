@@ -28,7 +28,7 @@ You will need the [AWS SAM CLI](https://docs.aws.amazon.com/serverless-applicati
 $ npm run build
 ```
 
-This generates a ZIP archive, `fikaCollectUploadLambda.zip`. Although it's named for the upload pre-signer lambda, it has two entry points in `handler.js`, so we upload the same artifact for both Lambdas. Finally, navigate to the following pages and select "Upload from: .zip file" in the Code menu:
+This generates a ZIP archive, `fikaCollectUploadLambda.zip`. Although it's named for the upload pre-signer lambda, it has two entry points in `handler.js`, so we upload the same artifact for both Lambdas. Navigate to the following pages and select "Upload from: .zip file" in the Code menu, then drag and drop the zip archive into the browser.
 
 - [fikaCollectUploadLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectUploadLambda?subtab=triggers&tab=code)
 - [fikaCollectSurveySubmitLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectSurveySubmitLambda?subtab=permissions&tab=code)
