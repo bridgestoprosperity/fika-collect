@@ -1,12 +1,13 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: AWS Lambda based services for Fika Collect
+Description: AWS infrastructure for Fika Collect
 Resources:
   fikaCollectApi:
     Type: AWS::Serverless::Api
     Properties:
-      Name: Fika Collect API
+      Name: 'Fika Collect App API'
       StageName: Prod
+      Description: 'API to support Fika Collect app functionality'
   fikaCollectUploadLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -20,6 +21,9 @@ Resources:
         - x86_64
       EphemeralStorage:
         Size: 512
+      EventInvokeConfig:
+        MaximumEventAgeInSeconds: 21600
+        MaximumRetryAttempts: 2
       Events:
         ApiEvent:
           Type: Api
@@ -27,12 +31,6 @@ Resources:
             RestApiId: !Ref fikaCollectApi
             Path: /presign-upload
             Method: post
-      EventInvokeConfig:
-        MaximumEventAgeInSeconds: 21600
-        MaximumRetryAttempts: 2
-      FunctionUrlConfig:
-        AuthType: NONE
-        InvokeMode: BUFFERED
       PackageType: Zip
       Policies:
         - Statement:
@@ -79,9 +77,6 @@ Resources:
             RestApiId: !Ref fikaCollectApi
             Path: /submit-survey
             Method: post
-      FunctionUrlConfig:
-        AuthType: NONE
-        InvokeMode: BUFFERED
       PackageType: Zip
       Policies:
         - Statement:
