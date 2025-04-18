@@ -1,8 +1,9 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import './SurveyList.css';
+import Link from './Link';
 
-import {S3_BASE_URL, MANIFEST_PATH} from '../data/constants';
+import {S3_BASE_URL, MANIFEST_PATH} from '../constants';
 
 const sampleSurveys = {
   surveys: [
@@ -25,7 +26,11 @@ async function fetchSurveys() {
     .then(({surveys}) => surveys);
 }
 
-export default function SurveyList() {
+interface SurveyListProps {
+  setCurrentSurveyId: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+const SurveyList: React.FC<SurveyListProps> = ({setCurrentSurveyId}) => {
   const [loading, setLoading] = useState(false);
   const [surveys, setSurveys] = useState(sampleSurveys.surveys);
 
@@ -47,6 +52,7 @@ export default function SurveyList() {
     <div className="surveyList">
       <div className="surveyList-actions">
         <button
+          type="button"
           className="btn"
           onClick={e => {
             e.preventDefault();
@@ -55,6 +61,7 @@ export default function SurveyList() {
         </button>
 
         <button
+          type="button"
           disabled={loading}
           className="btn"
           onClick={e => {
@@ -77,10 +84,18 @@ export default function SurveyList() {
             <tr key={key}>
               <td>{survey_id}</td>
               <td>
-                <a href={`#${survey_id}`} className="surveyList-action">
+                <Link
+                  to={`/surveys/${survey_id}/edit`}
+                  className="surveyList-action"
+                  onClick={e => {
+                    //e.preventDefault();
+                    //setCurrentSurveyId(survey_id);
+                  }}>
                   Edit
-                </a>
-                <button className="surveyList-action">Delete</button>
+                </Link>
+                <button className="surveyList-action" disabled>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
@@ -88,4 +103,6 @@ export default function SurveyList() {
       </table>
     </div>
   );
-}
+};
+
+export default SurveyList;
