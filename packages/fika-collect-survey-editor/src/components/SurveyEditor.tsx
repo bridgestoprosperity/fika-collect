@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, FC, Fragment } from "react";
+import { useState, useEffect, FC, Fragment } from "react";
 //import './SurveyEditor.css';
 import { S3_BASE_URL } from "../constants";
 import { SurveySchema, QuestionType } from "../SurveySchema";
@@ -6,6 +6,11 @@ import type { Survey, SurveyQuestion } from "../SurveySchema";
 import { useParams, useBlocker } from "react-router";
 import AppContainer from "./AppContainer";
 import { useNavigate } from "react-router";
+
+import FormField from "./FormField";
+import SelectInput from "./SelectInput";
+import TextInput from "./TextInput";
+import OptionListInput from "./OptionListInput";
 
 interface SurveyEditorProps {}
 
@@ -58,239 +63,66 @@ const SurveyQuestionEditor: FC<{
         </span>
       </div>
       <div className="card-body pb-0">
-        <TextField
-          label="ID"
-          placeholder="question_id (no whitespace)"
-          monospace
-          required
-          value={question.id}
-          onChange={(id) => {
-            updateQuestion({ ...question, id });
-          }}
-        />
-        <div className="field row mb-3">
-          <label
-            className="col-form-label col-sm-3"
-            htmlFor={`required-${index}`}
-          >
-            Required
-          </label>
-          <div className="col-sm-9">
-            <div className="form-check form-switch">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id={`required-${index}`}
-                checked={false}
-                onChange={(e) => updateQuestion({ ...question })}
-              />
-            </div>
-          </div>
-        </div>
-        <SelectField
-          label="Type"
-          options={questionTypeLabels}
-          value={question.type}
-          onChange={(type) =>
-            updateQuestion({ ...question, type: type as QuestionType })
-          }
-        />
-        <TextField
-          label="Prompt"
-          i18n
-          required
-          value={question.question}
-          onChange={(text) => updateQuestion({ ...question, question: text })}
-          multiline
-        />
-        <TextField
-          label="Hint"
-          i18n
-          placeholder="Optional hint for the question"
-          value={question.hint || ""}
-          onChange={(hint) => updateQuestion({ ...question, hint })}
-          multiline
-        />
-        {["multiselect", "multiple_choice"].includes(question.type) && (
-          <OptionListEditor
-            options={question.options || []}
-            onChange={(options) => {
-              updateQuestion({ ...question, options: options });
+        <FormField label="ID">
+          <TextInput
+            placeholder="question_id (no whitespace)"
+            monospace
+            required
+            value={question.id}
+            onChange={(id) => {
+              updateQuestion({ ...question, id });
             }}
           />
-        )}
-      </div>
-    </div>
-  );
-};
-
-const SelectField: FC<{
-  label: string;
-  options: Record<string, string>;
-  value: string;
-  className?: string;
-  onChange: (value: string) => void;
-}> = ({ label, options, value, onChange, className = "" }) => {
-  return (
-    <div className={`row mb-3 ${className}`}>
-      <label className="col-form-label col-sm-3">{label}</label>
-      <div className="col-sm-9">
-        <select
-          title="Select field"
-          className="form-select"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-        >
-          {Object.entries(options).map(([optionValue, optionLabel]) => (
-            <option key={optionValue} value={optionValue}>
-              {optionLabel}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-  );
-};
-
-const TextField: FC<{
-  label: string;
-  value: string;
-  multiline?: boolean;
-  placeholder?: string;
-  monospace?: boolean;
-  className?: string;
-  required?: boolean;
-  i18n?: boolean;
-  onChange: (value: string) => void;
-}> = ({
-  label,
-  value,
-  onChange,
-  multiline = false,
-  monospace = false,
-  required = false,
-  className = "",
-  placeholder = "Enter text",
-  i18n = false,
-}) => {
-  const style = { fontFamily: monospace ? "monospace" : undefined };
-  const invalid = required && value.length === 0;
-  return (
-    <div className={`field row mb-3 ${className}`}>
-      <label className="col-form-label col-sm-3">{label}</label>
-      <div className="col-sm-9">
-        <div className="input-group">
-          {i18n && (
-            <button
-              type="button"
-              className="btn btn-outline-secondary"
-              onClick={() => {
-                alert("Translate button clicked!");
-              }}
-            >
-              🌐
-            </button>
-          )}
-          {multiline ? (
-            <textarea
-              style={style}
-              placeholder={placeholder}
-              className={`form-control ${invalid ? "is-invalid" : ""}`}
-              value={value}
-              onChange={(e) => onChange(e.target.value)}
-              rows={2}
-            />
-          ) : (
+        </FormField>
+        <FormField label="Required">
+          <div className="form-check form-switch">
             <input
-              style={style}
-              type="text"
-              placeholder={placeholder}
-              className={`form-control ${invalid ? "is-invalid" : ""}`}
-              value={value}
-              onChange={(e) => onChange(e.target.value)}
-              required={required}
+              className="form-check-input"
+              type="checkbox"
+              id={`required-${index}`}
+              checked={false}
+              onChange={(e) => updateQuestion({ ...question })}
             />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const OptionListEditor: FC<{
-  options: string[];
-  onChange: (updatedOptions: string[]) => void;
-  className?: string;
-}> = ({ options, onChange, className }) => {
-  const addOption = () => {
-    onChange([...options, ""]);
-  };
-
-  const updateOption = (index: number, value: string) => {
-    const updatedOptions = [...options];
-    updatedOptions[index] = value;
-    onChange(updatedOptions);
-  };
-
-  const deleteOption = (index: number) => {
-    const updatedOptions = options.filter((_, i) => i !== index);
-    onChange(updatedOptions);
-  };
-
-  return (
-    <div className={`field row mb-3 ${className}`}>
-      <label className="col-form-label col-sm-3">Options</label>
-      <div className="col-sm-9">
-        {options.map((option, index) => (
-          <div key={index} className="option-item mb-2">
-            <div className="input-group">
-              <button
-                type="button"
-                title="Provide a translation for this option"
-                className="btn btn-outline-secondary"
-                onClick={() => {
-                  updateOption(index, option);
-                }}
-              >
-                🌐
-              </button>
-              <input
-                type="text"
-                required
-                className={`form-control ${
-                  option.length === 0 ? "is-invalid" : ""
-                }`}
-                value={option}
-                onChange={(e) => updateOption(index, e.target.value)}
-                placeholder={`Option ${index + 1}`}
-              />
-              <button
-                type="button"
-                style={{ textShadow: "0 0 5px #fff", fontSize: "0.5em" }}
-                className="btn btn-outline-danger"
-                title="Delete option"
-                onClick={() => {
-                  if (
-                    !window.confirm(
-                      "Are you sure you want to delete this option?"
-                    )
-                  )
-                    return;
-                  deleteOption(index);
-                }}
-              >
-                ❌
-              </button>
-            </div>
           </div>
-        ))}
-        <button
-          type="button"
-          className="btn btn-sm btn-outline-primary"
-          onClick={addOption}
-        >
-          + Add option
-        </button>
+        </FormField>
+        <FormField label="Type">
+          <SelectInput
+            options={questionTypeLabels}
+            value={question.type}
+            onChange={(type) =>
+              updateQuestion({ ...question, type: type as QuestionType })
+            }
+          />
+        </FormField>
+        <FormField label="Prompt">
+          <TextInput
+            i18n
+            required
+            value={question.question}
+            onChange={(text) => updateQuestion({ ...question, question: text })}
+            multiline
+          />
+        </FormField>
+        <FormField label="Hint">
+          <TextInput
+            i18n
+            placeholder="Optional hint for the question"
+            value={question.hint || ""}
+            onChange={(hint) => updateQuestion({ ...question, hint })}
+            multiline
+          />
+        </FormField>
+
+        {["multiselect", "multiple_choice"].includes(question.type) && (
+          <FormField label="Options">
+            <OptionListInput
+              options={question.options || []}
+              onChange={(options) => {
+                updateQuestion({ ...question, options: options });
+              }}
+            />
+          </FormField>
+        )}
       </div>
     </div>
   );
@@ -477,22 +309,24 @@ const SurveyEditor: FC<SurveyEditorProps> = () => {
                 <span className="card-title">Survey details</span>
               </div>
               <div className="card-body pb-0">
-                <TextField
-                  label="Title"
-                  i18n
-                  value={surveySchema.title}
-                  onChange={(title) =>
-                    setSurveySchema({ ...surveySchema, title })
-                  }
-                />
-                <TextField
-                  label="Description"
-                  i18n
-                  value={surveySchema.description}
-                  onChange={(description) =>
-                    setSurveySchema({ ...surveySchema, description })
-                  }
-                />
+                <FormField label="Title">
+                  <TextInput
+                    i18n
+                    value={surveySchema.title}
+                    onChange={(title) =>
+                      setSurveySchema({ ...surveySchema, title })
+                    }
+                  />
+                </FormField>
+                <FormField label="description">
+                  <TextInput
+                    i18n
+                    value={surveySchema.description}
+                    onChange={(description) =>
+                      setSurveySchema({ ...surveySchema, description })
+                    }
+                  />
+                </FormField>
               </div>
             </div>
             <InsertQuestionButton

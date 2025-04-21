@@ -26,22 +26,21 @@ async function fetchSurveys() {
     .then(({ surveys }) => surveys);
 }
 
-interface SurveyListProps {
-  //setCurrentSurveyId: React.Dispatch<React.SetStateAction<string | null>>;
-}
-
-const SurveyList: React.FC<SurveyListProps> = () => {
+const SurveyList: React.FC<{}> = () => {
   const [loading, setLoading] = useState(false);
   const [surveys, setSurveys] = useState(sampleSurveys.surveys);
 
   function load() {
     setLoading(true);
-    return fetchSurveys()
-      .then(setSurveys)
-      .then(() => new Promise((resolve) => setTimeout(resolve, 200)))
-      .then(() => {
-        setLoading(false);
-      });
+    return (
+      fetchSurveys()
+        .then(setSurveys)
+        // Slow it down so it feels like it did something
+        .then(() => new Promise((resolve) => setTimeout(resolve, 200)))
+        .then(() => {
+          setLoading(false);
+        })
+    );
   }
 
   useEffect(() => {

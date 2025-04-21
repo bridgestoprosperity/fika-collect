@@ -1,17 +1,18 @@
-//import { NavLink } from "react-router";
+import { NavLink } from "react-router";
 
 export default function Header() {
   return (
-    <nav className="header navbar navbar-expand-lg">
-      <div className="container-fluid"></div>
+    <nav className="header navbar navbar-expand-lg sticky-top">
+      <div className="container-fluid">
+        <NavLink className="navbar-brand" to="/">
+          Fika Collect Survey Editor
+        </NavLink>
+      </div>
     </nav>
   );
 }
 
 /*
-{<NavLink className="navbar-brand" to="/">
-  Fika Collect Survey Editor
-</NavLink>}
 <button
   className="navbar-toggler"
   type="button"
