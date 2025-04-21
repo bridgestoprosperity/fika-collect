@@ -53,7 +53,7 @@ const SurveyQuestionEditor: React.FC<{
               }
               deleteQuestion();
             }}>
-            Delete
+            Delete question
           </button>
         </span>
       </div>
@@ -68,6 +68,24 @@ const SurveyQuestionEditor: React.FC<{
             updateQuestion({...question, id});
           }}
         />
+        <div className="field row mb-3">
+          <label
+            className="col-form-label col-sm-3"
+            htmlFor={`required-${index}`}>
+            Required
+          </label>
+          <div className="col-sm-9">
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id={`required-${index}`}
+                checked={false}
+                onChange={e => updateQuestion({...question})}
+              />
+            </div>
+          </div>
+        </div>
         <SelectField
           label="Type"
           options={questionTypeLabels}
@@ -160,6 +178,16 @@ const TextField: React.FC<{
       <label className="col-form-label col-sm-3">{label}</label>
       <div className="col-sm-9">
         <div className="input-group">
+          {i18n && (
+            <button
+              type="button"
+              className="btn btn-outline-secondary"
+              onClick={() => {
+                alert('Translate button clicked!');
+              }}>
+              🌐
+            </button>
+          )}
           {multiline ? (
             <textarea
               style={style}
@@ -179,16 +207,6 @@ const TextField: React.FC<{
               onChange={e => onChange(e.target.value)}
               required={required}
             />
-          )}
-          {i18n && (
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={() => {
-                alert('Translate button clicked!');
-              }}>
-              🌐
-            </button>
           )}
         </div>
       </div>
@@ -223,15 +241,28 @@ const OptionListEditor: React.FC<{
         {options.map((option, index) => (
           <div key={index} className="option-item mb-2">
             <div className="input-group">
+              <button
+                type="button"
+                title="Provide a translation for this option"
+                className="btn btn-outline-secondary"
+                onClick={() => {
+                  updateOption(index, option);
+                }}>
+                🌐
+              </button>
               <input
                 type="text"
-                className="form-control"
+                required
+                className={`form-control ${
+                  option.length === 0 ? 'is-invalid' : ''
+                }`}
                 value={option}
                 onChange={e => updateOption(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
               />
               <button
                 type="button"
+                style={{textShadow: '0 0 5px #fff', fontSize: '0.5em'}}
                 className="btn btn-outline-danger"
                 title="Delete option"
                 onClick={() => {
@@ -243,16 +274,7 @@ const OptionListEditor: React.FC<{
                     return;
                   deleteOption(index);
                 }}>
-                🗑️
-              </button>
-              <button
-                type="button"
-                title="Provide a translation for this option"
-                className="btn btn-outline-primary"
-                onClick={() => {
-                  updateOption(index, option);
-                }}>
-                🌐
+                ❌
               </button>
             </div>
           </div>

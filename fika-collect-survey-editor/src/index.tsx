@@ -16,8 +16,12 @@ const router = createBrowserRouter([
     element: <SurveyEditor />,
   },
 ]);
+const theme =
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
 
-document.documentElement.setAttribute('data-bs-theme', 'dark');
+document.documentElement.setAttribute('data-bs-theme', theme);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

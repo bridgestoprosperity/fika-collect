@@ -1,5 +1,5 @@
 {
-  "name": "fika-collect-surveys",
+  "name": "fika-collect-survey-editor",
   "version": "1.0.0",
   "main": "editor/index.tsx",
   "bin": {
