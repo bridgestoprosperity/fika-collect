@@ -1,4 +1,4 @@
-# fika-collect-surveys
+# fika-collect-survey-editor
 
 This directory contains some basic (currently, *very* basic) infrastructure for maintaining surveys.
 
