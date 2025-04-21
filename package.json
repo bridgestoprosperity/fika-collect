@@ -9,10 +9,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "workspaces": [
-    "packages/fika-collect-app",
-    "packages/fika-collect-lambda",
-    "packages/fika-collect-survey-editor",
-    "packages/fika-collect-survey-schema"
-  ]
+  "workspaces": {
+    "packages": [
+      "packages/fika-collect-app",
+      "packages/fika-collect-lambda",
+      "packages/fika-collect-survey-editor",
+      "packages/fika-collect-survey-schema"
+    ],
+    "nohoist": [
+      "**/react-refresh",
+      "**/react-refresh/**"
+    ]
+  }
 }

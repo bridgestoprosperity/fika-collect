@@ -1,13 +1,29 @@
 {
-  "name": "fika-collect-survey-editor",
+  "name": "fika-collect-survey-schema",
   "version": "1.0.0",
-  "main": "src/schema.tsx",
+  "type": "module",
+  "main": "./dist/schema.js",
+  "module": "./dist/schema.js",
+  "types": "./dist/schema.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/schema.js",
+      "require": "./dist/schema.js",
+      "types": "./dist/schema.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint . --ext .ts",
+    "test": "vitest"
+  },
   "bin": {
     "upload-survey": "bin/upload-survey.js"
   },
-  "scripts": {
-  },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

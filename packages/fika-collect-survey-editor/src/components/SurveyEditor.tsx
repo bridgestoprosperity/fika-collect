@@ -1,40 +1,39 @@
-import React from 'react';
-import {useState, useEffect, useRef} from 'react';
-import './SurveyEditor.css';
-import {S3_BASE_URL} from '../constants';
-import {SurveySchema, QuestionType} from '../SurveySchema';
-import type {Survey, SurveyQuestion} from '../SurveySchema';
-import {useParams, useBlocker} from 'react-router';
-import AppContainer from './AppContainer';
-import {useNavigate} from 'react-router';
+import { useState, useEffect, useRef, FC, Fragment } from "react";
+//import './SurveyEditor.css';
+import { S3_BASE_URL } from "../constants";
+import { SurveySchema, QuestionType } from "../SurveySchema";
+import type { Survey, SurveyQuestion } from "../SurveySchema";
+import { useParams, useBlocker } from "react-router";
+import AppContainer from "./AppContainer";
+import { useNavigate } from "react-router";
 
 interface SurveyEditorProps {}
 
 const questionTypeLabels = {
-  short_answer: 'Short answer',
-  long_answer: 'Long answer',
-  multiple_choice: 'Single select',
-  multiselect: 'Multiple select',
-  boolean: 'Yes/no',
-  photo: 'Photo',
-  location: 'Location',
+  short_answer: "Short answer",
+  long_answer: "Long answer",
+  multiple_choice: "Single select",
+  multiselect: "Multiple select",
+  boolean: "Yes/no",
+  photo: "Photo",
+  location: "Location",
 };
 
 async function fetchSurveySchema(
-  surveyId: string | undefined,
+  surveyId: string | undefined
 ): Promise<Survey> {
-  if (!surveyId) return Promise.reject('Survey ID is required');
+  if (!surveyId) return Promise.reject("Survey ID is required");
   return fetch(`${S3_BASE_URL}/surveys/${surveyId}.json`)
-    .then(response => response.json())
-    .then(data => SurveySchema.parse(data));
+    .then((response) => response.json())
+    .then((data) => SurveySchema.parse(data));
 }
 
-const SurveyQuestionEditor: React.FC<{
+const SurveyQuestionEditor: FC<{
   question: SurveyQuestion;
   updateQuestion: (question: SurveyQuestion) => void;
   deleteQuestion: () => void;
   index: number;
-}> = ({question, index, updateQuestion, deleteQuestion}) => {
+}> = ({ question, index, updateQuestion, deleteQuestion }) => {
   return (
     <div className="questionEditor card mb-5 mt-5" tabIndex={index}>
       <div className="card-header">
@@ -46,13 +45,14 @@ const SurveyQuestionEditor: React.FC<{
             onClick={() => {
               if (
                 !window.confirm(
-                  'Are you sure you want to delete this question?',
+                  "Are you sure you want to delete this question?"
                 )
               ) {
                 return;
               }
               deleteQuestion();
-            }}>
+            }}
+          >
             Delete question
           </button>
         </span>
@@ -64,14 +64,15 @@ const SurveyQuestionEditor: React.FC<{
           monospace
           required
           value={question.id}
-          onChange={id => {
-            updateQuestion({...question, id});
+          onChange={(id) => {
+            updateQuestion({ ...question, id });
           }}
         />
         <div className="field row mb-3">
           <label
             className="col-form-label col-sm-3"
-            htmlFor={`required-${index}`}>
+            htmlFor={`required-${index}`}
+          >
             Required
           </label>
           <div className="col-sm-9">
@@ -81,7 +82,7 @@ const SurveyQuestionEditor: React.FC<{
                 type="checkbox"
                 id={`required-${index}`}
                 checked={false}
-                onChange={e => updateQuestion({...question})}
+                onChange={(e) => updateQuestion({ ...question })}
               />
             </div>
           </div>
@@ -90,8 +91,8 @@ const SurveyQuestionEditor: React.FC<{
           label="Type"
           options={questionTypeLabels}
           value={question.type}
-          onChange={type =>
-            updateQuestion({...question, type: type as QuestionType})
+          onChange={(type) =>
+            updateQuestion({ ...question, type: type as QuestionType })
           }
         />
         <TextField
@@ -99,22 +100,22 @@ const SurveyQuestionEditor: React.FC<{
           i18n
           required
           value={question.question}
-          onChange={text => updateQuestion({...question, question: text})}
+          onChange={(text) => updateQuestion({ ...question, question: text })}
           multiline
         />
         <TextField
           label="Hint"
           i18n
           placeholder="Optional hint for the question"
-          value={question.hint || ''}
-          onChange={hint => updateQuestion({...question, hint})}
+          value={question.hint || ""}
+          onChange={(hint) => updateQuestion({ ...question, hint })}
           multiline
         />
-        {['multiselect', 'multiple_choice'].includes(question.type) && (
+        {["multiselect", "multiple_choice"].includes(question.type) && (
           <OptionListEditor
             options={question.options || []}
-            onChange={options => {
-              updateQuestion({...question, options: options});
+            onChange={(options) => {
+              updateQuestion({ ...question, options: options });
             }}
           />
         )}
@@ -123,13 +124,13 @@ const SurveyQuestionEditor: React.FC<{
   );
 };
 
-const SelectField: React.FC<{
+const SelectField: FC<{
   label: string;
   options: Record<string, string>;
   value: string;
   className?: string;
   onChange: (value: string) => void;
-}> = ({label, options, value, onChange, className = ''}) => {
+}> = ({ label, options, value, onChange, className = "" }) => {
   return (
     <div className={`row mb-3 ${className}`}>
       <label className="col-form-label col-sm-3">{label}</label>
@@ -138,7 +139,8 @@ const SelectField: React.FC<{
           title="Select field"
           className="form-select"
           value={value}
-          onChange={e => onChange(e.target.value)}>
+          onChange={(e) => onChange(e.target.value)}
+        >
           {Object.entries(options).map(([optionValue, optionLabel]) => (
             <option key={optionValue} value={optionValue}>
               {optionLabel}
@@ -150,7 +152,7 @@ const SelectField: React.FC<{
   );
 };
 
-const TextField: React.FC<{
+const TextField: FC<{
   label: string;
   value: string;
   multiline?: boolean;
@@ -167,11 +169,11 @@ const TextField: React.FC<{
   multiline = false,
   monospace = false,
   required = false,
-  className = '',
-  placeholder = 'Enter text',
+  className = "",
+  placeholder = "Enter text",
   i18n = false,
 }) => {
-  const style = {fontFamily: monospace ? 'monospace' : undefined};
+  const style = { fontFamily: monospace ? "monospace" : undefined };
   const invalid = required && value.length === 0;
   return (
     <div className={`field row mb-3 ${className}`}>
@@ -183,8 +185,9 @@ const TextField: React.FC<{
               type="button"
               className="btn btn-outline-secondary"
               onClick={() => {
-                alert('Translate button clicked!');
-              }}>
+                alert("Translate button clicked!");
+              }}
+            >
               🌐
             </button>
           )}
@@ -192,9 +195,9 @@ const TextField: React.FC<{
             <textarea
               style={style}
               placeholder={placeholder}
-              className={`form-control ${invalid ? 'is-invalid' : ''}`}
+              className={`form-control ${invalid ? "is-invalid" : ""}`}
               value={value}
-              onChange={e => onChange(e.target.value)}
+              onChange={(e) => onChange(e.target.value)}
               rows={2}
             />
           ) : (
@@ -202,9 +205,9 @@ const TextField: React.FC<{
               style={style}
               type="text"
               placeholder={placeholder}
-              className={`form-control ${invalid ? 'is-invalid' : ''}`}
+              className={`form-control ${invalid ? "is-invalid" : ""}`}
               value={value}
-              onChange={e => onChange(e.target.value)}
+              onChange={(e) => onChange(e.target.value)}
               required={required}
             />
           )}
@@ -214,13 +217,13 @@ const TextField: React.FC<{
   );
 };
 
-const OptionListEditor: React.FC<{
+const OptionListEditor: FC<{
   options: string[];
   onChange: (updatedOptions: string[]) => void;
   className?: string;
-}> = ({options, onChange, className}) => {
+}> = ({ options, onChange, className }) => {
   const addOption = () => {
-    onChange([...options, '']);
+    onChange([...options, ""]);
   };
 
   const updateOption = (index: number, value: string) => {
@@ -247,33 +250,35 @@ const OptionListEditor: React.FC<{
                 className="btn btn-outline-secondary"
                 onClick={() => {
                   updateOption(index, option);
-                }}>
+                }}
+              >
                 🌐
               </button>
               <input
                 type="text"
                 required
                 className={`form-control ${
-                  option.length === 0 ? 'is-invalid' : ''
+                  option.length === 0 ? "is-invalid" : ""
                 }`}
                 value={option}
-                onChange={e => updateOption(index, e.target.value)}
+                onChange={(e) => updateOption(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
               />
               <button
                 type="button"
-                style={{textShadow: '0 0 5px #fff', fontSize: '0.5em'}}
+                style={{ textShadow: "0 0 5px #fff", fontSize: "0.5em" }}
                 className="btn btn-outline-danger"
                 title="Delete option"
                 onClick={() => {
                   if (
                     !window.confirm(
-                      'Are you sure you want to delete this option?',
+                      "Are you sure you want to delete this option?"
                     )
                   )
                     return;
                   deleteOption(index);
-                }}>
+                }}
+              >
                 ❌
               </button>
             </div>
@@ -282,7 +287,8 @@ const OptionListEditor: React.FC<{
         <button
           type="button"
           className="btn btn-sm btn-outline-primary"
-          onClick={addOption}>
+          onClick={addOption}
+        >
           + Add option
         </button>
       </div>
@@ -290,21 +296,21 @@ const OptionListEditor: React.FC<{
   );
 };
 
-const InsertQuestionButton: React.FC<{
+const InsertQuestionButton: FC<{
   setSurveySchema: (schema: Survey) => void;
   surveySchema: Survey;
   index: number;
-}> = ({index, surveySchema, setSurveySchema}) => {
+}> = ({ index, surveySchema, setSurveySchema }) => {
   return (
     <button
       type="button"
       className="btn btn-sm btn-primary me-2"
       onClick={() => {
         const newQuestion: SurveyQuestion = {
-          id: '',
-          type: 'short_answer',
-          question: '',
-          hint: '',
+          id: "",
+          type: "short_answer",
+          question: "",
+          hint: "",
           options: [],
         };
         const updatedQuestions = [
@@ -316,17 +322,18 @@ const InsertQuestionButton: React.FC<{
           ...surveySchema,
           questions: updatedQuestions,
         });
-      }}>
+      }}
+    >
       + Insert question
     </button>
   );
 };
 
-const SwapQuestionsButton: React.FC<{
+const SwapQuestionsButton: FC<{
   setSurveySchema: (schema: Survey) => void;
   surveySchema: Survey;
   index: number;
-}> = ({index, surveySchema, setSurveySchema}) => {
+}> = ({ index, surveySchema, setSurveySchema }) => {
   return (
     <button
       type="button"
@@ -340,23 +347,24 @@ const SwapQuestionsButton: React.FC<{
           ...surveySchema,
           questions: updatedQuestions,
         });
-      }}>
+      }}
+    >
       ⇅ Swap questions
     </button>
   );
 };
 
 const LANGUAGES = {
-  en: 'English',
-  es: 'Spanish',
-  fr: 'French',
-  sw: 'Swahili',
+  en: "English",
+  es: "Spanish",
+  fr: "French",
+  sw: "Swahili",
 };
 
-const LanguageSelector: React.FC<{
+const LanguageSelector: FC<{
   selectedLanguages: string[];
   onChange: (language: string) => void;
-}> = ({selectedLanguages, onChange}) => {
+}> = ({ selectedLanguages, onChange }) => {
   return (
     <div className="row mb-3">
       <label className="col-form-label col-sm-3">Languages</label>
@@ -373,7 +381,7 @@ const LanguageSelector: React.FC<{
                   if (selectedLanguages.includes(langCode)) {
                     onChange(langCode);
                   } else {
-                    onChange('');
+                    onChange("");
                   }
                 }}
               />
@@ -388,26 +396,26 @@ const LanguageSelector: React.FC<{
   );
 };
 
-const SurveyEditor: React.FC<SurveyEditorProps> = () => {
+const SurveyEditor: FC<SurveyEditorProps> = () => {
   const [loading, setLoading] = useState(false);
   const [surveySchema, setSurveySchema] = useState<Survey | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const {surveyId} = useParams<{surveyId: string}>();
+  const { surveyId } = useParams<{ surveyId: string }>();
   const navigate = useNavigate();
 
   useBlocker(() => {
     if (!surveySchema) return false;
     return !window.confirm(
-      'You have unsaved changes. Are you sure you want to leave this page?',
+      "You have unsaved changes. Are you sure you want to leave this page?"
     );
   });
 
   useEffect(() => {
     setLoading(true);
     fetchSurveySchema(surveyId)
-      .then(schema => setSurveySchema(schema))
-      .catch(error => setErrorMessage('Failed to fetch survey'))
+      .then((schema) => setSurveySchema(schema))
+      .catch((error) => setErrorMessage("Failed to fetch survey"))
       .finally(() => setLoading(false));
   }, [surveyId]);
 
@@ -433,30 +441,33 @@ const SurveyEditor: React.FC<SurveyEditorProps> = () => {
                       type="button"
                       className="btn btn-primary me-2"
                       onClick={() => {
-                        alert('Save button clicked!');
-                      }}>
+                        alert("Save button clicked!");
+                      }}
+                    >
                       Save
                     </button>
                     <button
                       type="button"
                       className="btn btn-secondary me-2"
                       onClick={() => {
-                        alert('Validate button clicked!');
-                      }}>
+                        alert("Validate button clicked!");
+                      }}
+                    >
                       Validate
                     </button>
                     <button
                       type="button"
                       className="btn btn-danger"
                       onClick={() => {
-                        navigate('/');
-                      }}>
+                        navigate("/");
+                      }}
+                    >
                       Discard changes
                     </button>
                   </div>
                 </div>
                 <LanguageSelector
-                  selectedLanguages={['en', 'es']}
+                  selectedLanguages={["en", "es"]}
                   onChange={() => {}}
                 />
               </div>
@@ -470,14 +481,16 @@ const SurveyEditor: React.FC<SurveyEditorProps> = () => {
                   label="Title"
                   i18n
                   value={surveySchema.title}
-                  onChange={title => setSurveySchema({...surveySchema, title})}
+                  onChange={(title) =>
+                    setSurveySchema({ ...surveySchema, title })
+                  }
                 />
                 <TextField
                   label="Description"
                   i18n
                   value={surveySchema.description}
-                  onChange={description =>
-                    setSurveySchema({...surveySchema, description})
+                  onChange={(description) =>
+                    setSurveySchema({ ...surveySchema, description })
                   }
                 />
               </div>
@@ -489,7 +502,7 @@ const SurveyEditor: React.FC<SurveyEditorProps> = () => {
             />
             {surveySchema.questions.map(
               (question: SurveyQuestion, index: number) => (
-                <React.Fragment key={index}>
+                <Fragment key={index}>
                   <SurveyQuestionEditor
                     updateQuestion={(updatedQuestion: SurveyQuestion) => {
                       const updatedQuestions = [...surveySchema.questions];
@@ -501,7 +514,7 @@ const SurveyEditor: React.FC<SurveyEditorProps> = () => {
                     }}
                     deleteQuestion={() => {
                       const updatedQuestions = surveySchema.questions.filter(
-                        (_, i) => i !== index,
+                        (_, i) => i !== index
                       );
                       setSurveySchema({
                         ...surveySchema,
@@ -523,8 +536,8 @@ const SurveyEditor: React.FC<SurveyEditorProps> = () => {
                       surveySchema={surveySchema}
                     />
                   )}
-                </React.Fragment>
-              ),
+                </Fragment>
+              )
             )}
           </div>
         )}
