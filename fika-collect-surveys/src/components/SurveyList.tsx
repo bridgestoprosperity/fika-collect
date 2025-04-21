@@ -1,7 +1,8 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import './SurveyList.css';
-import Link from './Link';
+import {NavLink} from 'react-router';
+import AppContainer from './AppContainer';
 
 import {S3_BASE_URL, MANIFEST_PATH} from '../constants';
 
@@ -27,10 +28,10 @@ async function fetchSurveys() {
 }
 
 interface SurveyListProps {
-  setCurrentSurveyId: React.Dispatch<React.SetStateAction<string | null>>;
+  //setCurrentSurveyId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const SurveyList: React.FC<SurveyListProps> = ({setCurrentSurveyId}) => {
+const SurveyList: React.FC<SurveyListProps> = () => {
   const [loading, setLoading] = useState(false);
   const [surveys, setSurveys] = useState(sampleSurveys.surveys);
 
@@ -45,63 +46,62 @@ const SurveyList: React.FC<SurveyListProps> = ({setCurrentSurveyId}) => {
   }
 
   useEffect(() => {
-    //load();
+    load();
   }, []);
 
   return (
-    <div className="surveyList">
-      <div className="surveyList-actions">
-        <button
-          type="button"
-          className="btn"
-          onClick={e => {
-            e.preventDefault();
-          }}>
-          + New Survey
-        </button>
+    <AppContainer>
+      <div className="surveyList mt-5">
+        <div className="surveyList-actions text-end mb-3">
+          <button
+            type="button"
+            className="btn btn-primary btn-sm me-2"
+            disabled
+            onClick={e => {
+              e.preventDefault();
+            }}>
+            + New survey
+          </button>
 
-        <button
-          type="button"
-          disabled={loading}
-          className="btn"
-          onClick={e => {
-            load();
-            e.preventDefault();
-          }}>
-          {loading ? 'Loading...' : 'Refresh'}
-        </button>
-      </div>
+          <button
+            type="button"
+            disabled={loading}
+            className="btn btn-secondary btn-sm"
+            onClick={e => {
+              load();
+              e.preventDefault();
+            }}>
+            {loading ? '⏳ Loading...' : '🔄 Refresh'}
+          </button>
+        </div>
 
-      <table className="surveyList-table">
-        <thead>
-          <tr>
-            <th>Survey Identifier</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {surveys.map(({survey_id, key, updated_at}) => (
-            <tr key={key}>
-              <td>{survey_id}</td>
-              <td>
-                <Link
-                  to={`/surveys/${survey_id}/edit`}
-                  className="surveyList-action"
-                  onClick={e => {
-                    //e.preventDefault();
-                    //setCurrentSurveyId(survey_id);
-                  }}>
-                  Edit
-                </Link>
-                <button className="surveyList-action" disabled>
-                  Delete
-                </button>
-              </td>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Survey ID</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {surveys.map(({survey_id, key, updated_at}) => (
+              <tr key={key}>
+                <td>{survey_id}</td>
+                <td>
+                  <NavLink
+                    className="btn btn-primary btn-sm me-2"
+                    to={`/surveys/${survey_id}/edit`}>
+                    Edit
+                  </NavLink>
+                  <button className="btn btn-danger btn-sm" disabled>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </AppContainer>
   );
 };
 

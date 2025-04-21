@@ -1,23 +1,41 @@
-.question {
-  margin-bottom: 50px;
-  border: 1px solid #505868;
-  background-color: #313845;
-  border-radius: 5px;
+html[data-bs-theme='light'] {
+  --label-color: rgb(72, 79, 88);
+}
+html[data-bs-theme='dark'] {
+  --label-color: rgb(187, 201, 220);
 }
 
-.question-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #505868;
-  background-color: rgb(255 255 255/10%);
-  padding: 5px 10px;
+.form-label,
+.col-form-label {
   text-transform: uppercase;
-  font-size: 12px;
   font-weight: 700;
-  color: #b9c4da;
+  font-size: 13px !important;
+  color: var(--label-color);
 }
 
-.question-body {
-  padding: 5px 10px;
+.surveyEditor .card-title {
+  display: inline-block;
+  padding: 0 16px;
+  margin: 0;
+  line-height: 35px;
+  height: 35px;
+  text-transform: uppercase;
+  color: var(--label-color);
+  font-weight: 700;
+  font-size: 13px !important;
+}
+.surveyEditor .card-header {
+  padding: 0;
+}
+.surveyEditor .card-header .btn {
+  height: 37px;
+  display: inline-block;
+  border-radius: 0;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  margin-right: -1px;
+}
+
+.surveyEditor .card-header .btn:last-child {
+  border-top-right-radius: 6px;
 }
