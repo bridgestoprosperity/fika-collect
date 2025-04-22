@@ -1,21 +1,21 @@
 import z from 'zod';
-const SUPPORTED_LOCALES = [
-    'en',
-    'es',
-    'fr',
-    'de',
-    'it',
-    'pt',
-    'ru',
-    'zh',
-    'ja',
-    'ko',
-    'ar',
-    'sw',
-    'rw',
-    'ln', // Lingala
-];
-const LocaleEnum = z.enum(SUPPORTED_LOCALES);
+const SUPPORTED_LOCALES = {
+    'en': 'English',
+    'es': 'Spanish',
+    'fr': 'French',
+    'de': 'German',
+    'it': 'Italian',
+    'pt': 'Portuguese',
+    'ru': 'Russian',
+    'zh': 'Chinese',
+    'ja': 'Japanese',
+    'ko': 'Korean',
+    'ar': 'Arabic',
+    'sw': 'Swahili',
+    'rw': 'Kinyarwanda',
+    'ln': 'Lingala',
+};
+const LocaleEnum = z.enum(Object.keys(SUPPORTED_LOCALES));
 const I18NText = z.record(LocaleEnum, z.string());
 const FileTypeSchema = z.enum([
     'image/jpeg',
@@ -46,4 +46,4 @@ const SurveySchema = z.object({
     description: I18NText,
     questions: z.array(SurveyQuestionSchema),
 });
-export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema };
+export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, SUPPORTED_LOCALES };

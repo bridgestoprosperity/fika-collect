@@ -1,4 +1,20 @@
 import z from 'zod';
+declare const SUPPORTED_LOCALES: {
+    en: string;
+    es: string;
+    fr: string;
+    de: string;
+    it: string;
+    pt: string;
+    ru: string;
+    zh: string;
+    ja: string;
+    ko: string;
+    ar: string;
+    sw: string;
+    rw: string;
+    ln: string;
+};
 declare const FileTypeSchema: z.ZodEnum<["image/jpeg", "image/png", "image/heic", "image/webp"]>;
 declare const QuestionTypeSchema: z.ZodEnum<["multiselect", "multiple_choice", "boolean", "short_answer", "long_answer", "photo", "location"]>;
 declare const SurveyQuestionSchema: z.ZodObject<{
@@ -82,5 +98,5 @@ export type { Survey };
 export type { FileType };
 export type { SurveyQuestion };
 export type { QuestionType };
-export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema };
+export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, SUPPORTED_LOCALES };
 //# sourceMappingURL=schema.d.ts.map
