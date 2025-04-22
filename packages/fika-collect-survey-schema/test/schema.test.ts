@@ -1,7 +1,70 @@
 import test from 'tape';
+import { SurveySchema } from '../src/schema.js';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+const __dirname = new URL('.', import.meta.url).pathname;
 
+const detailedReport = JSON.parse(
+  readFileSync(join(__dirname, 'fixtures', 'detailed_report.json'), 'utf8')
+);
 
 
 test('schema', function (t) {
-  t.end();
+  t.test('basic schema', function (t) {
+    const result = SurveySchema.safeParse({
+      id: 'test_schema',
+      title: { 'en': "foo", },
+      description: { "en": "bar", },
+      questions: []
+    });
+    t.ok(result.success, 'schema is valid');
+    t.end();
+  });
+
+  t.test('schema with invalid local', function (t) {
+    const result = SurveySchema.safeParse({
+      id: 'test_schema',
+      title: { 'qx': "foo", },
+      description: { "qx": "bar", },
+      questions: []
+    });
+    t.notOk(result.success, 'schema is invalid');
+    t.equal(result.error?.issues.length, 2, 'schema has 2 issues');
+    t.equal(result.error?.issues[0].message, "Invalid enum value. Expected 'en' | 'es' | 'fr' | 'de' | 'it' | 'pt' | 'ru' | 'zh' | 'ja' | 'ko' | 'ar' | 'sw' | 'rw' | 'ln', received 'qx'", "first issue is invalid enum value");
+    t.equal(result.error?.issues[1].message, "Invalid enum value. Expected 'en' | 'es' | 'fr' | 'de' | 'it' | 'pt' | 'ru' | 'zh' | 'ja' | 'ko' | 'ar' | 'sw' | 'rw' | 'ln', received 'qx'", "second issue is invalid enum value");
+    t.end();
+  });
+
+  t.test('schema with questions', function (t) {
+    const result = SurveySchema.safeParse({
+      id: 'test_schema',
+      title: { 'en': "foo", },
+      description: { "fr": "bar", },
+      questions: [{
+        "type": "boolean",
+        "id": "question_1",
+        "question": {
+          "en": "This is not a schema.",
+          "fr": "Ceci n'est pas un schéma.",
+        },
+        "hint": {
+          "en": "This is a hint.",
+          "fr": "Ceci est un indice.",
+        },
+      }, {
+        "type": "multiple_choice",
+        "id": "question_2",
+        "question": {
+          "en": "This is not a schema.",
+          "fr": "Ceci n'est pas un schéma.",
+        },
+        "options": [
+          { "en": "Option 1", "fr": "Option 1", },
+          { "en": "Option 2", "fr": "Option 2", },
+        ]
+      }]
+    });
+    t.ok(result.success, 'schema is valid');
+    t.end();
+  });
 });

@@ -1,23 +1,23 @@
 import z from 'zod';
 
-const SUPPORTED_LOCALES = [
-  'en', // English
-  'es', // Spanish
-  'fr', // French
-  'de', // German
-  'it', // Italian
-  'pt', // Portuguese
-  'ru', // Russian
-  'zh', // Chinese
-  'ja', // Japanese
-  'ko', // Korean
-  'ar', // Arabic
-  'sw', // Swahili
-  'rw', // Kinyarwanda
-  'ln', // Lingala
-];
+const SUPPORTED_LOCALES = {
+  'en': 'English',
+  'es': 'Spanish',
+  'fr': 'French',
+  'de': 'German',
+  'it': 'Italian',
+  'pt': 'Portuguese',
+  'ru': 'Russian',
+  'zh': 'Chinese',
+  'ja': 'Japanese',
+  'ko': 'Korean',
+  'ar': 'Arabic',
+  'sw': 'Swahili',
+  'rw': 'Kinyarwanda',
+  'ln': 'Lingala',
+};
 
-const LocaleEnum = z.enum(SUPPORTED_LOCALES as [string, ...string[]]);
+const LocaleEnum = z.enum(Object.keys(SUPPORTED_LOCALES) as [string, ...string[]]);
 
 const I18NText = z.record(LocaleEnum, z.string());
 
@@ -64,4 +64,4 @@ export type { FileType };
 export type { SurveyQuestion };
 export type { QuestionType };
 
-export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema };
+export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, SUPPORTED_LOCALES };
