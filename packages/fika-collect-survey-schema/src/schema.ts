@@ -1,6 +1,8 @@
 import z from 'zod';
 
-const SUPPORTED_LOCALES = {
+// These are provided as a UI convenience for the editor but do not restrict
+// the locales that can be used in the app.
+const LOCALE_LABELS = {
   'en': 'English',
   'es': 'Spanish',
   'fr': 'French',
@@ -17,9 +19,14 @@ const SUPPORTED_LOCALES = {
   'ln': 'Lingala',
 };
 
-const LocaleEnum = z.enum(Object.keys(SUPPORTED_LOCALES) as [string, ...string[]]);
+const LocaleString = z.string().min(2).max(2);
 
-const I18NText = z.record(LocaleEnum, z.string());
+const I18NText = z.preprocess((val) => {
+  if (typeof val === 'string') {
+    return { en: val };
+  }
+  return val;
+}, z.record(LocaleString, z.string()));
 
 const FileTypeSchema = z.enum([
   'image/jpeg',
@@ -64,4 +71,4 @@ export type { FileType };
 export type { SurveyQuestion };
 export type { QuestionType };
 
-export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, SUPPORTED_LOCALES };
+export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, LOCALE_LABELS };

@@ -24,14 +24,12 @@ test('schema', function (t) {
   t.test('schema with invalid local', function (t) {
     const result = SurveySchema.safeParse({
       id: 'test_schema',
-      title: { 'qx': "foo", },
-      description: { "qx": "bar", },
+      title: { 'qwerty': "foo", },
+      description: { "qwerty": "bar", },
       questions: []
     });
     t.notOk(result.success, 'schema is invalid');
     t.equal(result.error?.issues.length, 2, 'schema has 2 issues');
-    t.equal(result.error?.issues[0].message, "Invalid enum value. Expected 'en' | 'es' | 'fr' | 'de' | 'it' | 'pt' | 'ru' | 'zh' | 'ja' | 'ko' | 'ar' | 'sw' | 'rw' | 'ln', received 'qx'", "first issue is invalid enum value");
-    t.equal(result.error?.issues[1].message, "Invalid enum value. Expected 'en' | 'es' | 'fr' | 'de' | 'it' | 'pt' | 'ru' | 'zh' | 'ja' | 'ko' | 'ar' | 'sw' | 'rw' | 'ln', received 'qx'", "second issue is invalid enum value");
     t.end();
   });
 
@@ -67,4 +65,22 @@ test('schema', function (t) {
     t.ok(result.success, 'schema is valid');
     t.end();
   });
+
+  t.test('schema with old-style unwrapped strings', function (t) {
+    const result = SurveySchema.safeParse({
+      id: 'test_schema',
+      title: 'foo',
+      description: 'bar',
+      questions: []
+    });
+    t.ok(result.success, 'schema is valid');
+    t.deepEqual(result.data, {
+      id: 'test_schema',
+      title: { 'en': 'foo' },
+      description: { 'en': 'bar' },
+      questions: []
+    }, 'schema is valid and unwrapped strings are converted to wrapped strings');
+    t.end();
+  });
+
 });

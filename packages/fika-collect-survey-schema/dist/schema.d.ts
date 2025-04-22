@@ -1,5 +1,5 @@
 import z from 'zod';
-declare const SUPPORTED_LOCALES: {
+declare const LOCALE_LABELS: {
     en: string;
     es: string;
     fr: string;
@@ -21,9 +21,9 @@ declare const SurveyQuestionSchema: z.ZodObject<{
     id: z.ZodString;
     type: z.ZodEnum<["multiselect", "multiple_choice", "boolean", "short_answer", "long_answer", "photo", "location"]>;
     required: z.ZodDefault<z.ZodBoolean>;
-    question: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
-    hint: z.ZodOptional<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>>;
-    options: z.ZodOptional<z.ZodArray<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>, "many">>;
+    question: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
+    hint: z.ZodOptional<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>>;
+    options: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>, "many">>;
 }, "strip", z.ZodTypeAny, {
     type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
     id: string;
@@ -34,22 +34,22 @@ declare const SurveyQuestionSchema: z.ZodObject<{
 }, {
     type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
     id: string;
-    question: Record<string, string>;
-    options?: Record<string, string>[] | undefined;
+    options?: unknown[] | undefined;
     required?: boolean | undefined;
-    hint?: Record<string, string> | undefined;
+    question?: unknown;
+    hint?: unknown;
 }>;
 declare const SurveySchema: z.ZodObject<{
     id: z.ZodString;
-    title: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
-    description: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
+    title: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
+    description: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
     questions: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         type: z.ZodEnum<["multiselect", "multiple_choice", "boolean", "short_answer", "long_answer", "photo", "location"]>;
         required: z.ZodDefault<z.ZodBoolean>;
-        question: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
-        hint: z.ZodOptional<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>>;
-        options: z.ZodOptional<z.ZodArray<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>, "many">>;
+        question: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
+        hint: z.ZodOptional<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>>;
+        options: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>, "many">>;
     }, "strip", z.ZodTypeAny, {
         type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
         id: string;
@@ -60,10 +60,10 @@ declare const SurveySchema: z.ZodObject<{
     }, {
         type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
         id: string;
-        question: Record<string, string>;
-        options?: Record<string, string>[] | undefined;
+        options?: unknown[] | undefined;
         required?: boolean | undefined;
-        hint?: Record<string, string> | undefined;
+        question?: unknown;
+        hint?: unknown;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     id: string;
@@ -79,16 +79,16 @@ declare const SurveySchema: z.ZodObject<{
     }[];
 }, {
     id: string;
-    title: Record<string, string>;
-    description: Record<string, string>;
     questions: {
         type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
         id: string;
-        question: Record<string, string>;
-        options?: Record<string, string>[] | undefined;
+        options?: unknown[] | undefined;
         required?: boolean | undefined;
-        hint?: Record<string, string> | undefined;
+        question?: unknown;
+        hint?: unknown;
     }[];
+    title?: unknown;
+    description?: unknown;
 }>;
 type Survey = z.infer<typeof SurveySchema>;
 type SurveyQuestion = z.infer<typeof SurveyQuestionSchema>;
@@ -98,5 +98,5 @@ export type { Survey };
 export type { FileType };
 export type { SurveyQuestion };
 export type { QuestionType };
-export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, SUPPORTED_LOCALES };
+export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, LOCALE_LABELS };
 //# sourceMappingURL=schema.d.ts.map
