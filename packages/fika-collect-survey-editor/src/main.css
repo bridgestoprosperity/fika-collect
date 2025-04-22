@@ -86,3 +86,15 @@ html[data-bs-theme="dark"] {
 .surveyEditor .card-header .btn:last-child {
   border-top-right-radius: 6px;
 }
+
+.header .breadcrumb {
+  margin-bottom: 0;
+}
+
+.header .breadcrumb-item a {
+  line-height: 35px;
+}
+
+.header .breadcrumb-item:before {
+  line-height: 35px;
+}

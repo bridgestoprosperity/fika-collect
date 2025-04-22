@@ -3,9 +3,8 @@ import { FC } from "react";
 const SelectInput: FC<{
   options: Record<string, string>;
   value: string;
-  className?: string;
   onChange: (value: string) => void;
-}> = ({ options, value, onChange, className = "" }) => {
+}> = ({ options, value, onChange }) => {
   return (
     <select
       title="Select field"

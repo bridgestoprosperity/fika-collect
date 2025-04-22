@@ -10,6 +10,10 @@ const router = createBrowserRouter([
     element: <SurveyList />,
   },
   {
+    path: "/surveys/new",
+    element: <SurveyEditor action="new" />,
+  },
+  {
     path: "/surveys/:surveyId/edit",
     element: <SurveyEditor />,
   },

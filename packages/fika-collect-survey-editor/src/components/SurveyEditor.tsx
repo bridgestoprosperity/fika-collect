@@ -1,18 +1,17 @@
 import { useState, useEffect, FC, Fragment } from "react";
 //import './SurveyEditor.css';
 import { S3_BASE_URL } from "../constants";
-import { SurveySchema, QuestionType } from "../SurveySchema";
-import type { Survey, SurveyQuestion } from "../SurveySchema";
+import { SurveySchema, QuestionType } from "fika-collect-survey-schema";
+import type { Survey, SurveyQuestion } from "fika-collect-survey-schema";
 import { useParams, useBlocker } from "react-router";
 import AppContainer from "./AppContainer";
-import { useNavigate } from "react-router";
+import { useNavigate, NavLink } from "react-router";
 
+import Header from "./Header";
 import FormField from "./FormField";
 import SelectInput from "./SelectInput";
 import TextInput from "./TextInput";
 import OptionListInput from "./OptionListInput";
-
-interface SurveyEditorProps {}
 
 const questionTypeLabels = {
   short_answer: "Short answer",
@@ -37,12 +36,19 @@ const SurveyQuestionEditor: FC<{
   question: SurveyQuestion;
   updateQuestion: (question: SurveyQuestion) => void;
   deleteQuestion: () => void;
+  locale: string;
   index: number;
-}> = ({ question, index, updateQuestion, deleteQuestion }) => {
+}> = ({ question, index, updateQuestion, deleteQuestion, locale }) => {
   return (
-    <div className="questionEditor card mb-5 mt-5" tabIndex={index}>
+    <div
+      className="questionEditor card mb-5 mt-5"
+      tabIndex={index}
+      id={`question-${index + 1}`}
+    >
       <div className="card-header">
-        <span className="card-title">Question {index + 1}</span>
+        <span className="card-title">
+          <a href={`#question-${index + 1}`}>Question {index + 1}</a>
+        </span>
         <span className="header-buttons float-end">
           <button
             type="button"
@@ -80,8 +86,13 @@ const SurveyQuestionEditor: FC<{
               className="form-check-input"
               type="checkbox"
               id={`required-${index}`}
-              checked={false}
-              onChange={(e) => updateQuestion({ ...question })}
+              checked={question.required}
+              onChange={(e) =>
+                updateQuestion({
+                  ...question,
+                  required: (e.target as HTMLInputElement).checked,
+                })
+              }
             />
           </div>
         </FormField>
@@ -96,8 +107,7 @@ const SurveyQuestionEditor: FC<{
         </FormField>
         <FormField label="Prompt">
           <TextInput
-            i18n
-            required
+            locale={locale}
             value={question.question}
             onChange={(text) => updateQuestion({ ...question, question: text })}
             multiline
@@ -105,7 +115,7 @@ const SurveyQuestionEditor: FC<{
         </FormField>
         <FormField label="Hint">
           <TextInput
-            i18n
+            locale={locale}
             placeholder="Optional hint for the question"
             value={question.hint || ""}
             onChange={(hint) => updateQuestion({ ...question, hint })}
@@ -116,6 +126,7 @@ const SurveyQuestionEditor: FC<{
         {["multiselect", "multiple_choice"].includes(question.type) && (
           <FormField label="Options">
             <OptionListInput
+              locale={locale}
               options={question.options || []}
               onChange={(options) => {
                 updateQuestion({ ...question, options: options });
@@ -141,6 +152,7 @@ const InsertQuestionButton: FC<{
         const newQuestion: SurveyQuestion = {
           id: "",
           type: "short_answer",
+          required: true,
           question: "",
           hint: "",
           options: [],
@@ -228,10 +240,30 @@ const LanguageSelector: FC<{
   );
 };
 
-const SurveyEditor: FC<SurveyEditorProps> = () => {
+function downloadJSON(data: any, filename: string) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+const SurveyEditor: FC<{
+  action?: "new" | null;
+}> = ({ action = null }) => {
   const [loading, setLoading] = useState(false);
   const [surveySchema, setSurveySchema] = useState<Survey | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const [locale, setLocale] = useState<string>("en");
+
+  console.log(action);
 
   const { surveyId } = useParams<{ surveyId: string }>();
   const navigate = useNavigate();
@@ -251,132 +283,147 @@ const SurveyEditor: FC<SurveyEditorProps> = () => {
       .finally(() => setLoading(false));
   }, [surveyId]);
 
+  const breadcrumbs = [];
+  if (surveySchema) {
+    breadcrumbs.push(
+      <NavLink key="edit" to={`/surveys/${surveySchema.id}/edit`}>
+        <code>{surveySchema.id}</code>
+      </NavLink>
+    );
+  }
+
   return (
-    <AppContainer>
-      <form className="surveyEditor mt-5 mb-5">
-        {errorMessage && <div className="error">{errorMessage}</div>}
-        {loading && <div className="loading">Loading...</div>}
-        {surveySchema && (
-          <div className="surveySchema">
-            <h1 className="mb-5">
-              Edit Survey: <code>{surveySchema.id}</code>
-            </h1>
-            <div className="card mb-5 mt-5">
-              <div className="card-header">
-                <span className="card-title">Survey settings</span>
-              </div>
-              <div className="card-body pb-0">
-                <div className="row mb-3">
-                  <label className="col-form-label col-sm-3">Actions</label>
-                  <div className="col-sm-9">
-                    <button
-                      type="button"
-                      className="btn btn-primary me-2"
-                      onClick={() => {
-                        alert("Save button clicked!");
-                      }}
-                    >
-                      Save
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-secondary me-2"
-                      onClick={() => {
-                        alert("Validate button clicked!");
-                      }}
-                    >
-                      Validate
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      onClick={() => {
-                        navigate("/");
-                      }}
-                    >
-                      Discard changes
-                    </button>
-                  </div>
+    <div className="app">
+      <Header locale={locale} setLocale={setLocale} breadcrumbs={breadcrumbs} />
+      <div className="container-sm" style={{ margin: "0 auto" }}>
+        <form className="surveyEditor mt-5 mb-5">
+          {errorMessage && <div className="error">{errorMessage}</div>}
+          {loading && <div className="loading">Loading...</div>}
+          {surveySchema && (
+            <div className="surveySchema">
+              <div className="card mb-5 mt-5">
+                <div className="card-header">
+                  <span className="card-title">Survey settings</span>
                 </div>
-                <LanguageSelector
-                  selectedLanguages={["en", "es"]}
-                  onChange={() => {}}
-                />
+                <div className="card-body pb-0">
+                  <div className="row mb-3">
+                    <label className="col-form-label col-sm-3">Publish</label>
+                    <div className="col-sm-9">
+                      <button
+                        type="button"
+                        className="btn btn-primary me-2"
+                        onClick={() => {
+                          alert("Save button clicked!");
+                        }}
+                      >
+                        Save to S3
+                      </button>
+                    </div>
+                  </div>
+                  <div className="row mb-3">
+                    <label className="col-form-label col-sm-3">Editor</label>
+                    <div className="col-sm-9">
+                      <button
+                        type="button"
+                        className="btn btn-secondary me-2"
+                        onClick={() =>
+                          downloadJSON(surveySchema, `${surveySchema.id}.json`)
+                        }
+                      >
+                        Download JSON
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger me-2"
+                        onClick={() => {
+                          navigate("/");
+                        }}
+                      >
+                        Discard changes
+                      </button>
+                    </div>
+                  </div>
+                  {/*<LanguageSelector
+                    selectedLanguages={["en", "es"]}
+                    onChange={() => {}}
+                  />*/}
+                </div>
               </div>
-            </div>
-            <div className="card mb-5 mt-5">
-              <div className="card-header">
-                <span className="card-title">Survey details</span>
+              <div className="card mb-5 mt-5">
+                <div className="card-header">
+                  <span className="card-title">Survey details</span>
+                </div>
+                <div className="card-body pb-0">
+                  <FormField label="Title">
+                    <TextInput
+                      locale={locale}
+                      value={surveySchema.title}
+                      onChange={(title) =>
+                        setSurveySchema({ ...surveySchema, title })
+                      }
+                    />
+                  </FormField>
+                  <FormField label="description">
+                    <TextInput
+                      locale={locale}
+                      value={surveySchema.description}
+                      onChange={(description) =>
+                        setSurveySchema({ ...surveySchema, description })
+                      }
+                    />
+                  </FormField>
+                </div>
               </div>
-              <div className="card-body pb-0">
-                <FormField label="Title">
-                  <TextInput
-                    i18n
-                    value={surveySchema.title}
-                    onChange={(title) =>
-                      setSurveySchema({ ...surveySchema, title })
-                    }
-                  />
-                </FormField>
-                <FormField label="description">
-                  <TextInput
-                    i18n
-                    value={surveySchema.description}
-                    onChange={(description) =>
-                      setSurveySchema({ ...surveySchema, description })
-                    }
-                  />
-                </FormField>
-              </div>
-            </div>
-            <InsertQuestionButton
-              setSurveySchema={setSurveySchema}
-              index={-1}
-              surveySchema={surveySchema}
-            />
-            {surveySchema.questions.map(
-              (question: SurveyQuestion, index: number) => (
-                <Fragment key={index}>
-                  <SurveyQuestionEditor
-                    updateQuestion={(updatedQuestion: SurveyQuestion) => {
-                      const updatedQuestions = [...surveySchema.questions];
-                      updatedQuestions[index] = updatedQuestion;
-                      setSurveySchema({
-                        ...surveySchema,
-                        questions: updatedQuestions,
-                      });
-                    }}
-                    deleteQuestion={() => {
-                      const updatedQuestions = surveySchema.questions.filter(
-                        (_, i) => i !== index
-                      );
-                      setSurveySchema({
-                        ...surveySchema,
-                        questions: updatedQuestions,
-                      });
-                    }}
-                    question={question}
-                    index={index}
-                  />
-                  <InsertQuestionButton
-                    setSurveySchema={setSurveySchema}
-                    index={index}
-                    surveySchema={surveySchema}
-                  />
-                  {index < surveySchema.questions.length - 1 && (
-                    <SwapQuestionsButton
+              <InsertQuestionButton
+                setSurveySchema={setSurveySchema}
+                index={-1}
+                surveySchema={surveySchema}
+              />
+              {surveySchema.questions.map(
+                (question: SurveyQuestion, index: number) => (
+                  <Fragment key={index}>
+                    <SurveyQuestionEditor
+                      locale={locale}
+                      updateQuestion={(updatedQuestion: SurveyQuestion) => {
+                        const updatedQuestions = [...surveySchema.questions];
+                        updatedQuestions[index] = updatedQuestion;
+                        setSurveySchema({
+                          ...surveySchema,
+                          questions: updatedQuestions,
+                        });
+                      }}
+                      deleteQuestion={() => {
+                        const updatedQuestions = surveySchema.questions.filter(
+                          (_, i) => i !== index
+                        );
+                        setSurveySchema({
+                          ...surveySchema,
+                          questions: updatedQuestions,
+                        });
+                      }}
+                      question={question}
+                      index={index}
+                    />
+                    <InsertQuestionButton
                       setSurveySchema={setSurveySchema}
                       index={index}
                       surveySchema={surveySchema}
                     />
-                  )}
-                </Fragment>
-              )
-            )}
-          </div>
-        )}
-      </form>
-    </AppContainer>
+                    {index < surveySchema.questions.length - 1 && (
+                      <SwapQuestionsButton
+                        setSurveySchema={setSurveySchema}
+                        index={index}
+                        surveySchema={surveySchema}
+                      />
+                    )}
+                  </Fragment>
+                )
+              )}
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
   );
 };
 

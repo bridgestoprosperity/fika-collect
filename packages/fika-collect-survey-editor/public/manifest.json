@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Fika Collect Survey Editor",
+  "name": "Editor for Fika Collect Surveys",
   "icons": [],
   "start_url": ".",
   "display": "standalone",

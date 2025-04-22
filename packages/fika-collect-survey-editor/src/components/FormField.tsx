@@ -7,10 +7,10 @@ const Field: FC<{
 }> = ({ children, label, className = "" }) => {
   return (
     <div className={`field row mb-3 ${className}`}>
-      <div className="col-sm-2">
+      <div className="col-md-2">
         <label className="col-form-label">{label}</label>
       </div>
-      <div className="col-sm-10">{children}</div>
+      <div className="col-md-10">{children}</div>
     </div>
   );
 };

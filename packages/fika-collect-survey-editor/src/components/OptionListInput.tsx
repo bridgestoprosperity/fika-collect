@@ -3,8 +3,8 @@ import { FC, Fragment } from "react";
 const OptionListInput: FC<{
   options: string[];
   onChange: (updatedOptions: string[]) => void;
-  className?: string;
-}> = ({ options, onChange, className }) => {
+  locale?: string;
+}> = ({ options, onChange, locale }) => {
   const addOption = () => {
     onChange([...options, ""]);
   };
@@ -25,16 +25,6 @@ const OptionListInput: FC<{
       {options.map((option, index) => (
         <div key={index} className="option-item mb-2">
           <div className="input-group">
-            <button
-              type="button"
-              title="Provide a translation for this option"
-              className="btn btn-outline-secondary"
-              onClick={() => {
-                updateOption(index, option);
-              }}
-            >
-              🌐
-            </button>
             <input
               type="text"
               required
@@ -45,6 +35,17 @@ const OptionListInput: FC<{
               onChange={(e) => updateOption(index, e.target.value)}
               placeholder={`Option ${index + 1}`}
             />
+            {locale !== "en" && (
+              <input
+                type="text"
+                required
+                className={`form-control ${
+                  option.length === 0 ? "is-invalid" : ""
+                }`}
+                onChange={(e) => updateOption(index, e.target.value)}
+                placeholder="Enter translation"
+              />
+            )}
             <button
               type="button"
               style={{ fontSize: "0.5em" }}

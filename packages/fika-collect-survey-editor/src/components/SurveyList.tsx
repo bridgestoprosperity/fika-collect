@@ -51,16 +51,13 @@ const SurveyList: React.FC<{}> = () => {
     <AppContainer>
       <div className="surveyList mt-5">
         <div className="surveyList-actions text-end mb-3">
-          <button
+          <NavLink
             type="button"
+            to={"/surveys/new"}
             className="btn btn-primary btn-sm me-2"
-            disabled
-            onClick={(e) => {
-              e.preventDefault();
-            }}
           >
             + New survey
-          </button>
+          </NavLink>
 
           <button
             type="button"
