@@ -5,73 +5,73 @@ declare const SurveyQuestionSchema: z.ZodObject<{
     id: z.ZodString;
     type: z.ZodEnum<["multiselect", "multiple_choice", "boolean", "short_answer", "long_answer", "photo", "location"]>;
     required: z.ZodDefault<z.ZodBoolean>;
-    question: z.ZodString;
-    hint: z.ZodOptional<z.ZodString>;
-    options: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    question: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
+    hint: z.ZodOptional<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>>;
+    options: z.ZodOptional<z.ZodArray<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>, "many">>;
 }, "strip", z.ZodTypeAny, {
-    id: string;
     type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
+    id: string;
     required: boolean;
-    question: string;
-    hint?: string | undefined;
-    options?: string[] | undefined;
+    question: Record<string, string>;
+    options?: Record<string, string>[] | undefined;
+    hint?: Record<string, string> | undefined;
 }, {
-    id: string;
     type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
-    question: string;
+    id: string;
+    question: Record<string, string>;
+    options?: Record<string, string>[] | undefined;
     required?: boolean | undefined;
-    hint?: string | undefined;
-    options?: string[] | undefined;
+    hint?: Record<string, string> | undefined;
 }>;
 declare const SurveySchema: z.ZodObject<{
     id: z.ZodString;
-    title: z.ZodString;
-    description: z.ZodString;
+    title: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
+    description: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
     questions: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         type: z.ZodEnum<["multiselect", "multiple_choice", "boolean", "short_answer", "long_answer", "photo", "location"]>;
         required: z.ZodDefault<z.ZodBoolean>;
-        question: z.ZodString;
-        hint: z.ZodOptional<z.ZodString>;
-        options: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+        question: z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>;
+        hint: z.ZodOptional<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>>;
+        options: z.ZodOptional<z.ZodArray<z.ZodRecord<z.ZodEnum<[string, ...string[]]>, z.ZodString>, "many">>;
     }, "strip", z.ZodTypeAny, {
-        id: string;
         type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
+        id: string;
         required: boolean;
-        question: string;
-        hint?: string | undefined;
-        options?: string[] | undefined;
+        question: Record<string, string>;
+        options?: Record<string, string>[] | undefined;
+        hint?: Record<string, string> | undefined;
     }, {
-        id: string;
         type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
-        question: string;
+        id: string;
+        question: Record<string, string>;
+        options?: Record<string, string>[] | undefined;
         required?: boolean | undefined;
-        hint?: string | undefined;
-        options?: string[] | undefined;
+        hint?: Record<string, string> | undefined;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     id: string;
-    title: string;
-    description: string;
+    title: Record<string, string>;
+    description: Record<string, string>;
     questions: {
-        id: string;
         type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
+        id: string;
         required: boolean;
-        question: string;
-        hint?: string | undefined;
-        options?: string[] | undefined;
+        question: Record<string, string>;
+        options?: Record<string, string>[] | undefined;
+        hint?: Record<string, string> | undefined;
     }[];
 }, {
     id: string;
-    title: string;
-    description: string;
+    title: Record<string, string>;
+    description: Record<string, string>;
     questions: {
-        id: string;
         type: "boolean" | "multiselect" | "multiple_choice" | "short_answer" | "long_answer" | "photo" | "location";
-        question: string;
+        id: string;
+        question: Record<string, string>;
+        options?: Record<string, string>[] | undefined;
         required?: boolean | undefined;
-        hint?: string | undefined;
-        options?: string[] | undefined;
+        hint?: Record<string, string> | undefined;
     }[];
 }>;
 type Survey = z.infer<typeof SurveySchema>;
