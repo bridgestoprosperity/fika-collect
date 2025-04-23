@@ -1,0 +1,9 @@
+{
+  "short_name": "Fika Collect Survey Editor",
+  "name": "Editor for Fika Collect Surveys",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
