@@ -4,19 +4,19 @@ import z from 'zod';
 // the locales that can be used in the app.
 const LOCALE_LABELS = {
   'en': 'English',
-  'es': 'Spanish',
+  'ar': 'Arabic',
+  'zh': 'Chinese',
   'fr': 'French',
   'de': 'German',
   'it': 'Italian',
+  'ja': 'Japanese',
+  'rw': 'Kinyarwanda',
+  'ko': 'Korean',
+  'ln': 'Lingala',
   'pt': 'Portuguese',
   'ru': 'Russian',
-  'zh': 'Chinese',
-  'ja': 'Japanese',
-  'ko': 'Korean',
-  'ar': 'Arabic',
+  'es': 'Spanish',
   'sw': 'Swahili',
-  'rw': 'Kinyarwanda',
-  'ln': 'Lingala',
 };
 
 const LocaleStringSchema = z.string().min(2).max(2);

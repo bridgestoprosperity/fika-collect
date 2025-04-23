@@ -1,6 +1,7 @@
 import { FC, JSX } from "react";
 import { NavLink } from "react-router";
 import { useLocale } from "../hooks/useLocale";
+import { LOCALE_LABELS } from "fika-collect-survey-schema";
 
 const Header: FC<{
   breadcrumbs?: Array<string | JSX.Element>;
@@ -38,10 +39,11 @@ const Header: FC<{
               value={selectedLocale}
               onChange={(e) => setLocale && setLocale(e.target.value)}
             >
-              <option value="en">English</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
+              {Object.entries(LOCALE_LABELS).map(([locale, label]) => (
+                <option key={locale} value={locale}>
+                  {label}
+                </option>
+              ))}
             </select>
           </div>
         )}

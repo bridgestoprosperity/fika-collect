@@ -1,19 +1,19 @@
 import z from 'zod';
 declare const LOCALE_LABELS: {
     en: string;
-    es: string;
+    ar: string;
+    zh: string;
     fr: string;
     de: string;
     it: string;
+    ja: string;
+    rw: string;
+    ko: string;
+    ln: string;
     pt: string;
     ru: string;
-    zh: string;
-    ja: string;
-    ko: string;
-    ar: string;
+    es: string;
     sw: string;
-    rw: string;
-    ln: string;
 };
 declare const LocaleStringSchema: z.ZodString;
 declare const I18NTextSchema: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;

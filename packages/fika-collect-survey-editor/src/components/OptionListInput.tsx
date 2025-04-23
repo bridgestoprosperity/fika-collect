@@ -1,12 +1,17 @@
 import { FC, Fragment } from "react";
 import type { I18NText } from "fika-collect-survey-schema";
 import { useLocale } from "../hooks/useLocale";
+import { LOCALE_LABELS } from "fika-collect-survey-schema";
 
 const OptionListInput: FC<{
   options: I18NText[];
   onChange: (updatedOptions: I18NText[]) => void;
 }> = ({ options, onChange }) => {
   const { selectedLocale } = useLocale();
+  const typedSelectedLocale = selectedLocale as keyof typeof LOCALE_LABELS;
+  const translationPrompt = `${
+    LOCALE_LABELS[typedSelectedLocale] || "Enter"
+  } translation`;
 
   const addOption = () => {
     onChange([...options, { en: "" }]);
@@ -50,7 +55,7 @@ const OptionListInput: FC<{
                     [selectedLocale]: e.target.value,
                   })
                 }
-                placeholder="Enter translation"
+                placeholder={translationPrompt}
               />
             )}
             <button

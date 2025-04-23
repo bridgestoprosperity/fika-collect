@@ -19,12 +19,12 @@ const I18NTextInput: FC<{
   required = false,
   placeholder = "Enter text",
 }) => {
-  const { selectedLocale }: { selectedLocale: keyof typeof LOCALE_LABELS } =
-    useLocale();
   const style = { fontFamily: monospace ? "monospace" : undefined };
 
+  const { selectedLocale } = useLocale();
+  const typedSelectedLocale = selectedLocale as keyof typeof LOCALE_LABELS;
   const translationPrompt = `${
-    LOCALE_LABELS[selectedLocale] || "Enter"
+    LOCALE_LABELS[typedSelectedLocale] || "Enter"
   } translation`;
 
   return (

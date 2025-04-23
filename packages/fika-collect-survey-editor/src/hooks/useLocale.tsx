@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 type LocaleContextType = {
-  selectedLocale: string | null;
+  selectedLocale: string;
   setLocale: ((locale: string) => void) | null;
 };
 
