@@ -17,13 +17,16 @@ const LOCALE_LABELS = {
     'rw': 'Kinyarwanda',
     'ln': 'Lingala',
 };
-const LocaleString = z.string().min(2).max(2);
-const I18NText = z.preprocess((val) => {
+const LocaleStringSchema = z.string().min(2).max(2);
+const I18NTextSchema = z.preprocess((val) => {
+    if (val === null || val === undefined) {
+        return { en: '' };
+    }
     if (typeof val === 'string') {
         return { en: val };
     }
     return val;
-}, z.record(LocaleString, z.string()));
+}, z.record(LocaleStringSchema, z.string()));
 const FileTypeSchema = z.enum([
     'image/jpeg',
     'image/png',
@@ -43,14 +46,14 @@ const SurveyQuestionSchema = z.object({
     id: z.string().nonempty(),
     type: QuestionTypeSchema,
     required: z.boolean().default(true),
-    question: I18NText,
-    hint: I18NText.optional(),
-    options: z.array(I18NText).optional(),
+    question: I18NTextSchema,
+    hint: I18NTextSchema,
+    options: z.array(I18NTextSchema).optional(),
 });
 const SurveySchema = z.object({
     id: z.string().nonempty(),
-    title: I18NText,
-    description: I18NText,
+    title: I18NTextSchema,
+    description: I18NTextSchema,
     questions: z.array(SurveyQuestionSchema),
 });
-export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, LOCALE_LABELS };
+export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, LOCALE_LABELS, I18NTextSchema, LocaleStringSchema };

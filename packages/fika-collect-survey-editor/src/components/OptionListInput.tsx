@@ -1,15 +1,18 @@
 import { FC, Fragment } from "react";
+import type { I18NText } from "fika-collect-survey-schema";
+import { useLocale } from "../hooks/useLocale";
 
 const OptionListInput: FC<{
-  options: string[];
-  onChange: (updatedOptions: string[]) => void;
-  locale?: string;
-}> = ({ options, onChange, locale }) => {
+  options: I18NText[];
+  onChange: (updatedOptions: I18NText[]) => void;
+}> = ({ options, onChange }) => {
+  const { selectedLocale } = useLocale();
+
   const addOption = () => {
-    onChange([...options, ""]);
+    onChange([...options, { en: "" }]);
   };
 
-  const updateOption = (index: number, value: string) => {
+  const updateOption = (index: number, value: I18NText) => {
     const updatedOptions = [...options];
     updatedOptions[index] = value;
     onChange(updatedOptions);
@@ -28,21 +31,25 @@ const OptionListInput: FC<{
             <input
               type="text"
               required
-              className={`form-control ${
-                option.length === 0 ? "is-invalid" : ""
-              }`}
-              value={option}
-              onChange={(e) => updateOption(index, e.target.value)}
+              value={option.en || ""}
+              className={`form-control`}
+              onChange={(e) =>
+                updateOption(index, { ...option, en: e.target.value })
+              }
               placeholder={`Option ${index + 1}`}
             />
-            {locale !== "en" && (
+            {selectedLocale !== "en" && (
               <input
                 type="text"
                 required
-                className={`form-control ${
-                  option.length === 0 ? "is-invalid" : ""
-                }`}
-                onChange={(e) => updateOption(index, e.target.value)}
+                value={option[selectedLocale] || ""}
+                className={`form-control`}
+                onChange={(e) =>
+                  updateOption(index, {
+                    ...option,
+                    [selectedLocale]: e.target.value,
+                  })
+                }
                 placeholder="Enter translation"
               />
             )}

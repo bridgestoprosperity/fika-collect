@@ -8,7 +8,6 @@ const TextInput: FC<{
   className?: string;
   required?: boolean;
   onChange: (value: string) => void;
-  locale?: string;
 }> = ({
   value,
   onChange,
@@ -16,54 +15,30 @@ const TextInput: FC<{
   monospace = false,
   required = false,
   placeholder = "Enter text",
-  locale = "en",
 }) => {
   const style = { fontFamily: monospace ? "monospace" : undefined };
-  const invalid = required && value.length === 0;
+  const invalid = false;
   return (
     <div className="input-group">
       {multiline ? (
-        <Fragment>
-          <textarea
-            style={style}
-            placeholder={placeholder}
-            className={`form-control ${invalid ? "is-invalid" : ""}`}
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            rows={2}
-          />
-          {locale !== "en" && (
-            <textarea
-              style={style}
-              placeholder={"Enter translation"}
-              className={`form-control ${invalid ? "is-invalid" : ""}`}
-              onChange={(e) => onChange(e.target.value)}
-              rows={2}
-            />
-          )}
-        </Fragment>
+        <textarea
+          style={style}
+          placeholder={placeholder}
+          className={`form-control ${invalid ? "is-invalid" : ""}`}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          rows={2}
+        />
       ) : (
-        <Fragment>
-          <input
-            style={style}
-            type="text"
-            placeholder={placeholder}
-            className={`form-control ${invalid ? "is-invalid" : ""}`}
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            required={required}
-          />
-          {locale !== "en" && (
-            <input
-              style={style}
-              type="text"
-              placeholder={"Enter translation"}
-              className={`form-control ${invalid ? "is-invalid" : ""}`}
-              onChange={(e) => onChange(e.target.value)}
-              required={required}
-            />
-          )}
-        </Fragment>
+        <input
+          style={style}
+          type="text"
+          placeholder={placeholder}
+          className={`form-control ${invalid ? "is-invalid" : ""}`}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          required={required}
+        />
       )}
     </div>
   );

@@ -6,7 +6,7 @@
     "upload-survey": "bin/upload-survey.js"
   },
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

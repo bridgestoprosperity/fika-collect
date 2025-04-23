@@ -1,11 +1,12 @@
 import { FC, JSX } from "react";
 import { NavLink } from "react-router";
+import { useLocale } from "../hooks/useLocale";
 
 const Header: FC<{
-  locale?: string | null;
-  setLocale?: (locale: string) => void;
   breadcrumbs?: Array<string | JSX.Element>;
-}> = ({ locale = null, setLocale, breadcrumbs = [] }) => {
+}> = ({ breadcrumbs = [] }) => {
+  const { selectedLocale, setLocale } = useLocale();
+
   return (
     <nav className="header navbar navbar-expand-lg sticky-top">
       <div className="container-fluid">
@@ -29,12 +30,12 @@ const Header: FC<{
           </ol>
         </nav>
 
-        {locale && (
+        {selectedLocale && (
           <div>
             <select
               title="Locale"
               className="form-select"
-              value={locale}
+              value={selectedLocale}
               onChange={(e) => setLocale && setLocale(e.target.value)}
             >
               <option value="en">English</option>
