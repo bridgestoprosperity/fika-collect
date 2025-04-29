@@ -1,34 +1,5 @@
+import { SurveySchema, FileTypeSchema } from 'fika-collect-survey-schema';
 import z from 'zod';
-
-const fileTypeSchema = z.enum([
-  'image/jpeg',
-  'image/png',
-  'image/heic',
-  'image/webp',
-]);
-
-const surveySchema = z.object({
-  id: z.string().nonempty(),
-  title: z.string().nonempty(),
-  description: z.string().nonempty(),
-  questions: z.array(
-    z.object({
-      id: z.string().nonempty(),
-      type: z.enum([
-        'multiselect',
-        'multiple_choice',
-        'boolean',
-        'short_answer',
-        'long_answer',
-        'photo',
-        'location',
-      ]),
-      question: z.string(),
-      hint: z.string().optional(),
-      options: z.array(z.string()).optional(),
-    }),
-  ),
-});
 
 const surveySubmissionRequestSchema = z
   .object({
@@ -42,14 +13,14 @@ const surveySubmissionRequestSchema = z
           value: z.union([z.string(), z.number(), z.boolean()]),
         }),
       ),
-      schema: surveySchema,
+      schema: SurveySchema,
     }),
   })
   .strict();
 
 const uploadPresignerRequestSchema = z
   .object({
-    file_type: fileTypeSchema,
+    file_type: FileTypeSchema,
     survey_id: z.string().nonempty('survey_id is required'),
     response_id: z.string().nonempty('response_id is required'),
     image_id: z.string().nonempty('image_id is required'),
@@ -59,6 +30,6 @@ const uploadPresignerRequestSchema = z
 export {
   uploadPresignerRequestSchema,
   surveySubmissionRequestSchema,
-  fileTypeSchema,
-  surveySchema,
+  FileTypeSchema,
+  SurveySchema,
 };

@@ -4,7 +4,8 @@
   "main": "handler.js",
   "type": "module",
   "scripts": {
-    "test": "tape test/test-*.js | tap-spec",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "build:docs": "openapi-to-md openapi.yaml > API.md",
     "build": "npm run test && sam build && cd .aws-sam/build/fikaCollectUploadLambda && zip -r ../fikaCollectUploadLambda.zip ./* && cd .. && mv fikaCollectUploadLambda.zip ../../"
   },
@@ -20,7 +21,6 @@
   "devDependencies": {
     "openapi-to-md": "^1.0.25",
     "sinon": "^19.0.2",
-    "tap-spec": "^5.0.0",
-    "tape": "^5.9.0"
+    "vitest": "^3.1.2"
   }
 }

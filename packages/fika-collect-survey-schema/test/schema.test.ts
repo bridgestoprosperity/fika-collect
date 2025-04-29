@@ -1,4 +1,4 @@
-import test from 'tape';
+import { describe, it, expect } from 'vitest';
 import { SurveySchema } from '../src/schema.js';
 import { readFileSync } from 'fs';
 import { join } from 'path';
@@ -8,36 +8,33 @@ const detailedReport = JSON.parse(
   readFileSync(join(__dirname, 'fixtures', 'detailed_report.json'), 'utf8')
 );
 
-
-test('schema', function (t) {
-  t.test('basic schema', function (t) {
+describe('SurveySchema', () => {
+  it('validates basic schema', () => {
     const result = SurveySchema.safeParse({
       id: 'test_schema',
-      title: { 'en': "foo", },
-      description: { "en": "bar", },
+      title: { 'en': "foo" },
+      description: { "en": "bar" },
       questions: []
     });
-    t.ok(result.success, 'schema is valid');
-    t.end();
+    expect(result.success).toBe(true);
   });
 
-  t.test('schema with invalid local', function (t) {
+  it('invalidates schema with invalid locale', () => {
     const result = SurveySchema.safeParse({
       id: 'test_schema',
-      title: { 'qwerty': "foo", },
-      description: { "qwerty": "bar", },
+      title: { 'qwerty': "foo" },
+      description: { "qwerty": "bar" },
       questions: []
     });
-    t.notOk(result.success, 'schema is invalid');
-    t.equal(result.error?.issues.length, 2, 'schema has 2 issues');
-    t.end();
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.length).toBe(2);
   });
 
-  t.test('schema with questions', function (t) {
+  it('validates schema with questions', () => {
     const result = SurveySchema.safeParse({
       id: 'test_schema',
-      title: { 'en': "foo", },
-      description: { "fr": "bar", },
+      title: { 'en': "foo" },
+      description: { "fr": "bar" },
       questions: [{
         "type": "boolean",
         "id": "question_1",
@@ -57,30 +54,27 @@ test('schema', function (t) {
           "fr": "Ceci n'est pas un schéma.",
         },
         "options": [
-          { "en": "Option 1", "fr": "Option 1", },
-          { "en": "Option 2", "fr": "Option 2", },
+          { "en": "Option 1", "fr": "Option 1" },
+          { "en": "Option 2", "fr": "Option 2" },
         ]
       }]
     });
-    t.ok(result.success, 'schema is valid');
-    t.end();
+    expect(result.success).toBe(true);
   });
 
-  t.test('schema with old-style unwrapped strings', function (t) {
+  it('validates schema with old-style unwrapped strings', () => {
     const result = SurveySchema.safeParse({
       id: 'test_schema',
       title: 'foo',
       description: 'bar',
       questions: []
     });
-    t.ok(result.success, 'schema is valid');
-    t.deepEqual(result.data, {
+    expect(result.success).toBe(true);
+    expect(result.data).toEqual({
       id: 'test_schema',
       title: { 'en': 'foo' },
       description: { 'en': 'bar' },
       questions: []
-    }, 'schema is valid and unwrapped strings are converted to wrapped strings');
-    t.end();
+    });
   });
-
 });

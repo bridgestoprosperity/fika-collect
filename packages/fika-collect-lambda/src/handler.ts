@@ -1,17 +1,17 @@
-import generatePresignedUrl from './src/presign-url.js';
-import AWS from 'aws-sdk';
+import generatePresignedUrl from "./presignUrl";
+import AWS from "aws-sdk";
 import {
   uploadPresignerRequestSchema,
   surveySubmissionRequestSchema,
-} from './src/request-schema.js';
-import {fromError} from 'zod-validation-error';
-import {responseSchema} from './src/response-schema.js';
-import {uploadResponseToS3} from './src/upload-response.js';
-import HttpError from './src/http-error.js';
+} from "./requestSchema";
+import { fromError } from "zod-validation-error";
+import { responseSchema } from "./responseSchema";
+import { uploadResponseToS3 } from "./uploadResponse";
+import HttpError from "./httpError";
 
-import {Region} from './src/config.js';
+import { Region } from "./config";
 
-const s3 = new AWS.S3({region: Region});
+const s3 = new AWS.S3({ region: Region });
 
 /**
  * Handle submitted survey JSON
@@ -24,7 +24,7 @@ const s3 = new AWS.S3({region: Region});
  * @returns {number} response.statusCode - The HTTP status code.
  * @returns {string} response.body - The JSON stringified body of the response.
  */
-async function submitSurvey(event) {
+async function submitSurvey(event: { body: string }): Promise<{ statusCode: number; body: string }> {
   try {
     const requestBody = JSON.parse(event.body);
     const requestParams = surveySubmissionRequestSchema.safeParse(requestBody);
@@ -32,20 +32,19 @@ async function submitSurvey(event) {
     if (!requestParams.success) {
       throw new HttpError(
         400,
-        JSON.stringify({error: fromError(requestParams.error).toString()}),
+        JSON.stringify({ error: fromError(requestParams.error).toString() })
       );
     }
 
-    await uploadResponseToS3(requestParams.data.response, {s3});
+    await uploadResponseToS3(requestParams.data.response, { s3 });
 
     return responseSchema.parse({
       statusCode: 200,
-      body: JSON.stringify({success: true}),
+      body: JSON.stringify({ success: true }),
     });
   } catch (error) {
     console.error(error);
     if (error instanceof HttpError) {
-      console.error(error);
       return {
         statusCode: error.statusCode,
         body: error.message,
@@ -53,7 +52,7 @@ async function submitSurvey(event) {
     }
     return {
       statusCode: 500,
-      body: JSON.stringify({error: 'Internal server error'}),
+      body: JSON.stringify({ error: "Internal server error" }),
     };
   }
 }
@@ -75,7 +74,7 @@ async function submitSurvey(event) {
  *
  * @throws {Error} - If an error occurs during processing.
  */
-async function presignUpload(event) {
+async function presignUpload(event: { body: string }): Promise<{ statusCode: number; body: string }> {
   try {
     const requestBody = JSON.parse(event.body);
     const requestParams = uploadPresignerRequestSchema.safeParse(requestBody);
@@ -89,13 +88,13 @@ async function presignUpload(event) {
       });
     }
 
-    const uploadURL = await generatePresignedUrl(requestParams.data, {s3});
+    const uploadURL: string = await generatePresignedUrl(requestParams.data, { s3 });
 
     return responseSchema.parse({
       statusCode: 200,
-      body: JSON.stringify({uploadURL}),
+      body: JSON.stringify({ uploadURL }),
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error);
     if (error instanceof HttpError) {
       return {
@@ -105,9 +104,9 @@ async function presignUpload(event) {
     }
     return {
       statusCode: 500,
-      body: JSON.stringify({error: 'Internal server error'}),
+      body: JSON.stringify({ error: "Internal server error" }),
     };
   }
 }
 
-export {presignUpload, submitSurvey, s3};
+export { presignUpload, submitSurvey, s3 };

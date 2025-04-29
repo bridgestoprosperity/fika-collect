@@ -1,8 +1,7 @@
 export default class HttpError extends Error {
-  constructor(statusCode, message) {
+  constructor(public statusCode: number, message: string) {
     super(message);
     this.name = this.constructor.name;
-    this.statusCode = statusCode;
     Error.captureStackTrace(this, this.constructor);
   }
 }

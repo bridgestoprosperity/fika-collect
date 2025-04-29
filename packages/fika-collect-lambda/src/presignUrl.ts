@@ -1,7 +1,21 @@
-import {Bucket, Prefix} from './config.js';
-import HttpError from './http-error.js';
+import { Bucket, Prefix } from './config.js';
+import HttpError from './httpError.js';
+import { S3 } from 'aws-sdk';
 
-function extensionFromFileType(file_type) {
+type FileType = 'image/jpeg' | 'image/png' | 'image/heic' | 'image/webp';
+
+interface GeneratePresignedUrlParams {
+  file_type: FileType;
+  survey_id: string;
+  response_id: string;
+  image_id: string;
+}
+
+interface S3Client {
+  s3: S3;
+}
+
+function extensionFromFileType(file_type: FileType): string {
   switch (file_type) {
     case 'image/jpeg':
       return 'jpg';
@@ -17,15 +31,15 @@ function extensionFromFileType(file_type) {
 }
 
 export default async function generatePresignedUrl(
-  {file_type, survey_id, response_id, image_id},
-  {s3},
-) {
+  { file_type, survey_id, response_id, image_id }: GeneratePresignedUrlParams,
+  { s3 }: S3Client,
+): Promise<string> {
   const ext = extensionFromFileType(file_type);
   const responseKey = `${Prefix}/${survey_id}/${response_id}/response.json`;
 
   try {
-    await s3.headObject({Bucket, Key: responseKey}).promise();
-  } catch (error) {
+    await s3.headObject({ Bucket, Key: responseKey }).promise();
+  } catch (error: any) {
     if (error.code === 'NotFound') {
       throw new HttpError(
         400,

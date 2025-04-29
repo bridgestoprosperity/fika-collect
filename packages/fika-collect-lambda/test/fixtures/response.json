@@ -2,47 +2,52 @@
   "id": "cce1dc98-ec53-4978-8545-e8c3d9d569d1",
   "survey_id": "quick_report",
   "responses": [
-    {"question_id": "severity", "value": "Level 3 - Significant"},
-    {"question_id": "at_obstacle", "value": false},
-    {"question_id": "location", "value": "REMOVE ME"},
-    {"question_id": "description", "value": "REMOVE ME"}
+    { "question_id": "severity", "value": "Level 3 - Significant" },
+    { "question_id": "at_obstacle", "value": false },
+    { "question_id": "location", "value": "REMOVE ME" },
+    { "question_id": "description", "value": "REMOVE ME" }
   ],
   "submitted_at": "2025-02-27T19:41:59.443Z",
   "schema": {
     "id": "quick_report",
-    "title": "Quick Report Survey",
-    "description": "Make a quick report of an obstacle",
+    "title": { "en": "Quick Report Survey" },
+    "description": { "en": "Make a quick report of an obstacle" },
     "questions": [
       {
         "id": "severity",
         "type": "multiple_choice",
-        "question": "What is the severity of the obstacle?",
+        "question": { "en": "What is the severity of the obstacle?" },
+        "hint": { "en": "" },
+        "required": true,
         "options": [
-          "Level 1 - Minor",
-          "Level 2 - Moderate",
-          "Level 3 - Significant",
-          "Level 4 - Major"
+          { "en": "Level 1 - Minor" },
+          { "en": "Level 2 - Moderate" },
+          { "en": "Level 3 - Significant" },
+          { "en": "Level 4 - Major" }
         ]
       },
       {
         "id": "at_obstacle",
         "type": "boolean",
-        "question": "Are you currently at the obstacle?",
-        "hint": "Select Yes if you are at the obstacle location",
+        "question": { "en": "Are you currently at the obstacle?" },
+        "hint": { "en": "Select Yes if you are at the obstacle location" },
+        "required": true,
         "options": []
       },
       {
         "id": "location",
         "type": "short_answer",
-        "question": "What is the location of the obstacle?",
-        "hint": "Enter location description",
+        "question": { "en": "What is the location of the obstacle?" },
+        "hint": { "en": "Enter location description" },
+        "required": true,
         "options": []
       },
       {
         "id": "description",
         "type": "long_answer",
-        "question": "Please describe the obstacle in detail:",
-        "hint": "Provide any additional details about the obstacle",
+        "question": { "en": "Please describe the obstacle in detail:" },
+        "hint": { "en": "Provide any additional details about the obstacle" },
+        "required": true,
         "options": []
       }
     ]
