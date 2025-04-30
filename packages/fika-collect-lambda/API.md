@@ -4,27 +4,27 @@
 
 ## Path Table
 
-| Method | Path                                   | Description                      |
-| ------ | -------------------------------------- | -------------------------------- |
-| POST   | [/submit-survey](#postsubmit-survey)   | Submit a survey response         |
-| POST   | [/presign-upload](#postpresign-upload) | Generate a pre-signed upload URL |
+| Method | Path | Description |
+| --- | --- | --- |
+| POST | [/submit-survey](#postsubmit-survey) | Submit a survey response |
+| POST | [/presign-upload](#postpresign-upload) | Generate a pre-signed upload URL |
 
 ## Reference Table
 
 | Name | Path | Description |
-| ---- | ---- | ----------- |
+| --- | --- | --- |
 
 ## Path Details
 
----
+***
 
 ### [POST]/submit-survey
 
 - Summary  
-  Submit a survey response
+Submit a survey response
 
 - Description  
-  Puts survey response object on S3 with key `responses/{survey_id}/{response_id}/response.json`.
+Puts survey response object on S3 with key `responses/{survey_id}/{response_id}/response.json`.
 
 #### RequestBody
 
@@ -73,15 +73,15 @@
 }
 ```
 
----
+***
 
 ### [POST]/presign-upload
 
 - Summary  
-  Generate a pre-signed upload URL
+Generate a pre-signed upload URL
 
 - Description  
-  Returns pre-signed URL for file upload to S3 under key `{survey_id}/{response_id}/{image_id}.{file_type}`. Survey response _must_ be succesfully uploaded to S3 before calling this endpoint.
+Returns pre-signed URL for file upload to S3 under key `{survey_id}/{response_id}/{image_id}.{file_type}`. Survey response *must* be succesfully uploaded to S3 before calling this endpoint.
 
 #### RequestBody
 
