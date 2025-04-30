@@ -1,6 +1,7 @@
 import { Bucket, Prefix } from './config.js';
 import HttpError from './httpError.js';
-import { S3 } from 'aws-sdk';
+import { S3Client, HeadObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 type FileType = 'image/jpeg' | 'image/png' | 'image/heic' | 'image/webp';
 
@@ -9,10 +10,6 @@ interface GeneratePresignedUrlParams {
   survey_id: string;
   response_id: string;
   image_id: string;
-}
-
-interface S3Client {
-  s3: S3;
 }
 
 function extensionFromFileType(file_type: FileType): string {
@@ -30,17 +27,17 @@ function extensionFromFileType(file_type: FileType): string {
   }
 }
 
-export default async function generatePresignedUrl(
+export default async function generatePresignedUrl(s3: S3Client,
   { file_type, survey_id, response_id, image_id }: GeneratePresignedUrlParams,
-  { s3 }: S3Client,
 ): Promise<string> {
   const ext = extensionFromFileType(file_type);
   const responseKey = `${Prefix}/${survey_id}/${response_id}/response.json`;
 
   try {
-    await s3.headObject({ Bucket, Key: responseKey }).promise();
+    const headObjectCommand = new HeadObjectCommand({ Bucket, Key: responseKey });
+    await s3.send(headObjectCommand);
   } catch (error: any) {
-    if (error.code === 'NotFound') {
+    if (error.name === 'NotFound') {
       throw new HttpError(
         400,
         `Response at ${responseKey} must be submitted before uploading images`,
@@ -55,9 +52,10 @@ export default async function generatePresignedUrl(
     Bucket,
     Key,
     ContentType: file_type,
-    ACL: 'private',
-    Expires: 5 * 60, // seconds
+    ACL: 'private' as const,
   };
 
-  return await s3.getSignedUrlPromise('putObject', params);
+  const command = new PutObjectCommand(params);
+  const signedUrl = await getSignedUrl(s3, command, { expiresIn: 5 * 60 }); // 5 minutes in seconds
+  return signedUrl;
 }

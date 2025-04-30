@@ -1,17 +1,18 @@
-import generatePresignedUrl from "./presignUrl";
-import AWS from "aws-sdk";
+import generatePresignedUrl from "./presignUrl.js";
+import { S3Client } from "@aws-sdk/client-s3";
 import {
   uploadPresignerRequestSchema,
   surveySubmissionRequestSchema,
-} from "./requestSchema";
+} from "./requestSchema.js";
 import { fromError } from "zod-validation-error";
-import { responseSchema } from "./responseSchema";
-import { uploadResponseToS3 } from "./uploadResponse";
-import HttpError from "./httpError";
+import { responseSchema } from "./responseSchema.js";
+import { uploadResponseToS3 } from "./uploadResponse.js";
+import HttpError from "./httpError.js";
 
-import { Region } from "./config";
+import { Region } from "./config.js";
+import { request } from "node:http";
 
-const s3 = new AWS.S3({ region: Region });
+const s3 = new S3Client({ region: Region });
 
 /**
  * Handle submitted survey JSON
@@ -43,7 +44,9 @@ async function submitSurvey(event: { body: string }): Promise<{ statusCode: numb
       body: JSON.stringify({ success: true }),
     });
   } catch (error) {
-    console.error(error);
+    // Don't log errors in test mode
+    if (process.env.NODE_ENV !== 'test') console.error(error);
+
     if (error instanceof HttpError) {
       return {
         statusCode: error.statusCode,
@@ -88,14 +91,16 @@ async function presignUpload(event: { body: string }): Promise<{ statusCode: num
       });
     }
 
-    const uploadURL: string = await generatePresignedUrl(requestParams.data, { s3 });
+    const uploadURL: string = await generatePresignedUrl(s3, requestParams.data);
 
     return responseSchema.parse({
       statusCode: 200,
       body: JSON.stringify({ uploadURL }),
     });
   } catch (error: unknown) {
-    console.error(error);
+    // Don't log errors in test mode
+    if (process.env.NODE_ENV !== 'test') console.error(error);
+
     if (error instanceof HttpError) {
       return {
         statusCode: error.statusCode,

@@ -15,7 +15,7 @@ Resources:
       Description: 'Fika Collect upload Lambda'
       MemorySize: 128
       Timeout: 3
-      Handler: handler.presignUpload
+      Handler: dist.handler.presignUpload
       Runtime: nodejs22.x
       Architectures:
         - x86_64
@@ -61,7 +61,7 @@ Resources:
       Description: 'Fika Collect survey submission lambda'
       MemorySize: 128
       Timeout: 3
-      Handler: handler.submitSurvey
+      Handler: dist.handler.submitSurvey
       Runtime: nodejs22.x
       Architectures:
         - x86_64
