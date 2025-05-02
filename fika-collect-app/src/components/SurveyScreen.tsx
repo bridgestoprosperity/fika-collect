@@ -121,8 +121,12 @@ function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
         selectedValue={response.value}
         onValueChange={value => onChange(value)}>
         {question.options &&
-          question.options.map(option => (
-            <Picker.Item key={option} label={localize(option)} value={option} />
+          question.options.map((option, index) => (
+            <Picker.Item
+              key={`option-${index}`}
+              label={localize(option)}
+              value={option}
+            />
           ))}
       </Picker>
     </View>
@@ -152,7 +156,7 @@ function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
       </Text>
 
       {options.map((option, index) => (
-        <View key={option} style={styles.booleanRow}>
+        <View key={`option-${index}`} style={styles.booleanRow}>
           <Pressable
             style={styles.multiselectRow}
             onPress={() => {

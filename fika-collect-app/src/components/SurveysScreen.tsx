@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
 import {View, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
-import {LocalizedText} from './LocalizedText';
+import {useLocalization} from '../hooks/useLocalization';
 import {useNavigation} from '@react-navigation/native';
 import {type StackNavigation} from '../App';
 import SurveySchemaManagerContext from '../data/SurveySchemaManagerContext';
@@ -12,6 +12,7 @@ import Announcements from './Announcements';
 
 function SurveyButton({survey}: {survey: Survey}) {
   const navigation = useNavigation<StackNavigation>();
+  const localize = useLocalization();
 
   const beginSurvey = () => {
     // Construct a single response instance. We will mutate this object as the user answers questions.
@@ -27,11 +28,10 @@ function SurveyButton({survey}: {survey: Survey}) {
         pressed ? styles.surveyButtonPressed : {},
       ]}>
       <View style={{flex: 1}}>
-        <LocalizedText style={styles.surveyTitle} value={survey.title} />
-        <LocalizedText
-          style={styles.surveyDescription}
-          value={survey.description}
-        />
+        <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
+        <Text style={styles.surveyDescription}>
+          {localize(survey.description)}
+        </Text>
       </View>
       <View style={styles.chevronContainer}>
         <Text style={styles.chevron}>〉</Text>
