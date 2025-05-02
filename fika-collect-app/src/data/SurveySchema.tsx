@@ -1,3 +1,4 @@
+/*
 export type SurveySchemaQuestionType =
   | 'multiple_choice'
   | 'multiselect'
@@ -61,3 +62,5 @@ export class SurveySchema {
     };
   }
 }
+
+*/

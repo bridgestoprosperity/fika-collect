@@ -1,12 +1,17 @@
-import {SurveySchema, SurveyQuestionSchema} from './SurveySchema';
+//import {SurveySchema, SurveyQuestionSchema} from './SurveySchema';
+import type {
+  Survey,
+  SurveyQuestion,
+  QuestionType,
+} from 'fika-collect-survey-schema';
 import 'react-native-get-random-values';
 import {nanoid} from 'nanoid';
 
-import {type SurveySchemaQuestionType} from './SurveySchema';
+//import {type SurveySchemaQuestionType} from './SurveySchema';
 
 export class SurveyQuestionResponse {
-  question: SurveyQuestionSchema;
-  type: SurveySchemaQuestionType;
+  question: SurveyQuestion;
+  type: QuestionType;
   _value: string = '';
 
   // This is used for photo questions, where we want to replace the value with the photo path
@@ -15,13 +20,13 @@ export class SurveyQuestionResponse {
   replaceValueOnSerialization: boolean = false;
   _valueForSerialization: string = '';
 
-  constructor(question: SurveyQuestionSchema) {
+  constructor(question: SurveyQuestion) {
     this.question = question;
     this.type = this.question.type;
 
     switch (this.type) {
       case 'multiple_choice':
-        this._value = this.question.options[0];
+        this._value = this.question.options?.[0]?.en ?? '';
         break;
       case 'boolean':
         this._value = 'no';
@@ -88,12 +93,12 @@ function createRandomId() {
 
 export class SurveyResponse {
   id: string;
-  schema: SurveySchema;
+  schema: Survey;
   responses: SurveyQuestionResponse[] = [];
   uploaded: boolean = false;
   submittedAt: Date | null;
 
-  constructor(schema: SurveySchema) {
+  constructor(schema: Survey) {
     this.schema = schema;
     this.id = createRandomId();
     this.submittedAt = null;
@@ -110,7 +115,7 @@ export class SurveyResponse {
       : null;
     const responses = json.responses.map((responseJSON: any) => {
       const question = response.schema.questions.find(
-        (q: SurveyQuestionSchema) => q.id === responseJSON.question_id,
+        (q: SurveyQuestion) => q.id === responseJSON.question_id,
       );
       if (!question) {
         throw new Error(
@@ -131,7 +136,7 @@ export class SurveyResponse {
       survey_id: this.schema.id,
       responses: this.responses.map(response => response.serialize()),
       submitted_at: this.submittedAt ? this.submittedAt.toISOString() : null,
-      schema: this.schema.serialize(),
+      schema: JSON.stringify(this.schema), //.serialize(),
     };
   }
 }

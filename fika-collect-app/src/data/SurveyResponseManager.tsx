@@ -1,6 +1,7 @@
 import {Platform} from 'react-native';
 import {Buffer} from 'buffer';
 import {SurveyResponse} from './SurveyResponse';
+import type {Survey} from 'fika-collect-survey-schema';
 import * as RNFS from '@dr.pogodin/react-native-fs';
 import {nanoid} from 'nanoid';
 import {EventEmitter} from 'event-emitter3';
@@ -63,7 +64,7 @@ export class SurveyResponseManager extends EventEmitter {
     // Copy the images to the new directory, renaming them to a unique name and
     // updating the response object with the new file paths
     for (const resp of response.responses) {
-      const questionDef = response.schema.questions.find(
+      const questionDef = (response.schema as Survey).questions.find(
         q => q.id === resp.question.id,
       );
       if (questionDef && questionDef.type === 'photo') {

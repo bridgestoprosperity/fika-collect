@@ -1,4 +1,6 @@
-import {SurveySchema} from './SurveySchema';
+//import {SurveySchema} from './SurveySchema';
+import {SurveySchema} from 'fika-collect-survey-schema';
+import type {Survey} from 'fika-collect-survey-schema';
 import {MMKVLoader} from 'react-native-mmkv-storage';
 import devSampleSurvey from '../surveys/dev_sample_survey.json';
 
@@ -10,7 +12,7 @@ const S3_BASE_URL = 'https://fika-collect.s3.us-west-1.amazonaws.com';
 const MANIFEST_URL = `${S3_BASE_URL}/surveys/manifest.json`;
 
 export class SurveySchemaManager {
-  schemas: Map<string, SurveySchema> = new Map();
+  schemas: Map<string, Survey> = new Map();
 
   constructor() {
     try {
@@ -18,7 +20,7 @@ export class SurveySchemaManager {
       if (storedSchemas) {
         for (const [id, schema] of storedSchemas) {
           console.log({id, schema});
-          this.schemas.set(id, new SurveySchema(schema));
+          this.schemas.set(id, SurveySchema.parse(schema));
         }
       }
     } catch (error) {
@@ -47,14 +49,14 @@ export class SurveySchemaManager {
         const response = await fetch(url);
         const surveyJSON = await response.json();
         console.log(surveyJSON);
-        this.schemas.set(surveyJSON.id, new SurveySchema(surveyJSON));
+        this.schemas.set(surveyJSON.id, SurveySchema.parse(surveyJSON));
       } catch (e) {
         console.error(e);
       }
     }
 
     if (__DEV__) {
-      this.schemas.set('dev', new SurveySchema(devSampleSurvey));
+      this.schemas.set('dev', SurveySchema.parse(devSampleSurvey));
     }
 
     // Persist fetched schemas to local storage
@@ -64,7 +66,7 @@ export class SurveySchemaManager {
     );
   }
 
-  getSchema(id: string): SurveySchema {
+  getSchema(id: string): Survey {
     const survey = this.schemas.get(id);
     if (!survey) {
       throw new Error(`Survey with id ${id} not found`);

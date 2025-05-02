@@ -1,15 +1,16 @@
 import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
 import {View, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
+import {LocalizedText} from './LocalizedText';
 import {useNavigation} from '@react-navigation/native';
 import {type StackNavigation} from '../App';
 import SurveySchemaManagerContext from '../data/SurveySchemaManagerContext';
-import {SurveySchema} from '../data/SurveySchema';
+import type {Survey} from 'fika-collect-survey-schema';
 import {SurveySchemaManager} from '../data/SurveySchemaManager';
 import {SurveyResponse} from '../data/SurveyResponse';
 import Announcements from './Announcements';
 
-function SurveyButton({survey}: {survey: SurveySchema}) {
+function SurveyButton({survey}: {survey: Survey}) {
   const navigation = useNavigation<StackNavigation>();
 
   const beginSurvey = () => {
@@ -26,8 +27,11 @@ function SurveyButton({survey}: {survey: SurveySchema}) {
         pressed ? styles.surveyButtonPressed : {},
       ]}>
       <View style={{flex: 1}}>
-        <Text style={styles.surveyTitle}>{survey.title}</Text>
-        <Text style={styles.surveyDescription}>{survey.description}</Text>
+        <LocalizedText style={styles.surveyTitle} value={survey.title} />
+        <LocalizedText
+          style={styles.surveyDescription}
+          value={survey.description}
+        />
       </View>
       <View style={styles.chevronContainer}>
         <Text style={styles.chevron}>〉</Text>
@@ -40,7 +44,7 @@ export default function SurveysScreen() {
   const surveyManager = useContext<SurveySchemaManager>(
     SurveySchemaManagerContext,
   );
-  const [surveys, setSurveys] = useState<SurveySchema[]>([]);
+  const [surveys, setSurveys] = useState<Survey[]>([]);
 
   useEffect(() => {
     surveyManager.fetchSurveys().then(() => {

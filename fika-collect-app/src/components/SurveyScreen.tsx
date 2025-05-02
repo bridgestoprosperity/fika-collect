@@ -27,6 +27,7 @@ import BlastedImage from 'react-native-blasted-image';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNetInfo} from '@react-native-community/netinfo';
 import Geolocation from '@react-native-community/geolocation';
+import {useLocalization} from '../hooks/useLocalization';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -39,15 +40,18 @@ interface SurveyQuestionProps {
 
 function ShortAnswerQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
+  const localize = useLocalization();
 
   return (
     <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
       <TextInput
         style={styles.textInputBox}
         value={response.value}
         onChangeText={text => onChange(text)}
-        placeholder={question.hint}
+        placeholder={localize(question.hint)}
         placeholderTextColor={'#666'}
       />
     </View>
@@ -56,15 +60,18 @@ function ShortAnswerQuestion({response, onChange}: SurveyQuestionProps) {
 
 function LongAnswerQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
+  const localize = useLocalization();
   return (
     <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
       <TextInput
         style={styles.multiLineTextInputBox}
         multiline
         value={response.value}
         onChangeText={text => onChange(text)}
-        placeholder={question.hint}
+        placeholder={localize(question.hint)}
         placeholderTextColor={'#666'}
       />
     </View>
@@ -74,10 +81,13 @@ function LongAnswerQuestion({response, onChange}: SurveyQuestionProps) {
 function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
   const placeholder = question.hint;
+  const localize = useLocalization();
 
   return (
     <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
 
       <View style={styles.booleanRow}>
         <Switch
@@ -90,7 +100,7 @@ function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
       </View>
       {placeholder ? (
         <View style={{marginTop: 40}}>
-          <Text style={styles.hint}>{placeholder}</Text>
+          <Text style={styles.hint}>{localize(placeholder)}</Text>
         </View>
       ) : null}
     </View>
@@ -99,17 +109,21 @@ function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
 
 function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
+  const localize = useLocalization();
 
   return (
     <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
       <Picker
         itemStyle={styles.picker}
         selectedValue={response.value}
         onValueChange={value => onChange(value)}>
-        {question.options.map(option => (
-          <Picker.Item key={option} label={option} value={option} />
-        ))}
+        {question.options &&
+          question.options.map(option => (
+            <Picker.Item key={option} label={localize(option)} value={option} />
+          ))}
       </Picker>
     </View>
   );
@@ -117,24 +131,27 @@ function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
 
 function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
+  const localize = useLocalization();
 
   const selectedOptions = response.value
     .split(',')
     .map(option => option.trim());
 
-  console.log(response.value);
+  const options = question.options || [];
 
-  const initialSelectedState = question.options.map(option =>
-    selectedOptions.includes(option.trim()),
+  const initialSelectedState = options.map(option =>
+    selectedOptions.includes(option.en.trim()),
   );
   const [selectedState, setSelectedValues] =
     useState<boolean[]>(initialSelectedState);
 
   return (
     <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
 
-      {question.options.map((option, index) => (
+      {options.map((option, index) => (
         <View key={option} style={styles.booleanRow}>
           <Pressable
             style={styles.multiselectRow}
@@ -142,7 +159,7 @@ function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
               const newSelectedState = [...selectedState];
               newSelectedState[index] = !newSelectedState[index];
               setSelectedValues(newSelectedState);
-              const selectedOptions = question.options.filter(
+              const selectedOptions = options.filter(
                 (_, i) => newSelectedState[i],
               );
               onChange(selectedOptions.join(', '));
@@ -153,7 +170,9 @@ function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
                 selectedState[index] && styles.multiselectCheckboxChecked,
               ]}
             />
-            <Text style={styles.multiselectCheckboxText}>{option}</Text>
+            <Text style={styles.multiselectCheckboxText}>
+              {localize(option)}
+            </Text>
           </Pressable>
         </View>
       ))}
@@ -167,6 +186,7 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
   const [authDenial, setAuthDenial] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+  const localize = useLocalization();
 
   const getLocation = async () => {
     try {
@@ -231,7 +251,9 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
 
   return (
     <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
       <Button title="Get location" onPress={getLocation} />
       {authDenial && (
         <Text style={styles.warning}>
@@ -258,6 +280,7 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
   const device = useCameraDevice('back');
   const filePath = response.value;
   const hasCameraPermission = useCameraPermission();
+  const localize = useLocalization();
 
   const onCapture = async (path: string) => {
     setCameraVisible(false);
@@ -270,7 +293,9 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
 
   return (
     <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>{question.question}</Text>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
       {filePath ? (
         <View>
           <View style={styles.previewContainer}>
@@ -359,6 +384,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const netInfo = useNetInfo();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const localize = useLocalization();
 
   const surveyResponseManager = useContext<SurveyResponseManager>(
     SurveyResponseManagerContext,
@@ -370,8 +396,8 @@ export default function SurveyScreen(props: SurveyScreenProps) {
     },
   } = props;
 
-  const schema = response.schema;
-  const questionCount = schema.questions.length;
+  const survey = response.schema;
+  const questionCount = survey.questions.length;
   const currentResponse = response.responses[questionIndex];
   const canContinue =
     currentResponse.hasResponse || currentResponse.type === 'multiselect';
@@ -476,7 +502,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
       <View style={{flexDirection: 'column', flex: 1}}>
         <ScrollView>
           <View style={styles.container}>
-            <Text style={styles.surveyTitle}>{schema.title}</Text>
+            <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
 
             <SurveyQuestion
               key={questionIndex}
