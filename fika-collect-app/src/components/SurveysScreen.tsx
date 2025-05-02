@@ -12,7 +12,7 @@ import Announcements from './Announcements';
 
 function SurveyButton({survey}: {survey: Survey}) {
   const navigation = useNavigation<StackNavigation>();
-  const localize = useLocalization();
+  const {localize} = useLocalization();
 
   const beginSurvey = () => {
     // Construct a single response instance. We will mutate this object as the user answers questions.

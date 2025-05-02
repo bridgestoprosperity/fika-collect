@@ -40,7 +40,7 @@ interface SurveyQuestionProps {
 
 function ShortAnswerQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
-  const localize = useLocalization();
+  const {localize} = useLocalization();
 
   return (
     <View style={styles.surveyQuestion}>
@@ -60,7 +60,7 @@ function ShortAnswerQuestion({response, onChange}: SurveyQuestionProps) {
 
 function LongAnswerQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
-  const localize = useLocalization();
+  const {localize} = useLocalization();
   return (
     <View style={styles.surveyQuestion}>
       <Text style={styles.surveyQuestionText}>
@@ -81,7 +81,7 @@ function LongAnswerQuestion({response, onChange}: SurveyQuestionProps) {
 function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
   const placeholder = question.hint;
-  const localize = useLocalization();
+  const {localize, getString} = useLocalization();
 
   return (
     <View style={styles.surveyQuestion}>
@@ -95,7 +95,9 @@ function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
           onValueChange={value => onChange(value ? 'yes' : 'no')}
         />
         <Text style={styles.booleanValue}>
-          {response.value === 'yes' ? 'Yes' : 'No'}
+          {response.value === 'yes'
+            ? getString('booleanQuestionYes')
+            : getString('booleanQuestionNo')}
         </Text>
       </View>
       {placeholder ? (
@@ -109,7 +111,7 @@ function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
 
 function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
-  const localize = useLocalization();
+  const {localize} = useLocalization();
 
   return (
     <View style={styles.surveyQuestion}>
@@ -135,7 +137,7 @@ function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
 
 function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
-  const localize = useLocalization();
+  const {localize} = useLocalization();
 
   const selectedOptions = response.value
     .split(',')
@@ -190,7 +192,7 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
   const [authDenial, setAuthDenial] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
-  const localize = useLocalization();
+  const {localize} = useLocalization();
 
   const getLocation = async () => {
     try {
@@ -284,7 +286,7 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
   const device = useCameraDevice('back');
   const filePath = response.value;
   const hasCameraPermission = useCameraPermission();
-  const localize = useLocalization();
+  const {localize, getString} = useLocalization();
 
   const onCapture = async (path: string) => {
     setCameraVisible(false);
@@ -335,11 +337,13 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
                 </Modal>
               </View>
             ) : (
-              <Text style={styles.warning}>No camera available!</Text>
+              <Text style={styles.warning}>
+                {getString('noCameraAvailable')}
+              </Text>
             )
           ) : (
             <Text style={styles.warning}>
-              Camera permission is required to take a photo!
+              {getString('cameraPermissionRequired')}
             </Text>
           )}
           <Button
@@ -352,7 +356,7 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
               if (!uri) return;
               onChange(uri);
             }}
-            title="Select from library"
+            title={getString('selectPhotoFromLibrary')}
           />
         </View>
       )}
@@ -388,7 +392,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const netInfo = useNetInfo();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const localize = useLocalization();
+  const {localize, getString} = useLocalization();
 
   const surveyResponseManager = useContext<SurveyResponseManager>(
     SurveyResponseManagerContext,
@@ -416,16 +420,16 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const prev = () => {
     if (questionIndex === 0) {
       Alert.alert(
-        'Discard response',
-        'Are you sure you want to discard this survey response?',
+        getString('discardResponseTitle'),
+        getString('discardResponseMessage'),
         [
           {
-            text: 'Cancel',
+            text: getString('cancelButton'),
             onPress: () => setQuestionIndex(questionIndex),
             style: 'cancel',
           },
           {
-            text: 'Discard',
+            text: getString('discardButton'),
             onPress: () => navigation.goBack(),
             style: 'destructive',
           },
@@ -525,11 +529,14 @@ export default function SurveyScreen(props: SurveyScreenProps) {
             ]}
             onPress={prev}>
             <Text style={sharedStyles.buttonText}>
-              {questionIndex > 0 ? 'Previous' : 'Back'}
+              {questionIndex > 0
+                ? getString('previousButton')
+                : getString('backButton')}
             </Text>
           </Pressable>
           <Text style={styles.feedbackText}>
-            Question {questionIndex + 1} / {questionCount}
+            {getString('questionCountLabel')} {questionIndex + 1} /{' '}
+            {questionCount}
           </Text>
           {questionIndex === questionCount - 1 ? (
             <Pressable
@@ -551,7 +558,9 @@ export default function SurveyScreen(props: SurveyScreenProps) {
               ]}
               disabled={!canContinue}
               onPress={next}>
-              <Text style={sharedStyles.buttonText}>Next</Text>
+              <Text style={sharedStyles.buttonText}>
+                {getString('nextButton')}
+              </Text>
             </Pressable>
           )}
         </View>

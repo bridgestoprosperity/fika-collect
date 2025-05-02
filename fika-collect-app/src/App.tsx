@@ -9,6 +9,7 @@ import {type SurveyParams} from './types.d';
 import {Provider} from 'react-redux';
 import {store} from './data/store';
 import Geolocation from '@react-native-community/geolocation';
+import {useLocalization} from './hooks/useLocalization';
 
 //import {useContext, useEffect} from 'react';
 //import SurveyResponseManagerContext from './data/SurveyResponseManagerContext';

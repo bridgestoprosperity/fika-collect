@@ -1,15 +1,13 @@
 import { useSelector } from 'react-redux';
-
-interface Localization {
-  [key: string]: string;
-}
+import type { Localization } from '../localizations';
+import { localizations } from '../localizations';
 
 function useLocalization() {
   const preferredLanguages = useSelector(
     (state: any) => state.localization.localizationPreference,
   );
 
-  return (value: Localization | string): string => {
+  function localize(value: Localization | string): string {
     if (typeof value === 'string') {
       return value;
     } else {
@@ -23,6 +21,29 @@ function useLocalization() {
       return localizedText;
     }
   };
+
+  function getString(key: string): string {
+    console.log('getString', key);
+    const localizedStrings = localizations[key] || {};
+    console.log('localizedStrings', localizedStrings);
+    let localizedText = localizedStrings.en || '';
+    for (const lang of preferredLanguages) {
+      if (localizedStrings[lang]) {
+        localizedText = localizedStrings[lang];
+        break;
+      }
+    }
+    if (!localizedText) {
+      if (process.env.NODE_ENV === 'development') {
+        throw new Error(`Missing localization for key: ${key}`);
+      }
+      return `{${key}}`;
+    }
+
+    return localizedText;
+  }
+
+  return { localize, getString };
 }
 
 export { useLocalization };

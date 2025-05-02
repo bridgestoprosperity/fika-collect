@@ -8,7 +8,6 @@ export const store = configureStore({
     localization: localizationReducer,
   },
 });
-console.log('Store:', store.getState());
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
