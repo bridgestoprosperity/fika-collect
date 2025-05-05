@@ -1,5 +1,3 @@
-import { boolean } from "zod";
-
 type Locale = string;
 
 interface Localization {
@@ -7,6 +5,10 @@ interface Localization {
 }
 
 const localizations: Record<Locale, Localization> = {
+  error: {
+    'en': 'Error',
+    'es': 'Error',
+  },
   surveysScreenTitle: {
     'en': 'Surveys',
     'es': 'Encuestas',
@@ -70,6 +72,26 @@ const localizations: Record<Locale, Localization> = {
   discardResponseMessage: {
     'en': 'Are you sure you want to discard this response?',
     'es': '¿Está seguro de que desea descartar esta respuesta?',
+  },
+  gelocationRequesting: {
+    'en': 'Requesting location...',
+    'es': 'Solicitando ubicación...',
+  },
+  geolocationDenied: {
+    'en': 'Location permission denied',
+    'es': 'Permiso de ubicación denegado',
+  },
+  geolocationPleaseEnable: {
+    'en': 'Please enable location services in your device settings',
+    'es': 'Habilite los servicios de ubicación en la configuración de su dispositivo',
+  },
+  geolocationUnable: {
+    'en': 'Unable to get location',
+    'es': 'No se puede obtener la ubicación',
+  },
+  geolocationGetLocationButton: {
+    'en': 'Get Location',
+    'es': 'Obtener Ubicación',
   },
 
 };

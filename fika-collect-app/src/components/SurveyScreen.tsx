@@ -192,12 +192,12 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
   const [authDenial, setAuthDenial] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
-  const {localize} = useLocalization();
+  const {localize, getString} = useLocalization();
 
   const getLocation = async () => {
     try {
       console.log({GEOLOCATION_AUTHORIZATION});
-      setStatusMessage('Requesting location...');
+      setStatusMessage(getString('gelocationRequesting'));
       // Work around this bug in which authorization stalls on subsequent calls:
       // https://github.com/michalchudziak/react-native-geolocation/issues/335
       if (GEOLOCATION_AUTHORIZATION === null) {
@@ -214,7 +214,7 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
               console.log('Auth denied');
               GEOLOCATION_AUTHORIZATION = false;
               setAuthDenial(true);
-              setStatusMessage('Location permission denied');
+              setStatusMessage(getString('geolocationDenied'));
               reject();
             },
           );
@@ -223,10 +223,10 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
         if (GEOLOCATION_AUTHORIZATION === false) {
           setAuthDenial(true);
           Alert.alert(
-            'Location permission denied',
-            'Please enable location permission in the app settings.',
+            getString('geolocationDenied'),
+            getString('geolocationPleaseEnable'),
           );
-          setStatusMessage('Location permission denied');
+          setStatusMessage(getString('geolocationDenied'));
           return;
         }
       }
@@ -250,7 +250,7 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
       response.value = location;
       onChange && onChange(location);
     } catch (error) {
-      Alert.alert('Error', 'Unable to get location');
+      Alert.alert(getString('error'), getString('geolocationUnable'));
       console.error(error);
     }
   };
@@ -260,7 +260,10 @@ function LocationQuestion({response, onChange}: SurveyQuestionProps) {
       <Text style={styles.surveyQuestionText}>
         {localize(question.question)}
       </Text>
-      <Button title="Get location" onPress={getLocation} />
+      <Button
+        title={getString('geolocationGetLocationButton')}
+        onPress={getLocation}
+      />
       {authDenial && (
         <Text style={styles.warning}>
           Location permission denied. Please enable location permission in the
