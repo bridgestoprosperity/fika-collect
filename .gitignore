@@ -10,3 +10,5 @@ yarn-error.log
 
 .aws-sam
 keystore.properties
+android/.gradle
+android/.kotlin
