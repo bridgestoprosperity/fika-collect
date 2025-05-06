@@ -13,10 +13,15 @@ app.use(
   })
 );
 
-// Add a simple route
-app.get('*', (req, res) => {
+// Use a specific route instead of a wildcard
+app.get('/', (req, res) => {
   res.status(200).json({ message: 'Authentication successful!' });
 });
 
-// Export the Express app
+// If you need a catch-all route, use proper Express 4 syntax
+app.get('/:path(*)', (req, res) => {
+  res.status(200).json({ message: 'Authentication successful for path: ' + req.params.path });
+});
+
+// Export the Express app as default
 export default app;
