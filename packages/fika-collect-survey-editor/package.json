@@ -7,9 +7,11 @@
   },
   "scripts": {
     "start": "vite",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "node server.js"
   },
   "type": "module",
   "keywords": [],
@@ -30,6 +32,8 @@
     "vite": "^6.3.1"
   },
   "dependencies": {
+    "express": "^5.1.0",
+    "express-basic-auth": "^1.2.1",
     "fika-collect-survey-schema": "^1.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
