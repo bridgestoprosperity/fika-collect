@@ -15,6 +15,16 @@ console.log('Starting API initialization, serving from:', distPath);
 
 const app = express();
 
+// Add Content Security Policy middleware
+app.use((req, res, next) => {
+  // Set a more permissive Content Security Policy
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-src 'self'"
+  );
+  next();
+});
+
 // Basic authentication middleware
 app.use(
   basicAuth({
@@ -24,8 +34,6 @@ app.use(
   })
 );
 
-console.log('Auth middleware set up');
-
 // Serve static files from the Vite build directory
 app.use(express.static(distPath));
 
@@ -33,8 +41,6 @@ app.use(express.static(distPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
-
-console.log('Static file middleware set up');
 
 // Export the Express app
 export default app;
