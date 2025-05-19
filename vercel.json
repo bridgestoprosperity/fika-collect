@@ -1,4 +1,10 @@
 {
+  "builds": [
+    {
+      "src": "packages/fika-collect-lambda/src/api/*.ts",
+      "use": "@vercel/node"
+    }
+  ],
   "functions": {
     "packages/fika-collect-lambda/src/api/*.ts": {
       "maxDuration": 10
