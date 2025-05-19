@@ -27,3 +27,4 @@ The following AWS resources have been allocated to make the lambda run.
 ## License
 
 &copy; 2025 Bridges To Prosperity. MIT License.
+
