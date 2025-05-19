@@ -19,7 +19,7 @@ export class SurveySchemaManager {
       const storedSchemas = surveySchemaStorage.getMap('schemas') as any;
       if (storedSchemas) {
         for (const [id, schema] of storedSchemas) {
-          console.log({id, schema});
+          //console.log({id, schema});
           this.schemas.set(id, SurveySchema.parse(schema));
         }
       }
@@ -48,7 +48,6 @@ export class SurveySchemaManager {
         console.log(`Fetching survey from ${url}`);
         const response = await fetch(url);
         const surveyJSON = await response.json();
-        console.log(surveyJSON);
         this.schemas.set(surveyJSON.id, SurveySchema.parse(surveyJSON));
       } catch (e) {
         console.error(e);

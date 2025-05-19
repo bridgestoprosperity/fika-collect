@@ -10,8 +10,25 @@
   },
   "questions": [
     {
+      "id": "admin_location",
+      "type": "admin_location",
+      "required": true,
+      "question": {
+        "en": "Where are you?",
+        "es": "¿Dónde estás?"
+      }
+    },
+    {
       "id": "phone_number",
       "type": "short_answer",
+      "question": {
+        "en": "What is your phone number?",
+        "es": "¿Cuál es tu número de teléfono?"
+      }
+    },
+    {
+      "id": "admin_location",
+      "type": "admin_location",
       "question": {
         "en": "What is your phone number?",
         "es": "¿Cuál es tu número de teléfono?"

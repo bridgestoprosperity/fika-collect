@@ -28,6 +28,7 @@ import {launchImageLibrary} from 'react-native-image-picker';
 import {useNetInfo} from '@react-native-community/netinfo';
 import Geolocation from '@react-native-community/geolocation';
 import {useLocalization} from '../hooks/useLocalization';
+import {useLocationLookup} from '../hooks/useLocationLookup';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -186,9 +187,118 @@ function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
   );
 }
 
+function AdminLocationQuestion({response, onChange}: SurveyQuestionProps) {
+  let {locations, error} = useLocationLookup();
+  const {localize} = useLocalization();
+  const [locationPath, setLocation] = useState<string[]>([]);
+  const [curPathPart, setCurPathPart] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!locations || curPathPart !== null) {
+      return;
+    }
+    setCurPathPart(Object.keys(locations)[0]);
+  }, [locations, curPathPart]);
+
+  if (!locations) {
+    return <View />;
+  }
+
+  if (error) {
+    console.error(error);
+    return <Text>{localize('errorLoadingLocations')}</Text>;
+  }
+
+  function navigatePath(path: string[]) {
+    let curobj = locations;
+    for (let i = 0; i < path.length; i++) {
+      if (path[i] in curobj) {
+        curobj = curobj[path[i]];
+      } else {
+        break;
+      }
+    }
+    if (Array.isArray(curobj)) {
+      return curobj.map((item: any) => item[0]);
+    } else {
+      return Object.keys(curobj || ['Other']);
+    }
+  }
+
+  //const adminLevel = locationPath.length;
+
+  function onSelectAdminLevel(value: string) {
+    setCurPathPart(value);
+  }
+
+  function pushPathPart() {
+    if (curPathPart === null) {
+      return;
+    }
+    const newPath = locationPath.concat(curPathPart);
+    setLocation(newPath);
+    setCurPathPart(navigatePath(newPath)[0]);
+  }
+
+  function popPathPart() {
+    const newPath = locationPath.slice(0, -1);
+    setLocation(newPath);
+    setCurPathPart(navigatePath(newPath)[0]);
+  }
+
+  const {question} = response;
+  return (
+    <View style={styles.surveyQuestion}>
+      <Text style={styles.surveyQuestionText}>
+        {localize(question.question)}
+      </Text>
+      {!locations && <Text>{localize('loadingLocations')}</Text>}
+      {locations && (
+        <View>
+          <Picker
+            itemStyle={styles.picker}
+            selectedValue={curPathPart}
+            onValueChange={value => onSelectAdminLevel(value)}>
+            {navigatePath(locationPath).map((option, index) => (
+              <Picker.Item
+                key={`option-${index}`}
+                label={localize(option)}
+                value={option}
+              />
+            ))}
+          </Picker>
+          <View style={styles.locationEchoRow}>
+            <Text>{locationPath.join(' > ')}</Text>
+          </View>
+          <View style={styles.locationButtonContainer}>
+            <Pressable
+              onPress={() => popPathPart()}
+              style={({pressed}) => [
+                sharedStyles.button,
+                sharedStyles.buttonSecondary,
+                locationPath.length === 0 ? sharedStyles.buttonDisabled : {},
+                pressed ? sharedStyles.buttonPressed : {},
+              ]}>
+              <Text style={sharedStyles.buttonText}>Back</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => pushPathPart()}
+              style={({pressed}) => [
+                sharedStyles.button,
+                pressed ? sharedStyles.buttonPressed : {},
+              ]}>
+              <Text style={sharedStyles.buttonText}>Select</Text>
+            </Pressable>
+          </View>
+        </View>
+      )}
+    </View>
+  );
+}
+
 let GEOLOCATION_AUTHORIZATION: boolean | null = null;
 
-function LocationQuestion({response, onChange}: SurveyQuestionProps) {
+function GeolocationQuestion({response, onChange}: SurveyQuestionProps) {
   const {question} = response;
   const [authDenial, setAuthDenial] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
@@ -380,8 +490,12 @@ function SurveyQuestion({response, onChange}: SurveyQuestionProps) {
       return <MultipleChoiceQuestion response={response} onChange={onChange} />;
     case 'multiselect':
       return <MultiSelectQuestion response={response} onChange={onChange} />;
-    case 'location':
-      return <LocationQuestion response={response} onChange={onChange} />;
+    // @ts-ignore
+    case 'location': // deprecated
+    case 'geolocation':
+      return <GeolocationQuestion response={response} onChange={onChange} />;
+    case 'admin_location':
+      return <AdminLocationQuestion response={response} onChange={onChange} />;
     case 'photo':
       return <PhotoQuestion response={response} onChange={onChange} />;
     default:
@@ -725,5 +839,16 @@ const styles = StyleSheet.create({
   multiselectCheckboxText: {
     marginLeft: 8,
     fontSize: 16,
+  },
+  locationButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 10,
+  },
+  locationEchoRow: {
+    marginTop: 20,
+    marginBottom: 20,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
 });

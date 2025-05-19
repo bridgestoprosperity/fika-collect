@@ -12,7 +12,7 @@ import {nanoid} from 'nanoid';
 export class SurveyQuestionResponse {
   question: SurveyQuestion;
   type: QuestionType;
-  _value: string = '';
+  _value: any = null;
 
   // This is used for photo questions, where we want to replace the value with the photo path
   // when serializing the response without modifying the original value. Otherwise,
@@ -35,8 +35,11 @@ export class SurveyQuestionResponse {
       case 'long_answer':
         this._value = __DEV__ ? 'REMOVE ME' : '';
         break;
-      case 'location':
+      case 'geolocation':
         this._value = 'N/A';
+        break;
+      case 'admin_location':
+        //this._value = 'N/A';
         break;
     }
   }

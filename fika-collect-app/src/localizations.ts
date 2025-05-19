@@ -93,7 +93,14 @@ const localizations: Record<Locale, Localization> = {
     'en': 'Get Location',
     'es': 'Obtener Ubicación',
   },
-
+  loadingLocations: {
+    'en': 'Loading locations...',
+    'es': 'Cargando ubicaciones...',
+  },
+  errorLoadingLocations: {
+    'en': 'Error loading locations',
+    'es': 'Error al cargar ubicaciones',
+  },
 };
 
 export type { Localization };

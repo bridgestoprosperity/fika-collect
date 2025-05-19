@@ -1,6 +1,6 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {RootState} from '../data/store';
-import {MMKVLoader} from 'react-native-mmkv-storage';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../data/store';
+import { MMKVLoader } from 'react-native-mmkv-storage';
 
 const announcementsStorage = new MMKVLoader()
   .withInstanceID('announcements')
@@ -28,7 +28,7 @@ const initialState: AnnouncementsState = {
 export const fetchAnnouncements = createAsyncThunk<
   Announcement[],
   void,
-  {state: RootState}
+  { state: RootState }
 >('announcements/fetchAnnouncements', async _ => {
   const response = await fetch(
     'https://fika-collect.s3.us-west-1.amazonaws.com/announcements/announcements.json',
@@ -37,7 +37,7 @@ export const fetchAnnouncements = createAsyncThunk<
     throw new Error('Network response was not ok');
   }
   const result = await response.json();
-  console.log('Fetched announcements:', result);
+  //console.log('Fetched announcements:', result);
   return result.announcements;
 });
 
@@ -60,7 +60,7 @@ export const announcementsSlice = createSlice({
         state.status = 'failed';
       })
       .addCase(fetchAnnouncements.fulfilled, (state, action) => {
-        const existingIds = new Set(state.announcements.map(({id}) => id));
+        const existingIds = new Set(state.announcements.map(({ id }) => id));
         for (const announcement of action.payload) {
           if (existingIds.has(announcement.id)) continue;
           state.announcements.push(announcement);
@@ -70,7 +70,7 @@ export const announcementsSlice = createSlice({
   },
 });
 
-export const {dismissAnnouncement} = announcementsSlice.actions;
+export const { dismissAnnouncement } = announcementsSlice.actions;
 
 export const selectAnnouncements = (state: RootState) => {
   return state.announcements.announcements;

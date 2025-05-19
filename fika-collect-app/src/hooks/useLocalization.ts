@@ -23,9 +23,7 @@ function useLocalization() {
   };
 
   function getString(key: string): string {
-    console.log('getString', key);
     const localizedStrings = localizations[key] || {};
-    console.log('localizedStrings', localizedStrings);
     let localizedText = localizedStrings.en || '';
     for (const lang of preferredLanguages) {
       if (localizedStrings[lang]) {

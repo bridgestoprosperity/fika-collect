@@ -9,7 +9,7 @@
 	<key>NSLocationUsageDescription</key>
 	<string>This app requests access to your location to accurately locate reported obstacles.</string>
 	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<string/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

@@ -33,15 +33,16 @@ const FileTypeSchema = z.enum([
     'image/heic',
     'image/webp',
 ]);
-const QuestionTypeSchema = z.enum([
+const QuestionTypeSchema = z.preprocess((val) => val === 'location' ? 'geolocation' : val, z.enum([
     'multiselect',
     'multiple_choice',
     'boolean',
     'short_answer',
     'long_answer',
     'photo',
-    'location',
-]);
+    'geolocation',
+    'admin_location',
+]));
 const SurveyQuestionSchema = z.object({
     id: z.string().nonempty(),
     type: QuestionTypeSchema,

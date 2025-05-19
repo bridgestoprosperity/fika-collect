@@ -15,6 +15,7 @@ import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
 import {useFocusEffect} from '@react-navigation/native';
 import {useNetInfo} from '@react-native-community/netinfo';
+import {useLocalization} from '../hooks/useLocalization';
 
 interface ResponseProps {
   response: SurveyResponse;
@@ -24,12 +25,13 @@ interface ResponseProps {
 
 function SubmittedResponse(props: ResponseProps) {
   const {response, uploaded, onRetry} = props;
+  const {localize} = useLocalization();
 
   return (
     <View key={response.id} style={styles.submittedResponseCard}>
       <View style={styles.lhs}>
         <Text style={styles.submittedResponseTitle}>
-          {response.schema.title}
+          {localize(response.schema.title)}
         </Text>
         {uploaded ? (
           <Text style={styles.submittedResponseDate}>

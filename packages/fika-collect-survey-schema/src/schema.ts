@@ -38,15 +38,18 @@ const FileTypeSchema = z.enum([
   'image/webp',
 ]);
 
-const QuestionTypeSchema = z.enum([
-  'multiselect',
-  'multiple_choice',
-  'boolean',
-  'short_answer',
-  'long_answer',
-  'photo',
-  'location',
-]);
+const QuestionTypeSchema = z.preprocess(
+  (val) => val === 'location' ? 'geolocation' : val,
+  z.enum([
+    'multiselect',
+    'multiple_choice',
+    'boolean',
+    'short_answer',
+    'long_answer',
+    'photo',
+    'geolocation',
+    'admin_location',
+  ]));
 
 const SurveyQuestionSchema = z.object({
   id: z.string().nonempty(),
