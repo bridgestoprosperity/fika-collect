@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { SurveySchema } from '../src/schema.js';
+import { SurveySchema } from '../../src/schema/schema.js';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 const __dirname = new URL('.', import.meta.url).pathname;
