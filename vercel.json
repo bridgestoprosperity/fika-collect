@@ -1,13 +1,14 @@
 {
+  "framework": null,
   "functions": {
-    "packages/fika-collect-lambda/src/api/*.ts": {
+    "api/*.ts": {
       "maxDuration": 10
     }
   },
   "routes": [
     {
-      "src": "/api/hello-world",
-      "dest": "packages/fika-collect-lambda/src/api/hello-world.ts"
+      "src": "/api/hello",
+      "dest": "api/hello.ts"
     }
   ]
 }
