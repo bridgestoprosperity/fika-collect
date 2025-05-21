@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",               // or "ES2020"
+    "target": "ES2020",               // or higher
+    "moduleResolution": "Bundler",    // optional but safe for ESM
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "dist"
+  },
+  "include": ["api/**/*"]
+}
