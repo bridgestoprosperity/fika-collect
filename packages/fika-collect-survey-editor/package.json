@@ -8,7 +8,7 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp middleware.ts dist/middleware.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "serve": "node server.js"
