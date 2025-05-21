@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Calculate path to the dist directory (where Vite builds to)
-const distPath = path.join(__dirname, '../../dist');
+const distPath = path.join(__dirname, '../packages/fika-collect-survey-editor/dist');
 
 console.log('Starting API initialization, serving from:', distPath);
 
