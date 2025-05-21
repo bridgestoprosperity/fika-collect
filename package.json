@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "React Native survey app, together with supporting infrastructure.",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "npm run build --workspace=packages/fika-collect-survey-editor"
   },
