@@ -1,4 +1,4 @@
-export async function middleware(request: Request): Promise<Response> {
+export default async function middleware(request: Request): Promise<Response> {
   const username = 'admin';
   const password = 'secret';
   const basicAuth = 'Basic ' + btoa(`${username}:${password}`);
@@ -6,7 +6,7 @@ export async function middleware(request: Request): Promise<Response> {
   const authHeader = request.headers.get('authorization');
 
   if (authHeader === basicAuth) {
-    return fetch(request); // forward request to the app/site
+    return await fetch(request); // forward request to the app/site
   }
 
   return new Response('Unauthorized', {
