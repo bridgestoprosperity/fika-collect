@@ -1,6 +1,6 @@
 export default async function middleware(request: Request): Promise<Response> {
   const username = 'admin';
-  const password = 'secret';
+  const password = process.env.AUTH_PASSWORD || 'defaultpassword';
   const basicAuth = 'Basic ' + btoa(`${username}:${password}`);
 
   const authHeader = request.headers.get('authorization');
