@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React Native survey app, together with supporting infrastructure.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +20,10 @@
       "**/react-refresh",
       "**/react-refresh/**"
     ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^6.3.5",
+    "vite-plugin-vercel": "^9.0.6"
   }
 }
