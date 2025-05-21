@@ -1,6 +1,11 @@
 {
   "framework": null,
   "outputDirectory": "packages/fika-collect-survey-editor/dist",
+  "functions": {
+    "api/*.ts": {
+      "maxDuration": 10
+    }
+  },
   "routes": [
     {
       "src": "/api/hello",
