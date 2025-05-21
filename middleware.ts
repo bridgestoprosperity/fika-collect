@@ -1,3 +1,6 @@
+// Require HTTP Basic Auth when visiting https://app.fikadigital.org to view
+// the survey editor. Exclude API endpoints.
+
 export default async function middleware(request: Request): Promise<Response> {
   const username = 'admin';
   const password = process.env.AUTH_PASSWORD || 'defaultpassword';
@@ -6,7 +9,7 @@ export default async function middleware(request: Request): Promise<Response> {
   const authHeader = request.headers.get('authorization');
 
   if (authHeader === basicAuth) {
-    return await fetch(request); // forward request to the app/site
+    return await fetch(request);
   }
 
   return new Response('Unauthorized', {
@@ -18,7 +21,6 @@ export default async function middleware(request: Request): Promise<Response> {
   });
 }
 
-// Optional: configure paths where middleware applies
 export const config = {
-  matcher: ['/((?!_next|api|favicon.ico).*)'], // example: apply everywhere except some paths
+  matcher: ['/((?!_next|api|favicon.ico).*)'],
 };
