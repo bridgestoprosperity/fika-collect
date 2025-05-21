@@ -3,8 +3,7 @@
   "outputDirectory": "packages/fika-collect-survey-editor/dist",
   "functions": {
     "api/*.ts": {
-      "maxDuration": 10,
-      "runtime": "nodejs18.x"
+      "maxDuration": 10
     }
   },
   "routes": [
