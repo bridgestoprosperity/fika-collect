@@ -12,3 +12,5 @@ yarn-error.log
 keystore.properties
 packages/fika-collect-app/android/.gradle/
 packages/fika-collect-app/android/.kotlin/
+
+packages/fika-collect-survey-editor/.vercel
