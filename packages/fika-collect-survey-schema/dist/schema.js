@@ -1,4 +1,4 @@
-import z from 'zod';
+import { z } from 'zod';
 // These are provided as a UI convenience for the editor but do not restrict
 // the locales that can be used in the app.
 const LOCALE_LABELS = {

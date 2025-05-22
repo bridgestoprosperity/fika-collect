@@ -1,4 +1,4 @@
-import z from 'zod';
+import { z } from 'zod';
 declare const LOCALE_LABELS: {
     en: string;
     ar: string;
