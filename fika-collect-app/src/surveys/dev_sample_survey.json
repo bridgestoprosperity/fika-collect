@@ -10,15 +10,6 @@
   },
   "questions": [
     {
-      "id": "admin_location",
-      "type": "admin_location",
-      "required": true,
-      "question": {
-        "en": "Where are you?",
-        "es": "¿Dónde estás?"
-      }
-    },
-    {
       "id": "phone_number",
       "type": "short_answer",
       "question": {
@@ -29,96 +20,45 @@
     {
       "id": "admin_location",
       "type": "admin_location",
+      "required": true,
       "question": {
-        "en": "What is your phone number?",
-        "es": "¿Cuál es tu número de teléfono?"
+        "en": "Where are you?",
+        "es": "¿Dónde estás?"
       }
     },
     {
-      "id": "frequency",
-      "question": {
-        "en": "How frequently do you cross the location where a bridge is needed?",
-        "es": "¿Con qué frecuencia cruzas el lugar donde se necesita un puente?"
-      },
-      "type": "multiple_choice",
-      "options": [
-        {"en": "Daily", "es": "Diario"},
-        {"en": "More than once per week", "es": "Más de una vez por semana"},
-        {"en": "Once per week", "es": "Una vez por semana"},
-        {"en": "1-3 times per month", "es": "1-3 veces al mes"}
-      ]
-    },
-    {
-      "id": "country",
-      "question": {
-        "en": "What country are you in?",
-        "es": "¿En qué país estás?"
-      },
-      "type": "multiple_choice",
-      "options": [
-        {"en": "Cote d'Ivoire"},
-        {"en": "Ethiopia"},
-        {"en": "Kenya"},
-        {"en": "Rwanda"},
-        {"en": "Tanzania"},
-        {"en": "Uganda"},
-        {"en": "Zambia"}
-      ]
-    },
-    {
-      "id": "admin_level_1",
-      "question": {
-        "en": "What is your Region/Province/State?",
-        "es": "¿Cuál es tu región/provincia/estado?"
-      },
-      "type": "short_answer"
-    },
-    {
-      "id": "admin_level_2",
-      "question": {
-        "en": "What is your District/Department/Prefecture?",
-        "es": "¿Cuál es tu distrito/departamento/prefectura?"
-      },
-      "type": "short_answer"
-    },
-    {
-      "id": "admin_level_3",
-      "question": {
-        "en": "What is your City/Commune/Subdivision?",
-        "es": "¿Cuál es tu ciudad/comuna/subdivisión?"
-      },
-      "type": "short_answer"
-    },
-    {
-      "id": "admin_level_4",
-      "question": {
-        "en": "What is your Neighborhood/Village/Quartier?",
-        "es": "¿Cuál es tu vecindario/pueblo/vecindario?"
-      },
-      "type": "short_answer"
-    },
-    {
       "id": "closest_community",
+      "type": "short_answer",
+      "required": true,
       "question": {
         "en": "What is the name of the closest community that is requesting the bridge?",
         "es": "¿Cuál es el nombre de la comunidad más cercana que solicita el puente?"
-      },
-      "type": "short_answer"
+      }
     },
     {
       "id": "closest_community_opposite",
+      "type": "short_answer",
+      "required": true,
       "question": {
         "en": "What is the name of the nearest community on the opposite side of the crossing?",
         "es": "¿Cuál es el nombre de la comunidad más cercana al otro lado del cruce?"
-      },
-      "type": "short_answer"
+      }
+    },
+    {
+      "id": "river_name",
+      "type": "short_answer",
+      "required": true,
+      "question": {
+        "en": "What is the name of the river?",
+        "es": "¿Cuál es el nombre del río?"
+      }
     },
     {
       "id": "location",
       "type": "location",
       "question": {
-        "en": "Safely stand near to the crossing where the bridge is needed and record the GPS coordinates by tapping the button below.",
-        "es": "Párate cerca del cruce donde se necesita el puente y registra las coordenadas GPS tocando el botón de abajo."
+        "en": "Safely stand near the crossing where the bridge is needed and record the GPS coordinates by tapping the button below",
+        "es": "Párate cerca del cruce donde se necesita el puente y registra las coordenadas GPS tocando el botón de abajo"
       }
     },
     {
@@ -159,15 +99,16 @@
       "options": [
         {"en": "Health center", "es": "Centro de salud"},
         {"en": "Hospital", "es": "Hospital"},
-        {"en": "Pharmacy", "es": "Farmacia"}
+        {"en": "Pharmacy", "es": "Farmacia"},
+        {"en": "Other", "es": "Otro"}
       ]
     },
     {
-      "id": "other_destinations",
+      "id": "economic_desinations",
       "type": "multiselect",
       "question": {
-        "en": "Which health facilities do people visit using this crossing?",
-        "es": "¿A qué instalaciones de salud visitan las personas utilizando este cruce?"
+        "en": "Which economic facilities do people visit using this crossing?",
+        "es": "¿A qué instalaciones económicas visitan las personas utilizando este cruce?"
       },
       "options": [
         {"en": "Market", "es": "Mercado"},
@@ -177,11 +118,23 @@
           "es": "Instalación de procesamiento agrícola"
         },
         {"en": "Dairy facility", "es": "Instalación láctea"},
+        {"en": "Other", "es": "Otro"}
+      ]
+    },
+    {
+      "id": "social_destinations",
+      "type": "multiselect",
+      "question": {
+        "en": "Which social destinations do people visit using this crossing?",
+        "es": "¿A qué destinos sociales visitan las personas utilizando este cruce?"
+      },
+      "options": [
         {
           "en": "Place of worship (church/mosque)",
           "es": "Lugar de culto (iglesia/mezquita)"
         },
-        {"en": "Sports ground", "es": "Campo deportivo"}
+        {"en": "Sports ground", "es": "Campo deportivo"},
+        {"en": "Other", "es": "Otro"}
       ]
     },
     {
@@ -189,7 +142,7 @@
       "type": "short_answer",
       "question": {
         "en": "Are there any other destinations which were not listed above that people visit using this crossing?",
-        "es": "¿Hay algún otro destino que no se haya mencionado anteriormente al que las personas visiten utilizando este cruce?"
+        "es": "¿Hay otros destinos que no se enumeraron anteriormente que las personas visitan utilizando este cruce?"
       }
     },
     {
@@ -201,11 +154,25 @@
       }
     },
     {
+      "id": "frequency",
+      "question": {
+        "en": "How frequently do you cross the location where a bridge is needed?",
+        "es": "¿Con qué frecuencia cruzas el lugar donde se necesita un puente?"
+      },
+      "type": "multiple_choice",
+      "options": [
+        {"en": "Daily", "es": "Diario"},
+        {"en": "More than once per week", "es": "Más de una vez por semana"},
+        {"en": "Once per week", "es": "Una vez por semana"},
+        {"en": "1-3 times per month", "es": "1-3 veces al mes"}
+      ]
+    },
+    {
       "id": "deaths",
       "type": "short_answer",
       "question": {
-        "en": "How many deaths have occurred from people trying to cross the river/barrier?",
-        "es": "¿Cuántas muertes han ocurrido por personas que intentan cruzar el río/barreira?"
+        "en": "How many deaths have occurred over the last three years, from people trying to cross the river/barrier?",
+        "es": "¿Cuántas muertes han ocurrido en los últimos tres años, de personas que intentan cruzar el río/barreira?"
       }
     },
     {
@@ -218,7 +185,8 @@
       "options": [
         {"en": "Timber bridge", "es": "Puente de madera"},
         {"en": "Wading/swimming", "es": "Vadeando/nadando"},
-        {"en": "Boat", "es": "Bote"}
+        {"en": "Boat", "es": "Bote"},
+        {"en": "Other", "es": "Otro"}
       ]
     },
     {
@@ -234,7 +202,8 @@
         {"en": "Swamp", "es": "Pantano"},
         {"en": "Mudflat", "es": "Barro"},
         {"en": "Lake", "es": "Lago"},
-        {"en": "Ravine/gorge", "es": "Ravina/cañón"}
+        {"en": "Ravine/gorge", "es": "Ravina/cañón"},
+        {"en": "Other", "es": "Otro"}
       ]
     },
     {
@@ -248,6 +217,10 @@
     {
       "id": "photo_of_crossing",
       "type": "photo",
+      "hint": {
+        "en": "Stand back approximately 10 meters from the bank and take a photo of the current or desired crossing location.",
+        "es": "Retrocede aproximadamente 10 metros de la orilla y toma una foto del cruce actual o deseado."
+      },
       "question": {
         "en": "Take a picture of the current crossing point.",
         "es": "Toma una foto del punto de cruce actual."
@@ -257,8 +230,8 @@
       "id": "photo_opposite_crossing",
       "type": "photo",
       "question": {
-        "en": "Take a picture of the crossing point from the other side if it is safe to cross",
-        "es": "Toma una foto del punto de cruce desde el otro lado si es seguro cruzar"
+        "en": "Take a picture of the crossing point from the other side if it is safe to cross.",
+        "es": "Toma una foto del punto de cruce desde el otro lado si es seguro cruzar."
       }
     },
     {
@@ -266,7 +239,7 @@
       "type": "long_answer",
       "question": {
         "en": "Please include any other information you would like for us to know about the need for the bridge.",
-        "es": "Incluya cualquier otra información que le gustaría que supiéramos sobre la necesidad del puente."
+        "es": "Por favor incluya cualquier otra información que le gustaría que supiéramos sobre la necesidad del puente."
       }
     }
   ]
