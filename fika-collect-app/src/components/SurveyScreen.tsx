@@ -36,46 +36,80 @@ type SurveyScreenProps = {
 
 interface SurveyQuestionProps {
   response: SurveyQuestionResponse;
-  onChange: (value: string) => void;
+  onChange: (value: any, stringValue?: any) => void;
+  questionCount: number;
+  questionIndex: number;
+  onPrevious: () => void;
+  onNext: () => void;
+  canContinue: boolean;
 }
 
-function ShortAnswerQuestion({response, onChange}: SurveyQuestionProps) {
+function ShortAnswerQuestion({
+  response,
+  onChange,
+  onPrevious,
+  onNext,
+  questionCount,
+  questionIndex,
+}: SurveyQuestionProps) {
   const {question} = response;
   const {localize} = useLocalization();
 
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
-      <TextInput
-        style={styles.textInputBox}
-        value={response.value}
-        onChangeText={text => onChange(text)}
-        placeholder={localize(question.hint)}
-        placeholderTextColor={'#666'}
-      />
-    </View>
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={response.hasResponse}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
+        </Text>
+        <TextInput
+          style={styles.textInputBox}
+          value={response.value}
+          onChangeText={text => onChange(text)}
+          placeholder={localize(question.hint)}
+          placeholderTextColor={'#666'}
+        />
+      </View>
+    </SurveyQuestionWrapper>
   );
 }
 
-function LongAnswerQuestion({response, onChange}: SurveyQuestionProps) {
+function LongAnswerQuestion({
+  response,
+  onChange,
+  questionIndex,
+  questionCount,
+  onPrevious,
+  onNext,
+  canContinue,
+}: SurveyQuestionProps) {
   const {question} = response;
   const {localize} = useLocalization();
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
-      <TextInput
-        style={styles.multiLineTextInputBox}
-        multiline
-        value={response.value}
-        onChangeText={text => onChange(text)}
-        placeholder={localize(question.hint)}
-        placeholderTextColor={'#666'}
-      />
-    </View>
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={canContinue}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
+        </Text>
+        <TextInput
+          style={styles.multiLineTextInputBox}
+          multiline
+          value={response.value}
+          onChangeText={text => onChange(text)}
+          placeholder={localize(question.hint)}
+          placeholderTextColor={'#666'}
+        />
+      </View>
+    </SurveyQuestionWrapper>
   );
 }
 
@@ -110,40 +144,60 @@ function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
   );
 }
 
-function MultipleChoiceQuestion({response, onChange}: SurveyQuestionProps) {
+function MultipleChoiceQuestion({
+  response,
+  onChange,
+  questionCount,
+  questionIndex,
+  onNext,
+  onPrevious,
+  canContinue,
+}: SurveyQuestionProps) {
   const {question} = response;
   const {localize} = useLocalization();
 
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
-      <Picker
-        itemStyle={styles.picker}
-        selectedValue={response.value}
-        onValueChange={value => onChange(value)}>
-        {question.options &&
-          question.options.map((option, index) => (
-            <Picker.Item
-              key={`option-${index}`}
-              label={localize(option)}
-              value={option}
-            />
-          ))}
-      </Picker>
-    </View>
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={canContinue}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
+        </Text>
+        <Picker
+          itemStyle={styles.picker}
+          selectedValue={response.value}
+          onValueChange={value => onChange(value)}>
+          {question.options &&
+            question.options.map((option, index) => (
+              <Picker.Item
+                key={`option-${index}`}
+                label={localize(option)}
+                value={option.en}
+              />
+            ))}
+        </Picker>
+      </View>
+    </SurveyQuestionWrapper>
   );
 }
 
-function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
+function MultiSelectQuestion({
+  response,
+  onChange,
+  onPrevious,
+  onNext,
+  questionCount,
+  questionIndex,
+  canContinue,
+}: SurveyQuestionProps) {
   const {question} = response;
   const {localize} = useLocalization();
 
-  const selectedOptions = response.value
-    .split(',')
-    .map(option => option.trim());
-
+  const selectedOptions = response.value || [];
   const options = question.options || [];
 
   const initialSelectedState = options.map(option =>
@@ -153,45 +207,62 @@ function MultiSelectQuestion({response, onChange}: SurveyQuestionProps) {
     useState<boolean[]>(initialSelectedState);
 
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={canContinue}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
+        </Text>
 
-      {options.map((option, index) => (
-        <View key={`option-${index}`} style={styles.booleanRow}>
-          <Pressable
-            style={styles.multiselectRow}
-            onPress={() => {
-              const newSelectedState = [...selectedState];
-              newSelectedState[index] = !newSelectedState[index];
-              setSelectedValues(newSelectedState);
-              const selectedOptions = options.filter(
-                (_, i) => newSelectedState[i],
-              );
-              onChange(selectedOptions.join(', '));
-            }}>
-            <View
-              style={[
-                styles.multiselectCheckbox,
-                selectedState[index] && styles.multiselectCheckboxChecked,
-              ]}
-            />
-            <Text style={styles.multiselectCheckboxText}>
-              {localize(option)}
-            </Text>
-          </Pressable>
-        </View>
-      ))}
-    </View>
+        {options.map((option, index) => (
+          <View key={`option-${index}`} style={styles.booleanRow}>
+            <Pressable
+              style={styles.multiselectRow}
+              onPress={() => {
+                const newSelectedState = [...selectedState];
+                newSelectedState[index] = !newSelectedState[index];
+                setSelectedValues(newSelectedState);
+                const selectedOptions = options
+                  .filter((_, i) => newSelectedState[i])
+                  .map(({en}) => en.trim());
+                onChange(selectedOptions);
+              }}>
+              <View
+                style={[
+                  styles.multiselectCheckbox,
+                  selectedState[index] && styles.multiselectCheckboxChecked,
+                ]}
+              />
+              <Text style={styles.multiselectCheckboxText}>
+                {localize(option)}
+              </Text>
+            </Pressable>
+          </View>
+        ))}
+      </View>
+    </SurveyQuestionWrapper>
   );
 }
 
-function AdminLocationQuestion({response, onChange}: SurveyQuestionProps) {
+function AdminLocationQuestion({
+  response,
+  onChange,
+  questionCount,
+  questionIndex,
+  onNext,
+  onPrevious,
+  canContinue,
+}: SurveyQuestionProps) {
   let {locations, error} = useLocationLookup();
   const {localize} = useLocalization();
-  const [locationPath, setLocation] = useState<string[]>([]);
+  const [locationPath, setLocation] = useState<string[]>(response.value || []);
   const [curPathPart, setCurPathPart] = useState<string | null>(null);
+
+  const MAX_DEPTH = 6;
 
   useEffect(() => {
     if (!locations || curPathPart !== null) {
@@ -225,9 +296,10 @@ function AdminLocationQuestion({response, onChange}: SurveyQuestionProps) {
     }
   }
 
-  //const adminLevel = locationPath.length;
-
-  function onSelectAdminLevel(value: string) {
+  function onSelectAdminLevel(value: string | null) {
+    if (value === null) {
+      return;
+    }
     setCurPathPart(value);
   }
 
@@ -246,59 +318,100 @@ function AdminLocationQuestion({response, onChange}: SurveyQuestionProps) {
     setCurPathPart(navigatePath(newPath)[0]);
   }
 
+  const next = () => {
+    console.log(locationPath);
+    if (locationPath.length < MAX_DEPTH) {
+      pushPathPart();
+    } else {
+      response.value = locationPath.join(' > ');
+      onChange && onChange(locationPath, locationPath.join(' > '));
+      onNext();
+    }
+  };
+
+  const prev = () => {
+    if (locationPath.length === 0) {
+      onPrevious();
+    } else {
+      popPathPart();
+    }
+  };
+
   const {question} = response;
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
-      {!locations && <Text>{localize('loadingLocations')}</Text>}
-      {locations && (
-        <View>
-          <Picker
-            itemStyle={styles.picker}
-            selectedValue={curPathPart}
-            onValueChange={value => onSelectAdminLevel(value)}>
-            {navigatePath(locationPath).map((option, index) => (
-              <Picker.Item
-                key={`option-${index}`}
-                label={localize(option)}
-                value={option}
-              />
-            ))}
-          </Picker>
-          <View style={styles.locationEchoRow}>
-            <Text>{locationPath.join(' > ')}</Text>
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={prev}
+      onNext={next}
+      canContinue={canContinue}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
+        </Text>
+        {!locations && <Text>{localize('loadingLocations')}</Text>}
+        {locations && (
+          <View>
+            <View style={styles.locationEchoRow}>
+              <Text style={styles.locationEchoText}>
+                {locationPath.join(' > ')}
+              </Text>
+            </View>
+            {locationPath.length < MAX_DEPTH && (
+              <Picker
+                itemStyle={styles.picker}
+                selectedValue={curPathPart}
+                onValueChange={value => onSelectAdminLevel(value)}>
+                {navigatePath(locationPath).map((option, index) => (
+                  <Picker.Item
+                    key={`option-${index}`}
+                    label={localize(option)}
+                    value={option}
+                  />
+                ))}
+              </Picker>
+            )}
+            {
+              null /*
+            <View style={styles.locationButtonContainer}>
+              <Pressable
+                onPress={prev}
+                style={({pressed}) => [
+                  sharedStyles.button,
+                  sharedStyles.buttonSecondary,
+                  locationPath.length === 0 ? sharedStyles.buttonDisabled : {},
+                  pressed ? sharedStyles.buttonPressed : {},
+                ]}>
+                <Text style={sharedStyles.buttonText}>Back</Text>
+              </Pressable>
+              <Pressable
+                onPress={next}
+                style={({pressed}) => [
+                  sharedStyles.button,
+                  pressed ? sharedStyles.buttonPressed : {},
+                ]}>
+                <Text style={sharedStyles.buttonText}>Select</Text>
+              </Pressable>
+            </View>*/
+            }
           </View>
-          <View style={styles.locationButtonContainer}>
-            <Pressable
-              onPress={() => popPathPart()}
-              style={({pressed}) => [
-                sharedStyles.button,
-                sharedStyles.buttonSecondary,
-                locationPath.length === 0 ? sharedStyles.buttonDisabled : {},
-                pressed ? sharedStyles.buttonPressed : {},
-              ]}>
-              <Text style={sharedStyles.buttonText}>Back</Text>
-            </Pressable>
-            <Pressable
-              onPress={() => pushPathPart()}
-              style={({pressed}) => [
-                sharedStyles.button,
-                pressed ? sharedStyles.buttonPressed : {},
-              ]}>
-              <Text style={sharedStyles.buttonText}>Select</Text>
-            </Pressable>
-          </View>
-        </View>
-      )}
-    </View>
+        )}
+      </View>
+    </SurveyQuestionWrapper>
   );
 }
 
 let GEOLOCATION_AUTHORIZATION: boolean | null = null;
 
-function GeolocationQuestion({response, onChange}: SurveyQuestionProps) {
+function GeolocationQuestion({
+  response,
+  onChange,
+  questionIndex,
+  questionCount,
+  onNext,
+  onPrevious,
+  canContinue,
+}: SurveyQuestionProps) {
   const {question} = response;
   const [authDenial, setAuthDenial] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
@@ -366,34 +479,49 @@ function GeolocationQuestion({response, onChange}: SurveyQuestionProps) {
   };
 
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
-      <Button
-        title={getString('geolocationGetLocationButton')}
-        onPress={getLocation}
-      />
-      {authDenial && (
-        <Text style={styles.warning}>
-          Location permission denied. Please enable location permission in the
-          app settings.
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={canContinue}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
         </Text>
-      )}
-
-      <View style={{marginTop: 40}}>
-        <TextInput
-          style={styles.textInputBox}
-          value={response.value}
-          editable={false}
+        <Button
+          title={getString('geolocationGetLocationButton')}
+          onPress={getLocation}
         />
-        <Text style={[styles.warning, {marginTop: 10}]}>{statusMessage}</Text>
+        {authDenial && (
+          <Text style={styles.warning}>
+            Location permission denied. Please enable location permission in the
+            app settings.
+          </Text>
+        )}
+
+        <View style={{marginTop: 40}}>
+          <TextInput
+            style={styles.textInputBox}
+            value={response.value}
+            editable={false}
+          />
+          <Text style={[styles.warning, {marginTop: 10}]}>{statusMessage}</Text>
+        </View>
       </View>
-    </View>
+    </SurveyQuestionWrapper>
   );
 }
 
-function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
+function PhotoQuestion({
+  response,
+  onChange,
+  onPrevious,
+  onNext,
+  questionCount,
+  questionIndex,
+  canContinue,
+}: SurveyQuestionProps) {
   const [cameraVisible, setCameraVisible] = useState(false);
   const {question} = response;
   const device = useCameraDevice('back');
@@ -411,96 +539,195 @@ function PhotoQuestion({response, onChange}: SurveyQuestionProps) {
   };
 
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
-      {filePath ? (
-        <View>
-          <View style={styles.previewContainer}>
-            <BlastedImage
-              source={{uri: filePath}}
-              style={styles.imagePreview}
-              resizeMode="cover"
-              width={Dimensions.get('window').width * 0.5}
-              height={Dimensions.get('window').width * 0.8}
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={canContinue}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
+        </Text>
+        {filePath ? (
+          <View>
+            <View style={styles.previewContainer}>
+              <BlastedImage
+                source={{uri: filePath}}
+                style={styles.imagePreview}
+                resizeMode="cover"
+                width={Dimensions.get('window').width * 0.5}
+                height={Dimensions.get('window').width * 0.8}
+              />
+            </View>
+            <Button
+              onPress={() => onChange('')}
+              title="Use a different photo"
             />
           </View>
-          <Button onPress={() => onChange('')} title="Use a different photo" />
-        </View>
-      ) : (
-        <View>
-          {hasCameraPermission ? (
-            device ? (
-              <View style={{marginBottom: 15}}>
-                <Button
-                  onPress={() => setCameraVisible(true)}
-                  title="Take photo"
-                />
-                <Modal
-                  visible={cameraVisible}
-                  onRequestClose={() => setCameraVisible(false)}
-                  animationType="slide"
-                  presentationStyle="fullScreen">
-                  <CameraController
-                    device={device}
-                    cancel={cancel}
-                    onCapture={onCapture}
+        ) : (
+          <View>
+            {hasCameraPermission ? (
+              device ? (
+                <View style={{marginBottom: 15}}>
+                  <Button
+                    onPress={() => setCameraVisible(true)}
+                    title="Take photo"
                   />
-                </Modal>
-              </View>
+                  <Modal
+                    visible={cameraVisible}
+                    onRequestClose={() => setCameraVisible(false)}
+                    animationType="slide"
+                    presentationStyle="fullScreen">
+                    <CameraController
+                      device={device}
+                      cancel={cancel}
+                      onCapture={onCapture}
+                    />
+                  </Modal>
+                </View>
+              ) : (
+                <Text style={styles.warning}>
+                  {getString('noCameraAvailable')}
+                </Text>
+              )
             ) : (
               <Text style={styles.warning}>
-                {getString('noCameraAvailable')}
+                {getString('cameraPermissionRequired')}
               </Text>
-            )
-          ) : (
-            <Text style={styles.warning}>
-              {getString('cameraPermissionRequired')}
-            </Text>
-          )}
-          <Button
-            onPress={async () => {
-              const result = await launchImageLibrary({
-                mediaType: 'photo',
-                selectionLimit: 1,
-              });
-              const uri = result?.assets?.[0]?.uri;
-              if (!uri) return;
-              onChange(uri);
-            }}
-            title={getString('selectPhotoFromLibrary')}
-          />
-        </View>
-      )}
-    </View>
+            )}
+            <Button
+              onPress={async () => {
+                const result = await launchImageLibrary({
+                  mediaType: 'photo',
+                  selectionLimit: 1,
+                });
+                const uri = result?.assets?.[0]?.uri;
+                if (!uri) return;
+                onChange(uri);
+              }}
+              title={getString('selectPhotoFromLibrary')}
+            />
+          </View>
+        )}
+      </View>
+    </SurveyQuestionWrapper>
   );
 }
 
-function SurveyQuestion({response, onChange}: SurveyQuestionProps) {
+function SurveyQuestion({
+  response,
+  onChange,
+  questionCount,
+  questionIndex,
+  onPrevious,
+  onNext,
+  canContinue,
+}: SurveyQuestionProps) {
   const {question} = response;
+  let Component = null;
   switch (question.type) {
     case 'boolean':
-      return <BooleanQuestion response={response} onChange={onChange} />;
+      Component = BooleanQuestion;
+      break;
     case 'short_answer':
-      return <ShortAnswerQuestion response={response} onChange={onChange} />;
+      Component = ShortAnswerQuestion;
+      break;
     case 'long_answer':
-      return <LongAnswerQuestion response={response} onChange={onChange} />;
+      Component = LongAnswerQuestion;
+      break;
     case 'multiple_choice':
-      return <MultipleChoiceQuestion response={response} onChange={onChange} />;
+      Component = MultipleChoiceQuestion;
+      break;
     case 'multiselect':
-      return <MultiSelectQuestion response={response} onChange={onChange} />;
+      Component = MultiSelectQuestion;
+      break;
     // @ts-ignore
     case 'location': // deprecated
     case 'geolocation':
-      return <GeolocationQuestion response={response} onChange={onChange} />;
+      Component = GeolocationQuestion;
+      break;
     case 'admin_location':
-      return <AdminLocationQuestion response={response} onChange={onChange} />;
+      Component = AdminLocationQuestion;
+      break;
     case 'photo':
-      return <PhotoQuestion response={response} onChange={onChange} />;
-    default:
-      return null;
+      Component = PhotoQuestion;
+      break;
   }
+
+  if (!Component) {
+    return null;
+  }
+  return (
+    <Component
+      response={response}
+      onChange={onChange}
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={canContinue}
+    />
+  );
+}
+
+interface SurveyQuestionWrapperProps {
+  children: React.ReactNode;
+  questionCount: number;
+  questionIndex: number;
+  onPrevious: () => void;
+  onNext: () => void;
+  canContinue: boolean;
+}
+
+function SurveyQuestionWrapper(props: SurveyQuestionWrapperProps) {
+  const {questionIndex, onPrevious, onNext, questionCount, canContinue} = props;
+  const {getString} = useLocalization();
+
+  return (
+    <View style={{flexDirection: 'column', flex: 1}}>
+      <ScrollView>
+        <View style={styles.container}>{props.children}</View>
+      </ScrollView>
+
+      <View style={styles.buttonContainer}>
+        <Pressable
+          style={({pressed}) => [
+            sharedStyles.button,
+            sharedStyles.buttonSecondary,
+            styles.submitRowButton,
+            pressed ? sharedStyles.buttonSecondaryPressed : {},
+          ]}
+          onPress={onPrevious}>
+          <Text style={sharedStyles.buttonText}>
+            {questionIndex > 0
+              ? getString('previousButton')
+              : getString('backButton')}
+          </Text>
+        </Pressable>
+        <Text style={styles.feedbackText}>
+          {questionIndex + 1} / {questionCount}
+        </Text>
+        <Pressable
+          style={({pressed}) => [
+            sharedStyles.button,
+            styles.submitRowButton,
+            canContinue ? {} : sharedStyles.buttonDisabled,
+            pressed ? sharedStyles.buttonPressed : {},
+          ]}
+          disabled={!canContinue}
+          onPress={onNext}>
+          <Text style={sharedStyles.buttonText}>
+            {getString(
+              questionIndex === questionCount - 1
+                ? 'submitButton'
+                : 'nextButton',
+            )}
+          </Text>
+        </Pressable>
+      </View>
+    </View>
+  );
 }
 
 export default function SurveyScreen(props: SurveyScreenProps) {
@@ -509,7 +736,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const netInfo = useNetInfo();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const {localize, getString} = useLocalization();
+  const {getString, localize} = useLocalization();
 
   const surveyResponseManager = useContext<SurveyResponseManager>(
     SurveyResponseManagerContext,
@@ -527,11 +754,47 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const canContinue =
     currentResponse.hasResponse || currentResponse.type === 'multiselect';
 
+  const submit = () => {
+    Alert.alert(
+      'Submit response',
+      'Are you sure you want to submit this survey response?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => setQuestionIndex(questionIndex),
+          style: 'cancel',
+        },
+        {
+          text: 'Submit',
+          onPress: async () => {
+            await surveyResponseManager.storeResponse(response);
+            if (netInfo.isInternetReachable) {
+              setSubmitting(true);
+            } else {
+              Alert.alert(
+                'No internet connection',
+                'Your response has been saved locally. To submit the response, please re-open the app and check the Responses tab when you have an internet connection.',
+              );
+              navigation.goBack();
+            }
+          },
+          style: 'destructive',
+        },
+      ],
+    );
+  };
+
   const next = () => {
     if (!canContinue) {
       return;
     }
-    setQuestionIndex(questionIndex + 1);
+
+    if (questionIndex === questionCount - 1) {
+      submit();
+      return;
+    } else {
+      setQuestionIndex(questionIndex + 1);
+    }
   };
 
   const prev = () => {
@@ -566,39 +829,12 @@ export default function SurveyScreen(props: SurveyScreenProps) {
 
   const navigation = useNavigation();
 
-  const setResponse = (value: string) => {
+  const setResponse = (value: any, stringValue?: string) => {
+    console.log('set response', {value, stringValue});
     currentResponse.value = value;
+    currentResponse.stringValue = stringValue || value;
+    console.log(currentResponse);
     setRevision(revision + 1);
-  };
-
-  const submit = () => {
-    Alert.alert(
-      'Submit response',
-      'Are you sure you want to submit this survey response?',
-      [
-        {
-          text: 'Cancel',
-          onPress: () => setQuestionIndex(questionIndex),
-          style: 'cancel',
-        },
-        {
-          text: 'Submit',
-          onPress: async () => {
-            await surveyResponseManager.storeResponse(response);
-            if (netInfo.isInternetReachable) {
-              setSubmitting(true);
-            } else {
-              Alert.alert(
-                'No internet connection',
-                'Your response has been saved locally. To submit the response, please re-open the app and check the Responses tab when you have an internet connection.',
-              );
-              navigation.goBack();
-            }
-          },
-          style: 'destructive',
-        },
-      ],
-    );
   };
 
   useEffect(() => {
@@ -624,71 +860,26 @@ export default function SurveyScreen(props: SurveyScreenProps) {
 
   return (
     <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
-      <View style={{flexDirection: 'column', flex: 1}}>
-        <ScrollView>
-          <View style={styles.container}>
-            <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
-
-            <SurveyQuestion
-              key={questionIndex}
-              response={currentResponse}
-              onChange={setResponse}
-            />
-          </View>
-        </ScrollView>
-
-        <View style={styles.buttonContainer}>
-          <Pressable
-            style={({pressed}) => [
-              sharedStyles.button,
-              sharedStyles.buttonSecondary,
-              pressed ? sharedStyles.buttonSecondaryPressed : {},
-            ]}
-            onPress={prev}>
-            <Text style={sharedStyles.buttonText}>
-              {questionIndex > 0
-                ? getString('previousButton')
-                : getString('backButton')}
-            </Text>
-          </Pressable>
-          <Text style={styles.feedbackText}>
-            {getString('questionCountLabel')} {questionIndex + 1} /{' '}
-            {questionCount}
-          </Text>
-          {questionIndex === questionCount - 1 ? (
-            <Pressable
-              style={({pressed}) => [
-                sharedStyles.button,
-                canContinue ? {} : sharedStyles.buttonDisabled,
-                pressed ? sharedStyles.buttonPressed : {},
-              ]}
-              disabled={!canContinue}
-              onPress={submit}>
-              <Text style={sharedStyles.buttonText}>Submit</Text>
-            </Pressable>
-          ) : (
-            <Pressable
-              style={({pressed}) => [
-                sharedStyles.button,
-                canContinue ? {} : sharedStyles.buttonDisabled,
-                pressed ? sharedStyles.buttonPressed : {},
-              ]}
-              disabled={!canContinue}
-              onPress={next}>
-              <Text style={sharedStyles.buttonText}>
-                {getString('nextButton')}
-              </Text>
-            </Pressable>
-          )}
-        </View>
-        {submitting && (
-          <View style={styles.overlay}>
-            <View style={styles.progressContainer}>
-              <Text style={styles.progressText}>Submitting...</Text>
-            </View>
-          </View>
-        )}
+      <View style={styles.titleContainer}>
+        <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
       </View>
+      <SurveyQuestion
+        key={questionIndex}
+        response={currentResponse}
+        onChange={setResponse}
+        questionIndex={questionIndex}
+        questionCount={questionCount}
+        onPrevious={prev}
+        onNext={next}
+        canContinue={canContinue}
+      />
+      {submitting && (
+        <View style={styles.overlay}>
+          <View style={styles.progressContainer}>
+            <Text style={styles.progressText}>Submitting...</Text>
+          </View>
+        </View>
+      )}
     </KeyboardAvoidingView>
   );
 }
@@ -700,11 +891,17 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: 15,
   },
+  titleContainer: {
+    flex: 0,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    padding: 15,
+  },
   surveyTitle: {
     color: '#333',
     fontSize: 22,
     marginTop: 15,
-    marginBottom: 50,
+    marginBottom: 0,
     fontWeight: 700,
   },
   surveyQuestion: {
@@ -746,7 +943,7 @@ const styles = StyleSheet.create({
   picker: {
     color: 'black',
     fontSize: 20,
-    height: 200,
+    height: 300,
   },
   booleanRow: {
     flexDirection: 'row',
@@ -850,5 +1047,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  locationEchoText: {
+    lineHeight: 30,
+    fontSize: 18,
+  },
+  submitRowButton: {
+    minWidth: 100,
+    alignItems: 'center',
   },
 });

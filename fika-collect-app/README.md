@@ -6,6 +6,11 @@ React Native implementation of our Fika Collect application.
 
 To configure your environment and get started, follow the React Native template docs in [getting-started.md](./docs/getting-started.md).
 
+
+## Assets
+
+Assets (for example, [src/assets/locations.json](./src/assets/locations.json)) are configured with [react-native-asset](https://github.com/unimonkiez/react-native-asset). They are specified in [react-native.config.js](./react-native.config.js) and updated with the `react-native-asset` command.
+
 ## Building
 
 To build for iOS and Android, respectively:

@@ -13,6 +13,7 @@ export class SurveyQuestionResponse {
   question: SurveyQuestion;
   type: QuestionType;
   _value: any = null;
+  _stringValue: string = '';
 
   // This is used for photo questions, where we want to replace the value with the photo path
   // when serializing the response without modifying the original value. Otherwise,
@@ -44,6 +45,14 @@ export class SurveyQuestionResponse {
     }
   }
 
+  set stringValue(value: string) {
+    this._stringValue = value;
+  }
+
+  get stringValue() {
+    return this._stringValue;
+  }
+
   set valueForSerialization(value: string) {
     this.replaceValueOnSerialization = true;
     this._valueForSerialization = value;
@@ -61,7 +70,7 @@ export class SurveyQuestionResponse {
     return this._value !== '';
   }
 
-  set value(value: string) {
+  set value(value: any) {
     this._value = value;
   }
 
@@ -105,6 +114,7 @@ export class SurveyResponse {
     this.schema = schema;
     this.id = createRandomId();
     this.submittedAt = null;
+    console.log({schema});
     this.responses = schema.questions.map(
       question => new SurveyQuestionResponse(question),
     );
@@ -139,7 +149,7 @@ export class SurveyResponse {
       survey_id: this.schema.id,
       responses: this.responses.map(response => response.serialize()),
       submitted_at: this.submittedAt ? this.submittedAt.toISOString() : null,
-      schema: JSON.stringify(this.schema), //.serialize(),
+      schema: this.schema,
     };
   }
 }

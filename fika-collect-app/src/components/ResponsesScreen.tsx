@@ -74,7 +74,16 @@ export default function ResponsesScreen() {
 
   const onRetry = useCallback(
     (response: SurveyResponse) => {
-      if (netInfo.isInternetReachable) {
+      console.log('isWifiEnabled:', netInfo.isWifiEnabled);
+      console.log('isInternetReachable:', netInfo.isInternetReachable);
+      console.log('isConnected:', netInfo.isConnected);
+      // It seems that netInfo.isInternetReachable is not reliable, at least based on
+      // testing in the iOS simulator. Instead, we will use isConnected in DEV mode
+      // and isInternetReachable in production mode.
+      if (
+        netInfo.isInternetReachable ||
+        (__DEV__ === true && netInfo.isConnected)
+      ) {
         setSubmitting(true);
       } else {
         Alert.alert(
