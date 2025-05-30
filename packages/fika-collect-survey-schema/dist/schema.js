@@ -33,9 +33,12 @@ const FileTypeSchema = z.enum([
     'image/heic',
     'image/webp',
 ]);
-const QuestionTypeSchema = z.preprocess((val) => val === 'location' ? 'geolocation' : val, z.enum([
+const QuestionTypeSchema = z.preprocess(
+// Apply renamings for backward-compatibility with historical choices
+(val) => val === 'location' ? 'geolocation' : (val === 'multiple_choice' ? 'select' : val), z.enum([
     'multiselect',
-    'multiple_choice',
+    'select',
+    'numeric',
     'boolean',
     'short_answer',
     'long_answer',

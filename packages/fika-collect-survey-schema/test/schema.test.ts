@@ -30,6 +30,22 @@ describe('SurveySchema', () => {
     expect(result.error?.issues.length).toBe(2);
   });
 
+  it('validates schema with old-style unwrapped strings', () => {
+    const result = SurveySchema.safeParse({
+      id: 'test_schema',
+      title: 'foo',
+      description: 'bar',
+      questions: []
+    });
+    expect(result.success).toBe(true);
+    expect(result.data).toEqual({
+      id: 'test_schema',
+      title: { 'en': 'foo' },
+      description: { 'en': 'bar' },
+      questions: []
+    });
+  });
+
   it('validates schema with questions', () => {
     const result = SurveySchema.safeParse({
       id: 'test_schema',
@@ -47,7 +63,7 @@ describe('SurveySchema', () => {
           "fr": "Ceci est un indice.",
         },
       }, {
-        "type": "multiple_choice",
+        "type": "select",
         "id": "question_2",
         "question": {
           "en": "This is not a schema.",
@@ -57,24 +73,114 @@ describe('SurveySchema', () => {
           { "en": "Option 1", "fr": "Option 1" },
           { "en": "Option 2", "fr": "Option 2" },
         ]
+      }, {
+        "type": "multiple_choice",
+        "id": "question_3",
+        "question": {
+          "en": "This is not a schema.",
+          "fr": "Ceci n'est pas un schéma.",
+        },
+        "options": [
+          { "en": "Option 1", "fr": "Option 1" },
+          { "en": "Option 2", "fr": "Option 2" },
+        ],
+        "required": false,
+      }, {
+        "type": "short_answer",
+        "id": "question_4",
+        "question": {
+          "en": "What is your name?",
+        },
+      }, {
+        "type": "short_answer",
+        "id": "question_5",
+        "question": {
+          "en": "What is your age?",
+        },
+        "textInputMode": "numeric"
+      }, {
+        "type": "short_answer",
+        "id": "question_6",
+        "question": {
+          "en": "What is the air speed of an unladen swallow?",
+        },
+        "textInputMode": "decimal"
       }]
     });
     expect(result.success).toBe(true);
-  });
 
-  it('validates schema with old-style unwrapped strings', () => {
-    const result = SurveySchema.safeParse({
-      id: 'test_schema',
-      title: 'foo',
-      description: 'bar',
-      questions: []
-    });
-    expect(result.success).toBe(true);
-    expect(result.data).toEqual({
-      id: 'test_schema',
-      title: { 'en': 'foo' },
-      description: { 'en': 'bar' },
-      questions: []
-    });
+    if (result.data) {
+      expect(result.data).toEqual({
+        id: 'test_schema',
+        title: { 'en': "foo" },
+        description: { "fr": "bar" },
+        questions: [{
+          "type": "boolean",
+          "id": "question_1",
+          "question": {
+            "en": "This is not a schema.",
+            "fr": "Ceci n'est pas un schéma.",
+          },
+          "hint": {
+            "en": "This is a hint.",
+            "fr": "Ceci est un indice.",
+          },
+          "required": true,
+        }, {
+          "type": "select",
+          "id": "question_2",
+          "question": {
+            "en": "This is not a schema.",
+            "fr": "Ceci n'est pas un schéma.",
+          },
+          "hint": { "en": "" },
+          "options": [
+            { "en": "Option 1", "fr": "Option 1" },
+            { "en": "Option 2", "fr": "Option 2" },
+          ],
+          "required": true,
+        }, {
+          "type": "select",
+          "id": "question_3",
+          "question": {
+            "en": "This is not a schema.",
+            "fr": "Ceci n'est pas un schéma.",
+          },
+          "hint": { "en": "" },
+          "options": [
+            { "en": "Option 1", "fr": "Option 1" },
+            { "en": "Option 2", "fr": "Option 2" },
+          ],
+          "required": false,
+        }, {
+          "type": "short_answer",
+          "id": "question_4",
+          "question": {
+            "en": "What is your name?",
+          },
+          "hint": { "en": "" },
+          "required": true,
+          "textInputMode": "text"
+        }, {
+          "type": "short_answer",
+          "id": "question_5",
+          "question": {
+            "en": "What is your age?",
+          },
+          "hint": { "en": "" },
+          "required": true,
+          "textInputMode": "numeric"
+        }, {
+          "type": "short_answer",
+          "id": "question_6",
+          "question": {
+            "en": "What is the air speed of an unladen swallow?",
+          },
+          "hint": { "en": "" },
+          "required": true,
+          "textInputMode": "decimal"
+        }]
+      });
+    }
   });
 });

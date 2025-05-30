@@ -34,6 +34,11 @@ type SurveyScreenProps = {
   route: {params: SurveyParams};
 };
 
+type LonLat = {
+  longitude: number;
+  latitude: number;
+};
+
 interface SurveyQuestionProps {
   response: SurveyQuestionResponse;
   onChange: (value: any, stringValue?: any) => void;
@@ -61,7 +66,7 @@ function ShortAnswerQuestion({
       questionIndex={questionIndex}
       onPrevious={onPrevious}
       onNext={onNext}
-      canContinue={response.hasResponse}>
+      canContinue={response.canContinue}>
       <View style={styles.surveyQuestion}>
         <Text style={styles.surveyQuestionText}>
           {localize(question.question)}
@@ -319,7 +324,6 @@ function AdminLocationQuestion({
   }
 
   const next = () => {
-    console.log(locationPath);
     if (locationPath.length < MAX_DEPTH) {
       pushPathPart();
     } else {
@@ -455,23 +459,24 @@ function GeolocationQuestion({
       }
 
       console.log('Requesting position...');
-      const location = (await new Promise((resolve, reject) => {
+      const lonLat = (await new Promise((resolve, reject) => {
         Geolocation.getCurrentPosition(
           position => {
             const {latitude, longitude} = position.coords;
-            const value = `${latitude},${longitude}`;
+            const value: LonLat = {longitude, latitude};
             resolve(value);
           },
           error => reject(error),
           {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
         );
-      })) as string;
+      })) as LonLat;
 
       setStatusMessage('');
-      console.log('Got location:', location);
+      console.log('Got location:', lonLat);
 
-      response.value = location;
-      onChange && onChange(location);
+      response.value = lonLat;
+      response.stringValue = `${lonLat.longitude}, ${lonLat.latitude}`;
+      onChange && onChange(lonLat, response.stringValue);
     } catch (error) {
       Alert.alert(getString('error'), getString('geolocationUnable'));
       console.error(error);
@@ -503,7 +508,7 @@ function GeolocationQuestion({
         <View style={{marginTop: 40}}>
           <TextInput
             style={styles.textInputBox}
-            value={response.value}
+            value={response.stringValue}
             editable={false}
           />
           <Text style={[styles.warning, {marginTop: 10}]}>{statusMessage}</Text>
@@ -830,10 +835,8 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const navigation = useNavigation();
 
   const setResponse = (value: any, stringValue?: string) => {
-    console.log('set response', {value, stringValue});
     currentResponse.value = value;
     currentResponse.stringValue = stringValue || value;
-    console.log(currentResponse);
     setRevision(revision + 1);
   };
 
@@ -890,17 +893,22 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     padding: 15,
+    paddingTop: 30,
   },
   titleContainer: {
     flex: 0,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    padding: 15,
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    backgroundColor: '#e8e8e8',
   },
   surveyTitle: {
     color: '#333',
     fontSize: 22,
-    marginTop: 15,
+    marginTop: 5,
     marginBottom: 0,
     fontWeight: 700,
   },
@@ -943,7 +951,10 @@ const styles = StyleSheet.create({
   picker: {
     color: 'black',
     fontSize: 20,
-    height: 300,
+    height: 250,
+    borderColor: '#cccccc',
+    borderWidth: 1,
+    borderRadius: 4,
   },
   booleanRow: {
     flexDirection: 'row',
@@ -1045,6 +1056,7 @@ const styles = StyleSheet.create({
   locationEchoRow: {
     marginTop: 20,
     marginBottom: 20,
+    minHeight: 60,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },

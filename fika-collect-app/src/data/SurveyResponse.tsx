@@ -37,7 +37,7 @@ export class SurveyQuestionResponse {
         this._value = __DEV__ ? 'REMOVE ME' : '';
         break;
       case 'geolocation':
-        this._value = 'N/A';
+        this._stringValue = 'N/A';
         break;
       case 'admin_location':
         //this._value = 'N/A';
@@ -68,6 +68,10 @@ export class SurveyQuestionResponse {
 
   get hasResponse() {
     return this._value !== '';
+  }
+
+  get canContinue() {
+    return this.hasResponse || this.question.required === false;
   }
 
   set value(value: any) {

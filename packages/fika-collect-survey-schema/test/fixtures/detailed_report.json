@@ -22,7 +22,7 @@
     {
       "id": "country",
       "question": "What country are you in?",
-      "type": "multiple_choice",
+      "type": "select",
       "options": [
         "Cote d'Ivoire",
         "Ethiopia",
