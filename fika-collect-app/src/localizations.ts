@@ -4,10 +4,21 @@ interface Localization {
   [key: Locale]: string;
 }
 
+const LOCALE_LABELS: Record<Locale, string> = {
+  'en': 'English',
+  'fr': 'French (Français)',
+  'rw': 'Kinyarwanda',
+  'sw': 'Swahili (Kiswahili)',
+  'am': 'Amharic (አማርኛ)',
+  'om': 'Oromo (Afaan Oromoo)',
+  'ti': 'Tigrinya (ትግርኛ)',
+  'so': 'Somali (Soomaali)',
+  'aa': 'Afar (Qafar af)',
+};
+
 const localizations: Record<Locale, Localization> = {
   error: {
     'en': 'Error',
-    'es': 'Error',
     'rw': 'Ikosa',
     'sw': 'Kosa',
     'am': 'ስህተት',
@@ -19,7 +30,6 @@ const localizations: Record<Locale, Localization> = {
   },
   surveysScreenTitle: {
     'en': 'Surveys',
-    'es': 'Encuestas',
     'rw': 'Amakuru',
     'sw': 'Utafiti',
     'am': 'ጥናቶች',
@@ -31,7 +41,6 @@ const localizations: Record<Locale, Localization> = {
   },
   myResponsesScreenTitle: {
     'en': 'My Responses',
-    'es': 'Mis Respuestas',
     'rw': 'Ibisubizo byanjye',
     'sw': 'Majibu Yangu',
     'am': 'የእኔ መልስ',
@@ -41,9 +50,19 @@ const localizations: Record<Locale, Localization> = {
     'aa': 'Deebii Koo',
     'fr': 'Mes Réponses',
   },
+  settingsScreenTitle: {
+    'en': 'Settings',
+    'rw': 'Ibyerekeye',
+    'sw': 'Mipangilio',
+    'am': 'ቅንብሮች',
+    'om': 'Qindaa\'ina',
+    'ti': 'ቅንብሮች',
+    'so': 'Dejinta',
+    'aa': 'Qindaa\'ina',
+    'fr': 'Paramètres',
+  },
   backButton: {
     'en': 'Back',
-    'es': 'Atrás',
     'rw': 'Inyuma',
     'sw': 'Nyuma',
     'am': 'ተመለስ',
@@ -55,7 +74,6 @@ const localizations: Record<Locale, Localization> = {
   },
   nextButton: {
     'en': 'Next',
-    'es': 'Siguiente',
     'rw': 'Hakurikiraho',
     'sw': 'Ifuatayo',
     'am': 'ቀጣይ',
@@ -65,9 +83,19 @@ const localizations: Record<Locale, Localization> = {
     'aa': 'Itti aanu',
     'fr': 'Suivant',
   },
+  previousButton: {
+    'en': 'Previous',
+    'fr': 'Précédent',
+    'rw': 'Icyakera',
+    'sw': 'Iliyopita',
+    'am': 'ያለፈ',
+    'om': 'Dura',
+    'ti': 'ዝኾነ ዝርከብ',
+    'so': 'Hore',
+    'aa': 'Kan duraa',
+  },
   submitButton: {
     'en': 'Submit',
-    'es': 'Enviar',
     'rw': 'Ohereza',
     'sw': 'Tuma',
     'am': 'ላክ',
@@ -77,21 +105,8 @@ const localizations: Record<Locale, Localization> = {
     'fr': 'Soumettre',
     'aa': 'Galchi',
   },
-  previousButton: {
-    'en': 'Previous',
-    'fr': 'Précédent',
-    'es': 'Anterior',
-    'rw': 'Icyakera',
-    'sw': 'Iliyopita',
-    'am': 'ያለፈ',
-    'om': 'Dura',
-    'ti': 'ዝኾነ ዝርከብ',
-    'so': 'Hore',
-    'aa': 'Kan duraa',
-  },
   cancelButton: {
     'en': 'Cancel',
-    'es': 'Cancelar',
     'rw': 'Siba',
     'sw': 'Ghairi',
     'am': 'ሰርዝ',
@@ -101,33 +116,8 @@ const localizations: Record<Locale, Localization> = {
     'fr': 'Annuler',
     'aa': 'Haquu',
   },
-  discardButton: {
-    'en': 'Discard',
-    'es': 'Descartar',
-    'rw': 'Siba',
-    'sw': 'Tupa',
-    'am': 'ይቅርታ',
-    'om': 'Haqi',
-    'ti': 'ሰርዝ',
-    'so': 'Tirtir',
-    'fr': 'Ignorer',
-    'aa': 'Dhiisi',
-  },
-  questionCountLabel: {
-    'en': 'Question',
-    'es': 'Pregunta',
-    'rw': 'Ikibazo',
-    'sw': 'Swali',
-    'am': 'ጥያቄ',
-    'om': 'Gaaffii',
-    'ti': 'ጥያቄ',
-    'so': 'Su\'aal',
-    'fr': 'Question',
-    'aa': 'Gaaffii',
-  },
   noCameraAvailable: {
     'en': 'No camera available',
-    'es': 'No hay cámara disponible',
     'rw': 'Nta kamera iboneka',
     'sw': 'Hakuna kamera inayopatikana',
     'am': 'ካሜራ የለም',
@@ -139,7 +129,6 @@ const localizations: Record<Locale, Localization> = {
   },
   selectPhotoFromLibrary: {
     'en': 'Select photo from library',
-    'es': 'Seleccionar foto de la biblioteca',
     'rw': 'Hitamo ifoto muri bibliotheque',
     'sw': 'Chagua picha kutoka kwenye maktaba',
     'am': 'ከላይብረሪ ፎቶ ይምረጡ',
@@ -151,7 +140,6 @@ const localizations: Record<Locale, Localization> = {
   },
   cameraPermissionRequired: {
     'en': 'Camera permission is required to take a photo',
-    'es': 'Se requiere permiso de cámara para tomar una foto',
     'rw': 'Ubusabe bwa kamera burakenewe kugirango ufate ifoto',
     'sw': 'Ruhusa ya kamera inahitajika ili kuchukua picha',
     'am': 'ፎቶ ለመነበብ የካሜራ ፈቃድ ይፈልጋል',
@@ -163,7 +151,6 @@ const localizations: Record<Locale, Localization> = {
   },
   booleanQuestionYes: {
     'en': 'Yes',
-    'es': 'Sí',
     'rw': 'Yego',
     'sw': 'Ndio',
     'am': 'አዎ',
@@ -175,7 +162,6 @@ const localizations: Record<Locale, Localization> = {
   },
   booleanQuestionNo: {
     'en': 'No',
-    'es': 'No',
     'rw': 'Oya',
     'sw': 'Hapana',
     'am': 'አይ',
@@ -187,7 +173,6 @@ const localizations: Record<Locale, Localization> = {
   },
   discardResponseTitle: {
     'en': 'Discard Response',
-    'es': 'Descartar Respuesta',
     'rw': 'Siba Igisubizo',
     'sw': 'Tupa Jibu',
     'am': 'ይቅርታ መልስ',
@@ -199,7 +184,6 @@ const localizations: Record<Locale, Localization> = {
   },
   discardResponseMessage: {
     'en': 'Are you sure you want to discard this response?',
-    'es': '¿Está seguro de que desea descartar esta respuesta?',
     'rw': 'Ese wemeza ko ushaka gusiba iki gisubizo?',
     'sw': 'Je, una uhakika kwamba unataka kutupa jibu hili?',
     'am': 'ይቅርታ መልስ ለመሰረዝ ይረጋገጡ?',
@@ -209,9 +193,19 @@ const localizations: Record<Locale, Localization> = {
     'fr': 'Êtes-vous sûr de vouloir ignorer cette réponse?',
     'aa': 'Deebii kana dhiisuuf mirkaneeffataa?',
   },
+  discardButton: {
+    'en': 'Discard',
+    'rw': 'Siba',
+    'sw': 'Tupa',
+    'am': 'ይቅርታ',
+    'om': 'Haqi',
+    'ti': 'ሰርዝ',
+    'so': 'Tirtir',
+    'fr': 'Ignorer',
+    'aa': 'Dhiisi',
+  },
   gelocationRequesting: {
     'en': 'Requesting location...',
-    'es': 'Solicitando ubicación...',
     'rw': 'Gusaba aho uri...',
     'sw': 'Inahitaji eneo...',
     'am': 'አካባቢ ማግኘት በሚገኝ ላይ ነው...',
@@ -223,7 +217,6 @@ const localizations: Record<Locale, Localization> = {
   },
   geolocationDenied: {
     'en': 'Location permission denied',
-    'es': 'Permiso de ubicación denegado',
     'rw': 'Ubusabe bwo kubona aho uri bwanzwe',
     'sw': 'Ruhusa ya eneo imekataliwa',
     'am': 'የአካባቢ ፈቃድ ተปርስ',
@@ -235,7 +228,6 @@ const localizations: Record<Locale, Localization> = {
   },
   geolocationPleaseEnable: {
     'en': 'Please enable location services in your device settings',
-    'es': 'Habilite los servicios de ubicación en la configuración de su dispositivo',
     'rw': 'Nyamuneka shyira mu bikorwa serivisi z\'aho uri mu mabwiriza y\'igikoresho cyawe',
     'sw': 'Tafadhali wezesha huduma za eneo katika mipangilio ya kifaa chako',
     'am': 'እባክዎ በመሣሪያዎ ቅንብሮች ውስጥ የአካባቢ አገልግሎቶችን አስተካክሉ',
@@ -247,7 +239,6 @@ const localizations: Record<Locale, Localization> = {
   },
   geolocationUnable: {
     'en': 'Unable to get location',
-    'es': 'No se puede obtener la ubicación',
     'rw': 'Ntabwo bishoboka kubona aho uri',
     'sw': 'Haiwezi kupata eneo',
     'am': 'አካባቢ ማግኘት አልቻለም',
@@ -259,7 +250,6 @@ const localizations: Record<Locale, Localization> = {
   },
   geolocationGetLocationButton: {
     'en': 'Get Location',
-    'es': 'Obtener Ubicación',
     'rw': 'Fata Aho Uri',
     'sw': 'Pata Eneo',
     'am': 'አካባቢ ያግኙ',
@@ -271,7 +261,6 @@ const localizations: Record<Locale, Localization> = {
   },
   loadingLocations: {
     'en': 'Loading locations...',
-    'es': 'Cargando ubicaciones...',
     'rw': 'Gukora aho uri...',
     'sw': 'Inapakia maeneo...',
     'am': 'አካባቢዎች በማስገባት ላይ ነው...',
@@ -283,7 +272,6 @@ const localizations: Record<Locale, Localization> = {
   },
   errorLoadingLocations: {
     'en': 'Error loading locations',
-    'es': 'Error al cargar ubicaciones',
     'rw': 'Ikosa mu gukurura aho uri',
     'sw': 'Kosa katika kupakia maeneo',
     'am': 'አካባቢዎች ማስገባት ላይ ስህተት',
@@ -296,4 +284,4 @@ const localizations: Record<Locale, Localization> = {
 };
 
 export type { Localization };
-export { localizations };
+export { localizations, LOCALE_LABELS };

@@ -4,12 +4,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import SurveysScreen from './components/SurveysScreen';
 import SurveyScreen from './components/SurveyScreen';
 import ResponsesScreen from './components/ResponsesScreen';
+import SettingsScreen from './components/SettingsScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {type SurveyParams} from './types.d';
 import {Provider} from 'react-redux';
 import {store} from './data/store';
 import Geolocation from '@react-native-community/geolocation';
-import {useLocalization} from './hooks/useLocalization';
 
 //import {useContext, useEffect} from 'react';
 //import SurveyResponseManagerContext from './data/SurveyResponseManagerContext';
@@ -28,6 +28,7 @@ export type RootStackParamList = {
   responses: undefined;
   survey: SurveyParams;
   surveys: undefined;
+  settings: undefined;
 };
 
 export type StackNavigation = NavigationProp<RootStackParamList>;
@@ -50,6 +51,8 @@ const HomeStack = createBottomTabNavigator({
         iconName = '☑';
       } else if (route.name === 'responses') {
         iconName = '✎';
+      } else if (route.name === 'settings') {
+        iconName = '⚙';
       }
       return <Text style={{fontSize: size, color}}>{iconName}</Text>;
     },
@@ -72,6 +75,12 @@ const HomeStack = createBottomTabNavigator({
         title: 'My Responses',
       },
     },
+    settings: {
+      screen: SettingsScreen,
+      options: {
+        title: 'Settings',
+      },
+    },
   },
 });
 
@@ -91,6 +100,12 @@ const RootStack = createStackNavigator({
       options: {
         title: 'Survey',
         presentation: 'modal',
+      },
+    },
+    settings: {
+      screen: SettingsScreen,
+      options: {
+        title: 'Settings',
       },
     },
   },
