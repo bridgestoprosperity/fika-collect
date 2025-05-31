@@ -4,7 +4,7 @@ import { z } from 'zod';
 // the locales that can be used in the app.
 const LOCALE_LABELS: Record<string, string> = {
   'en': 'English',
-  'fr': 'French',
+  'fr': 'Français',
   'sw': 'Kiswahili',
   'rw': 'Kinyarwanda',
   'om': 'Afaan Oromoo',
