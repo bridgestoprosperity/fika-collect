@@ -16,7 +16,7 @@ const allKeys = Array.from(
   )
 );
 
-const header = ['key', ...languages];
+const header = ['language', ...languages];
 const rows = [header];
 
 for (const key of allKeys) {

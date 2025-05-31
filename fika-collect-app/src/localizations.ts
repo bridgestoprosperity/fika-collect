@@ -4,17 +4,6 @@ interface Localization {
   [key: Locale]: string;
 }
 
-const LOCALE_LABELS: Record<Locale, string> = {
-  'en': 'English',
-  'fr': 'French (Français)',
-  'rw': 'Kinyarwanda',
-  'sw': 'Swahili (Kiswahili)',
-  'am': 'Amharic (አማርኛ)',
-  'om': 'Oromo (Afaan Oromoo)',
-  'ti': 'Tigrinya (ትግርኛ)',
-  'so': 'Somali (Soomaali)',
-  'aa': 'Afar (Qafar af)',
-};
 
 const localizations: Record<Locale, Localization> = {
   error: {
@@ -60,6 +49,17 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Dejinta',
     'aa': 'Qindaa\'ina',
     'fr': 'Paramètres',
+  },
+  preferredLanguage: {
+    'en': 'Preferred Language',
+    'rw': 'Ururimi rukunda',
+    'sw': 'Lugha Inayopendwa',
+    'am': 'የተመረጠ ቋንቋ',
+    'om': 'Af filatame',
+    'ti': 'ብዝሒ ዝምረጽ ቋንቋ',
+    'so': 'Luuqada la doorbiday',
+    'aa': 'Af filatame',
+    'fr': 'Langue Préférée',
   },
   backButton: {
     'en': 'Back',
@@ -284,4 +284,4 @@ const localizations: Record<Locale, Localization> = {
 };
 
 export type { Localization };
-export { localizations, LOCALE_LABELS };
+export { localizations };

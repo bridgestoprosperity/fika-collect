@@ -1,94 +1,96 @@
 import { z } from 'zod';
-declare const LOCALE_LABELS: {
-    en: string;
-    ar: string;
-    zh: string;
-    fr: string;
-    de: string;
-    it: string;
-    ja: string;
-    rw: string;
-    ko: string;
-    ln: string;
-    pt: string;
-    ru: string;
-    es: string;
-    sw: string;
-};
+declare const LOCALE_LABELS: Record<string, string>;
+declare const ENGLISH_LOCALE_LABELS: Record<string, string>;
 declare const LocaleStringSchema: z.ZodString;
 declare const I18NTextSchema: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
 declare const FileTypeSchema: z.ZodEnum<["image/jpeg", "image/png", "image/heic", "image/webp"]>;
-declare const QuestionTypeSchema: z.ZodEffects<z.ZodEnum<["multiselect", "select", "numeric", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location"]>, "boolean" | "multiselect" | "select" | "numeric" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location", unknown>;
-declare const SurveyQuestionSchema: z.ZodObject<{
+declare const QuestionTypeSchema: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location"]>, "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location", unknown>;
+declare const SurveyQuestionSchema: z.ZodEffects<z.ZodObject<{
     id: z.ZodString;
-    type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "numeric", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location"]>, "boolean" | "multiselect" | "select" | "numeric" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location", unknown>;
+    type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location"]>, "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location", unknown>;
     required: z.ZodDefault<z.ZodBoolean>;
+    textInputMode: z.ZodOptional<z.ZodEnum<["numeric", "decimal", "text", "tel", "email"]>>;
     question: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
     hint: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
     options: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>, "many">>;
 }, "strip", z.ZodTypeAny, {
-    type: "boolean" | "multiselect" | "select" | "numeric" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
+    type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
     id: string;
     required: boolean;
     question: Record<string, string>;
     hint: Record<string, string>;
     options?: Record<string, string>[] | undefined;
+    textInputMode?: "email" | "numeric" | "decimal" | "text" | "tel" | undefined;
 }, {
     id: string;
     options?: unknown[] | undefined;
     type?: unknown;
     required?: boolean | undefined;
+    textInputMode?: "email" | "numeric" | "decimal" | "text" | "tel" | undefined;
     question?: unknown;
     hint?: unknown;
-}>;
+}>, {
+    type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
+    id: string;
+    required: boolean;
+    question: Record<string, string>;
+    hint: Record<string, string>;
+    options?: Record<string, string>[] | undefined;
+    textInputMode?: "email" | "numeric" | "decimal" | "text" | "tel" | undefined;
+}, unknown>;
 declare const SurveySchema: z.ZodObject<{
     id: z.ZodString;
     title: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
     description: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
-    questions: z.ZodArray<z.ZodObject<{
+    questions: z.ZodArray<z.ZodEffects<z.ZodObject<{
         id: z.ZodString;
-        type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "numeric", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location"]>, "boolean" | "multiselect" | "select" | "numeric" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location", unknown>;
+        type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location"]>, "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location", unknown>;
         required: z.ZodDefault<z.ZodBoolean>;
+        textInputMode: z.ZodOptional<z.ZodEnum<["numeric", "decimal", "text", "tel", "email"]>>;
         question: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
         hint: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
         options: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>, "many">>;
     }, "strip", z.ZodTypeAny, {
-        type: "boolean" | "multiselect" | "select" | "numeric" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
+        type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
         id: string;
         required: boolean;
         question: Record<string, string>;
         hint: Record<string, string>;
         options?: Record<string, string>[] | undefined;
+        textInputMode?: "email" | "numeric" | "decimal" | "text" | "tel" | undefined;
     }, {
         id: string;
         options?: unknown[] | undefined;
         type?: unknown;
         required?: boolean | undefined;
+        textInputMode?: "email" | "numeric" | "decimal" | "text" | "tel" | undefined;
         question?: unknown;
         hint?: unknown;
-    }>, "many">;
-}, "strip", z.ZodTypeAny, {
-    id: string;
-    title: Record<string, string>;
-    description: Record<string, string>;
-    questions: {
-        type: "boolean" | "multiselect" | "select" | "numeric" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
+    }>, {
+        type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
         id: string;
         required: boolean;
         question: Record<string, string>;
         hint: Record<string, string>;
         options?: Record<string, string>[] | undefined;
+        textInputMode?: "email" | "numeric" | "decimal" | "text" | "tel" | undefined;
+    }, unknown>, "many">;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    title: Record<string, string>;
+    description: Record<string, string>;
+    questions: {
+        type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location";
+        id: string;
+        required: boolean;
+        question: Record<string, string>;
+        hint: Record<string, string>;
+        options?: Record<string, string>[] | undefined;
+        textInputMode?: "email" | "numeric" | "decimal" | "text" | "tel" | undefined;
     }[];
 }, {
     id: string;
-    questions: {
-        id: string;
-        options?: unknown[] | undefined;
-        type?: unknown;
-        required?: boolean | undefined;
-        question?: unknown;
-        hint?: unknown;
-    }[];
+    questions: unknown[];
     title?: unknown;
     description?: unknown;
 }>;
@@ -104,5 +106,5 @@ export type { SurveyQuestion };
 export type { QuestionType };
 export type { I18NText };
 export type { LocaleString };
-export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, LOCALE_LABELS, I18NTextSchema, LocaleStringSchema };
+export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, LOCALE_LABELS, ENGLISH_LOCALE_LABELS, I18NTextSchema, LocaleStringSchema };
 //# sourceMappingURL=schema.d.ts.map

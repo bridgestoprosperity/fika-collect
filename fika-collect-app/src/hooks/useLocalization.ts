@@ -4,7 +4,7 @@ import { localizations } from '../localizations';
 
 function useLocalization() {
   const preferredLanguages = useSelector(
-    (state: any) => state.localization.localizationPreference,
+    (state: any) => state.localization.locale,
   );
 
   function localize(value: Localization | string): string {

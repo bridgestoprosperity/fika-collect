@@ -2,21 +2,28 @@ import { z } from 'zod';
 
 // These are provided as a UI convenience for the editor but do not restrict
 // the locales that can be used in the app.
-const LOCALE_LABELS = {
+const LOCALE_LABELS: Record<string, string> = {
   'en': 'English',
-  'ar': 'Arabic',
-  'zh': 'Chinese',
   'fr': 'French',
-  'de': 'German',
-  'it': 'Italian',
-  'ja': 'Japanese',
+  'sw': 'Kiswahili',
   'rw': 'Kinyarwanda',
-  'ko': 'Korean',
-  'ln': 'Lingala',
-  'pt': 'Portuguese',
-  'ru': 'Russian',
-  'es': 'Spanish',
+  'om': 'Afaan Oromoo',
+  'so': 'Soomaali',
+  'aa': 'Qafar af',
+  'am': 'አማርኛ',
+  'ti': 'ትግርኛ',
+};
+
+const ENGLISH_LOCALE_LABELS: Record<string, string> = {
+  'en': 'English',
+  'fr': 'French',
   'sw': 'Swahili',
+  'rw': 'Kinyarwanda',
+  'om': 'Oromo',
+  'so': 'Somali',
+  'aa': 'Afar',
+  'am': 'Amharic',
+  'ti': 'Tigrinya',
 };
 
 const LocaleStringSchema = z.string().min(2).max(2);
@@ -111,6 +118,7 @@ export {
   SurveyQuestionSchema,
   QuestionTypeSchema,
   LOCALE_LABELS,
+  ENGLISH_LOCALE_LABELS,
   I18NTextSchema,
   LocaleStringSchema
 };

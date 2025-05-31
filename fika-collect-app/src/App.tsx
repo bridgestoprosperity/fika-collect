@@ -10,6 +10,7 @@ import {type SurveyParams} from './types.d';
 import {Provider} from 'react-redux';
 import {store} from './data/store';
 import Geolocation from '@react-native-community/geolocation';
+import {useLocalization} from './hooks/useLocalization';
 
 //import {useContext, useEffect} from 'react';
 //import SurveyResponseManagerContext from './data/SurveyResponseManagerContext';
@@ -32,6 +33,34 @@ export type RootStackParamList = {
 };
 
 export type StackNavigation = NavigationProp<RootStackParamList>;
+
+function LocalizedTabLabel({label}: {label: string}) {
+  const {getString} = useLocalization();
+
+  const ROUTE_NAME_TO_STRING: Record<string, string> = {
+    surveys: 'surveysScreenTitle',
+    responses: 'myResponsesScreenTitle',
+    settings: 'settingsScreenTitle',
+  };
+  const string = ROUTE_NAME_TO_STRING[label] || label;
+  return <Text style={{fontSize: 14, color: '#888'}}>{getString(string)}</Text>;
+}
+
+function LocalizedHeader({label}: {label: string}) {
+  const {getString} = useLocalization();
+
+  const ROUTE_NAME_TO_STRING: Record<string, string> = {
+    surveys: 'surveysScreenTitle',
+    responses: 'myResponsesScreenTitle',
+    settings: 'settingsScreenTitle',
+  };
+  const string = ROUTE_NAME_TO_STRING[label] || label;
+  return (
+    <Text style={{fontSize: 24, color: 'white', fontWeight: 500}}>
+      {getString(string)}
+    </Text>
+  );
+}
 
 const HomeStack = createBottomTabNavigator({
   initialRouteName: 'surveys',
@@ -59,6 +88,7 @@ const HomeStack = createBottomTabNavigator({
     tabBarLabelStyle: {
       fontSize: 14, // Increase the font size of the tab label
     },
+    tabBarLabel: () => <LocalizedTabLabel label={route.name} />,
     tabBarActiveTintColor: '#367845',
     tabBarInactiveTintColor: '#888',
   }),
@@ -67,18 +97,21 @@ const HomeStack = createBottomTabNavigator({
       screen: SurveysScreen,
       options: {
         title: 'Surveys',
+        headerTitle: () => <LocalizedHeader label="surveys" />,
       },
     },
     responses: {
       screen: ResponsesScreen,
       options: {
         title: 'My Responses',
+        headerTitle: () => <LocalizedHeader label="responses" />,
       },
     },
     settings: {
       screen: SettingsScreen,
       options: {
         title: 'Settings',
+        headerTitle: () => <LocalizedHeader label="settings" />,
       },
     },
   },
