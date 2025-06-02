@@ -50,11 +50,14 @@ export default function ResponsesScreen() {
               </Picker>
             </View>
           </View>
+          {
+            '' /*
           <View style={styles.section}>
             <View style={styles.sectionHeaderContainer}>
               <Text style={styles.sectionHeaderText}>User Information</Text>
             </View>
-          </View>
+          </View>*/
+          }
         </View>
       </ScrollView>
     </SafeAreaView>

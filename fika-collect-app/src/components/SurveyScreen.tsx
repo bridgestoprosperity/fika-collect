@@ -863,7 +863,14 @@ export default function SurveyScreen(props: SurveyScreenProps) {
           text: 'Submit',
           onPress: async () => {
             await surveyResponseManager.storeResponse(response);
-            if (netInfo.isInternetReachable) {
+
+            // It seems that netInfo.isInternetReachable is not reliable, at least based on
+            // testing in the iOS simulator. Instead, we will use isConnected in DEV mode
+            // and isInternetReachable in production mode.
+            if (
+              netInfo.isInternetReachable ||
+              (__DEV__ === true && netInfo.isConnected)
+            ) {
               setSubmitting(true);
             } else {
               Alert.alert(

@@ -74,9 +74,6 @@ export default function ResponsesScreen() {
 
   const onRetry = useCallback(
     (response: SurveyResponse) => {
-      console.log('isWifiEnabled:', netInfo.isWifiEnabled);
-      console.log('isInternetReachable:', netInfo.isInternetReachable);
-      console.log('isConnected:', netInfo.isConnected);
       // It seems that netInfo.isInternetReachable is not reliable, at least based on
       // testing in the iOS simulator. Instead, we will use isConnected in DEV mode
       // and isInternetReachable in production mode.
@@ -113,7 +110,6 @@ export default function ResponsesScreen() {
   );
 
   const fetchResponses = useCallback(() => {
-    console.log('get responses');
     responseManager
       .getResponses()
       .then(fetchedResponses => {
