@@ -5,6 +5,7 @@ import type {Survey} from 'fika-collect-survey-schema';
 import * as RNFS from '@dr.pogodin/react-native-fs';
 import {nanoid} from 'nanoid';
 import {EventEmitter} from 'event-emitter3';
+import version from '../version';
 
 const STORAGE_DIR =
   Platform.OS === 'ios'
@@ -13,10 +14,17 @@ const STORAGE_DIR =
 
 console.log(STORAGE_DIR);
 
-const BASE_URL = 'https://f54u12dkn2.execute-api.us-west-1.amazonaws.com';
+// AWS API Gateway URL for uploading responses
+// **DO NOT USE** since Vercel DNS prohibits setting up a second CAA (Certificate
+// Authorization Authority) record for the domain, which is required for AWS
+// Certificate Manager to issue a certificate. Without this, the API Gateway
+// will not work with HTTPS.
+//const BASE_URL = 'https://f54u12dkn2.execute-api.us-west-1.amazonaws.com';
 
-const TO_UPLOAD_DIR = `to_upload`;
-const UPLOADED_DIR = `uploaded`;
+const BASE_URL = 'https://app.fikadigital.org';
+
+const TO_UPLOAD_DIR = 'to_upload';
+const UPLOADED_DIR = 'uploaded';
 //const RESPONSE_ID_REGEX = /^[\d]{14}-[A-Za-z0-9_-]+$/;
 
 export type ReadResponse = {
@@ -137,8 +145,12 @@ export class SurveyResponseManager extends EventEmitter {
     }
     const files = await RNFS.readDir(toUploadDir);
     for (const file of files) {
-      if (file.name.endsWith('.json')) continue;
-      if (!expectedImages.includes(file.name)) continue;
+      if (file.name.endsWith('.json')) {
+        continue;
+      }
+      if (!expectedImages.includes(file.name)) {
+        continue;
+      }
 
       if (!responseUpload.filesToUpload.includes(file.path)) {
         responseUpload.filesToUpload.push(file.path);
@@ -151,9 +163,15 @@ export class SurveyResponseManager extends EventEmitter {
           await RNFS.readFile(responseJsonPath, 'utf8'),
         );
         console.log(`Uploading response JSON for ${responseId}`);
+
+        // TODO: abstract fetch to a separate function to ensure headers
+        // and version are set correctly
         const httpResponse = await fetch(`${BASE_URL}/submit-survey`, {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json',
+            'X-App-Version': version.version,
+          },
           body: JSON.stringify({response: responseJson}),
         });
 
@@ -194,7 +212,10 @@ export class SurveyResponseManager extends EventEmitter {
         console.log(`Requesting presigned URL for image ${filename}`);
         const presignResponse = await fetch(`${BASE_URL}/presign-upload`, {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json',
+            'X-App-Version': version.version,
+          },
           body: JSON.stringify(body),
         });
 
@@ -243,7 +264,9 @@ export class SurveyResponseManager extends EventEmitter {
       if (!(await surveyDir.isDirectory())) continue;
 
       for (const responseDir of await RNFS.readDir(surveyDir.path)) {
-        if (!(await responseDir.isDirectory())) continue;
+        if (!(await responseDir.isDirectory())) {
+          continue;
+        }
 
         const toUploadDir = `${responseDir.path}/${TO_UPLOAD_DIR}`;
         if (await RNFS.exists(toUploadDir)) {
@@ -267,7 +290,9 @@ export class SurveyResponseManager extends EventEmitter {
 
               let uploaded = true;
               for (const {value, type} of response.responses) {
-                if (type !== 'photo') continue;
+                if (type !== 'photo') {
+                  continue;
+                }
                 const photoToUploadPath = `${toUploadDir}/${value}`;
                 if (await RNFS.exists(photoToUploadPath)) {
                   uploaded = false;

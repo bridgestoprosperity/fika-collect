@@ -150,34 +150,49 @@ function LongAnswerQuestion({
   );
 }
 
-function BooleanQuestion({response, onChange}: SurveyQuestionProps) {
+function BooleanQuestion({
+  response,
+  onChange,
+  questionIndex,
+  questionCount,
+  onPrevious,
+  onNext,
+  canContinue,
+}: SurveyQuestionProps) {
   const {question} = response;
   const placeholder = question.hint;
   const {localize, getString} = useLocalization();
 
   return (
-    <View style={styles.surveyQuestion}>
-      <Text style={styles.surveyQuestionText}>
-        {localize(question.question)}
-      </Text>
-
-      <View style={styles.booleanRow}>
-        <Switch
-          value={response.value === 'yes'}
-          onValueChange={value => onChange(value ? 'yes' : 'no')}
-        />
-        <Text style={styles.booleanValue}>
-          {response.value === 'yes'
-            ? getString('booleanQuestionYes')
-            : getString('booleanQuestionNo')}
+    <SurveyQuestionWrapper
+      questionCount={questionCount}
+      questionIndex={questionIndex}
+      onPrevious={onPrevious}
+      onNext={onNext}
+      canContinue={canContinue}>
+      <View style={styles.surveyQuestion}>
+        <Text style={styles.surveyQuestionText}>
+          {localize(question.question)}
         </Text>
-      </View>
-      {placeholder ? (
-        <View style={{marginTop: 40}}>
-          <Text style={styles.hint}>{localize(placeholder)}</Text>
+
+        <View style={styles.booleanRow}>
+          <Switch
+            value={response.value === 'yes'}
+            onValueChange={value => onChange(value ? 'yes' : 'no')}
+          />
+          <Text style={styles.booleanValue}>
+            {response.value === 'yes'
+              ? getString('booleanQuestionYes')
+              : getString('booleanQuestionNo')}
+          </Text>
         </View>
-      ) : null}
-    </View>
+        {placeholder ? (
+          <View style={{marginTop: 40}}>
+            <Text style={styles.hint}>{localize(placeholder)}</Text>
+          </View>
+        ) : null}
+      </View>
+    </SurveyQuestionWrapper>
   );
 }
 
