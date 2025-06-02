@@ -8,12 +8,16 @@
   },
   "routes": [
     {
-      "src": "/api/hello",
+      "src": "/api/v1/hello",
       "dest": "api/hello.ts"
     },
     {
-      "src": "/api/presign-upload",
+      "src": "/api/v1/presign-upload",
       "dest": "api/presign-upload.ts"
+    },
+    {
+      "src": "/api/v1/submit-survey",
+      "dest": "api/submit-survey.ts"
     }
   ]
 }

@@ -21,7 +21,7 @@ console.log(STORAGE_DIR);
 // will not work with HTTPS.
 //const BASE_URL = 'https://f54u12dkn2.execute-api.us-west-1.amazonaws.com';
 
-const BASE_URL = 'https://app.fikadigital.org';
+const BASE_URL = 'https://app.fikadigital.org/api/v1';
 
 const TO_UPLOAD_DIR = 'to_upload';
 const UPLOADED_DIR = 'uploaded';
