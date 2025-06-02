@@ -24,6 +24,7 @@ An analogous command for Android works, but it builds an APK. What we really wan
 ```bash
 cd android
 ./gradlew buildRelease
+./gradlew assembleRelease
 ```
 
 The resulting build may be found in `android/app/build/outputs/bundle/release/`.
