@@ -9,14 +9,17 @@ import type {Survey} from 'fika-collect-survey-schema';
 import {SurveySchemaManager} from '../data/SurveySchemaManager';
 import {SurveyResponse} from '../data/SurveyResponse';
 import Announcements from './Announcements';
+import {useAppSelector} from '../hooks';
 
 function SurveyButton({survey}: {survey: Survey}) {
   const navigation = useNavigation<StackNavigation>();
   const {localize} = useLocalization();
 
+  const userId = useAppSelector(state => state.userInfo.userId);
+
   const beginSurvey = () => {
     // Construct a single response instance. We will mutate this object as the user answers questions.
-    const response = new SurveyResponse(survey);
+    const response = new SurveyResponse(survey, userId);
     navigation.navigate('survey', {response});
   };
 

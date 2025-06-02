@@ -4,16 +4,16 @@ declare const ENGLISH_LOCALE_LABELS: Record<string, string>;
 declare const LocaleStringSchema: z.ZodString;
 declare const I18NTextSchema: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
 declare const FileTypeSchema: z.ZodEnum<["image/jpeg", "image/png", "image/heic", "image/webp"]>;
-declare const QuestionTypeSchema: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location", "numeric"]>, "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric", unknown>;
+declare const QuestionTypeSchema: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location", "numeric", "email", "phone"]>, "boolean" | "email" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric" | "phone", unknown>;
 declare const SurveyQuestionSchema: z.ZodObject<{
     id: z.ZodString;
-    type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location", "numeric"]>, "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric", unknown>;
+    type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location", "numeric", "email", "phone"]>, "boolean" | "email" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric" | "phone", unknown>;
     required: z.ZodDefault<z.ZodBoolean>;
     question: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
     hint: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
     options: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>, "many">>;
 }, "strip", z.ZodTypeAny, {
-    type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric";
+    type: "boolean" | "email" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric" | "phone";
     id: string;
     required: boolean;
     question: Record<string, string>;
@@ -33,13 +33,13 @@ declare const SurveySchema: z.ZodObject<{
     description: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
     questions: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
-        type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location", "numeric"]>, "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric", unknown>;
+        type: z.ZodEffects<z.ZodEnum<["multiselect", "select", "boolean", "short_answer", "long_answer", "photo", "geolocation", "admin_location", "numeric", "email", "phone"]>, "boolean" | "email" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric" | "phone", unknown>;
         required: z.ZodDefault<z.ZodBoolean>;
         question: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
         hint: z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>;
         options: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodRecord<z.ZodString, z.ZodString>, Record<string, string>, unknown>, "many">>;
     }, "strip", z.ZodTypeAny, {
-        type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric";
+        type: "boolean" | "email" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric" | "phone";
         id: string;
         required: boolean;
         question: Record<string, string>;
@@ -58,7 +58,7 @@ declare const SurveySchema: z.ZodObject<{
     title: Record<string, string>;
     description: Record<string, string>;
     questions: {
-        type: "boolean" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric";
+        type: "boolean" | "email" | "multiselect" | "select" | "short_answer" | "long_answer" | "photo" | "geolocation" | "admin_location" | "numeric" | "phone";
         id: string;
         required: boolean;
         question: Record<string, string>;

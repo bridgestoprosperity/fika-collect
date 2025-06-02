@@ -34,7 +34,13 @@ export type RootStackParamList = {
 
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
-function LocalizedTabLabel({label}: {label: string}) {
+function LocalizedTabLabel({
+  label,
+  focused,
+}: {
+  label: string;
+  focused: boolean;
+}) {
   const {getString} = useLocalization();
 
   const ROUTE_NAME_TO_STRING: Record<string, string> = {
@@ -43,7 +49,11 @@ function LocalizedTabLabel({label}: {label: string}) {
     settings: 'settingsScreenTitle',
   };
   const string = ROUTE_NAME_TO_STRING[label] || label;
-  return <Text style={{fontSize: 14, color: '#888'}}>{getString(string)}</Text>;
+  const color = focused ? '#367845' : '#888';
+  const fontWeight = focused ? 'bold' : 'normal';
+  return (
+    <Text style={{fontSize: 16, color, fontWeight}}>{getString(string)}</Text>
+  );
 }
 
 function LocalizedHeader({label}: {label: string}) {
@@ -69,9 +79,9 @@ const HomeStack = createBottomTabNavigator({
     headerStyle: {
       backgroundColor: '#367845',
     },
-    headerTitleStyle: {
-      color: 'white',
-      fontSize: 22,
+    tabBarActiveTintColor: '#367845',
+    tabBarStyle: {
+      height: 92,
     },
     headerTintColor: 'white',
     tabBarIcon: ({size, color}) => {
@@ -85,12 +95,11 @@ const HomeStack = createBottomTabNavigator({
       }
       return <Text style={{fontSize: size, color}}>{iconName}</Text>;
     },
-    tabBarLabelStyle: {
-      fontSize: 14, // Increase the font size of the tab label
+    tabBarActiveBackgroundColor: '#e0f2e0',
+    tabBarInactiveBackgroundColor: 'white',
+    tabBarLabel: props => {
+      return <LocalizedTabLabel label={route.name} focused={props.focused} />;
     },
-    tabBarLabel: () => <LocalizedTabLabel label={route.name} />,
-    tabBarActiveTintColor: '#367845',
-    tabBarInactiveTintColor: '#888',
   }),
   screens: {
     surveys: {

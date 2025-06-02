@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getLocales } from 'react-native-localize';
 import { MMKVLoader } from 'react-native-mmkv-storage';
-import { LOCALE_LABELS } from 'fika-collect-survey-schema';
 
 const localizationStorage = new MMKVLoader()
   .withInstanceID('localization')

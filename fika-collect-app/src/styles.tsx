@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {Platform} from 'react-native';
 
 export default StyleSheet.create({
   button: {
@@ -24,5 +25,25 @@ export default StyleSheet.create({
   },
   buttonDisabled: {
     opacity: 0.5,
+  },
+  sectionHeaderContainer: {
+    width: '100%',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    marginBottom: 20,
+  },
+  sectionHeaderText: {
+    textTransform: 'uppercase',
+    marginBottom: 10,
+  },
+  picker: {
+    color: 'black',
+    borderWidth: 1,
+    borderColor: '#cccccc',
+    height: Platform.OS === 'android' ? 80 : 210,
+    width: '100%',
+    borderRadius: 3,
   },
 });

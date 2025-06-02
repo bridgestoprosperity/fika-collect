@@ -4,6 +4,7 @@ import {useAppDispatch, useAppSelector} from '../hooks';
 import {ENGLISH_LOCALE_LABELS, LOCALE_LABELS} from 'fika-collect-survey-schema';
 import {setLocaleOverride} from '../features/localization';
 import {useLocalization} from '../hooks/useLocalization';
+import sharedStyles from '../styles';
 
 export default function ResponsesScreen() {
   const dispatch = useAppDispatch();
@@ -18,27 +19,41 @@ export default function ResponsesScreen() {
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
         <View style={styles.container}>
-          <View style={styles.sectionHeaderContainer}>
-            <Text style={styles.sectionHeaderText}>
-              {getString('preferredLanguage')}
-            </Text>
-            <Picker
-              selectedValue={selectedOverride || 'default'}
-              style={{height: 300, width: '100%'}}
-              onValueChange={itemValue =>
-                dispatch(
-                  setLocaleOverride(itemValue === 'default' ? null : itemValue),
-                )
-              }>
-              <Picker.Item label="Default (System Language)" value="default" />
-              {availableLocales.map(locale => (
+          <View style={styles.section}>
+            <View style={styles.sectionHeaderContainer}>
+              <Text style={styles.sectionHeaderText}>
+                {getString('preferredLanguage')}
+              </Text>
+              <Picker
+                selectedValue={selectedOverride || 'default'}
+                style={sharedStyles.picker}
+                onValueChange={itemValue =>
+                  dispatch(
+                    setLocaleOverride(
+                      itemValue === 'default' ? null : itemValue,
+                    ),
+                  )
+                }>
                 <Picker.Item
-                  key={locale}
-                  label={`${LOCALE_LABELS[locale]} (${ENGLISH_LOCALE_LABELS[locale]})`}
-                  value={locale}
+                  color="black"
+                  label="Default (System Language)"
+                  value="default"
                 />
-              ))}
-            </Picker>
+                {availableLocales.map(locale => (
+                  <Picker.Item
+                    color="black"
+                    key={locale}
+                    label={`${LOCALE_LABELS[locale]} (${ENGLISH_LOCALE_LABELS[locale]})`}
+                    value={locale}
+                  />
+                ))}
+              </Picker>
+            </View>
+          </View>
+          <View style={styles.section}>
+            <View style={styles.sectionHeaderContainer}>
+              <Text style={styles.sectionHeaderText}>User Information</Text>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -53,15 +68,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
   },
+  section: {
+    width: '100%',
+  },
   sectionHeaderContainer: {
     width: '100%',
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: '#f0f0f0',
     borderRadius: 8,
-    marginBottom: 20,
+    marginBottom: 30,
   },
   sectionHeaderText: {
     textTransform: 'uppercase',
+    marginBottom: 10,
   },
 });

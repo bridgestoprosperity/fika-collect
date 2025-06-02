@@ -149,6 +149,28 @@ const localizations: Record<Locale, Localization> = {
     'fr': 'L\'autorisation de la caméra est requise pour prendre une photo',
     'aa': 'Hayyama kaameeraa suuraa fudhachuuf barbaachisa',
   },
+  retakePhotoButton: {
+    'en': 'Retake Photo',
+    'rw': 'Fata Ifoto Usubiremo',
+    'sw': 'Chukua Picha Tena',
+    'am': 'ፎቶ ይደግሙ',
+    'om': 'Suuraa haaromsaa',
+    'ti': 'ፎቶ ይደግሙ',
+    'so': 'Sawirka dib u qaado',
+    'fr': 'Reprendre la photo',
+    'aa': 'Suuraa haaromsaa',
+  },
+  usePhotoButton: {
+    'en': 'Use Photo',
+    'rw': 'Koresha Ifoto',
+    'sw': 'Tumia Picha',
+    'am': 'ፎቶ ይጠቀሙ',
+    'om': 'Suuraa fayyadami',
+    'ti': 'ፎቶ ይጠቀሙ',
+    'so': 'Sawirka isticmaal',
+    'fr': 'Utiliser la photo',
+    'aa': 'Suuraa fayyadami',
+  },
   booleanQuestionYes: {
     'en': 'Yes',
     'rw': 'Yego',
@@ -281,6 +303,17 @@ const localizations: Record<Locale, Localization> = {
     'fr': 'Erreur lors du chargement des localisations',
     'aa': 'Dogoggora iddoowwan fe\'uuf',
   },
+  selectYourLocation: {
+    'en': 'Select your location below',
+    'rw': 'Hitamo aho uri hasi',
+    'sw': 'Chagua eneo lako hapa chini',
+    'am': 'እባክዎ ከሚ below ያለው አካባቢዎን ይምረጡ',
+    'om': 'Iddoo kee armaan gadi filadhu',
+    'ti': 'ኣብ ዝኾነ ምርመራ ኣካባቢዎን ይምረጡ',
+    'so': 'Fadlan hoos ka xulo goobtaada',
+    'fr': 'Sélectionnez votre localisation ci-dessous',
+    'aa': 'Iddoo kee armaan gadi filadhu',
+  }
 };
 
 export type { Localization };

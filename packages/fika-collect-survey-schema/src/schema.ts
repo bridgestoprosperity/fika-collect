@@ -57,7 +57,9 @@ const QuestionTypeSchema = z.preprocess(
     'photo',
     'geolocation',
     'admin_location',
-    'numeric'
+    'numeric',
+    'email',
+    'phone'
   ]));
 
 const SurveyQuestionSchema =

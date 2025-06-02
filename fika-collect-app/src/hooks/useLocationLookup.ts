@@ -17,10 +17,18 @@ function useLocationLookup(): {
     const loadLocations = async () => {
       console.log('Loading locations.json');
       try {
-        const path = `${RNFS.MainBundlePath}/locations.json`;
-        const fileContent = await RNFS.readFile(path, 'utf8');
-        parsedLocations = JSON.parse(fileContent);
-        setLocations(parsedLocations);
+        // On iOS, RNFS.MainBundlePath is correct. On Android, assets are accessed differently.
+        let path: string;
+        if (RNFS.MainBundlePath) {
+          // iOS
+          path = `${RNFS.MainBundlePath}/locations.json`;
+          const fileContent = await RNFS.readFile(path, 'utf8');
+          setLocations(JSON.parse(fileContent));
+        } else {
+          // Android: use readFileAssets to access bundled assets
+          const fileContent = await RNFS.readFileAssets('custom/locations.json', 'utf8');
+          setLocations(JSON.parse(fileContent));
+        }
       } catch (err) {
         console.error('Error reading locations.json:', err);
         setError('Failed to load locations');

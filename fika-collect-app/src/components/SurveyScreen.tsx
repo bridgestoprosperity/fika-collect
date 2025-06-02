@@ -12,6 +12,7 @@ import {
   Modal,
   Button,
   Dimensions,
+  Platform,
 } from 'react-native';
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
@@ -47,9 +48,12 @@ interface SurveyQuestionProps {
   onPrevious: () => void;
   onNext: () => void;
   canContinue: boolean;
+  keyboardType?: 'default' | 'numeric' | 'phone-pad' | 'email-address';
+  inputMode?: 'text' | 'numeric' | 'tel' | 'email';
 }
 
 function ShortAnswerQuestion({
+  inputMode = 'text',
   response,
   onChange,
   onPrevious,
@@ -72,6 +76,7 @@ function ShortAnswerQuestion({
           {localize(question.question)}
         </Text>
         <TextInput
+          inputMode={inputMode}
           style={styles.textInputBox}
           value={response.value}
           onChangeText={text => onChange(text)}
@@ -80,6 +85,32 @@ function ShortAnswerQuestion({
         />
       </View>
     </SurveyQuestionWrapper>
+  );
+}
+
+function NumericQuestion(props: SurveyQuestionProps) {
+  return (
+    <ShortAnswerQuestion
+      {...props}
+      inputMode="numeric"
+      keyboardType="numeric"
+    />
+  );
+}
+
+function PhoneQuestion(props: SurveyQuestionProps) {
+  return (
+    <ShortAnswerQuestion {...props} inputMode="tel" keyboardType="phone-pad" />
+  );
+}
+
+function EmailQuestion(props: SurveyQuestionProps) {
+  return (
+    <ShortAnswerQuestion
+      {...props}
+      inputMode="email"
+      keyboardType="email-address"
+    />
   );
 }
 
@@ -108,6 +139,7 @@ function LongAnswerQuestion({
         <TextInput
           style={styles.multiLineTextInputBox}
           multiline
+          textAlignVertical="top"
           value={response.value}
           onChangeText={text => onChange(text)}
           placeholder={localize(question.hint)}
@@ -173,12 +205,13 @@ function MultipleChoiceQuestion({
           {localize(question.question)}
         </Text>
         <Picker
-          itemStyle={styles.picker}
+          itemStyle={sharedStyles.picker}
           selectedValue={response.value}
           onValueChange={value => onChange(value)}>
           {question.options &&
             question.options.map((option, index) => (
               <Picker.Item
+                color="black"
                 key={`option-${index}`}
                 label={localize(option)}
                 value={option.en}
@@ -263,7 +296,7 @@ function AdminLocationQuestion({
   canContinue,
 }: SurveyQuestionProps) {
   let {locations, error} = useLocationLookup();
-  const {localize} = useLocalization();
+  const {localize, getString} = useLocalization();
   const [locationPath, setLocation] = useState<string[]>(response.value || []);
   const [curPathPart, setCurPathPart] = useState<string | null>(null);
 
@@ -285,13 +318,19 @@ function AdminLocationQuestion({
     return <Text>{localize('errorLoadingLocations')}</Text>;
   }
 
-  function navigatePath(path: string[]) {
-    let curobj = locations;
+  function navigatePath(path: string[]): string[] | null {
+    let curobj: {[key: string]: any} = locations as {[key: string]: any};
+    if (!curobj) {
+      return null;
+    }
     for (let i = 0; i < path.length; i++) {
       if (path[i] in curobj) {
         curobj = curobj[path[i]];
+        if (!curobj) {
+          return null;
+        }
       } else {
-        break;
+        return null;
       }
     }
     if (Array.isArray(curobj)) {
@@ -314,13 +353,19 @@ function AdminLocationQuestion({
     }
     const newPath = locationPath.concat(curPathPart);
     setLocation(newPath);
-    setCurPathPart(navigatePath(newPath)[0]);
+    const nextParts = navigatePath(newPath);
+    if (nextParts) {
+      setCurPathPart(nextParts[0]);
+    }
   }
 
   function popPathPart() {
     const newPath = locationPath.slice(0, -1);
     setLocation(newPath);
-    setCurPathPart(navigatePath(newPath)[0]);
+    const nextParts = navigatePath(newPath);
+    if (nextParts) {
+      setCurPathPart(nextParts[0]);
+    }
   }
 
   const next = () => {
@@ -340,6 +385,8 @@ function AdminLocationQuestion({
       popPathPart();
     }
   };
+
+  const pathOptions = navigatePath(locationPath);
 
   const {question} = response;
   return (
@@ -361,19 +408,38 @@ function AdminLocationQuestion({
                 {locationPath.join(' > ')}
               </Text>
             </View>
-            {locationPath.length < MAX_DEPTH && (
-              <Picker
-                itemStyle={styles.picker}
-                selectedValue={curPathPart}
-                onValueChange={value => onSelectAdminLevel(value)}>
-                {navigatePath(locationPath).map((option, index) => (
-                  <Picker.Item
-                    key={`option-${index}`}
-                    label={localize(option)}
-                    value={option}
-                  />
-                ))}
-              </Picker>
+
+            {pathOptions && (
+              <View>
+                <View
+                  style={[
+                    sharedStyles.sectionHeaderContainer,
+                    {marginTop: 50},
+                  ]}>
+                  <Text style={sharedStyles.sectionHeaderText}>
+                    {getString('selectYourLocation')}
+                  </Text>
+
+                  <Picker
+                    itemStyle={sharedStyles.picker}
+                    selectedValue={curPathPart}
+                    onValueChange={value => {
+                      onSelectAdminLevel(value);
+                      if (Platform.OS === 'android') {
+                        next();
+                      }
+                    }}>
+                    {pathOptions.map((option, index) => (
+                      <Picker.Item
+                        color="black"
+                        key={`option-${index}`}
+                        label={localize(option)}
+                        value={option}
+                      />
+                    ))}
+                  </Picker>
+                </View>
+              </View>
             )}
             {
               null /*
@@ -638,10 +704,19 @@ function SurveyQuestion({
     case 'short_answer':
       Component = ShortAnswerQuestion;
       break;
+    case 'numeric':
+      Component = NumericQuestion;
+      break;
+    case 'phone':
+      Component = PhoneQuestion;
+      break;
+    case 'email':
+      Component = EmailQuestion;
+      break;
     case 'long_answer':
       Component = LongAnswerQuestion;
       break;
-    case 'multiple_choice':
+    case 'select':
       Component = MultipleChoiceQuestion;
       break;
     case 'multiselect':
@@ -948,14 +1023,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  picker: {
-    color: 'black',
-    fontSize: 20,
-    height: 250,
-    borderColor: '#cccccc',
-    borderWidth: 1,
-    borderRadius: 4,
-  },
   booleanRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -1063,6 +1130,8 @@ const styles = StyleSheet.create({
   locationEchoText: {
     lineHeight: 30,
     fontSize: 18,
+    color: '#367845',
+    fontWeight: 'bold',
   },
   submitRowButton: {
     minWidth: 100,

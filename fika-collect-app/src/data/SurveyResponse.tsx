@@ -26,7 +26,7 @@ export class SurveyQuestionResponse {
     this.type = this.question.type;
 
     switch (this.type) {
-      case 'multiple_choice':
+      case 'select':
         this._value = this.question.options?.[0]?.en ?? '';
         break;
       case 'boolean':
@@ -109,14 +109,16 @@ function createRandomId() {
 
 export class SurveyResponse {
   id: string;
+  userId: string;
   schema: Survey;
   responses: SurveyQuestionResponse[] = [];
   uploaded: boolean = false;
   submittedAt: Date | null;
 
-  constructor(schema: Survey) {
+  constructor(schema: Survey, userId: string) {
     this.schema = schema;
     this.id = createRandomId();
+    this.userId = userId;
     this.submittedAt = null;
     console.log({schema});
     this.responses = schema.questions.map(
@@ -125,7 +127,7 @@ export class SurveyResponse {
   }
 
   static fromJSON(json: any) {
-    const response = new SurveyResponse(json.schema);
+    const response = new SurveyResponse(json.schema, json.user_id);
     response.id = json.id;
     response.submittedAt = json.submitted_at
       ? new Date(json.submitted_at)
@@ -150,6 +152,7 @@ export class SurveyResponse {
   serialize() {
     return {
       id: this.id,
+      user_id: this.userId,
       survey_id: this.schema.id,
       responses: this.responses.map(response => response.serialize()),
       submitted_at: this.submittedAt ? this.submittedAt.toISOString() : null,

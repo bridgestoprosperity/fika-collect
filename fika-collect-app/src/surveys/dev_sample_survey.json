@@ -10,8 +10,16 @@
   },
   "questions": [
     {
+      "id": "width",
+      "type": "numeric",
+      "question": {
+        "en": "During floods, how wide in meters is the river / swamp / mudflat?",
+        "es": "Durante las inundaciones, ¿cuánto mide de ancho en metros el río / pantano / barro?"
+      }
+    },
+    {
       "id": "phone_number",
-      "type": "short_answer",
+      "type": "phone",
       "question": {
         "en": "What is your phone number?",
         "es": "¿Cuál es tu número de teléfono?"
@@ -169,7 +177,7 @@
     },
     {
       "id": "deaths",
-      "type": "short_answer",
+      "type": "numeric",
       "question": {
         "en": "How many deaths have occurred over the last three years, from people trying to cross the river/barrier?",
         "es": "¿Cuántas muertes han ocurrido en los últimos tres años, de personas que intentan cruzar el río/barreira?"
@@ -205,14 +213,6 @@
         {"en": "Ravine/gorge", "es": "Ravina/cañón"},
         {"en": "Other", "es": "Otro"}
       ]
-    },
-    {
-      "id": "width",
-      "type": "short_answer",
-      "question": {
-        "en": "During floods, how wide in meters is the river / swamp / mudflat?",
-        "es": "Durante las inundaciones, ¿cuánto mide de ancho en metros el río / pantano / barro?"
-      }
     },
     {
       "id": "photo_of_crossing",

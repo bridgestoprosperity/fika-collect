@@ -7,6 +7,7 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
+import {useLocalization} from '../hooks/useLocalization';
 
 import {Camera, useCameraPermission} from 'react-native-vision-camera';
 import {type CameraDevice, type PhotoFile} from 'react-native-vision-camera';
@@ -40,12 +41,13 @@ function StyledButton({
           borderRadius: 5,
         },
       ]}>
-      <Text style={{color}}>{title}</Text>
+      <Text style={{color, fontSize: 18}}>{title}</Text>
     </Pressable>
   );
 }
 
 function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
+  const {getString} = useLocalization();
   return (
     <SafeAreaView style={styles.cameraContainer}>
       <View style={styles.topRow}></View>
@@ -58,10 +60,18 @@ function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
       />
       <View style={styles.bottomRow}>
         <View style={styles.captureRowLeft}>
-          <StyledButton title="Retake" onPress={onRetake} color="white" />
+          <StyledButton
+            title={getString('retakePhotoButton')}
+            onPress={onRetake}
+            color="white"
+          />
         </View>
         <View style={styles.captureRowRight}>
-          <StyledButton title="Use photo" onPress={onConfirm} color="white" />
+          <StyledButton
+            title={getString('usePhotoButton')}
+            onPress={onConfirm}
+            color="white"
+          />
         </View>
       </View>
     </SafeAreaView>
