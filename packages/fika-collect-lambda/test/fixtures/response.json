@@ -3,9 +3,17 @@
   "user_id": "12345678",
   "survey_id": "quick_report",
   "responses": [
-    { "question_id": "severity", "value": "Level 3 - Significant" },
-    { "question_id": "at_obstacle", "value": false },
-    { "question_id": "location", "value": "REMOVE ME" },
+    {
+      "question_id": "severity",
+      "value": { "foo": "bar" },
+      "stringValue": "foo:bar"
+    },
+    { "question_id": "at_obstacle", "value": false, "stringValue": "false" },
+    {
+      "question_id": "location",
+      "value": { "lon": 0, "lat": 0 },
+      "stringValue": "lon:0,lat:0"
+    },
     { "question_id": "description", "value": "REMOVE ME" }
   ],
   "submitted_at": "2025-02-27T19:41:59.443Z",
