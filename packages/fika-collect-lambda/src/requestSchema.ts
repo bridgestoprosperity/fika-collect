@@ -5,12 +5,14 @@ const surveySubmissionRequestSchema = z
   .object({
     response: z.object({
       id: z.string(),
+      user_id: z.string(),
       survey_id: z.string().nonempty(),
       submitted_at: z.string().datetime().nonempty(),
       responses: z.array(
         z.object({
           question_id: z.string().nonempty(),
-          value: z.union([z.string(), z.number(), z.boolean()]),
+          value: z.any().optional(),
+          stringValue: z.string().optional(),
         }),
       ),
       schema: SurveySchema,
