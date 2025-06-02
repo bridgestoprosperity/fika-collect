@@ -566,8 +566,8 @@ function GeolocationQuestion({
         />
         {authDenial && (
           <Text style={styles.warning}>
-            Location permission denied. Please enable location permission in the
-            app settings.
+            {getString('locationPermissionDenied')}{' '}
+            {getString('locationPleaseEnable')}
           </Text>
         )}
 
@@ -896,10 +896,6 @@ export default function SurveyScreen(props: SurveyScreenProps) {
         ],
         {
           cancelable: true,
-          onDismiss: () =>
-            Alert.alert(
-              'This alert was dismissed by tapping outside of the alert dialog.',
-            ),
         },
       );
     } else {
