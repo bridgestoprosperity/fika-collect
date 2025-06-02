@@ -38,14 +38,6 @@ const I18NTextSchema = z.preprocess((val) => {
   return val;
 }, z.record(LocaleStringSchema, z.string()));
 
-const TextInputModeSchema = z.enum([
-  "numeric",
-  "decimal",
-  "text",
-  "tel",
-  "email",
-]);
-
 const FileTypeSchema = z.enum([
   'image/jpeg',
   'image/png',
@@ -65,31 +57,18 @@ const QuestionTypeSchema = z.preprocess(
     'photo',
     'geolocation',
     'admin_location',
+    'numeric'
   ]));
 
-const SurveyQuestionSchema = z.preprocess((val) => {
-  // Ensure that short_answer questions have a textInputMode set to 'text' if
-  // not otherwise specified.
-  if (
-    typeof val === 'object' &&
-    val !== null &&
-    'type' in val &&
-    (val as any).type === 'short_answer' &&
-    (val as any).textInputMode === undefined
-  ) {
-    (val as any).textInputMode = 'text';
-  }
-  console.log('SurveyQuestionSchema preprocess', val);
-  return val;
-}, z.object({
-  id: z.string().nonempty(),
-  type: QuestionTypeSchema,
-  required: z.boolean().default(true),
-  textInputMode: TextInputModeSchema.optional(),
-  question: I18NTextSchema,
-  hint: I18NTextSchema,
-  options: z.array(I18NTextSchema).optional(),
-}));
+const SurveyQuestionSchema =
+  z.object({
+    id: z.string().nonempty(),
+    type: QuestionTypeSchema,
+    required: z.boolean().default(true),
+    question: I18NTextSchema,
+    hint: I18NTextSchema,
+    options: z.array(I18NTextSchema).optional(),
+  });
 
 const SurveySchema = z.object({
   id: z.string().nonempty(),

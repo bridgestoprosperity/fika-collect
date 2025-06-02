@@ -3,7 +3,7 @@ import { z } from 'zod';
 // the locales that can be used in the app.
 const LOCALE_LABELS = {
     'en': 'English',
-    'fr': 'French',
+    'fr': 'Français',
     'sw': 'Kiswahili',
     'rw': 'Kinyarwanda',
     'om': 'Afaan Oromoo',
@@ -33,13 +33,6 @@ const I18NTextSchema = z.preprocess((val) => {
     }
     return val;
 }, z.record(LocaleStringSchema, z.string()));
-const TextInputModeSchema = z.enum([
-    "numeric",
-    "decimal",
-    "text",
-    "tel",
-    "email",
-]);
 const FileTypeSchema = z.enum([
     'image/jpeg',
     'image/png',
@@ -57,28 +50,16 @@ const QuestionTypeSchema = z.preprocess(
     'photo',
     'geolocation',
     'admin_location',
+    'numeric'
 ]));
-const SurveyQuestionSchema = z.preprocess((val) => {
-    // Ensure that short_answer questions have a textInputMode set to 'text' if
-    // not otherwise specified.
-    if (typeof val === 'object' &&
-        val !== null &&
-        'type' in val &&
-        val.type === 'short_answer' &&
-        val.textInputMode === undefined) {
-        val.textInputMode = 'text';
-    }
-    console.log('SurveyQuestionSchema preprocess', val);
-    return val;
-}, z.object({
+const SurveyQuestionSchema = z.object({
     id: z.string().nonempty(),
     type: QuestionTypeSchema,
     required: z.boolean().default(true),
-    textInputMode: TextInputModeSchema.optional(),
     question: I18NTextSchema,
     hint: I18NTextSchema,
     options: z.array(I18NTextSchema).optional(),
-}));
+});
 const SurveySchema = z.object({
     id: z.string().nonempty(),
     title: I18NTextSchema,

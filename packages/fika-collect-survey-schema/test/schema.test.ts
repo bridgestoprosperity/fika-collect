@@ -92,19 +92,11 @@ describe('SurveySchema', () => {
           "en": "What is your name?",
         },
       }, {
-        "type": "short_answer",
+        "type": "numeric",
         "id": "question_5",
         "question": {
           "en": "What is your age?",
         },
-        "textInputMode": "numeric"
-      }, {
-        "type": "short_answer",
-        "id": "question_6",
-        "question": {
-          "en": "What is the air speed of an unladen swallow?",
-        },
-        "textInputMode": "decimal"
       }]
     });
     expect(result.success).toBe(true);
@@ -160,25 +152,14 @@ describe('SurveySchema', () => {
           },
           "hint": { "en": "" },
           "required": true,
-          "textInputMode": "text"
         }, {
-          "type": "short_answer",
+          "type": "numeric",
           "id": "question_5",
           "question": {
             "en": "What is your age?",
           },
           "hint": { "en": "" },
           "required": true,
-          "textInputMode": "numeric"
-        }, {
-          "type": "short_answer",
-          "id": "question_6",
-          "question": {
-            "en": "What is the air speed of an unladen swallow?",
-          },
-          "hint": { "en": "" },
-          "required": true,
-          "textInputMode": "decimal"
         }]
       });
     }
