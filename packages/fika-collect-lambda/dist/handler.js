@@ -6,6 +6,7 @@ import { responseSchema } from "./responseSchema.js";
 import { uploadResponseToS3 } from "./uploadResponse.js";
 import HttpError from "./httpError.js";
 import { Region } from "./config.js";
+//import { request } from "node:http";
 const s3 = new S3Client({ region: Region });
 /**
  * Handle submitted survey JSON
