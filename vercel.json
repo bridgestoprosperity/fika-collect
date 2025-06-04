@@ -18,6 +18,10 @@
     {
       "src": "/api/v1/submit-survey",
       "dest": "api/submit-survey.ts"
+    },
+    {
+      "src": "/api/v1/surveys",
+      "dest": "api/list-surveys.ts"
     }
   ]
 }

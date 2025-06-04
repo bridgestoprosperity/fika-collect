@@ -781,7 +781,7 @@ function SurveyQuestionWrapper(props: SurveyQuestionWrapperProps) {
 
   return (
     <View style={{flexDirection: 'column', flex: 1}}>
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps="handled">
         <View style={styles.container}>{props.children}</View>
       </ScrollView>
 
@@ -955,7 +955,9 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   }, [submitting, submitted, surveyResponseManager, navigation, response]);
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={{flex: 1}}>
       <View style={styles.titleContainer}>
         <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
       </View>

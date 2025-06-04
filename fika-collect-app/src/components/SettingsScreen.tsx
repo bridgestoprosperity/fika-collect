@@ -17,7 +17,7 @@ export default function ResponsesScreen() {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
           <View style={styles.section}>
             <View style={styles.sectionHeaderContainer}>
