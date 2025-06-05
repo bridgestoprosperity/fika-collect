@@ -325,12 +325,18 @@ function AdminLocationQuestion({
   }, [locations, curPathPart]);
 
   if (!locations) {
-    return <View />;
+    return (
+      <View style={styles.container}>
+        <Text style={styles.surveyQuestionText}>
+          {getString('loadingLocations')}
+        </Text>
+      </View>
+    );
   }
 
   if (error) {
     console.error(error);
-    return <Text>{localize('errorLoadingLocations')}</Text>;
+    return <Text>{getString('errorLoadingLocations')}</Text>;
   }
 
   function navigatePath(path: string[]): string[] | null {
@@ -559,8 +565,11 @@ function GeolocationQuestion({
       response.stringValue = `${lonLat.longitude}, ${lonLat.latitude}`;
       onChange && onChange(lonLat, response.stringValue);
     } catch (error) {
-      Alert.alert(getString('error'), getString('geolocationUnable'));
-      console.error(error);
+      Alert.alert(
+        getString('geolocationUnable'),
+        getString('geolocationPleaseEnable'),
+      );
+      setStatusMessage(getString('geolocationUnable'));
     }
   };
 
@@ -581,8 +590,8 @@ function GeolocationQuestion({
         />
         {authDenial && (
           <Text style={styles.warning}>
-            {getString('locationPermissionDenied')}{' '}
-            {getString('locationPleaseEnable')}
+            {getString('geolocationDenied')}{' '}
+            {getString('geolocationPleaseEnable')}
           </Text>
         )}
 
@@ -781,7 +790,13 @@ function SurveyQuestionWrapper(props: SurveyQuestionWrapperProps) {
 
   return (
     <View style={{flexDirection: 'column', flex: 1}}>
-      <ScrollView keyboardShouldPersistTaps="handled">
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        style={{
+          maxHeight:
+            Dimensions.get('window').height -
+            (Platform.OS === 'ios' ? 220 : 150),
+        }}>
         <View style={styles.container}>{props.children}</View>
       </ScrollView>
 
@@ -957,6 +972,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}
       style={{flex: 1}}>
       <View style={styles.titleContainer}>
         <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
@@ -994,7 +1010,7 @@ const styles = StyleSheet.create({
     flex: 0,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    paddingVertical: 12,
+    paddingVertical: 8,
     paddingHorizontal: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
@@ -1003,7 +1019,7 @@ const styles = StyleSheet.create({
   surveyTitle: {
     color: '#333',
     fontSize: 22,
-    marginTop: 5,
+    marginTop: 0,
     marginBottom: 0,
     fontWeight: 700,
   },
@@ -1021,7 +1037,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     height: 50,
-    marginBottom: 80,
+    marginBottom: 10,
     paddingLeft: 15,
     paddingRight: 15,
     justifyContent: 'space-between',

@@ -1,4 +1,4 @@
-import {Text} from 'react-native';
+import {Text, Platform} from 'react-native';
 import {createStaticNavigation, NavigationProp} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SurveysScreen from './components/SurveysScreen';
@@ -81,7 +81,7 @@ const HomeStack = createBottomTabNavigator({
     },
     tabBarActiveTintColor: '#367845',
     tabBarStyle: {
-      height: 92,
+      height: Platform.OS === 'ios' ? 92 : 65,
     },
     headerTintColor: 'white',
     tabBarIcon: ({size, color}) => {

@@ -1,4 +1,4 @@
-import { Bucket, Prefix } from './config.js';
+import { Bucket, Prefix } from '../config.js';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 interface Payload {

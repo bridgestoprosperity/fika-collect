@@ -9,7 +9,11 @@ import {
 } from 'react-native';
 import {useLocalization} from '../hooks/useLocalization';
 
-import {Camera, useCameraPermission} from 'react-native-vision-camera';
+import {
+  Camera,
+  useCameraPermission,
+  useLocationPermission,
+} from 'react-native-vision-camera';
 import {type CameraDevice, type PhotoFile} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
 
@@ -102,12 +106,30 @@ export default function CameraController({
   const [permissionRequested, setPermissionRequested] = useState(false);
   const {hasPermission, requestPermission} = useCameraPermission();
 
+  const [locationPermissionRequested, setLocationPermissionRequested] =
+    useState(false);
+  const {
+    hasPermission: hasLocationPermission,
+    requestPermission: requestLocationPermission,
+  } = useLocationPermission();
+
   useEffect(() => {
     if (!hasPermission && !permissionRequested) {
       setPermissionRequested(true);
       requestPermission();
     }
   }, [hasPermission, requestPermission, permissionRequested]);
+
+  useEffect(() => {
+    if (!hasLocationPermission && !locationPermissionRequested) {
+      setLocationPermissionRequested(true);
+      requestLocationPermission();
+    }
+  }, [
+    hasLocationPermission,
+    requestLocationPermission,
+    locationPermissionRequested,
+  ]);
 
   if (!hasPermission) {
     return (
@@ -148,6 +170,7 @@ export default function CameraController({
     <SafeAreaView style={styles.cameraContainer}>
       <View style={styles.topRow}></View>
       <Camera
+        enableLocation={hasLocationPermission}
         style={styles.camera}
         device={device}
         isActive={true}

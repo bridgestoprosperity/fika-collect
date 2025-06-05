@@ -1,12 +1,12 @@
 {
-  "id": "dev_sample_survey",
+  "id": "bridge_request",
   "title": {
-    "en": "Development survey",
-    "es": "Encuesta de desarrollo"
+    "en": "Bridge Request",
+    "es": "Solicitud de puente"
   },
   "description": {
-    "en": "Sample survey for local development",
-    "es": "Encuesta de muestra para el desarrollo local"
+    "en": "Request a bridge at a location where it is needed.",
+    "es": "Solicitar un puente en un lugar donde se necesita."
   },
   "questions": [
     {

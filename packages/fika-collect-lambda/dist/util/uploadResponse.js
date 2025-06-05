@@ -1,4 +1,4 @@
-import { Bucket, Prefix } from './config.js';
+import { Bucket, Prefix } from '../config.js';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 async function uploadResponseToS3(payload, { s3 }) {
     const { survey_id, id } = payload;
