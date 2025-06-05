@@ -88,11 +88,13 @@ export class SurveyQuestionResponse {
         return {
           question_id: this.question.id,
           value: this.valueForSerialization === 'yes',
+          stringValue: this.stringValue,
         };
       default:
         return {
           question_id: this.question.id,
           value: this.valueForSerialization,
+          stringValue: this._stringValue,
         };
     }
   }
@@ -120,7 +122,6 @@ export class SurveyResponse {
     this.id = createRandomId();
     this.userId = userId;
     this.submittedAt = null;
-    console.log({schema});
     this.responses = schema.questions.map(
       question => new SurveyQuestionResponse(question),
     );
