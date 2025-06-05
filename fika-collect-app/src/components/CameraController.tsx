@@ -104,6 +104,7 @@ export default function CameraController({
   const camera = useRef<Camera>(null);
   const [file, setFile] = useState<PhotoFile | null>(null);
   const [permissionRequested, setPermissionRequested] = useState(false);
+  const [permissionDenied, setPermissionDenied] = useState(false);
   const {hasPermission, requestPermission} = useCameraPermission();
 
   const [locationPermissionRequested, setLocationPermissionRequested] =
@@ -116,30 +117,41 @@ export default function CameraController({
   useEffect(() => {
     if (!hasPermission && !permissionRequested) {
       setPermissionRequested(true);
-      requestPermission();
+      requestPermission().catch(() => {
+        setPermissionDenied(true);
+      });
     }
   }, [hasPermission, requestPermission, permissionRequested]);
 
   useEffect(() => {
-    if (!hasLocationPermission && !locationPermissionRequested) {
+    if (
+      hasPermission &&
+      !hasLocationPermission &&
+      !locationPermissionRequested
+    ) {
       setLocationPermissionRequested(true);
       requestLocationPermission();
     }
   }, [
+    hasPermission,
     hasLocationPermission,
     requestLocationPermission,
     locationPermissionRequested,
   ]);
 
   if (!hasPermission) {
-    return (
-      <View style={[StyleSheet.absoluteFill, styles.errorContainer]}>
-        <Text style={styles.errorMessage}>
-          Permission to access camera was denied!
-        </Text>
-        <StyledButton title="Cancel" onPress={cancel} />
-      </View>
-    );
+    if (permissionDenied) {
+      return (
+        <View style={[StyleSheet.absoluteFill, styles.errorContainer]}>
+          <Text style={styles.errorMessage}>
+            Permission to access camera was denied!
+          </Text>
+          <StyledButton title="Cancel" onPress={cancel} />
+        </View>
+      );
+    } else {
+      return <View />;
+    }
   }
   if (!device) {
     return (
