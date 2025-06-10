@@ -316,7 +316,6 @@ function AdminLocationQuestion({
   const [curPathPart, setCurPathPart] = useState<string | null>(null);
 
   const pathOptions = navigatePath(locationPath);
-  console.log(pathOptions);
 
   useEffect(() => {
     if (!locations || curPathPart !== null) {
@@ -444,7 +443,6 @@ function AdminLocationQuestion({
                     itemStyle={sharedStyles.picker}
                     selectedValue={curPathPart}
                     onValueChange={value => {
-                      console.log('selected value:', value);
                       onSelectAdminLevel(value);
                       if (Platform.OS === 'android') {
                         next(value);
