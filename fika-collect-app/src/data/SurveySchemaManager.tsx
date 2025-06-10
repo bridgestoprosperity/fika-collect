@@ -17,9 +17,9 @@ export class SurveySchemaManager {
   constructor() {
     try {
       const storedSchemas = surveySchemaStorage.getMap('schemas') as any;
+      console.log('Got stored schemas:', storedSchemas);
       if (storedSchemas) {
         for (const [id, schema] of storedSchemas) {
-          //console.log({id, schema});
           this.schemas.set(id, SurveySchema.parse(schema));
         }
       }
@@ -29,13 +29,23 @@ export class SurveySchemaManager {
   }
 
   async fetchSurveys() {
-    const manifestRespones = await fetch(
-      `${MANIFEST_URL}?cacheBust=${Math.random().toString(16).slice(2)}`,
-    );
-    if (!manifestRespones.ok) {
-      console.warn('Failed to fetch survey manifest');
+    console.log('Attempting to fetch surveys');
+    let manifest: object = {};
+
+    try {
+      const manifestRespones = await fetch(
+        `${MANIFEST_URL}?cacheBust=${Math.random().toString(16).slice(2)}`,
+      );
+      if (!manifestRespones.ok) {
+        throw new Error('Failed to fetch survey manifest');
+      }
+      manifest = await manifestRespones.json();
+    } catch (e) {
+      console.log(
+        'Failed to fetch surveys. Most likely the device is offline.',
+      );
+      return;
     }
-    const manifest = await manifestRespones.json();
 
     // Clear existing schemas if manifest successfully fetched
     this.schemas = new Map();
