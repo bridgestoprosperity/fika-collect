@@ -72,7 +72,6 @@ export class SurveyResponseManager extends EventEmitter {
     // Copy the images to the new directory, renaming them to a unique name and
     // updating the response object with the new file paths
     for (const resp of response.responses) {
-      console.log(resp);
       const questionDef = (response.schema as Survey).questions.find(
         q => q.id === resp.question.id,
       );

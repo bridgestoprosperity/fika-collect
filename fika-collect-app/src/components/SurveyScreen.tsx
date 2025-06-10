@@ -315,12 +315,14 @@ function AdminLocationQuestion({
   const [locationPath, setLocation] = useState<string[]>(response.value || []);
   const [curPathPart, setCurPathPart] = useState<string | null>(null);
 
-  const MAX_DEPTH = 6;
+  const pathOptions = navigatePath(locationPath);
+  console.log(pathOptions);
 
   useEffect(() => {
     if (!locations || curPathPart !== null) {
       return;
     }
+    console.log('Do the effect thing');
     setCurPathPart(Object.keys(locations)[0]);
   }, [locations, curPathPart]);
 
@@ -368,11 +370,8 @@ function AdminLocationQuestion({
     setCurPathPart(value);
   }
 
-  function pushPathPart() {
-    if (curPathPart === null) {
-      return;
-    }
-    const newPath = locationPath.concat(curPathPart);
+  function pushPathPart(part: string) {
+    const newPath = locationPath.concat(part);
     setLocation(newPath);
     const nextParts = navigatePath(newPath);
     if (nextParts) {
@@ -389,9 +388,11 @@ function AdminLocationQuestion({
     }
   }
 
-  const next = () => {
-    if (locationPath.length < MAX_DEPTH) {
-      pushPathPart();
+  const next = (part: string | null) => {
+    if (pathOptions) {
+      if (part) {
+        pushPathPart(part);
+      }
     } else {
       response.value = locationPath.join(' > ');
       onChange && onChange(locationPath, locationPath.join(' > '));
@@ -407,15 +408,13 @@ function AdminLocationQuestion({
     }
   };
 
-  const pathOptions = navigatePath(locationPath);
-
   const {question} = response;
   return (
     <SurveyQuestionWrapper
       questionCount={questionCount}
       questionIndex={questionIndex}
       onPrevious={prev}
-      onNext={next}
+      onNext={() => next(curPathPart)}
       canContinue={canContinue}>
       <View style={styles.surveyQuestion}>
         <Text style={styles.surveyQuestionText}>
@@ -445,9 +444,10 @@ function AdminLocationQuestion({
                     itemStyle={sharedStyles.picker}
                     selectedValue={curPathPart}
                     onValueChange={value => {
+                      console.log('selected value:', value);
                       onSelectAdminLevel(value);
                       if (Platform.OS === 'android') {
-                        next();
+                        next(value);
                       }
                     }}>
                     {pathOptions.map((option, index) => (
