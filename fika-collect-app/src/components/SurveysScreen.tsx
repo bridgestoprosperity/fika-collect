@@ -50,7 +50,9 @@ export default function SurveysScreen() {
   const surveyManager = useContext<SurveySchemaManager>(
     SurveySchemaManagerContext,
   );
-  const [surveys, setSurveys] = useState<Survey[]>([]);
+  const [surveys, setSurveys] = useState<Survey[]>([
+    ...surveyManager.schemas.values(),
+  ]);
 
   useEffect(() => {
     if (!isInternetReachable) {

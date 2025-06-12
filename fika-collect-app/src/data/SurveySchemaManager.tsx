@@ -30,7 +30,7 @@ export class SurveySchemaManager {
 
   async fetchSurveys() {
     console.log('Attempting to fetch surveys');
-    let manifest: object = {};
+    let manifest: {surveys: Survey[]} = {surveys: []};
 
     try {
       const manifestRespones = await fetch(
