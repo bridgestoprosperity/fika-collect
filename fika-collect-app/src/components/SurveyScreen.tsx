@@ -312,16 +312,17 @@ function AdminLocationQuestion({
 }: SurveyQuestionProps) {
   let {locations, error} = useLocationLookup();
   const {localize, getString} = useLocalization();
-  const [locationPath, setLocation] = useState<string[]>(response.value || []);
+  const [locationPath, setLocation] = useState<string[]>(
+    response.value?.selection || [],
+  );
   const [curPathPart, setCurPathPart] = useState<string | null>(null);
 
-  const pathOptions = navigatePath(locationPath);
+  const [pathOptions, locationMetadata] = navigatePath(locationPath);
 
   useEffect(() => {
     if (!locations || curPathPart !== null) {
       return;
     }
-    console.log('Do the effect thing');
     setCurPathPart(Object.keys(locations)[0]);
   }, [locations, curPathPart]);
 
@@ -340,25 +341,26 @@ function AdminLocationQuestion({
     return <Text>{getString('errorLoadingLocations')}</Text>;
   }
 
-  function navigatePath(path: string[]): string[] | null {
+  function navigatePath(path: string[]): [string[] | null, string[] | null] {
     let curobj: {[key: string]: any} = locations as {[key: string]: any};
     if (!curobj) {
-      return null;
+      return [null, null];
     }
     for (let i = 0; i < path.length; i++) {
       if (path[i] in curobj) {
         curobj = curobj[path[i]];
         if (!curobj) {
-          return null;
+          return [null, null];
         }
       } else {
-        return null;
+        // Return the name, code, and salesforce ID as the second element
+        return [null, curobj.find((item: any) => item[0] === path[i]) || null];
       }
     }
     if (Array.isArray(curobj)) {
-      return curobj.map((item: any) => item[0]);
+      return [curobj.map((item: any) => item[0]), null];
     } else {
-      return Object.keys(curobj || ['Other']);
+      return [Object.keys(curobj || ['Other']), null];
     }
   }
 
@@ -372,7 +374,7 @@ function AdminLocationQuestion({
   function pushPathPart(part: string) {
     const newPath = locationPath.concat(part);
     setLocation(newPath);
-    const nextParts = navigatePath(newPath);
+    const [nextParts] = navigatePath(newPath);
     if (nextParts) {
       setCurPathPart(nextParts[0]);
     }
@@ -381,7 +383,7 @@ function AdminLocationQuestion({
   function popPathPart() {
     const newPath = locationPath.slice(0, -1);
     setLocation(newPath);
-    const nextParts = navigatePath(newPath);
+    const [nextParts] = navigatePath(newPath);
     if (nextParts) {
       setCurPathPart(nextParts[0]);
     }
@@ -393,9 +395,17 @@ function AdminLocationQuestion({
         pushPathPart(part);
       }
     } else {
-      response.value = locationPath.join(' > ');
-      onChange && onChange(locationPath, locationPath.join(' > '));
-      onNext();
+      if (locationMetadata) {
+        const [_, code, id] = locationMetadata;
+        response.value = {code, id, selection: locationPath};
+        onChange && onChange(response.value, locationPath.join(' > '));
+        onNext();
+      } else {
+        console.warn('No location metadata found for path:', locationPath);
+        response.value = locationPath;
+        onChange && onChange(locationPath, locationPath.join(' > '));
+        onNext();
+      }
     }
   };
 
@@ -557,10 +567,9 @@ function GeolocationQuestion({
       })) as LonLat;
 
       setStatusMessage('');
-      console.log('Got location:', lonLat);
 
       response.value = lonLat;
-      response.stringValue = `${lonLat.longitude}, ${lonLat.latitude}`;
+      response.stringValue = `${lonLat.longitude},${lonLat.latitude}`;
       onChange && onChange(lonLat, response.stringValue);
     } catch (error) {
       Alert.alert(
@@ -942,7 +951,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
 
   const setResponse = (value: any, stringValue?: string) => {
     currentResponse.value = value;
-    currentResponse.stringValue = stringValue || value;
+    currentResponse.stringValue = stringValue || value.toString();
     setRevision(revision + 1);
   };
 

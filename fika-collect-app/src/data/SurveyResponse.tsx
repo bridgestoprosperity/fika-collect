@@ -56,6 +56,7 @@ export class SurveyQuestionResponse {
   set valueForSerialization(value: string) {
     this.replaceValueOnSerialization = true;
     this._valueForSerialization = value;
+    this._stringValue = value.toString();
   }
 
   get valueForSerialization() {

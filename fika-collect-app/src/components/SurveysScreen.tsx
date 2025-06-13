@@ -10,7 +10,6 @@ import {SurveySchemaManager} from '../data/SurveySchemaManager';
 import {SurveyResponse} from '../data/SurveyResponse';
 import Announcements from './Announcements';
 import {useAppSelector} from '../hooks';
-import {useNetInfo} from '@react-native-community/netinfo';
 
 function SurveyButton({survey}: {survey: Survey}) {
   const navigation = useNavigation<StackNavigation>();
@@ -45,8 +44,6 @@ function SurveyButton({survey}: {survey: Survey}) {
 }
 
 export default function SurveysScreen() {
-  const {isInternetReachable} = useNetInfo();
-
   const surveyManager = useContext<SurveySchemaManager>(
     SurveySchemaManagerContext,
   );
@@ -55,14 +52,10 @@ export default function SurveysScreen() {
   ]);
 
   useEffect(() => {
-    if (!isInternetReachable) {
-      console.warn('No internet connection. Cannot fetch surveys.');
-      return;
-    }
     surveyManager.fetchSurveys().then(() => {
       setSurveys([...surveyManager.schemas.values()]);
     });
-  }, [surveyManager, isInternetReachable]);
+  }, [surveyManager]);
 
   return (
     <ScrollView>
