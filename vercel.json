@@ -23,7 +23,7 @@
       "src": "/editor/surveys",
       "dest": "api/editor-survey-actions.ts",
       "methods": ["POST"]
-    }
+    },
     {
       "src": "/editor/surveys/(?<id>[^/]*)",
       "dest": "api/editor-survey-actions.ts?id=$id",
