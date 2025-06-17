@@ -8,25 +8,25 @@
   },
   "routes": [
     {
-      "src": "/api/v1/hello",
-      "dest": "api/hello.ts"
+      "src": "/api/v1/healthcheck",
+      "dest": "api/healthcheck.ts"
     },
     {
       "src": "/api/v1/presign-upload",
-      "dest": "api/presign-upload.ts"
+      "dest": "api/presignUpload.ts"
     },
     {
       "src": "/api/v1/submit-survey",
-      "dest": "api/submit-survey.ts"
+      "dest": "api/submitSurvey.ts"
     },
     {
-      "src": "/editor/surveys",
-      "dest": "api/editor-survey-actions.ts",
+      "src": "/api/v1/editor/surveys",
+      "dest": "api/editorSurveyActions.ts",
       "methods": ["POST"]
     },
     {
-      "src": "/editor/surveys/(?<id>[^/]*)",
-      "dest": "api/editor-survey-actions.ts?id=$id",
+      "src": "/api/v1/editor/surveys/(?<id>[^/]*)",
+      "dest": "api/editorSurveyActions.ts?id=$id",
       "methods": ["GET", "PUT", "DELETE"]
     }
   ]
