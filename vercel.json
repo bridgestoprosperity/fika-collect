@@ -21,8 +21,8 @@
     },
     {
       "src": "/api/v1/editor/surveys",
-      "dest": "api/editorSurveyActions.ts",
-      "methods": ["POST"]
+      "dest": "api/editorSurveyCollectionActions.ts",
+      "methods": ["POST", "GET"]
     },
     {
       "src": "/api/v1/editor/surveys/(?<id>[^/]*)",
