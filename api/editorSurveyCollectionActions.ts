@@ -17,15 +17,16 @@ export async function GET(request: Request) {
 
   const data = await s3.send(command);
   const surveys = data.Contents?.map(obj => ({
-    survey_id: obj.Key,
+    key: obj.Key,
     updated_at: obj.LastModified,
   })) || [];
 
   const surveyItems: SurveyDescription[] = [];
   for (const survey of surveys) {
+    const id = (survey.key || '').replace(Prefix, '').replace('.json', '');
     surveyItems.push({
-      survey_id: (survey.survey_id || '').replace(Prefix, '').replace('.json', ''),
-      url: `https://${Bucket}.s3.amazonaws.com/${surveys.survey_id}`,
+      survey_id: id,
+      url: `https://${Bucket}.s3.amazonaws.com/${survey.key}`,
       updated_at: survey?.updated_at?.toISOString() || null,
     });
   }
