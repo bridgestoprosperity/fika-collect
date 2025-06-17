@@ -16,6 +16,7 @@ import SelectInput from "./SelectInput";
 import TextInput from "./TextInput";
 import I18NTextInput from "./I18NTextInput";
 import OptionListInput from "./OptionListInput";
+import { ac } from "react-router/dist/development/route-data-OcOrqK13";
 
 const questionTypeLabels = {
   short_answer: "Short answer",
@@ -294,7 +295,7 @@ const SurveyEditorForm: FC<{
                     navigate("/");
                   }}
                 >
-                  Discard changes
+                  {schema.id ? "Discard changes" : "Discard"}
                 </button>
               </div>
             </div>
@@ -386,6 +387,15 @@ const SurveyEditorPage: FC<{
   });
 
   useEffect(() => {
+    if (action === "new") {
+      setSchema({
+        id: "",
+        title: { en: "" },
+        description: { en: "" },
+        questions: [],
+      });
+      return;
+    }
     setLoading(true);
     fetchSurveySchema(surveyId)
       .then((schema) => setSchema(schema))

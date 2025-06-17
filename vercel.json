@@ -20,8 +20,9 @@
       "dest": "api/submit-survey.ts"
     },
     {
-      "src": "/api/v1/surveys",
-      "dest": "api/list-surveys.ts"
+      "src": "/editor/surveys/(?<id>[^/]*)",
+      "dest": "api/editor-survey-actions.ts?id=$id",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
     }
   ]
 }
