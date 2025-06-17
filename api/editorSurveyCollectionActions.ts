@@ -1,8 +1,16 @@
 import s3 from './util/s3.js';
 import { ListObjectsV2Command } from '@aws-sdk/client-s3';
+import { SurveySchema, FileTypeSchema } from 'fika-collect-survey-schema';
+import type { Survey } from 'fika-collect-survey-schema';
 
 const Bucket = process.env.S3_BUCKET || 'fika-collect';
 const Prefix = 'surveys/';
+
+interface SurveyDescription {
+  survey_id: string;
+  updated_at: string | null;
+  url: string;
+}
 
 export async function GET(request: Request) {
   const command = new ListObjectsV2Command({ Bucket, Prefix });
@@ -13,8 +21,17 @@ export async function GET(request: Request) {
     updated_at: obj.LastModified,
   })) || [];
 
+  const surveyItems: SurveyDescription[] = [];
+  for (const survey of surveys) {
+    surveyItems.push({
+      survey_id: (survey.survey_id || '').replace(Prefix, '').replace('.json', ''),
+      url: `https://${Bucket}.s3.amazonaws.com/${surveys.survey_id}`,
+      updated_at: survey?.updated_at?.toISOString() || null,
+    });
+  }
+
   return new Response(
-    JSON.stringify({ surveys }),
+    JSON.stringify({ surveys: surveyItems }),
     {
       status: 200,
       headers: {
