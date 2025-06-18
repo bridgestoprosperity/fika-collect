@@ -14,22 +14,22 @@
     },
     {
       "src": "/api/v1/presign-upload",
-      "dest": "api/presignUpload.ts",
+      "dest": "api/presign-upload.ts",
       "methods": ["POST"]
     },
     {
       "src": "/api/v1/submit-survey",
-      "dest": "api/submitSurvey.ts",
+      "dest": "api/submit-survey.ts",
       "methods": ["POST"]
     },
     {
       "src": "/api/v1/editor/surveys",
-      "dest": "api/editorSurveyCollectionActions.ts",
+      "dest": "api/editor-survey-collection-actions.ts",
       "methods": ["POST", "GET"]
     },
     {
       "src": "/api/v1/editor/surveys/(?<id>[^/]*)",
-      "dest": "api/editorSurveyActions.ts?id=$id",
+      "dest": "api/editor-survey-actions.ts?id=$id",
       "methods": ["GET", "PUT", "DELETE"]
     }
   ]

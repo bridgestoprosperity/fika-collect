@@ -1,5 +1,4 @@
 import { presignUpload } from 'fika-collect-lambda/dist/handler.js';
-import HttpError from 'fika-collect-lambda/dist/httpError.js';
 
 interface LambdaResponse {
   statusCode: number;
