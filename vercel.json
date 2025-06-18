@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/api/v1/healthcheck",
-      "dest": "api/healthCheck.ts",
+      "dest": "api/healthcheck.ts",
       "methods": ["GET"]
     },
     {
