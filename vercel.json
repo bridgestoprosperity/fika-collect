@@ -9,15 +9,18 @@
   "routes": [
     {
       "src": "/api/v1/healthcheck",
-      "dest": "api/healthcheck.ts"
+      "dest": "api/healthcheck.ts",
+      "methods": ["GET"]
     },
     {
       "src": "/api/v1/presign-upload",
-      "dest": "api/presignUpload.ts"
+      "dest": "api/presignUpload.ts",
+      "methods": ["POST"]
     },
     {
       "src": "/api/v1/submit-survey",
-      "dest": "api/submitSurvey.ts"
+      "dest": "api/submitSurvey.ts",
+      "methods": ["POST"]
     },
     {
       "src": "/api/v1/editor/surveys",
