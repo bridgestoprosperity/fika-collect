@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {Platform} from 'react-native';
+import {Platform, Appearance} from 'react-native';
+
+const isLightTheme = Appearance.getColorScheme() === 'light';
 
 export default StyleSheet.create({
   button: {
@@ -39,11 +41,14 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   picker: {
-    color: 'black',
+    backgroundColor: isLightTheme ? '#eee' : '#333',
     borderWidth: 1,
     borderColor: '#cccccc',
-    height: Platform.OS === 'android' ? 80 : 210,
+    height: Platform.OS === 'android' ? 60 : 210,
     width: '100%',
     borderRadius: 3,
+  },
+  pickerItem: {
+    color: isLightTheme ? 'black' : 'white',
   },
 });

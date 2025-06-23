@@ -1,10 +1,19 @@
-import {View, ScrollView, StyleSheet, SafeAreaView, Text} from 'react-native';
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  Appearance,
+} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {useAppDispatch, useAppSelector} from '../hooks';
 import {ENGLISH_LOCALE_LABELS, LOCALE_LABELS} from 'fika-collect-survey-schema';
 import {setLocaleOverride} from '../features/localization';
 import {useLocalization} from '../hooks/useLocalization';
 import sharedStyles from '../styles';
+
+const isLightTheme = Appearance.getColorScheme() === 'light';
 
 export default function ResponsesScreen() {
   const dispatch = useAppDispatch();
@@ -27,6 +36,9 @@ export default function ResponsesScreen() {
               <Picker
                 selectedValue={selectedOverride || 'default'}
                 style={sharedStyles.picker}
+                itemStyle={sharedStyles.pickerItem}
+                dropdownIconRippleColor={isLightTheme ? '#ccc' : '#444'}
+                dropdownIconColor={isLightTheme ? '#000' : '#fff'}
                 onValueChange={itemValue =>
                   dispatch(
                     setLocaleOverride(
@@ -35,13 +47,11 @@ export default function ResponsesScreen() {
                   )
                 }>
                 <Picker.Item
-                  color="black"
                   label="Default (System Language)"
                   value="default"
                 />
                 {availableLocales.map(locale => (
                   <Picker.Item
-                    color="black"
                     key={locale}
                     label={`${LOCALE_LABELS[locale]} (${ENGLISH_LOCALE_LABELS[locale]})`}
                     value={locale}

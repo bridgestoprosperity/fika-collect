@@ -13,6 +13,7 @@ import {
   Button,
   Dimensions,
   Platform,
+  Appearance,
 } from 'react-native';
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
@@ -30,6 +31,8 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import Geolocation from '@react-native-community/geolocation';
 import {useLocalization} from '../hooks/useLocalization';
 import {useLocationLookup} from '../hooks/useLocationLookup';
+
+const isLightTheme = Appearance.getColorScheme() === 'light';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -220,13 +223,15 @@ function MultipleChoiceQuestion({
           {localize(question.question)}
         </Text>
         <Picker
-          itemStyle={sharedStyles.picker}
+          itemStyle={sharedStyles.pickerItem}
+          style={sharedStyles.picker}
+          dropdownIconRippleColor={isLightTheme ? '#ccc' : '#444'}
+          dropdownIconColor={isLightTheme ? '#000' : '#fff'}
           selectedValue={response.value}
           onValueChange={value => onChange(value)}>
           {question.options &&
             question.options.map((option, index) => (
               <Picker.Item
-                color="black"
                 key={`option-${index}`}
                 label={localize(option)}
                 value={option.en}
@@ -450,7 +455,10 @@ function AdminLocationQuestion({
                   </Text>
 
                   <Picker
-                    itemStyle={sharedStyles.picker}
+                    dropdownIconRippleColor={isLightTheme ? '#ccc' : '#444'}
+                    dropdownIconColor={isLightTheme ? '#000' : '#fff'}
+                    style={sharedStyles.picker}
+                    itemStyle={sharedStyles.pickerItem}
                     selectedValue={curPathPart}
                     onValueChange={value => {
                       onSelectAdminLevel(value);
@@ -460,7 +468,6 @@ function AdminLocationQuestion({
                     }}>
                     {pathOptions.map((option, index) => (
                       <Picker.Item
-                        color="black"
                         key={`option-${index}`}
                         label={localize(option)}
                         value={option}
