@@ -72,7 +72,10 @@ export class SurveyQuestionResponse {
   }
 
   get canContinue() {
-    return this.hasResponse || this.question.required === false;
+    if (this.type === 'multiselect') {
+      return true;
+    }
+    return this.hasResponse || !this.question.required;
   }
 
   set value(value: any) {

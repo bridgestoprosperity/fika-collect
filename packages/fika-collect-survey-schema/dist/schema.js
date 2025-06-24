@@ -57,7 +57,7 @@ const QuestionTypeSchema = z.preprocess(
 const SurveyQuestionSchema = z.object({
     id: z.string().nonempty(),
     type: QuestionTypeSchema,
-    required: z.boolean().default(true),
+    required: z.boolean().default(false),
     question: I18NTextSchema,
     hint: I18NTextSchema,
     options: z.array(I18NTextSchema).optional(),

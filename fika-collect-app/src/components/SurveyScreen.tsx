@@ -875,8 +875,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   const survey = response.schema;
   const questionCount = survey.questions.length;
   const currentResponse = response.responses[questionIndex];
-  const canContinue =
-    currentResponse.hasResponse || currentResponse.type === 'multiselect';
+  const canContinue = currentResponse.canContinue;
 
   const submit = () => {
     Alert.alert(

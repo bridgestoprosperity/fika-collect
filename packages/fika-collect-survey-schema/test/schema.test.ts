@@ -117,7 +117,7 @@ describe('SurveySchema', () => {
             "en": "This is a hint.",
             "fr": "Ceci est un indice.",
           },
-          "required": true,
+          "required": false,
         }, {
           "type": "select",
           "id": "question_2",
@@ -130,7 +130,7 @@ describe('SurveySchema', () => {
             { "en": "Option 1", "fr": "Option 1" },
             { "en": "Option 2", "fr": "Option 2" },
           ],
-          "required": true,
+          "required": false,
         }, {
           "type": "select",
           "id": "question_3",
@@ -151,7 +151,7 @@ describe('SurveySchema', () => {
             "en": "What is your name?",
           },
           "hint": { "en": "" },
-          "required": true,
+          "required": false,
         }, {
           "type": "numeric",
           "id": "question_5",
@@ -159,7 +159,7 @@ describe('SurveySchema', () => {
             "en": "What is your age?",
           },
           "hint": { "en": "" },
-          "required": true,
+          "required": false,
         }]
       });
     }
