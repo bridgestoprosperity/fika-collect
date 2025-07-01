@@ -10,6 +10,11 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  "include": ["src/**/*"], // Include all TypeScript files in the 'src' directory
+  "include": [
+    "src/**/*",
+    "../../api/util/requestSchema.ts",
+    "../../api/util/responseSchema.ts",
+    "../../api/util/uploadResponse.ts"
+  ], // Include all TypeScript files in the 'src' directory
   "exclude": ["node_modules", "dist"] // Exclude 'node_modules' and 'dist' directories
 }

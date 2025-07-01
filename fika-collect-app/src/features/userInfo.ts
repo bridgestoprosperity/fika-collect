@@ -9,6 +9,7 @@ const userInfoStorage = new MMKVLoader()
 
 interface UserInfoState {
   userId: string;
+  consentAccepted: boolean;
 }
 
 let storedUserId = userInfoStorage.getString('userId');
@@ -19,6 +20,7 @@ if (!storedUserId) {
 
 const initialState: UserInfoState = {
   userId: storedUserId,
+  consentAccepted: userInfoStorage.getBool('contentAccepted') || false,
 };
 
 export const userInfoSlice = createSlice({
@@ -29,9 +31,18 @@ export const userInfoSlice = createSlice({
       state.userId = action.payload;
       userInfoStorage.setString('userId', state.userId || '');
     },
+    assignRandomUserId: (state) => {
+      if (!state.userId) {
+        const newUserId = nanoid(8);
+        state.userId = newUserId;
+        userInfoStorage.setString('userId', newUserId);
+      }
+      state.consentAccepted = true;
+      userInfoStorage.setBool('contentAccepted', true);
+    }
   },
 });
 
-export const { setUserId } = userInfoSlice.actions;
+export const { setUserId, assignRandomUserId } = userInfoSlice.actions;
 
 export default userInfoSlice.reducer;

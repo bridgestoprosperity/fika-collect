@@ -6,7 +6,7 @@ This setup is in place because we were unable to configure a CAA (Certificate Au
 
 ## Endpoints
 
-## GET `/surveys`
+## GET `/api/v1/surveys`
 
 List all surveys
 
@@ -16,7 +16,7 @@ List all surveys
 | -------- | ---------------------- | ------------- |
 | `filter` | `"published" \| "all"` | `"published"` |
 
-## POST `/surveys`
+## POST `/api/v1/surveys`
 
 Create a survey.
 
@@ -25,7 +25,7 @@ Create a survey.
 - Reflect desired published/unpublished state of new survey.
 - Return 201 CREATED with id and key of created survey.
 
-## PUT `/surveys/:survey_id`
+## PUT `/api/v1/surveys/:survey_id`
 
 Update a survey.
 
@@ -33,12 +33,22 @@ Update a survey.
 - Update `manifest.json` to reflect published/unpublished state of survey.
 - Return 200 OK with id and key of updated survey.
 
-## POST `/presign-upload`
+## POST `/api/v1/presign-upload`
 
 - Check for existence of corresponding survey
 - Validate request details against survey schema
 - Return 200 OK presigned S3 URL to which image may be posted
 
-## POST `/submit-survey`
+## POST `/api/v1/submit-survey`
 
--
+## POST `/api/v1/consent`
+
+Post the device-assigned `user_id` along with the full text to which the user agreed when clicking "I agree." User ID and text are stored on S3 in the `fika-collect` bucket under key `/consent/{user_id}.json`.
+
+**Parameters**
+
+| Name           | Type     | Default                    |
+| -------------- | -------- | -------------------------- |
+| `user_id`      | `string` |                            |
+| `consent_text` | `string` |                            |
+| `timestamp`    | `string` | `new Date().toISOString()` |

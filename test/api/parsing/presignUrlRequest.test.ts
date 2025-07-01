@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { uploadPresignerRequestSchema } from '../src/util/requestSchema.js';
+import { uploadPresignerRequestSchema } from '../../../api/util/requestSchema.js';
 import { fromError } from 'zod-validation-error';
 
 describe('request parameter parsing', () => {

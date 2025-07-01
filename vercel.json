@@ -13,6 +13,11 @@
       "methods": ["GET"]
     },
     {
+      "src": "/api/v1/constent",
+      "dest": "api/consent.ts",
+      "methods": ["POST"]
+    },
+    {
       "src": "/api/v1/presign-upload",
       "dest": "api/presign-upload.ts",
       "methods": ["POST"]
