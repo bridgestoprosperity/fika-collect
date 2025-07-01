@@ -25,9 +25,9 @@ export async function POST(request: Request): Promise<Response> {
     const command = new PutObjectCommand({
       Bucket: process.env.S3_BUCKET || 'fika-collect',
       Key: `consent/${consentData.data.user_id}.json`,
+      Body: JSON.stringify(consentData.data),
     });
 
-    command.input.Body = JSON.stringify(consentData.data);
     try {
       const result = await s3.send(command);
       if (result.$metadata.httpStatusCode !== 200) {
