@@ -1,10 +1,19 @@
-import {View, ScrollView, StyleSheet, SafeAreaView, Button} from 'react-native';
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  SafeAreaView,
+  Pressable,
+  Text,
+} from 'react-native';
 import Markdown from '@ronradtke/react-native-markdown-display';
 import {useAppDispatch} from '../hooks';
-import {assignRandomUserId} from '../features/userInfo';
+//import {assignRandomUserId} from '../features/userInfo';
+import {postConsent} from '../features/userInfo';
 import {useNavigation} from '@react-navigation/native';
+import sharedStyles from '../styles';
 
-const copy = `# App Disclosure - Fika Collect
+const terms = `# App Disclosure - Fika Collect
 
 Fika collect helps users report transportation barriers - places where travel is unsafe or difficult.
 Your reports help [Bridges to Prosperity](https://bridgestoprosperity.org/) and local government/infrastructure
@@ -23,15 +32,14 @@ and permission of a parent or guardian.
 
 Sharing this information is optional, but without it, you won't be able to submit reports through the app.
 
-**Do you agree to share this information?**
-`;
+**Do you agree to share this information?**`;
 
 export default function ConsentScreen() {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
 
   const agree = () => {
-    dispatch(assignRandomUserId());
+    dispatch(postConsent({consentText: terms}));
   };
 
   return (
@@ -40,25 +48,20 @@ export default function ConsentScreen() {
         keyboardShouldPersistTaps="handled"
         contentInsetAdjustmentBehavior="automatic">
         <View style={styles.container}>
-          <Markdown>{copy}</Markdown>
+          <Markdown>{terms}</Markdown>
         </View>
         <View style={styles.btnContainer}>
-          <Button
-            title="I Agree"
+          <Pressable
             onPress={() => {
               agree();
               navigation.goBack();
-              // Handle consent agreement logic here
             }}
-            color="#367845"
-          />
-          <Button
-            title="I Do Not Agree"
-            onPress={() => {
-              // Handle consent denial logic here
-            }}
-            color="#d9534f"
-          />
+            style={({pressed}) => [
+              sharedStyles.button,
+              pressed && sharedStyles.buttonPressed,
+            ]}>
+            <Text style={sharedStyles.buttonText}>I Agree</Text>
+          </Pressable>
         </View>
       </ScrollView>
     </SafeAreaView>

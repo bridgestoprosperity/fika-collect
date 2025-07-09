@@ -24,13 +24,17 @@ import {useNavigation} from '@react-navigation/native';
 import sharedStyles from '../styles';
 import CameraController from './CameraController';
 import {useCameraPermission} from 'react-native-vision-camera';
-import {useCameraDevice} from 'react-native-vision-camera';
+import {
+  useCameraDevice,
+  useLocationPermission,
+} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNetInfo} from '@react-native-community/netinfo';
 import Geolocation from '@react-native-community/geolocation';
 import {useLocalization} from '../hooks/useLocalization';
 import {useLocationLookup} from '../hooks/useLocationLookup';
+import {get} from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const isLightTheme = Appearance.getColorScheme() === 'light';
 
@@ -519,73 +523,59 @@ function GeolocationQuestion({
   canContinue,
 }: SurveyQuestionProps) {
   const {question} = response;
-  const [authDenial, setAuthDenial] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const {localize, getString} = useLocalization();
+  const [getLocationInitiated, setGetLocationInitiated] = useState(false);
+
+  const {hasPermission, requestPermission} = useLocationPermission();
 
   const getLocation = async () => {
-    try {
-      console.log({GEOLOCATION_AUTHORIZATION});
+    if (hasPermission) {
       setStatusMessage(getString('gelocationRequesting'));
-      // Work around this bug in which authorization stalls on subsequent calls:
-      // https://github.com/michalchudziak/react-native-geolocation/issues/335
-      if (GEOLOCATION_AUTHORIZATION === null) {
-        await new Promise((resolve, reject) => {
-          console.log('Requesting authorization...');
-          Geolocation.requestAuthorization(
-            () => {
-              console.log('Auth granted');
-              GEOLOCATION_AUTHORIZATION = true;
-              setAuthDenial(false);
-              resolve(null);
-            },
-            () => {
-              console.log('Auth denied');
-              GEOLOCATION_AUTHORIZATION = false;
-              setAuthDenial(true);
-              setStatusMessage(getString('geolocationDenied'));
-              reject();
-            },
-          );
-        });
-      } else {
-        if (GEOLOCATION_AUTHORIZATION === false) {
-          setAuthDenial(true);
+      setGetLocationInitiated(true);
+    } else {
+      requestPermission().then(granted => {
+        if (granted) {
+          setStatusMessage(getString('gelocationRequesting'));
+          setGetLocationInitiated(true);
+        } else {
+          setStatusMessage(getString('geolocationDenied'));
           Alert.alert(
             getString('geolocationDenied'),
             getString('geolocationPleaseEnable'),
           );
-          setStatusMessage(getString('geolocationDenied'));
-          return;
+          setGetLocationInitiated(false);
         }
-      }
-
-      console.log('Requesting position...');
-      const lonLat = (await new Promise((resolve, reject) => {
-        Geolocation.getCurrentPosition(
-          position => {
-            const {latitude, longitude} = position.coords;
-            const value: LonLat = {longitude, latitude};
-            resolve(value);
-          },
-          error => reject(error),
-          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-        );
-      })) as LonLat;
-
-      setStatusMessage('');
-
-      response.value = lonLat;
-      response.stringValue = `${lonLat.longitude},${lonLat.latitude}`;
-      onChange && onChange(lonLat, response.stringValue);
-    } catch (error) {
-      Alert.alert(
-        getString('geolocationUnable'),
-        getString('geolocationPleaseEnable'),
-      );
-      setStatusMessage(getString('geolocationUnable'));
+      });
     }
   };
+
+  useEffect(() => {
+    if (!hasPermission || !getLocationInitiated) {
+      return;
+    }
+    Geolocation.getCurrentPosition(
+      position => {
+        const {latitude, longitude} = position.coords;
+        const lonLat: LonLat = {longitude, latitude};
+
+        setStatusMessage('');
+        setGetLocationInitiated(false);
+
+        response.value = lonLat;
+        response.stringValue = `${lonLat.longitude},${lonLat.latitude}`;
+        onChange && onChange(lonLat, response.stringValue);
+      },
+      () => {
+        setGetLocationInitiated(false);
+        Alert.alert(
+          getString('geolocationUnable'),
+          getString('geolocationPleaseEnable'),
+        );
+      },
+      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+    );
+  }, [hasPermission, getLocationInitiated, onChange, response, getString]);
 
   return (
     <SurveyQuestionWrapper
@@ -602,13 +592,6 @@ function GeolocationQuestion({
           title={getString('geolocationGetLocationButton')}
           onPress={getLocation}
         />
-        {authDenial && (
-          <Text style={styles.warning}>
-            {getString('geolocationDenied')}{' '}
-            {getString('geolocationPleaseEnable')}
-          </Text>
-        )}
-
         <View style={{marginTop: 40}}>
           <TextInput
             style={styles.textInputBox}
