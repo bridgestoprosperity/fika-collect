@@ -15,6 +15,12 @@ export default StyleSheet.create({
   buttonSecondary: {
     backgroundColor: '#666',
   },
+  buttonDanger: {
+    backgroundColor: '#c00',
+  },
+  buttonDangerPressed: {
+    backgroundColor: '#a00',
+  },
   buttonPressed: {
     backgroundColor: 'darkgreen',
   },
