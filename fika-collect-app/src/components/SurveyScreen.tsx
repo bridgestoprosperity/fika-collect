@@ -34,7 +34,6 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import Geolocation from '@react-native-community/geolocation';
 import {useLocalization} from '../hooks/useLocalization';
 import {useLocationLookup} from '../hooks/useLocationLookup';
-import {get} from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 const isLightTheme = Appearance.getColorScheme() === 'light';
 
