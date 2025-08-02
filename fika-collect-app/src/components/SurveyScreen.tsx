@@ -325,7 +325,7 @@ function AdminLocationQuestion({
   );
   const [curPathPart, setCurPathPart] = useState<string | null>(null);
 
-  const [pathOptions, locationMetadata] = navigatePath(locationPath);
+  const pathOptions = navigatePath(locationPath);
 
   useEffect(() => {
     if (!locations || curPathPart !== null) {
@@ -349,27 +349,25 @@ function AdminLocationQuestion({
     return <Text>{getString('errorLoadingLocations')}</Text>;
   }
 
-  function navigatePath(path: string[]): [string[] | null, string[] | null] {
+  // Step through the nested object structure according to the path
+  function navigatePath(path: string[]): string[] | null {
     let curobj: {[key: string]: any} = locations as {[key: string]: any};
     if (!curobj) {
-      return [null, null];
+      return null;
     }
     for (let i = 0; i < path.length; i++) {
       if (path[i] in curobj) {
         curobj = curobj[path[i]];
-        if (!curobj) {
-          return [null, null];
-        }
-      } else {
-        // Return the name, code, and salesforce ID as the second element
-        return [null, curobj.find((item: any) => item[0] === path[i]) || null];
+      } else if (Array.isArray(curobj)) {
+        // If the current object is an array, we are at the end of the path
+        // and there is nothing further to navigate.
+        return null;
+      } else if (!curobj) {
+        // Unexpected case where the path part does not exist
+        return null;
       }
     }
-    if (Array.isArray(curobj)) {
-      return [curobj.map((item: any) => item[0]), null];
-    } else {
-      return [Object.keys(curobj || ['Other']), null];
-    }
+    return Array.isArray(curobj) ? curobj : Object.keys(curobj);
   }
 
   function onSelectAdminLevel(value: string | null) {
@@ -382,7 +380,7 @@ function AdminLocationQuestion({
   function pushPathPart(part: string) {
     const newPath = locationPath.concat(part);
     setLocation(newPath);
-    const [nextParts] = navigatePath(newPath);
+    const nextParts = navigatePath(newPath);
     if (nextParts) {
       setCurPathPart(nextParts[0]);
     }
@@ -391,7 +389,7 @@ function AdminLocationQuestion({
   function popPathPart() {
     const newPath = locationPath.slice(0, -1);
     setLocation(newPath);
-    const [nextParts] = navigatePath(newPath);
+    const nextParts = navigatePath(newPath);
     if (nextParts) {
       setCurPathPart(nextParts[0]);
     }
@@ -403,17 +401,9 @@ function AdminLocationQuestion({
         pushPathPart(part);
       }
     } else {
-      if (locationMetadata) {
-        const [_, code, id] = locationMetadata;
-        response.value = {code, id, selection: locationPath};
-        onChange && onChange(response.value, locationPath.join(' > '));
-        onNext();
-      } else {
-        console.warn('No location metadata found for path:', locationPath);
-        response.value = locationPath;
-        onChange && onChange(locationPath, locationPath.join(' > '));
-        onNext();
-      }
+      response.value = {location: locationPath};
+      onChange && onChange(response.value, locationPath.join(' > '));
+      onNext();
     }
   };
 

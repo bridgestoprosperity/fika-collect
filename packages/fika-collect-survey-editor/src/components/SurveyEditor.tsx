@@ -10,6 +10,7 @@ import { useParams, useBlocker } from "react-router";
 import { useNavigate, NavLink } from "react-router";
 import { LocaleProvider, useLocale } from "../hooks/useLocale";
 
+import Modal from "./Modal";
 import Header from "./Header";
 import FormField from "./FormField";
 import SelectInput from "./SelectInput";
@@ -255,6 +256,27 @@ const SurveyEditorForm: FC<{
   schema: Survey;
   setSchema: (schema: Survey) => void;
 }> = ({ schema, setSchema }) => {
+  const [isSaving, setIsSaving] = useState(false);
+
+  async function saveToS3(schema: Survey) {
+    setIsSaving(true);
+    try {
+      const response = await fetch(
+        `http://localhost:5173/surveys/${schema.id}.json`,
+        {
+          method: "PUT",
+          body: JSON.stringify(schema),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    } catch (error) {
+      console.error("Failed to save survey:", error);
+      alert("Failed to save survey. Check console for details.");
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
   const navigate = useNavigate();
   return (
     <form className="surveyEditor mt-5 mb-5">
@@ -270,8 +292,8 @@ const SurveyEditorForm: FC<{
                 <button
                   type="button"
                   className="btn btn-primary me-2"
-                  onClick={() => {
-                    alert("Save button clicked!");
+                  onClick={async () => {
+                    await saveToS3(schema);
                   }}
                 >
                   Save to S3
@@ -365,6 +387,11 @@ const SurveyEditorForm: FC<{
           </Fragment>
         ))}
       </div>
+      {isSaving && (
+        <Modal isOpen title="Saving Survey">
+          Please be patient...
+        </Modal>
+      )}
     </form>
   );
 };

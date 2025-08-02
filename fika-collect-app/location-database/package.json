@@ -1,0 +1,17 @@
+{
+  "name": "location-database",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "csv-to-locations.js",
+  "scripts": {
+    "build:json": "node csv-to-locations.js",
+    "build:asset": "npm run copy:json && pushd .. && ./node_modules/.bin/react-native-asset && popd",
+    "copy:json": "cp output/admin-2-locations.json ../src/assets/locations.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "csv-parse": "^6.1.0"
+  }
+}
