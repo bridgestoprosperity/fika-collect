@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "npm run build --workspace=packages/fika-collect-survey-editor",
-    "build:docs": "mkdirp docs && openapi-to-md docs/openapi.yaml > docs/API.md"
+    "build:docs": "mkdirp docs && openapi-to-md docs/openapi.yaml > docs/API.md",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-# Fika Collect Lambda
+# Fika Collect Lambda (deprecated)
 
 ## Introduction
 
@@ -6,7 +6,7 @@ This package directory contains legacy AWS Lambda configuration which could pote
 
 **However**, Vercel Functions require that the API code live in a top-level [api/](../../api) directory. Thus, all endpoints have been moved there instead.
 
-**Instead**, this directory now only contains Python code for connection to Salesforce.
+**Therefore**, this directory now only contains Python code for connection to Salesforce.
 
 ## Deployment
 
