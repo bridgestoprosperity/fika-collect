@@ -65,5 +65,3 @@ export async function POST(request: Request): Promise<Response> {
     }
   }
 }
-
-export { ConsentSchema }

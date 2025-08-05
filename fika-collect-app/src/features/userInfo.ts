@@ -25,8 +25,8 @@ if (!storedUserId) {
 const initialState: UserInfoState = {
   userId: storedUserId,
   terms: userInfoStorage.getString('terms') || '',
-  termsAccepted: userInfoStorage.getBool('termsAccepted') || false,
-  termAcceptanceSubmitted: userInfoStorage.getBool('termAcceptanceSubmitted') || false,
+  termsAccepted: false,//userInfoStorage.getBool('termsAccepted') || false,
+  termAcceptanceSubmitted: false,//userInfoStorage.getBool('termAcceptanceSubmitted') || false,
 };
 
 const postConsent = createAsyncThunk('postConsent', async ({ consentText }: { consentText: string }, { rejectWithValue, getState }) => {
@@ -57,8 +57,6 @@ export const userInfoSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(postConsent.pending, (state, { meta: { arg: { consentText } } }) => {
-      console.log(consentText);
-      console.log('pending...');
       if (!state.userId) {
         const newUserId = nanoid(8);
         state.userId = newUserId;
@@ -75,13 +73,11 @@ export const userInfoSlice = createSlice({
       userInfoStorage.setBool('termAcceptanceSubmitted', false);
     });
     builder.addCase(postConsent.fulfilled, (state) => {
-      console.log('fulfilled...');
       state.termAcceptanceSubmitted = true;
       userInfoStorage.setBool('termAcceptanceSubmitted', true);
     });
     builder.addCase(postConsent.rejected, (state, action) => {
-      console.log('rejected...');
-      console.error('Failed to submit consent:', action.payload);
+      console.error('Failed to submit consent:', action);
     });
   }
 });
