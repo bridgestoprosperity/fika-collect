@@ -5,6 +5,6 @@ import { defineConfig } from "vite";
 // api/, tests live in tests/.
 export default defineConfig({
   test: {
-    exclude: ["fika-collect-app", "packages", "node_modules"],
+    exclude: []
   },
 });

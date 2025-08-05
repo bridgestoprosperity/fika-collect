@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { POST as postConsent } from '../../../api/consent.js';
+import { POST as postConsent } from '../../../../api/consent.js';
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
