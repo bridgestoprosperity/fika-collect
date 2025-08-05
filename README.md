@@ -4,7 +4,7 @@ React Native survey app, together with supporting infrastructure.
 
 ## Components
 
-The components are just a bit of a mess since each component has its own preferences. Internal shared code lives naturally as workspaces in `packages`. However, the React Native app refuses to live in a workspace, and Vercel requires that API endpoints live in a top-level directory. So we have the following:
+There are five primary components which comprise the app. The organization leaves a bit to be desired but is as necessary to satisfy the requirements of the five components. Internal shared code lives naturally as workspaces in `packages`. However, the React Native app refuses to live in a workspace, and Vercel requires that API endpoints live in a top-level directory. So we are left with the following:
 
 - [api](./api): Vercal API endpoints (must be in top level directory)
 - [fika-collect-app](./fika-collect-app): React Native App (must not be in a workspace)
