@@ -8,7 +8,6 @@ export default function apiFetch(endpoint: string, options?: RequestInit): Promi
     'X-App-Version': `fika-collect@${VERSION}`,
     ...options?.headers,
   };
-  console.log('dev?', __DEV__);
   if (__DEV__) {
     const method = options?.method || 'GET';
     console.groupCollapsed(`${method} ${url}`);
