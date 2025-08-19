@@ -8,24 +8,22 @@ export async function GET(request: Request) {
   });
 
   let statusCode = 200;
-  let body: string;
+  let body: any;
 
   try {
     const data = await s3.send(command);
-    body = JSON.stringify({
-      objects: data.Contents?.map(obj => ({
-        key: obj.Key,
-        lastModified: obj.LastModified,
-        size: obj.Size,
-      })) || [],
-    });
+    body = data.Contents?.map(obj => ({
+      key: obj.Key,
+      lastModified: obj.LastModified,
+      size: obj.Size,
+    }));
   } catch (error) {
     statusCode = 500;
-    body = JSON.stringify({ error: 'Failed to list survey objects', details: String(error) });
+    body = { error: 'Failed to list survey objects', details: String(error) };
   }
-  console.log(body);
+  console.log({ body });
 
-  return new Response(body, {
+  return new Response(JSON.stringify(body), {
     status: statusCode,
     headers: {
       'Content-Type': 'application/json',

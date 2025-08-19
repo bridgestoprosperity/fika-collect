@@ -18,6 +18,11 @@
       "methods": ["POST"]
     },
     {
+      "src": "/api/v1/surveys",
+      "dest": "api/list-surveys.ts",
+      "methods": ["GET"]
+    },
+    {
       "src": "/api/v1/presign-upload",
       "dest": "api/presign-upload.ts",
       "methods": ["POST"]

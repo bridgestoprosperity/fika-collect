@@ -1,13 +1,5 @@
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { POST as postConsent } from '../../../../api/consent.js';
 import { describe, it, expect, vi, beforeEach } from "vitest";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const responseFixture: Record<string, unknown> = JSON.parse(
-  readFileSync(join(__dirname, "..", "fixtures", "response.json"), "utf8")
-);
 
 const mocks = vi.hoisted(() => ({
   getSignedUrl: vi.fn(),
