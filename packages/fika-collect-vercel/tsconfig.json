@@ -11,6 +11,5 @@
     "allowJs": true,
     "outDir": "dist"
   },
-  "include": ["server.ts"],
   "exclude": ["dist"]
 }
