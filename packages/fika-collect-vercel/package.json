@@ -6,13 +6,15 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "start": "tsc && node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "winston": "^3.17.0"
   }
 }

@@ -3,15 +3,25 @@ import { join, resolve } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import express from "express";
+import winston from "winston";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const vercelJsonPath = join(__dirname, "../../vercel.json");
 const vercelJson = JSON.parse(readFileSync(vercelJsonPath, "utf-8"));
 
-import * as editorSurveyActions from "../../dist/editor-survey-actions.js";
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.simple(),
+  transports: [new winston.transports.Console()],
+});
 
 const app = express();
+
+app.use((req, res, next) => {
+  logger.info(`${req.method} ${req.url}`);
+  next();
+});
 app.use(express.json());
 
 for (const route of vercelJson.routes) {
@@ -23,15 +33,13 @@ for (const route of vercelJson.routes) {
       .pop()
       .replace(/\?.*/, "")
       .replace(".ts", ".js");
-    const src = resolve(join("../../dist", srcName));
+    const src = resolve(join(__dirname, "dist", srcName));
     const handler = (await import(src))[method.toUpperCase()];
 
     const expressPath = `/${path.replace(/\(\?<(\w+)>.*\)/, ":$1")}`;
 
     if (handler) {
-      console.log(method.toUpperCase().padStart(5), expressPath);
       app[method](expressPath, async (req, res) => {
-        console.log(req);
         try {
           const response = await handler(req);
           res.status(response.status).json(await response.json());

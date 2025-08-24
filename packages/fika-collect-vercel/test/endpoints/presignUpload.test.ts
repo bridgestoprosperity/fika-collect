@@ -1,4 +1,4 @@
-import { POST as presignUpload } from '../../../../api/presign-upload.ts';
+import { POST as presignUpload } from '../../../../api/presign-upload.js';
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const mocks = vi.hoisted(() => ({

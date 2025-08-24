@@ -38,9 +38,9 @@ describe("listSurveys", () => {
     expect(response.status).toBe(200);
     const body = await response.json();
     expect(body).toEqual([
-      { "key": "surveys/survey1.json", lastModified: undefined, size: undefined },
-      { "key": "surveys/survey2.json", lastModified: undefined, size: undefined },
-      { "key": "surveys/survey3.json", lastModified: undefined, size: undefined },
+      { "key": "surveys/survey1.json", updated_at: undefined, survey_id: 'survey1' },
+      { "key": "surveys/survey2.json", updated_at: undefined, survey_id: 'survey2' },
+      { "key": "surveys/survey3.json", updated_at: undefined, survey_id: 'survey3' },
     ]);
 
     expect(mocks.send).toHaveBeenCalledTimes(1);
