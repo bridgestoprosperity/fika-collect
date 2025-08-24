@@ -21,7 +21,6 @@ describe("consent", () => {
   });
 
   it("successfully submits consent to S3", async () => {
-
     const request = new Request("http://localhost/api/v1/consent", {
       method: "POST",
       body: JSON.stringify({
