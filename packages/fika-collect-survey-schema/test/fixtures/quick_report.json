@@ -1,5 +1,6 @@
 {
   "id": "quick_report",
+  "published": true,
   "title": "Quick Report Survey",
   "description": "Make a quick report of an obstacle",
   "questions": [

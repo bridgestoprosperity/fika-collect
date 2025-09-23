@@ -67,5 +67,8 @@ const SurveySchema = z.object({
     title: I18NTextSchema,
     description: I18NTextSchema,
     questions: z.array(SurveyQuestionSchema),
+    // Published was added after the fact, so we default true to preserve published
+    // surveys, making unpublished surveys an opt-in state.
+    published: z.boolean().default(true)
 });
 export { FileTypeSchema, SurveySchema, SurveyQuestionSchema, QuestionTypeSchema, LOCALE_LABELS, ENGLISH_LOCALE_LABELS, I18NTextSchema, LocaleStringSchema };

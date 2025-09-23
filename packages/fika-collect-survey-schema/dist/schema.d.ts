@@ -53,6 +53,7 @@ declare const SurveySchema: z.ZodObject<{
         question?: unknown;
         hint?: unknown;
     }>, "many">;
+    published: z.ZodDefault<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
     id: string;
     title: Record<string, string>;
@@ -65,6 +66,7 @@ declare const SurveySchema: z.ZodObject<{
         hint: Record<string, string>;
         options?: Record<string, string>[] | undefined;
     }[];
+    published: boolean;
 }, {
     id: string;
     questions: {
@@ -77,6 +79,7 @@ declare const SurveySchema: z.ZodObject<{
     }[];
     title?: unknown;
     description?: unknown;
+    published?: boolean | undefined;
 }>;
 type Survey = z.infer<typeof SurveySchema>;
 type SurveyQuestion = z.infer<typeof SurveyQuestionSchema>;
