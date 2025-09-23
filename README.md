@@ -2,6 +2,17 @@
 
 React Native survey app, together with supporting infrastructure.
 
+## Development
+
+To use the development server, you must copy [env.development.json.sample](./env.development.json.sample) to a file in the root project directory named `env.development.json` and update its values. You will need a access key and secret key for the fika-collect-vercel-develop IAM user which you may create [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-vercel-develop?section=permissions).
+
+```sh
+cd packages/fika-collect-vercel
+npm start
+```
+
+Confirm the local server is running at http://localhost:3000/api/v1/surveys.
+
 ## Components
 
 There are four primary components which comprise the app. The organization leaves a bit to be desired but is as necessary to satisfy the requirements of the four components. Internal shared code lives naturally as workspaces in `packages`. However, the React Native app refuses to live in a workspace, and Vercel requires that API endpoints live in a top-level directory. So we are left with the following:
