@@ -21,6 +21,7 @@
     "id": "quick_report",
     "title": { "en": "Quick Report Survey" },
     "description": { "en": "Make a quick report of an obstacle" },
+    "published": true,
     "questions": [
       {
         "id": "severity",

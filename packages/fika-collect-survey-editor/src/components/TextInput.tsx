@@ -7,6 +7,7 @@ const TextInput: FC<{
   monospace?: boolean;
   className?: string;
   required?: boolean;
+  disabled?: boolean;
   onChange: (value: string) => void;
 }> = ({
   value,
@@ -14,6 +15,7 @@ const TextInput: FC<{
   multiline = false,
   monospace = false,
   required = false,
+  disabled = false,
   placeholder = "Enter text",
 }) => {
   const style = { fontFamily: monospace ? "monospace" : undefined };
@@ -28,11 +30,13 @@ const TextInput: FC<{
           value={value}
           onChange={(e) => onChange(e.target.value)}
           rows={2}
+          disabled={disabled}
         />
       ) : (
         <input
           style={style}
           type="text"
+          disabled={disabled}
           placeholder={placeholder}
           className={`form-control ${invalid ? "is-invalid" : ""}`}
           value={value}
