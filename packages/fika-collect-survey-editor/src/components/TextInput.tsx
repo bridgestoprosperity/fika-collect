@@ -31,6 +31,7 @@ const TextInput: FC<{
           onChange={(e) => onChange(e.target.value)}
           rows={2}
           disabled={disabled}
+          required={required}
         />
       ) : (
         <input

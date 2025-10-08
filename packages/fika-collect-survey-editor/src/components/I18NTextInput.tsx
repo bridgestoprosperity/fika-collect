@@ -37,6 +37,7 @@ const I18NTextInput: FC<{
             placeholder={placeholder}
             className={`form-control`}
             onChange={(e) => onChange({ ...value, en: e.target.value })}
+            required={required}
             rows={2}
           />
           {selectedLocale !== "en" && (
@@ -48,6 +49,7 @@ const I18NTextInput: FC<{
               onChange={(e) =>
                 onChange({ ...value, [selectedLocale]: e.target.value })
               }
+              required={required}
               rows={2}
             />
           )}

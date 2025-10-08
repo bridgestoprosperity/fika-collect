@@ -113,6 +113,7 @@ const SurveyQuestionEditor: FC<{
         </FormField>
         <FormField label="Prompt">
           <I18NTextInput
+            required
             value={question.question}
             onChange={(text) => updateQuestion({ ...question, question: text })}
             multiline
@@ -271,7 +272,9 @@ const SurveyEditorForm: FC<{
     setIsSaving(true);
     try {
       const response = await fetch(
-        `${API_BASE_URL}/editor/surveys/${schema.id}`,
+        isNewSurvey
+          ? `${API_BASE_URL}/editor/surveys`
+          : `${API_BASE_URL}/editor/surveys/${schema.id}`,
         {
           method: "PUT",
           body: JSON.stringify(schema),
@@ -307,7 +310,13 @@ const SurveyEditorForm: FC<{
 
   const navigate = useNavigate();
   return (
-    <form className="surveyEditor mt-5 mb-5">
+    <form
+      className="surveyEditor mt-5 mb-5"
+      onSubmit={async (event) => {
+        event.preventDefault();
+        saveToS3(schema);
+      }}
+    >
       <div className="surveySchema">
         <div className="card mb-5 mt-5">
           <div className="card-header">
@@ -317,13 +326,7 @@ const SurveyEditorForm: FC<{
             <div className="row mb-3">
               <label className="col-form-label col-sm-3">Publish</label>
               <div className="col-sm-9">
-                <button
-                  type="button"
-                  className="btn btn-primary me-2"
-                  onClick={async () => {
-                    await saveToS3(schema);
-                  }}
-                >
+                <button type="submit" className="btn btn-primary me-2">
                   Save to S3
                 </button>
               </div>
@@ -359,6 +362,7 @@ const SurveyEditorForm: FC<{
             <FormField label="ID">
               <TextInput
                 value={schema.id}
+                required
                 onChange={(id) => setSchema({ ...schema, id: sanitizeId(id) })}
                 disabled={!isNewSurvey}
                 placeholder={
@@ -395,6 +399,7 @@ const SurveyEditorForm: FC<{
             <FormField label="Title">
               <I18NTextInput
                 value={schema.title}
+                required
                 onChange={(title) => setSchema({ ...schema, title })}
               />
             </FormField>
@@ -473,7 +478,7 @@ const SurveyEditorPage: FC<{
   useBlocker(() => {
     if (!surveySchema) return false;
     return !window.confirm(
-      "You have unsaved changes. Are you sure you want to leave this page?"
+      "Please ensure you have saved your changes.\n\n(This warning is buggy and does not mean your changes are unsaved.)"
     );
   });
 
