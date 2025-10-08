@@ -276,7 +276,7 @@ const SurveyEditorForm: FC<{
           ? `${API_BASE_URL}/editor/surveys`
           : `${API_BASE_URL}/editor/surveys/${schema.id}`,
         {
-          method: "PUT",
+          method: isNewSurvey ? "POST" : "PUT",
           body: JSON.stringify(schema),
           headers: { "Content-Type": "application/json" },
         }
