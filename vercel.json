@@ -41,6 +41,18 @@
       "src": "/api/v1/editor/surveys/(?<id>[^/]*)",
       "dest": "api/editor-survey-actions.ts?id=$id",
       "methods": ["GET", "PUT", "DELETE"]
+    },
+    {
+      "src": "/surveys/new",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/surveys/(?<id>[^/]+)/edit",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     }
   ]
 }
