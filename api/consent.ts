@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 import HTTPError from './util/httpError.js';
 import s3 from './util/s3.js';
 
