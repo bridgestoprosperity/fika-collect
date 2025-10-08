@@ -1,6 +1,6 @@
 import { S3Client } from "@aws-sdk/client-s3";
 
-const Region = process.env.AWS_REGION as string || "us-west-2";
+import { Region } from './config.js';
 
 const s3 = new S3Client({ region: Region });
 

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import HTTPError from './util/httpError.js';
-const s3 = new S3Client({ region: 'us-east-1' });
+import s3 from './util/s3.js';
 
 const ConsentSchema = z.object({
   user_id: z.string().min(1, 'User ID is required.'),

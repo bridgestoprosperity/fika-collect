@@ -18,8 +18,18 @@ if (existsSync(envPath)) {
   Object.assign(process.env, envConfig);
 }
 
+const isTest = process.env.NODE_ENV === 'test';
+
+if (isTest) {
+  process.env.AWS_ACCESS_KEY_ID = 'INVALID';
+  process.env.AWS_SECRET_ACCESS_KEY = 'INVALID';
+  process.env.AWS_REGION = 'INVALID';
+  process.env.S3_BUCKET = 'INVALID';
+}
+
 const Bucket: string = process.env.S3_BUCKET as string;
 const Region: string = process.env.AWS_REGION as string || 'us-west-2';
+
 const Prefix = 'responses';
 const MaxFileSize = 25 * 1024 * 1024;
 

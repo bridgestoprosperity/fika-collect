@@ -43,7 +43,7 @@ describe("consent", () => {
 
     expect(mocks.send).toHaveBeenCalledTimes(1);
     expect(mocks.PutObjectCommand).toHaveBeenCalledWith({
-      Bucket: process.env.S3_BUCKET || 'fika-collect',
+      Bucket: 'INVALID',
       Key: `consent/abcd1234.json`,
       Body: JSON.stringify({
         user_id: "abcd1234",

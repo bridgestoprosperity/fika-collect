@@ -90,7 +90,7 @@ describe("listSurveys", () => {
     expect(mocks.ListObjectsV2Command).toHaveBeenCalledWith({
       // The bucket is undefined for awful reasons, because the config is not correctly
       // loaded in the test environment. Fortunately, it doesn't matter.
-      Bucket: undefined,
+      Bucket: 'INVALID',
       Prefix: `surveys/`,
     });
   });
