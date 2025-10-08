@@ -1,7 +1,8 @@
 import s3 from './util/s3.js';
-import { ListObjectsV2Command, GetObjectCommand } from '@aws-sdk/client-s3';
+import { ListObjectsV2Command, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { SurveySchema, FileTypeSchema } from 'fika-collect-survey-schema';
 import type { Survey } from 'fika-collect-survey-schema';
+import { updateManifest } from './util/updateManifest.js';
 
 const Bucket = process.env.S3_BUCKET || 'fika-collect';
 const Prefix = 'surveys/';
@@ -84,17 +85,87 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  // Here you would handle the creation of a new survey
-  // For now, we just return the received body
-  return new Response(
-    JSON.stringify({ message: 'Survey created', data: body }),
-    {
-      status: 201,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
+  try {
+    const body = await request.json();
+    const surveyData = SurveySchema.safeParse(body);
+
+    if (!surveyData.success) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid survey data', details: surveyData.error }),
+        {
+          status: 400,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      );
     }
-  );
+
+    const survey = surveyData.data;
+
+    // Check if survey already exists
+    try {
+      const existingCommand = new GetObjectCommand({
+        Bucket,
+        Key: `${Prefix}${survey.id}.json`,
+      });
+      const existingSurvey = await s3.send(existingCommand);
+
+      // If we get here, the survey exists
+      if (existingSurvey) {
+        return new Response(
+          JSON.stringify({ error: 'Survey already exists', details: `Survey with ID "${survey.id}" already exists` }),
+          {
+            status: 409,
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+            },
+          }
+        );
+      }
+    } catch (error: any) {
+      // NoSuchKey error means the survey doesn't exist, which is what we want
+      if (error.name !== 'NoSuchKey') {
+        throw error;
+      }
+    }
+
+    // Create the survey
+    const command = new PutObjectCommand({
+      Bucket,
+      Key: `${Prefix}${survey.id}.json`,
+      Body: JSON.stringify(survey, null, 2),
+      ContentType: 'application/json',
+    });
+
+    await s3.send(command);
+
+    // Update the manifest for backward compatibility with older clients
+    await updateManifest(s3);
+
+    return new Response(
+      JSON.stringify({ success: true, survey_id: survey.id }),
+      {
+        status: 201,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
+    );
+  } catch (error: any) {
+    console.error('Error creating survey:', error);
+    return new Response(
+      JSON.stringify({ error: 'Failed to create survey' }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
+    );
+  }
 }
