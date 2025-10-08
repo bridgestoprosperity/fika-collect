@@ -22,5 +22,5 @@ export default async function middleware(request: Request): Promise<Response> {
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|favicon.ico).*)'],
+  matcher: ['/api/(.*)', '/((?!_next|api|favicon.ico).*)'],
 };

@@ -15,3 +15,6 @@ packages/fika-collect-app/android/.kotlin/
 
 packages/fika-collect-survey-editor/.vercel
 packages/fika-collect-survey-editor/dist
+.vercel
+
+env.development.json

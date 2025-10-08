@@ -12,11 +12,35 @@ describe('SurveySchema', () => {
   it('validates basic schema', () => {
     const result = SurveySchema.safeParse({
       id: 'test_schema',
+      published: true,
       title: { 'en': "foo" },
       description: { "en": "bar" },
       questions: []
     });
     expect(result.success).toBe(true);
+  });
+
+  it('surveys are published by default', () => {
+    const result = SurveySchema.safeParse({
+      id: 'test_schema',
+      title: { 'en': "foo" },
+      description: { "en": "bar" },
+      questions: []
+    });
+    expect(result.success).toBe(true);
+    expect(result.data.published).toBe(true);
+  });
+
+  it('an unpublished survey is unpublished', () => {
+    const result = SurveySchema.safeParse({
+      id: 'test_schema',
+      published: false,
+      title: { 'en': "foo" },
+      description: { "en": "bar" },
+      questions: []
+    });
+    expect(result.success).toBe(true);
+    expect(result.data.published).toBe(false);
   });
 
   it('invalidates schema with invalid locale', () => {
@@ -40,6 +64,7 @@ describe('SurveySchema', () => {
     expect(result.success).toBe(true);
     expect(result.data).toEqual({
       id: 'test_schema',
+      published: true,
       title: { 'en': 'foo' },
       description: { 'en': 'bar' },
       questions: []
@@ -104,6 +129,7 @@ describe('SurveySchema', () => {
     if (result.data) {
       expect(result.data).toEqual({
         id: 'test_schema',
+        published: true,
         title: { 'en': "foo" },
         description: { "fr": "bar" },
         questions: [{

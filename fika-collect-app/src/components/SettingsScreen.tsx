@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   Text,
   Appearance,
+  Pressable,
+  Linking,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {useAppDispatch, useAppSelector} from '../hooks';
@@ -60,14 +62,27 @@ export default function ResponsesScreen() {
               </Picker>
             </View>
           </View>
-          {
-            '' /*
           <View style={styles.section}>
             <View style={styles.sectionHeaderContainer}>
-              <Text style={styles.sectionHeaderText}>User Information</Text>
+              <Text style={styles.sectionHeaderText}>Delete my data</Text>
+
+              <Text>
+                To request deletion of your data, please submit the form below.
+              </Text>
+              <Pressable
+                style={({pressed}) => [
+                  sharedStyles.button,
+                  sharedStyles.buttonDanger,
+                  pressed ? sharedStyles.buttonDangerPressed : null,
+                  {marginTop: 20, alignItems: 'center'},
+                ]}
+                onPress={() => {
+                  Linking.openURL('https://forms.gle/ZswVZ7mXEQtNeGbz6');
+                }}>
+                <Text style={sharedStyles.buttonText}> Delete my data </Text>
+              </Pressable>
             </View>
-          </View>*/
-          }
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

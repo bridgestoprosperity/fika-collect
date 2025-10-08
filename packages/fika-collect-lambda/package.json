@@ -1,25 +1,15 @@
 {
   "name": "fika-collect-lambda",
   "version": "1.0.0",
-  "main": "dist/handler.js",
   "type": "module",
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "build:docs": "openapi-to-md openapi.yaml > API.md",
-    "build": "npm run test && tsc",
-    "build:sam": "npm run test && sam build && cd .aws-sam/build/fikaCollectUploadLambda && zip -r ../fikaCollectUploadLambda.zip ./* && cd .. && mv fikaCollectUploadLambda.zip ../../"
+    "test": "true",
+    "build": "npm run test && tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.800.0",
-    "@aws-sdk/s3-request-presigner": "^3.800.0",
-    "zod": "^3.24.2",
-    "zod-validation-error": "^3.4.0"
-  },
   "devDependencies": {
     "openapi-to-md": "^1.0.25",
     "sinon": "^19.0.2",

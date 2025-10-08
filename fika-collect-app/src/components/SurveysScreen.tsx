@@ -16,12 +16,20 @@ function SurveyButton({survey}: {survey: Survey}) {
   const {localize} = useLocalization();
 
   const userId = useAppSelector(state => state.userInfo.userId);
+  const termsAccepted = useAppSelector(state => state.userInfo.termsAccepted);
 
   const beginSurvey = () => {
     // Construct a single response instance. We will mutate this object as the user answers questions.
     const response = new SurveyResponse(survey, userId);
     navigation.navigate('survey', {response});
   };
+
+  useEffect(() => {
+    if (termsAccepted) {
+      return;
+    }
+    navigation.navigate('consent');
+  }, [navigation, termsAccepted]);
 
   return (
     <Pressable

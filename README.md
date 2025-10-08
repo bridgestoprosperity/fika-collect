@@ -2,29 +2,28 @@
 
 React Native survey app, together with supporting infrastructure.
 
-## AWS Resources
+## Development
 
-The following AWS resources have been allocated to make the lambda run.
+To use the development server, you must copy [env.development.json.sample](./env.development.json.sample) to a file in the root project directory named `env.development.json` and update its values. You will need a access key and secret key for the fika-collect-vercel-develop IAM user which you may create [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-vercel-develop?section=permissions).
 
-- **Lambda**
-  - [fikaCollectSurveySubmitLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectSurveySubmitLambda?tab=code): AWS Lambda for submitting surveys.
-  - [fikaCollectUploadLambda](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/functions/fikaCollectUploadLambda?tab=code): AWS Lambda for creating signed upload URLs. Ensures a corresponding survey has first been submitted.
-- **IAM**
-  - [fika-collect-lambda-role](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/roles/details/fika-collect-lambda-role?section=permissions): IAM role for fikaCollectUploadLambda. Has sufficient permissions to generate pre-signed S3 upload URLs.
-  - [fika-collect-deploy-user](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-lambda-deploy?section=permissions): IAM user (with access/secret keys) for deploying lambda via SAM. [AWS SSO](https://aws.amazon.com/iam/identity-center/) would be a preferable alternative.
-- **S3**
-  - [fika-collect](https://us-west-1.console.aws.amazon.com/s3/buckets/fika-collect?region=us-west-1&bucketType=general&tab=objects): Bucket for uploaded surveys JSON and associated photos. There are three subdirectories, public visibility of which is handled by way of a bucket policy:
-    - `announcements/*`: **_Publicly accessible_** directory containing app announcements
-    - `surveys/*`: **_Publicly accessible_** directory containing survey definitions and the active `manifest.json`.
-    - `responses/*`: Private directory containing survey responses.
-  - [aws-sam-cli-managed-default-samclisourcebucket-ur3ghtnobrtr](https://us-west-1.console.aws.amazon.com/s3/buckets/aws-sam-cli-managed-default-samclisourcebucket-ur3ghtnobrtr?region=us-west-1&bucketType=general&tab=objects): Bucket for [SAM](https://aws.amazon.com/serverless/sam/)-managed deployment of fikaCollectUploadLambda. Contains zipped lambda code. _Contains no user-uploaded data._
-- **CloudFormation** (_inactive_)
-  - [aws-sam-cli-managed-default](https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/stackinfo?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aus-west-1%3A530198286110%3Astack%2Faws-sam-cli-managed-default%2F3425f030-f931-11ef-a23c-02a70af48729): Stack for managing SAM deployments
-  - [fika-collect-upload-signer](https://us-west-1.console.aws.amazon.com/cloudformation/home?region=us-west-1#/stacks/stackinfo?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aus-west-1%3A530198286110%3Astack%2Ffika-collect-upload-signer%2F5704f0b0-f931-11ef-adc1-029a61d41e27): Stack for fikaCollectUploadLambda
-- **API Gateway**
-  - [fika-collect-api](https://us-west-1.console.aws.amazon.com/apigateway/main/develop/routes?api=f54u12dkn2&region=us-west-1). An API Gateway allows to orgzniae multiple lambda functions as a coherent API instead of sending every request to a different lambda URL.
+```sh
+cd packages/fika-collect-vercel
+npm start
+```
+
+Confirm the local server is running at http://localhost:3000/api/v1/surveys.
+
+## Components
+
+There are four primary components which comprise the app. The organization leaves a bit to be desired but is as necessary to satisfy the requirements of the four components. Internal shared code lives naturally as workspaces in `packages`. However, the React Native app refuses to live in a workspace, and Vercel requires that API endpoints live in a top-level directory. So we are left with the following:
+
+- [api/](./api): Vercel API endpoints
+- [fika-collect-app/](./fika-collect-app): React Native App
+- [packages/fika-collect-survey-editor/](./packages/fika-collect-survey-editor): web-based survey editor
+- [packages/fika-collect-survey-schema/](./packages/fika-collect-survey-schema): shared survey schema parser
+- [packages/fika-collect-vercel/](./packages/fika-collect-vercel): Dummy package to coordinate tests and dev server for Vercel endpoints in [api/](./api)
+- ~~[packages/fika-collect-lambda/](./packages/fika-collect-lambda): (deprecated) AWS Lambda endpoints~~
 
 ## License
 
 &copy; 2025 Bridges To Prosperity. MIT License.
-

@@ -3,35 +3,28 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router";
 import Header from "./Header";
 
-import { S3_BASE_URL, MANIFEST_PATH } from "../constants";
-
-const sampleSurveys = {
-  surveys: [
-    {
-      survey_id: "quick_report",
-      key: "surveys/quick_report.json",
-      updated_at: "2025-03-12T20:34:32.253Z",
-    },
-    {
-      survey_id: "detailed_report",
-      key: "surveys/detailed_report.json",
-      updated_at: "2025-03-12T20:38:01.301Z",
-    },
-  ],
-};
+import { API_BASE_URL } from "../constants";
 
 async function fetchSurveys() {
-  return fetch(`${S3_BASE_URL}/${MANIFEST_PATH}`)
-    .then((response) => response.json())
+  return fetch(`${API_BASE_URL}/editor/surveys`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(({ surveys }) => surveys);
 }
 
 const SurveyList: React.FC<{}> = () => {
   const [loading, setLoading] = useState(false);
-  const [surveys, setSurveys] = useState(sampleSurveys.surveys);
+  const [surveys, setSurveys] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState<string | null>(null);
 
   function load() {
     setLoading(true);
+    setError(null);
     return (
       fetchSurveys()
         .then(setSurveys)
@@ -40,7 +33,52 @@ const SurveyList: React.FC<{}> = () => {
         .then(() => {
           setLoading(false);
         })
+        .catch((err) => {
+          console.error("Failed to fetch surveys:", err);
+          setError("Failed to load surveys. Check console for details.");
+          setLoading(false);
+        })
     );
+  }
+
+  async function deleteSurvey(surveyId: string) {
+    if (
+      !window.confirm(
+        `Are you sure you want to delete survey "${surveyId}"? This action cannot be undone.`
+      )
+    ) {
+      return;
+    }
+
+    setDeleting(surveyId);
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/editor/surveys/${surveyId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(
+          errorData.error || `HTTP error! status: ${response.status}`
+        );
+      }
+
+      // Remove the deleted survey from the list
+      setSurveys(surveys.filter((s) => s.survey_id !== surveyId));
+      alert(`Survey "${surveyId}" deleted successfully!`);
+    } catch (error) {
+      console.error("Failed to delete survey:", error);
+      alert(
+        `Failed to delete survey: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
+      );
+    } finally {
+      setDeleting(null);
+    }
   }
 
   useEffect(() => {
@@ -74,30 +112,71 @@ const SurveyList: React.FC<{}> = () => {
             </button>
           </div>
 
+          {error && (
+            <div className="alert alert-danger" role="alert">
+              {error}
+            </div>
+          )}
+
           <table className="table">
             <thead>
               <tr>
+                <th>Title</th>
                 <th>Survey ID</th>
+                <th>Status</th>
+                <th>Updated</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {surveys.map(({ survey_id, key, updated_at }) => (
-                <tr key={key}>
-                  <td>{survey_id}</td>
-                  <td>
-                    <NavLink
-                      className="btn btn-primary btn-sm me-2"
-                      to={`/surveys/${survey_id}/edit`}
-                    >
-                      Edit
-                    </NavLink>
-                    <button className="btn btn-danger btn-sm" disabled>
-                      Delete
-                    </button>
+              {surveys.length === 0 && !loading && !error && (
+                <tr>
+                  <td colSpan={5} className="text-center text-muted">
+                    No surveys found. Click "+ New survey" to create one.
                   </td>
                 </tr>
-              ))}
+              )}
+              {surveys.map(
+                ({ survey_id, title, url, updated_at, published }) => (
+                  <tr key={survey_id}>
+                    <td>
+                      <NavLink to={`/surveys/${survey_id}/edit`}>
+                        {title || survey_id}
+                      </NavLink>
+                    </td>
+                    <td>
+                      <code>{survey_id}</code>
+                    </td>
+                    <td>
+                      {published ? (
+                        <span className="badge bg-success">Published</span>
+                      ) : (
+                        <span className="badge bg-secondary">Unpublished</span>
+                      )}
+                    </td>
+                    <td>
+                      {updated_at
+                        ? new Date(updated_at).toLocaleString()
+                        : "Unknown"}
+                    </td>
+                    <td>
+                      <NavLink
+                        className="btn btn-primary btn-sm me-2"
+                        to={`/surveys/${survey_id}/edit`}
+                      >
+                        Edit
+                      </NavLink>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        disabled={deleting === survey_id}
+                        onClick={() => deleteSurvey(survey_id)}
+                      >
+                        {deleting === survey_id ? "Deleting..." : "Delete"}
+                      </button>
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>

@@ -1,22 +1,18 @@
 import { useState, useEffect, FC, Fragment } from "react";
-import { S3_BASE_URL } from "../constants";
-import {
-  SurveySchema,
-  QuestionType,
-  LOCALE_LABELS,
-} from "fika-collect-survey-schema";
+import { API_BASE_URL } from "../constants";
+import { SurveySchema, QuestionType } from "fika-collect-survey-schema";
 import type { Survey, SurveyQuestion } from "fika-collect-survey-schema";
 import { useParams, useBlocker } from "react-router";
 import { useNavigate, NavLink } from "react-router";
-import { LocaleProvider, useLocale } from "../hooks/useLocale";
+import { LocaleProvider } from "../hooks/useLocale";
 
+import Modal from "./Modal";
 import Header from "./Header";
 import FormField from "./FormField";
 import SelectInput from "./SelectInput";
 import TextInput from "./TextInput";
 import I18NTextInput from "./I18NTextInput";
 import OptionListInput from "./OptionListInput";
-import { ac } from "react-router/dist/development/route-data-OcOrqK13";
 
 const questionTypeLabels = {
   short_answer: "Short answer",
@@ -32,8 +28,13 @@ async function fetchSurveySchema(
   surveyId: string | undefined
 ): Promise<Survey> {
   if (!surveyId) return Promise.reject("Survey ID is required");
-  return fetch(`${S3_BASE_URL}/surveys/${surveyId}.json`)
-    .then((response) => response.json())
+  return fetch(`${API_BASE_URL}/editor/surveys/${surveyId}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((data) => SurveySchema.parse(data));
 }
 
@@ -80,7 +81,7 @@ const SurveyQuestionEditor: FC<{
             required
             value={question.id}
             onChange={(id) => {
-              updateQuestion({ ...question, id });
+              updateQuestion({ ...question, id: sanitizeId(id) });
             }}
           />
         </FormField>
@@ -112,6 +113,7 @@ const SurveyQuestionEditor: FC<{
         </FormField>
         <FormField label="Prompt">
           <I18NTextInput
+            required
             value={question.question}
             onChange={(text) => updateQuestion({ ...question, question: text })}
             multiline
@@ -237,6 +239,14 @@ const LanguageSelector: FC<{
 };
 */
 
+function sanitizeId(id: string) {
+  return id
+    .toLowerCase()
+    .replace(/\s+/g, "_")
+    .replace("-", "_")
+    .replace(".", "_");
+}
+
 function downloadJSON(data: any, filename: string) {
   const blob = new Blob([JSON.stringify(data, null, 2)], {
     type: "application/json",
@@ -254,10 +264,59 @@ function downloadJSON(data: any, filename: string) {
 const SurveyEditorForm: FC<{
   schema: Survey;
   setSchema: (schema: Survey) => void;
-}> = ({ schema, setSchema }) => {
+  isNewSurvey?: boolean;
+}> = ({ schema, setSchema, isNewSurvey = false }) => {
+  const [isSaving, setIsSaving] = useState(false);
+
+  async function saveToS3(schema: Survey) {
+    setIsSaving(true);
+    try {
+      const response = await fetch(
+        isNewSurvey
+          ? `${API_BASE_URL}/editor/surveys`
+          : `${API_BASE_URL}/editor/surveys/${schema.id}`,
+        {
+          method: isNewSurvey ? "POST" : "PUT",
+          body: JSON.stringify(schema),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(
+          errorData.error || `HTTP error! status: ${response.status}`
+        );
+      }
+
+      const result = await response.json();
+      console.log("Survey saved:", result);
+      if (isNewSurvey) {
+        window.location.href = `/surveys/${schema.id}/edit`;
+      } else {
+        alert("Survey saved successfully!");
+      }
+    } catch (error) {
+      console.error("Failed to save survey:", error);
+      alert(
+        `Failed to save survey: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
+      );
+    } finally {
+      setIsSaving(false);
+    }
+  }
+
   const navigate = useNavigate();
   return (
-    <form className="surveyEditor mt-5 mb-5">
+    <form
+      className="surveyEditor mt-5 mb-5"
+      onSubmit={async (event) => {
+        event.preventDefault();
+        saveToS3(schema);
+      }}
+    >
       <div className="surveySchema">
         <div className="card mb-5 mt-5">
           <div className="card-header">
@@ -267,13 +326,7 @@ const SurveyEditorForm: FC<{
             <div className="row mb-3">
               <label className="col-form-label col-sm-3">Publish</label>
               <div className="col-sm-9">
-                <button
-                  type="button"
-                  className="btn btn-primary me-2"
-                  onClick={() => {
-                    alert("Save button clicked!");
-                  }}
-                >
+                <button type="submit" className="btn btn-primary me-2">
                   Save to S3
                 </button>
               </div>
@@ -306,9 +359,47 @@ const SurveyEditorForm: FC<{
             <span className="card-title">Survey details</span>
           </div>
           <div className="card-body pb-0">
+            <FormField label="ID">
+              <TextInput
+                value={schema.id}
+                required
+                onChange={(id) => setSchema({ ...schema, id: sanitizeId(id) })}
+                disabled={!isNewSurvey}
+                placeholder={
+                  isNewSurvey ? "survey_id (no whitespace)" : undefined
+                }
+              />
+              {!isNewSurvey && (
+                <small className="form-text text-muted">
+                  Survey ID cannot be changed after creation
+                </small>
+              )}
+            </FormField>
+            <FormField label="Published">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="survey-published"
+                  checked={schema.published ?? true}
+                  onChange={(e) =>
+                    setSchema({
+                      ...schema,
+                      published: e.target.checked,
+                    })
+                  }
+                />
+                <label className="form-check-label" htmlFor="survey-published">
+                  {schema.published ?? true
+                    ? "Survey is visible to users"
+                    : "Survey is hidden from users"}
+                </label>
+              </div>
+            </FormField>
             <FormField label="Title">
               <I18NTextInput
                 value={schema.title}
+                required
                 onChange={(title) => setSchema({ ...schema, title })}
               />
             </FormField>
@@ -365,6 +456,11 @@ const SurveyEditorForm: FC<{
           </Fragment>
         ))}
       </div>
+      {isSaving && (
+        <Modal isOpen title="Saving Survey">
+          Please be patient...
+        </Modal>
+      )}
     </form>
   );
 };
@@ -382,7 +478,7 @@ const SurveyEditorPage: FC<{
   useBlocker(() => {
     if (!surveySchema) return false;
     return !window.confirm(
-      "You have unsaved changes. Are you sure you want to leave this page?"
+      "Please ensure you have saved your changes.\n\n(This warning is buggy and does not mean your changes are unsaved.)"
     );
   });
 
@@ -393,6 +489,7 @@ const SurveyEditorPage: FC<{
         title: { en: "" },
         description: { en: "" },
         questions: [],
+        published: false,
       });
       return;
     }
@@ -420,7 +517,11 @@ const SurveyEditorPage: FC<{
           {errorMessage && <div className="error">{errorMessage}</div>}
           {loading && <div className="loading">Loading...</div>}
           {surveySchema && (
-            <SurveyEditorForm schema={surveySchema} setSchema={setSchema} />
+            <SurveyEditorForm
+              schema={surveySchema}
+              setSchema={setSchema}
+              isNewSurvey={action === "new"}
+            />
           )}
         </div>
       </div>

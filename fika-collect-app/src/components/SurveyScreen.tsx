@@ -24,7 +24,10 @@ import {useNavigation} from '@react-navigation/native';
 import sharedStyles from '../styles';
 import CameraController from './CameraController';
 import {useCameraPermission} from 'react-native-vision-camera';
-import {useCameraDevice} from 'react-native-vision-camera';
+import {
+  useCameraDevice,
+  useLocationPermission,
+} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNetInfo} from '@react-native-community/netinfo';
@@ -322,7 +325,7 @@ function AdminLocationQuestion({
   );
   const [curPathPart, setCurPathPart] = useState<string | null>(null);
 
-  const [pathOptions, locationMetadata] = navigatePath(locationPath);
+  const pathOptions = navigatePath(locationPath);
 
   useEffect(() => {
     if (!locations || curPathPart !== null) {
@@ -346,27 +349,25 @@ function AdminLocationQuestion({
     return <Text>{getString('errorLoadingLocations')}</Text>;
   }
 
-  function navigatePath(path: string[]): [string[] | null, string[] | null] {
+  // Step through the nested object structure according to the path
+  function navigatePath(path: string[]): string[] | null {
     let curobj: {[key: string]: any} = locations as {[key: string]: any};
     if (!curobj) {
-      return [null, null];
+      return null;
     }
     for (let i = 0; i < path.length; i++) {
       if (path[i] in curobj) {
         curobj = curobj[path[i]];
-        if (!curobj) {
-          return [null, null];
-        }
-      } else {
-        // Return the name, code, and salesforce ID as the second element
-        return [null, curobj.find((item: any) => item[0] === path[i]) || null];
+      } else if (Array.isArray(curobj)) {
+        // If the current object is an array, we are at the end of the path
+        // and there is nothing further to navigate.
+        return null;
+      } else if (!curobj) {
+        // Unexpected case where the path part does not exist
+        return null;
       }
     }
-    if (Array.isArray(curobj)) {
-      return [curobj.map((item: any) => item[0]), null];
-    } else {
-      return [Object.keys(curobj || ['Other']), null];
-    }
+    return Array.isArray(curobj) ? curobj : Object.keys(curobj);
   }
 
   function onSelectAdminLevel(value: string | null) {
@@ -379,7 +380,7 @@ function AdminLocationQuestion({
   function pushPathPart(part: string) {
     const newPath = locationPath.concat(part);
     setLocation(newPath);
-    const [nextParts] = navigatePath(newPath);
+    const nextParts = navigatePath(newPath);
     if (nextParts) {
       setCurPathPart(nextParts[0]);
     }
@@ -388,7 +389,7 @@ function AdminLocationQuestion({
   function popPathPart() {
     const newPath = locationPath.slice(0, -1);
     setLocation(newPath);
-    const [nextParts] = navigatePath(newPath);
+    const nextParts = navigatePath(newPath);
     if (nextParts) {
       setCurPathPart(nextParts[0]);
     }
@@ -400,17 +401,9 @@ function AdminLocationQuestion({
         pushPathPart(part);
       }
     } else {
-      if (locationMetadata) {
-        const [_, code, id] = locationMetadata;
-        response.value = {code, id, selection: locationPath};
-        onChange && onChange(response.value, locationPath.join(' > '));
-        onNext();
-      } else {
-        console.warn('No location metadata found for path:', locationPath);
-        response.value = locationPath;
-        onChange && onChange(locationPath, locationPath.join(' > '));
-        onNext();
-      }
+      response.value = {location: locationPath};
+      onChange && onChange(response.value, locationPath.join(' > '));
+      onNext();
     }
   };
 
@@ -519,73 +512,59 @@ function GeolocationQuestion({
   canContinue,
 }: SurveyQuestionProps) {
   const {question} = response;
-  const [authDenial, setAuthDenial] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const {localize, getString} = useLocalization();
+  const [getLocationInitiated, setGetLocationInitiated] = useState(false);
+
+  const {hasPermission, requestPermission} = useLocationPermission();
 
   const getLocation = async () => {
-    try {
-      console.log({GEOLOCATION_AUTHORIZATION});
+    if (hasPermission) {
       setStatusMessage(getString('gelocationRequesting'));
-      // Work around this bug in which authorization stalls on subsequent calls:
-      // https://github.com/michalchudziak/react-native-geolocation/issues/335
-      if (GEOLOCATION_AUTHORIZATION === null) {
-        await new Promise((resolve, reject) => {
-          console.log('Requesting authorization...');
-          Geolocation.requestAuthorization(
-            () => {
-              console.log('Auth granted');
-              GEOLOCATION_AUTHORIZATION = true;
-              setAuthDenial(false);
-              resolve(null);
-            },
-            () => {
-              console.log('Auth denied');
-              GEOLOCATION_AUTHORIZATION = false;
-              setAuthDenial(true);
-              setStatusMessage(getString('geolocationDenied'));
-              reject();
-            },
-          );
-        });
-      } else {
-        if (GEOLOCATION_AUTHORIZATION === false) {
-          setAuthDenial(true);
+      setGetLocationInitiated(true);
+    } else {
+      requestPermission().then(granted => {
+        if (granted) {
+          setStatusMessage(getString('gelocationRequesting'));
+          setGetLocationInitiated(true);
+        } else {
+          setStatusMessage(getString('geolocationDenied'));
           Alert.alert(
             getString('geolocationDenied'),
             getString('geolocationPleaseEnable'),
           );
-          setStatusMessage(getString('geolocationDenied'));
-          return;
+          setGetLocationInitiated(false);
         }
-      }
-
-      console.log('Requesting position...');
-      const lonLat = (await new Promise((resolve, reject) => {
-        Geolocation.getCurrentPosition(
-          position => {
-            const {latitude, longitude} = position.coords;
-            const value: LonLat = {longitude, latitude};
-            resolve(value);
-          },
-          error => reject(error),
-          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
-        );
-      })) as LonLat;
-
-      setStatusMessage('');
-
-      response.value = lonLat;
-      response.stringValue = `${lonLat.longitude},${lonLat.latitude}`;
-      onChange && onChange(lonLat, response.stringValue);
-    } catch (error) {
-      Alert.alert(
-        getString('geolocationUnable'),
-        getString('geolocationPleaseEnable'),
-      );
-      setStatusMessage(getString('geolocationUnable'));
+      });
     }
   };
+
+  useEffect(() => {
+    if (!hasPermission || !getLocationInitiated) {
+      return;
+    }
+    Geolocation.getCurrentPosition(
+      position => {
+        const {latitude, longitude} = position.coords;
+        const lonLat: LonLat = {longitude, latitude};
+
+        setStatusMessage('');
+        setGetLocationInitiated(false);
+
+        response.value = lonLat;
+        response.stringValue = `${lonLat.longitude},${lonLat.latitude}`;
+        onChange && onChange(lonLat, response.stringValue);
+      },
+      () => {
+        setGetLocationInitiated(false);
+        Alert.alert(
+          getString('geolocationUnable'),
+          getString('geolocationPleaseEnable'),
+        );
+      },
+      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+    );
+  }, [hasPermission, getLocationInitiated, onChange, response, getString]);
 
   return (
     <SurveyQuestionWrapper
@@ -602,13 +581,6 @@ function GeolocationQuestion({
           title={getString('geolocationGetLocationButton')}
           onPress={getLocation}
         />
-        {authDenial && (
-          <Text style={styles.warning}>
-            {getString('geolocationDenied')}{' '}
-            {getString('geolocationPleaseEnable')}
-          </Text>
-        )}
-
         <View style={{marginTop: 40}}>
           <TextInput
             style={styles.textInputBox}

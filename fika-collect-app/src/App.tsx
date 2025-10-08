@@ -5,6 +5,7 @@ import SurveysScreen from './components/SurveysScreen';
 import SurveyScreen from './components/SurveyScreen';
 import ResponsesScreen from './components/ResponsesScreen';
 import SettingsScreen from './components/SettingsScreen';
+import ConsentScreen from './components/ConsentScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {type SurveyParams} from './types.d';
 import {Provider} from 'react-redux';
@@ -23,11 +24,12 @@ Geolocation.setRNConfiguration({
   locationProvider: 'auto',
 });
 
-export type ScreenNames = ['surveys', 'responses', 'survey'];
+export type ScreenNames = ['surveys', 'consent', 'responses', 'survey'];
 
 export type RootStackParamList = {
   responses: undefined;
   survey: SurveyParams;
+  consent: undefined;
   surveys: undefined;
   settings: undefined;
 };
@@ -47,6 +49,7 @@ function LocalizedTabLabel({
     surveys: 'surveysScreenTitle',
     responses: 'myResponsesScreenTitle',
     settings: 'settingsScreenTitle',
+    consent: 'consentScreenTitle',
   };
   const string = ROUTE_NAME_TO_STRING[label] || label;
   const color = focused ? '#367845' : '#888';
@@ -63,6 +66,7 @@ function LocalizedHeader({label}: {label: string}) {
     surveys: 'surveysScreenTitle',
     responses: 'myResponsesScreenTitle',
     settings: 'settingsScreenTitle',
+    consent: 'consentScreenTitle',
   };
   const string = ROUTE_NAME_TO_STRING[label] || label;
   return (
@@ -141,6 +145,13 @@ const RootStack = createStackNavigator({
       screen: SurveyScreen,
       options: {
         title: 'Survey',
+        presentation: 'modal',
+      },
+    },
+    consent: {
+      screen: ConsentScreen,
+      options: {
+        title: 'Consent',
         presentation: 'modal',
       },
     },

@@ -1,0 +1,4718 @@
+Country,Level 1 Government,Level 2 Government
+Rwanda,Kigali City,Nyarugenge
+Rwanda,Kigali City,Gasabo
+Rwanda,Kigali City,Kicukiro
+Rwanda,Southern Province,Nyanza
+Rwanda,Southern Province,Gisagara
+Rwanda,Southern Province,Nyaruguru
+Rwanda,Southern Province,Huye
+Rwanda,Southern Province,Nyamagabe
+Rwanda,Southern Province,Ruhango
+Rwanda,Southern Province,Muhanga
+Rwanda,Southern Province,Kamonyi
+Rwanda,Western Province,Karongi
+Rwanda,Western Province,Rutsiro
+Rwanda,Western Province,Rubavu
+Rwanda,Western Province,Nyabihu
+Rwanda,Western Province,Ngororero
+Rwanda,Western Province,Rusizi
+Rwanda,Western Province,Nyamasheke
+Rwanda,Northern Province,Rulindo
+Rwanda,Northern Province,Gakenke
+Rwanda,Northern Province,Musanze
+Rwanda,Northern Province,Burera
+Rwanda,Northern Province,Gicumbi
+Rwanda,Eastern Province,Rwamagana
+Rwanda,Eastern Province,Nyagatare
+Rwanda,Eastern Province,Gatsibo
+Rwanda,Eastern Province,Kayonza
+Rwanda,Eastern Province,Kirehe
+Rwanda,Eastern Province,Ngoma
+Rwanda,Eastern Province,Bugesera
+Uganda,Northern,Abim
+Uganda,Northern,Adjumani
+Uganda,Northern,Agago
+Uganda,Northern,Alebtong
+Uganda,Northern,Amolatar
+Uganda,Northern,Amudat
+Uganda,Eastern,Amuria
+Uganda,Northern,Amuru
+Uganda,Northern,Apac
+Uganda,Northern,Arua
+Uganda,Eastern,Budaka
+Uganda,Eastern,Bududa
+Uganda,Eastern,Bugiri
+Uganda,Eastern,Bugweri
+Uganda,Western,Buhweju
+Uganda,Central,Buikwe
+Uganda,Eastern,Bukedea
+Uganda,Central,Bukomansimbi
+Uganda,Eastern,Bukwo
+Uganda,Eastern,Bulambuli
+Uganda,Western,Buliisa
+Uganda,Western,Bundibugyo
+Uganda,Western,Bunyangabu
+Uganda,Western,Bushenyi
+Uganda,Eastern,Busia
+Uganda,Eastern,Butaleja
+Uganda,Central,Butambala
+Uganda,Eastern,Butebo
+Uganda,Central,Buvuma
+Uganda,Eastern,Buyende
+Uganda,Northern,Dokolo
+Uganda,Central,Gomba
+Uganda,Northern,Gulu
+Uganda,Western,Hoima
+Uganda,Western,Ibanda
+Uganda,Eastern,Iganga
+Uganda,Western,Isingiro
+Uganda,Eastern,Jinja
+Uganda,Northern,Kaabong
+Uganda,Western,Kabale
+Uganda,Western,Kabarole
+Uganda,Eastern,Kaberamaido
+Uganda,Western,Kagadi
+Uganda,Western,Kakumiro
+Uganda,Eastern,Kalaki
+Uganda,Central,Kalangala
+Uganda,Eastern,Kaliro
+Uganda,Central,Kalungu
+Uganda,Central,Kampala
+Uganda,Eastern,Kamuli
+Uganda,Western,Kamwenge
+Uganda,Western,Kanungu
+Uganda,Eastern,Kapchorwa
+Uganda,Eastern,Kapelebyong
+Uganda,Northern,Karenga
+Uganda,Western,Kasese
+Uganda,Central,Kassanda
+Uganda,Eastern,Katakwi
+Uganda,Central,Kayunga
+Uganda,Western,Kazo
+Uganda,Western,Kibaale
+Uganda,Central,Kiboga
+Uganda,Eastern,Kibuku
+Uganda,Western,Kikuube
+Uganda,Western,Kiruhura
+Uganda,Western,Kiryandongo
+Uganda,Western,Kisoro
+Uganda,Western,Kitagwenda
+Uganda,Northern,Kitgum
+Uganda,Northern,Koboko
+Uganda,Northern,Kole
+Uganda,Northern,Kotido
+Uganda,Eastern,Kumi
+Uganda,Northern,Kwania
+Uganda,Eastern,Kween
+Uganda,Central,Kyankwanzi
+Uganda,Western,Kyegegwa
+Uganda,Western,Kyenjojo
+Uganda,Central,Kyotera
+Uganda,Northern,Lamwo
+Uganda,Northern,Lira
+Uganda,Eastern,Luuka
+Uganda,Central,Luwero
+Uganda,Central,Lwengo
+Uganda,Central,Lyantonde
+Uganda,Northern,Madi Okollo
+Uganda,Eastern,Manafwa
+Uganda,Northern,Maracha
+Uganda,Central,Masaka
+Uganda,Western,Masindi
+Uganda,Eastern,Mayuge
+Uganda,Eastern,Mbale
+Uganda,Western,Mbarara
+Uganda,Western,Mitooma
+Uganda,Central,Mityana
+Uganda,Northern,Moroto
+Uganda,Northern,Moyo
+Uganda,Central,Mpigi
+Uganda,Central,Mubende
+Uganda,Central,Mukono
+Uganda,Northern,Nabilatuk
+Uganda,Northern,Nakapiripirit
+Uganda,Central,Nakaseke
+Uganda,Central,Nakasongola
+Uganda,Eastern,Namayingo
+Uganda,Eastern,Namisindwa
+Uganda,Eastern,Namutumba
+Uganda,Northern,Napak
+Uganda,Northern,Nebbi
+Uganda,Eastern,Ngora
+Uganda,Western,Ntoroko
+Uganda,Western,Ntungamo
+Uganda,Northern,Nwoya
+Uganda,Northern,Obongi
+Uganda,Northern,Omoro
+Uganda,Northern,Otuke
+Uganda,Northern,Oyam
+Uganda,Northern,Pader
+Uganda,Northern,Pakwach
+Uganda,Eastern,Pallisa
+Uganda,Central,Rakai
+Uganda,Western,Rubanda
+Uganda,Western,Rubirizi
+Uganda,Western,Rukiga
+Uganda,Western,Rukungiri
+Uganda,Western,Rwampara
+Uganda,Eastern,Serere
+Uganda,Western,Sheema
+Uganda,Eastern,Sironko
+Uganda,Eastern,Soroti
+Uganda,Central,Ssembabule
+Uganda,Eastern,Tororo
+Uganda,Central,Wakiso
+Uganda,Northern,Yumbe
+Uganda,Northern,Zombo
+Ethiopia,Somali,Afder
+Ethiopia,Gambela,Agnewak
+Ethiopia,SNNP,Alle
+Ethiopia,SNNP,Amaro
+Ethiopia,Oromia,Arsi
+Ethiopia,Benishangul Gumz,Assosa
+Ethiopia,Amhara,Awi
+Ethiopia,Afar,Awsi /Zone 1
+Ethiopia,Oromia,Bale
+Ethiopia,SNNP,Basketo
+Ethiopia,South West Ethiopia,Bench Sheko
+Ethiopia,Oromia,Borena
+Ethiopia,Oromia,Buno Bedele
+Ethiopia,SNNP,Burji
+Ethiopia,Tigray,Central
+Ethiopia,Amhara,Central Gondar
+Ethiopia,Somali,Daawa
+Ethiopia,South West Ethiopia,Dawuro
+Ethiopia,SNNP,Derashe
+Ethiopia,Dire Dawa,Dire Dawa rural
+Ethiopia,Dire Dawa,Dire Dawa urban
+Ethiopia,Somali,Doolo
+Ethiopia,Oromia,East Bale
+Ethiopia,Amhara,East Gojam
+Ethiopia,Oromia,East Hararge
+Ethiopia,Oromia,East Shewa
+Ethiopia,Oromia,East Wellega
+Ethiopia,Tigray,Eastern
+Ethiopia,Somali,Erer
+Ethiopia,Somali,Fafan
+Ethiopia,Afar,Fanti /Zone 4
+Ethiopia,Oromia,Finfine Special
+Ethiopia,Afar,Gabi /Zone 3
+Ethiopia,SNNP,Gamo
+Ethiopia,SNNP,Gedeo
+Ethiopia,SNNP,Gofa
+Ethiopia,Oromia,Guji
+Ethiopia,SNNP,Guraghe
+Ethiopia,SNNP,Hadiya
+Ethiopia,SNNP,Halaba
+Ethiopia,Harari,Harari
+Ethiopia,Afar,Hari /Zone 5
+Ethiopia,Oromia,Horo Gudru Wellega
+Ethiopia,Oromia,Ilu Aba Bora
+Ethiopia,Gambela,Itang Special woreda
+Ethiopia,Somali,Jarar
+Ethiopia,Oromia,Jimma
+Ethiopia,Benishangul Gumz,Kamashi
+Ethiopia,South West Ethiopia,Kefa
+Ethiopia,Oromia,Kelem Wellega
+Ethiopia,SNNP,Kembata Tembaro
+Ethiopia,Afar,Kilbati /Zone2
+Ethiopia,SNNP,Konso
+Ethiopia,South West Ethiopia,Konta Special
+Ethiopia,Somali,Korahe
+Ethiopia,Somali,Liban
+Ethiopia,Gambela,Majang
+Ethiopia,Benishangul Gumz,Mao Komo Special
+Ethiopia,Tigray,Mekelle
+Ethiopia,Benishangul Gumz,Metekel
+Ethiopia,South West Ethiopia,Mirab Omo
+Ethiopia,Somali,Nogob
+Ethiopia,Amhara,North Gondar
+Ethiopia,Amhara,North Shewa (AM)
+Ethiopia,Oromia,North Shewa (OR)
+Ethiopia,Amhara,North Wello
+Ethiopia,Tigray,North Western
+Ethiopia,Gambela,Nuwer
+Ethiopia,Amhara,Oromia
+Ethiopia,Addis Ababa,Region 14
+Ethiopia,Somali,Shabelle
+Ethiopia,South West Ethiopia,Sheka
+Ethiopia,Sidama,Sidama
+Ethiopia,SNNP,Siltie
+Ethiopia,Somali,Siti
+Ethiopia,Tigray,South Eastern
+Ethiopia,Amhara,South Gondar
+Ethiopia,SNNP,South Omo
+Ethiopia,Amhara,South Wello
+Ethiopia,Oromia,South West Shewa
+Ethiopia,Tigray,Southern
+Ethiopia,Amhara,Wag Hamra
+Ethiopia,Oromia,West Arsi
+Ethiopia,Amhara,West Gojam
+Ethiopia,Amhara,West Gondar
+Ethiopia,Oromia,West Guji
+Ethiopia,Oromia,West Hararge
+Ethiopia,Oromia,West Shewa
+Ethiopia,Oromia,West Wellega
+Ethiopia,Tigray,Western
+Ethiopia,SNNP,Wolayita
+Ethiopia,SNNP,Yem Special
+Zambia,Central,Chibombo
+Zambia,Central,Chisamba
+Zambia,Central,Chitambo
+Zambia,Central,Kabwe
+Zambia,Central,Kapiri Mposhi
+Zambia,Central,Luano
+Zambia,Central,Mkushi
+Zambia,Central,Mumbwa
+Zambia,Central,Ngabwe
+Zambia,Central,Serenje
+Zambia,Central,Shibuyunji
+Zambia,Copperbelt,Chililabombwe
+Zambia,Copperbelt,Chingola
+Zambia,Copperbelt,Kalulushi
+Zambia,Copperbelt,Kitwe
+Zambia,Copperbelt,Luanshya
+Zambia,Copperbelt,Lufwanyama
+Zambia,Copperbelt,Masaiti
+Zambia,Copperbelt,Mpongwe
+Zambia,Copperbelt,Mufulira
+Zambia,Copperbelt,Ndola
+Zambia,Eastern,Chadiza
+Zambia,Eastern,Chipata
+Zambia,Eastern,Katete
+Zambia,Eastern,Lundazi
+Zambia,Eastern,Mambwe
+Zambia,Eastern,Nyimba
+Zambia,Eastern,Petauke
+Zambia,Eastern,Sinda
+Zambia,Eastern,Vubwi
+Zambia,Eastern,Chasefu
+Zambia,Eastern,Chipangali
+Zambia,Eastern,Kasenengwa
+Zambia,Eastern,Lumezi
+Zambia,Eastern,Lusangazi
+Zambia,Eastern,Chama
+Zambia,Luapula,Chembe
+Zambia,Luapula,Chienge
+Zambia,Luapula,Chipili
+Zambia,Luapula,Kawambwa
+Zambia,Luapula,Lunga
+Zambia,Luapula,Mansa
+Zambia,Luapula,Milenge
+Zambia,Luapula,Mwansabombwe
+Zambia,Luapula,Mwense
+Zambia,Luapula,Nchelenge
+Zambia,Luapula,Samfya
+Zambia,Luapula,Chifunabuli
+Zambia,Lusaka,Chilanga
+Zambia,Lusaka,Chirundu
+Zambia,Lusaka,Chongwe
+Zambia,Lusaka,Kafue
+Zambia,Lusaka,Luangwa
+Zambia,Lusaka,Lusaka
+Zambia,Lusaka,Rufunsa
+Zambia,Muchinga,Chinsali
+Zambia,Muchinga,Isoka
+Zambia,Muchinga,Mafinga
+Zambia,Muchinga,Mpika
+Zambia,Muchinga,Nakonde
+Zambia,Muchinga,Shiwang'andu
+Zambia,Muchinga,Kanchibiya
+Zambia,Muchinga,Lavushimanda
+Zambia,Northern,Chilubi
+Zambia,Northern,Kaputa
+Zambia,Northern,Kasama
+Zambia,Northern,Luwingu
+Zambia,Northern,Mbala
+Zambia,Northern,Mporokoso
+Zambia,Northern,Mpulungu
+Zambia,Northern,Mungwi
+Zambia,Northern,Nsama
+Zambia,Northern,Senga Hill
+Zambia,Northern,Lunte
+Zambia,Northern,Lupososhi
+Zambia,North-Western,Chavuma
+Zambia,North-Western,Ikelenge
+Zambia,North-Western,Kabompo
+Zambia,North-Western,Kasempa
+Zambia,North-Western,Manyinga
+Zambia,North-Western,Mufumbwe
+Zambia,North-Western,Mwinilunga
+Zambia,North-Western,Solwezi
+Zambia,North-Western,Zambezi
+Zambia,North-Western,Kalumbila
+Zambia,North-Western,Mushindamo
+Zambia,Southern,Chikankata
+Zambia,Southern,Choma
+Zambia,Southern,Gwembe
+Zambia,Southern,Kalomo
+Zambia,Southern,Kazungula
+Zambia,Southern,Livingstone
+Zambia,Southern,Mazabuka
+Zambia,Southern,Monze
+Zambia,Southern,Namwala
+Zambia,Southern,Pemba
+Zambia,Southern,Siavonga
+Zambia,Southern,Sinazongwe
+Zambia,Southern,Zimba
+Zambia,Southern,Itezhi-Tezhi
+Zambia,Western,Kalabo
+Zambia,Western,Kaoma
+Zambia,Western,Limulunga
+Zambia,Western,Luampa
+Zambia,Western,Lukulu
+Zambia,Western,Mitete
+Zambia,Western,Mongu
+Zambia,Western,Mulobezi
+Zambia,Western,Mwandi
+Zambia,Western,Nalolo
+Zambia,Western,Nkeyema
+Zambia,Western,Senanga
+Zambia,Western,Sesheke
+Zambia,Western,Shangombo
+Zambia,Western,Sikongo
+Zambia,Western,Sioma
+Bolivia,Tarija,O'Connor
+Bolivia,Tarija,Méndez
+Bolivia,Oruro,Abaroa
+Bolivia,La Paz,Abel Iturralde
+Bolivia,Pando,Abuná
+Bolivia,PotosÃ­,Alonso de Ibáñez
+Bolivia,Santa Cruz,Andrés Ibáñez
+Bolivia,Santa Cruz,Angel Sandoval
+Bolivia,PotosÃ­,Antonio Quijarro
+Bolivia,Cochabamba,Arani
+Bolivia,La Paz,Aroma
+Bolivia,Cochabamba,Arque
+Bolivia,Cochabamba,Ayopaya
+Bolivia,Chuquisaca,Azurduy
+Bolivia,La Paz,Bautista Saavedra
+Bolivia,Chuquisaca,Belisario Boeto
+Bolivia,Cochabamba,Bolivar
+Bolivia,La Paz,Camacho
+Bolivia,Cochabamba,Campero
+Bolivia,Cochabamba,Capinota
+Bolivia,La Paz,Caranavi
+Bolivia,Oruro,Carangas
+Bolivia,Cochabamba,Carrasco
+Bolivia,Cochabamba,Cercado
+Bolivia,Oruro,Cercado
+Bolivia,Beni,Cercado
+Bolivia,Cochabamba,Chapare
+Bolivia,PotosÃ­,Chárcas
+Bolivia,PotosÃ­,Chayanta
+Bolivia,Santa Cruz,Chiquitos
+Bolivia,Santa Cruz,Cordillera
+Bolivia,PotosÃ­,Cornelio Saavedra
+Bolivia,PotosÃ­,Daniel Campos
+Bolivia,PotosÃ­,Enrique Baldivieso
+Bolivia,Cochabamba,Esteban Arze
+Bolivia,Pando,Federico Román
+Bolivia,Santa Cruz,Florida
+Bolivia,La Paz,Franz Tamayo
+Bolivia,PotosÃ­,General Bilbao
+Bolivia,Beni,General José Ballivián
+Bolivia,La Paz,General José Manuel Pando
+Bolivia,Santa Cruz,Germán Busch
+Bolivia,Cochabamba,Germán Jordán
+Bolivia,La Paz,Gualberto Villarroel
+Bolivia,Santa Cruz,Guarayos
+Bolivia,Chuquisaca,Hernando Siles
+Bolivia,Santa Cruz,Ichilo
+Bolivia,La Paz,Ingavi
+Bolivia,La Paz,Inquisivi
+Bolivia,Beni,Iténez
+Bolivia,PotosÃ­,José María Linares
+Bolivia,Oruro,Ladislao Cabrera
+Bolivia,La Paz,Larecaja
+Bolivia,Oruro,Litoral
+Bolivia,La Paz,Loayza
+Bolivia,La Paz,Los Andes
+Bolivia,Chuquisaca,Luis Calvo
+Bolivia,Pando,Madre de Dios
+Bolivia,Beni,Mamoré
+Bolivia,La Paz,Manco Kapac
+Bolivia,Santa Cruz,Manuel María Caballero
+Bolivia,Pando,Manuripi
+Bolivia,Beni,Marbán
+Bolivia,Oruro,Mejillones
+Bolivia,Cochabamba,Mizque
+Bolivia,PotosÃ­,Modesto Omiste
+Bolivia,Beni,Moxos
+Bolivia,La Paz,Muñecas
+Bolivia,La Paz,Murillo
+Bolivia,Pando,Nicolás Suárez
+Bolivia,Oruro,Nor Carangas
+Bolivia,PotosÃ­,Nor Chichas
+Bolivia,Chuquisaca,Nor Cinti
+Bolivia,PotosÃ­,Nor Lipez
+Bolivia,La Paz,Nor Yungas
+Bolivia,Santa Cruz,Ñuflo De Chávez
+Bolivia,Santa Cruz,Obispo Santistéban
+Bolivia,La Paz,Omasuyos
+Bolivia,Chuquisaca,Oropeza
+Bolivia,La Paz,Pacajes
+Bolivia,Oruro,Pantaleón Dalence
+Bolivia,Oruro,Poopó
+Bolivia,Cochabamba,Punata
+Bolivia,Cochabamba,Quillacollo
+Bolivia,PotosÃ­,Rafael Bustillo
+Bolivia,Oruro,Sabaya
+Bolivia,Oruro,Sajama
+Bolivia,Oruro,San Pedro de Totora
+Bolivia,Santa Cruz,Sara
+Bolivia,Oruro,Saucarí
+Bolivia,Oruro,Sebastián Pagador
+Bolivia,La Paz,Sud Yungas
+Bolivia,Oruro,Sur Carangas
+Bolivia,PotosÃ­,Sur Chichas
+Bolivia,Chuquisaca,Sur Cinti
+Bolivia,PotosÃ­,Sur Lipez
+Bolivia,Cochabamba,Tapacarí
+Bolivia,Cochabamba,Tiraque
+Bolivia,Oruro,Tomás Barrón
+Bolivia,PotosÃ­,Tomás Frías
+Bolivia,Chuquisaca,Tomina
+Bolivia,Beni,Vaca Diez
+Bolivia,Santa Cruz,Vallegrande
+Bolivia,Santa Cruz,Velasco
+Bolivia,Santa Cruz,Warnes
+Bolivia,Beni,Yacuma
+Bolivia,Chuquisaca,Yamparáez
+Bolivia,Chuquisaca,Zudáñez
+Timor-Leste,Aileu,Aileu Vila
+Timor-Leste,Ainaro,Ainaro
+Timor-Leste,Manufahi,Alas
+Timor-Leste,Bobonaro,Atabae
+Timor-Leste,Dili,Atauro
+Timor-Leste,Ermera,Atsabe
+Timor-Leste,Baucau,Baguia
+Timor-Leste,Bobonaro,Balibo
+Timor-Leste,Manatuto,Barique/Natarbora
+Timor-Leste,Baucau,Baucau
+Timor-Leste,Liquiçá,Bazartete
+Timor-Leste,Bobonaro,Bobonaro
+Timor-Leste,Bobonaro,Cailaco
+Timor-Leste,Dili,Cristo Rei
+Timor-Leste,Dili,Dom Aleixo
+Timor-Leste,Ermera,Ermera
+Timor-Leste,Manufahi,Fatuberliu
+Timor-Leste,Covalima,Fatululic
+Timor-Leste,Covalima,Fatumean
+Timor-Leste,Covalima,Forohem
+Timor-Leste,Ermera,Hatolia
+Timor-Leste,Ainaro,Hatu-Builico
+Timor-Leste,Ainaro,Hatu-Udo
+Timor-Leste,Lautém,Iliomar
+Timor-Leste,Manatuto,Laclo
+Timor-Leste,Manatuto,Laclubar
+Timor-Leste,Viqueque,Lacluta
+Timor-Leste,Baucau,Laga
+Timor-Leste,Manatuto,Laleia
+Timor-Leste,Aileu,Laulara
+Timor-Leste,Lautém,Lautém
+Timor-Leste,Ermera,Letefoho
+Timor-Leste,Liquiçá,Liquiçá
+Timor-Leste,Aileu,Liquidoe
+Timor-Leste,Bobonaro,Lolotoe
+Timor-Leste,Lautém,Lospalos
+Timor-Leste,Lautém,Luro
+Timor-Leste,Bobonaro,Maliana
+Timor-Leste,Manatuto,Manatuto
+Timor-Leste,Liquiçá,Maubara
+Timor-Leste,Ainaro,Maubisse
+Timor-Leste,Covalima,Maukatar
+Timor-Leste,Dili,Metinaro
+Timor-Leste,Dili,Nain Feto
+Timor-Leste,Oecussi,Nitibe
+Timor-Leste,Oecussi,Oesilo
+Timor-Leste,Viqueque,Ossu
+Timor-Leste,Oecussi,Pante Macassar
+Timor-Leste,Oecussi,Passabe
+Timor-Leste,Baucau,Quelicai
+Timor-Leste,Ermera,Railaco
+Timor-Leste,Aileu,Remexio
+Timor-Leste,Manufahi,Same
+Timor-Leste,Manatuto,Soibada
+Timor-Leste,Covalima,Suai
+Timor-Leste,Covalima,Tilomar
+Timor-Leste,Manufahi,Turiscai
+Timor-Leste,Lautém,Tutuala
+Timor-Leste,Viqueque,Uato-Lari
+Timor-Leste,Viqueque,Uatucarbau
+Timor-Leste,Baucau,Vemasse
+Timor-Leste,Baucau,Venilale
+Timor-Leste,Dili,Vera Cruz
+Timor-Leste,Viqueque,Viqueque
+Timor-Leste,Covalima,Zumalai
+Indonesia,Aceh,Aceh Barat
+Indonesia,Aceh,Aceh Barat Daya
+Indonesia,Aceh,Aceh Besar
+Indonesia,Aceh,Aceh Jaya
+Indonesia,Aceh,Aceh Selatan
+Indonesia,Aceh,Aceh Singkil
+Indonesia,Aceh,Aceh Tamiang
+Indonesia,Aceh,Aceh Tengah
+Indonesia,Aceh,Aceh Tenggara
+Indonesia,Aceh,Aceh Timur
+Indonesia,Aceh,Aceh Utara
+Indonesia,Sumatera Barat,Agam
+Indonesia,Nusa Tenggara Timur,Alor
+Indonesia,Sumatera Utara,Asahan
+Indonesia,Papua,Asmat
+Indonesia,Bali,Badung
+Indonesia,Kalimantan Selatan,Balangan
+Indonesia,Jawa Barat,Bandung
+Indonesia,Jawa Barat,Bandung Barat
+Indonesia,Sulawesi Tengah,Banggai
+Indonesia,Sulawesi Tengah,Banggai Kepulauan
+Indonesia,Sulawesi Tengah,Banggai Laut
+Indonesia,Kepulauan Bangka Belitung,Bangka
+Indonesia,Kepulauan Bangka Belitung,Bangka Barat
+Indonesia,Kepulauan Bangka Belitung,Bangka Selatan
+Indonesia,Kepulauan Bangka Belitung,Bangka Tengah
+Indonesia,Jawa Timur,Bangkalan
+Indonesia,Bali,Bangli
+Indonesia,Kalimantan Selatan,Banjar
+Indonesia,Jawa Tengah,Banjarnegara
+Indonesia,Sulawesi Selatan,Bantaeng
+Indonesia,Daerah Istimewa Yogyakarta,Bantul
+Indonesia,Sumatera Selatan,Banyu Asin
+Indonesia,Jawa Tengah,Banyumas
+Indonesia,Jawa Timur,Banyuwangi
+Indonesia,Kalimantan Selatan,Barito Kuala
+Indonesia,Kalimantan Tengah,Barito Selatan
+Indonesia,Kalimantan Tengah,Barito Timur
+Indonesia,Kalimantan Tengah,Barito Utara
+Indonesia,Sulawesi Selatan,Barru
+Indonesia,Jawa Tengah,Batang
+Indonesia,Jambi,Batang Hari
+Indonesia,Sumatera Utara,Batu Bara
+Indonesia,Jawa Barat,Bekasi
+Indonesia,Kepulauan Bangka Belitung,Belitung
+Indonesia,Kepulauan Bangka Belitung,Belitung Timur
+Indonesia,Nusa Tenggara Timur,Belu
+Indonesia,Aceh,Bener Meriah
+Indonesia,Riau,Bengkalis
+Indonesia,Kalimantan Barat,Bengkayang
+Indonesia,Bengkulu,Bengkulu Selatan
+Indonesia,Bengkulu,Bengkulu Tengah
+Indonesia,Bengkulu,Bengkulu Utara
+Indonesia,Kalimantan Timur,Berau
+Indonesia,Papua,Biak Numfor
+Indonesia,Nusa Tenggara Barat,Bima
+Indonesia,Kepulauan Riau,Bintan
+Indonesia,Aceh,Bireuen
+Indonesia,Jawa Timur,Blitar
+Indonesia,Jawa Tengah,Blora
+Indonesia,Gorontalo,Boalemo
+Indonesia,Jawa Barat,Bogor
+Indonesia,Jawa Timur,Bojonegoro
+Indonesia,Sulawesi Utara,Bolaang Mongondow
+Indonesia,Sulawesi Utara,Bolaang Mongondow Selatan
+Indonesia,Sulawesi Utara,Bolaang Mongondow Timur
+Indonesia,Sulawesi Utara,Bolaang Mongondow Utara
+Indonesia,Sulawesi Tenggara,Bombana
+Indonesia,Jawa Timur,Bondowoso
+Indonesia,Sulawesi Selatan,Bone
+Indonesia,Gorontalo,Bone Bolango
+Indonesia,Papua,Boven Digoel
+Indonesia,Jawa Tengah,Boyolali
+Indonesia,Jawa Tengah,Brebes
+Indonesia,Bali,Buleleng
+Indonesia,Sulawesi Selatan,Bulukumba
+Indonesia,Kalimantan Utara,Bulungan
+Indonesia,Jambi,Bungo
+Indonesia,Sulawesi Tengah,Buol
+Indonesia,Maluku,Buru
+Indonesia,Maluku,Buru Selatan
+Indonesia,Sulawesi Tenggara,Buton
+Indonesia,Sulawesi Tenggara,Buton Selatan
+Indonesia,Sulawesi Tenggara,Buton Tengah
+Indonesia,Sulawesi Tenggara,Buton Utara
+Indonesia,Jawa Barat,Ciamis
+Indonesia,Jawa Barat,Cianjur
+Indonesia,Jawa Tengah,Cilacap
+Indonesia,Jawa Barat,Cirebon
+Indonesia,Sumatera Utara,Dairi
+Indonesia,Sumatera Barat,Danau
+Indonesia,Sumatera Selatan,Danau
+Indonesia,Lampung,Danau
+Indonesia,Sulawesi Utara,Danau
+Indonesia,Sumatera Utara,Danau Toba
+Indonesia,Papua,Deiyai
+Indonesia,Sumatera Utara,Deli Serdang
+Indonesia,Jawa Tengah,Demak
+Indonesia,Sumatera Barat,Dharmasraya
+Indonesia,Papua,Dogiyai
+Indonesia,Nusa Tenggara Barat,Dompu
+Indonesia,Sulawesi Tengah,Donggala
+Indonesia,Sumatera Selatan,Empat Lawang
+Indonesia,Nusa Tenggara Timur,Ende
+Indonesia,Sulawesi Selatan,Enrekang
+Indonesia,Papua Barat,Fakfak
+Indonesia,Nusa Tenggara Timur,Flores Timur
+Indonesia,Jawa Barat,Garut
+Indonesia,Aceh,Gayo Lues
+Indonesia,Bali,Gianyar
+Indonesia,Gorontalo,Gorontalo
+Indonesia,Gorontalo,Gorontalo Utara
+Indonesia,Sulawesi Selatan,Gowa
+Indonesia,Jawa Timur,Gresik
+Indonesia,Jawa Tengah,Grobogan
+Indonesia,Daerah Istimewa Yogyakarta,Gunung Kidul
+Indonesia,Kalimantan Tengah,Gunung Mas
+Indonesia,Maluku Utara,Halmahera Barat
+Indonesia,Maluku Utara,Halmahera Selatan
+Indonesia,Maluku Utara,Halmahera Tengah
+Indonesia,Maluku Utara,Halmahera Timur
+Indonesia,Maluku Utara,Halmahera Utara
+Indonesia,Kalimantan Selatan,Hulu Sungai Selatan
+Indonesia,Kalimantan Selatan,Hulu Sungai Tengah
+Indonesia,Kalimantan Selatan,Hulu Sungai Utara
+Indonesia,Sumatera Utara,Humbang Hasundutan
+Indonesia,Jawa Tengah,Hutan
+Indonesia,Riau,Indragiri Hilir
+Indonesia,Riau,Indragiri Hulu
+Indonesia,Jawa Barat,Indramayu
+Indonesia,Papua,Intan Jaya
+Indonesia,Papua,Jayapura
+Indonesia,Papua,Jayawijaya
+Indonesia,Jawa Timur,Jember
+Indonesia,Bali,Jembrana
+Indonesia,Sulawesi Selatan,Jeneponto
+Indonesia,Jawa Tengah,Jepara
+Indonesia,Jawa Timur,Jombang
+Indonesia,Papua Barat,Kaimana
+Indonesia,Riau,Kampar
+Indonesia,Kalimantan Tengah,Kapuas
+Indonesia,Kalimantan Barat,Kapuas Hulu
+Indonesia,Bali,Karang Asem
+Indonesia,Jawa Tengah,Karanganyar
+Indonesia,Jawa Barat,Karawang
+Indonesia,Kepulauan Riau,Karimun
+Indonesia,Sumatera Utara,Karo
+Indonesia,Kalimantan Tengah,Katingan
+Indonesia,Bengkulu,Kaur
+Indonesia,Kalimantan Barat,Kayong Utara
+Indonesia,Jawa Tengah,Kebumen
+Indonesia,Jawa Timur,Kediri
+Indonesia,Papua,Keerom
+Indonesia,Jawa Tengah,Kendal
+Indonesia,Bengkulu,Kepahiang
+Indonesia,Kepulauan Riau,Kepulauan Anambas
+Indonesia,Maluku,Kepulauan Aru
+Indonesia,Sumatera Barat,Kepulauan Mentawai
+Indonesia,Riau,Kepulauan Meranti
+Indonesia,Sulawesi Utara,Kepulauan Sangihe
+Indonesia,Sulawesi Selatan,Kepulauan Selayar
+Indonesia,Dki Jakarta,Kepulauan Seribu
+Indonesia,Maluku Utara,Kepulauan Sula
+Indonesia,Sulawesi Utara,Kepulauan Talaud
+Indonesia,Papua,Kepulauan Yapen
+Indonesia,Jambi,Kerinci
+Indonesia,Kalimantan Barat,Ketapang
+Indonesia,Jawa Tengah,Klaten
+Indonesia,Bali,Klungkung
+Indonesia,Sulawesi Tenggara,Kolaka
+Indonesia,Sulawesi Tenggara,Kolaka Timur
+Indonesia,Sulawesi Tenggara,Kolaka Utara
+Indonesia,Sulawesi Tenggara,Konawe
+Indonesia,Sulawesi Tenggara,Konawe Kepulauan
+Indonesia,Sulawesi Tenggara,Konawe Selatan
+Indonesia,Sulawesi Tenggara,Konawe Utara
+Indonesia,Maluku,Kota Ambon
+Indonesia,Kalimantan Timur,Kota Balikpapan
+Indonesia,Aceh,Kota Banda Aceh
+Indonesia,Lampung,Kota Bandar Lampung
+Indonesia,Jawa Barat,Kota Bandung
+Indonesia,Jawa Barat,Kota Banjar
+Indonesia,Kalimantan Selatan,Kota Banjar Baru
+Indonesia,Kalimantan Selatan,Kota Banjarmasin
+Indonesia,Kalimantan Selatan,Kota Baru
+Indonesia,Kepulauan Riau,Kota Batam
+Indonesia,Jawa Timur,Kota Batu
+Indonesia,Sulawesi Tenggara,Kota Baubau
+Indonesia,Jawa Barat,Kota Bekasi
+Indonesia,Bengkulu,Kota Bengkulu
+Indonesia,Nusa Tenggara Barat,Kota Bima
+Indonesia,Sumatera Utara,Kota Binjai
+Indonesia,Sulawesi Utara,Kota Bitung
+Indonesia,Jawa Timur,Kota Blitar
+Indonesia,Jawa Barat,Kota Bogor
+Indonesia,Kalimantan Timur,Kota Bontang
+Indonesia,Sumatera Barat,Kota Bukittinggi
+Indonesia,Banten,Kota Cilegon
+Indonesia,Jawa Barat,Kota Cimahi
+Indonesia,Jawa Barat,Kota Cirebon
+Indonesia,Bali,Kota Denpasar
+Indonesia,Jawa Barat,Kota Depok
+Indonesia,Riau,Kota Dumai
+Indonesia,Gorontalo,Kota Gorontalo
+Indonesia,Sumatera Utara,Kota Gunungsitoli
+Indonesia,Dki Jakarta,Kota Jakarta Barat
+Indonesia,Dki Jakarta,Kota Jakarta Pusat
+Indonesia,Dki Jakarta,Kota Jakarta Selatan
+Indonesia,Dki Jakarta,Kota Jakarta Timur
+Indonesia,Dki Jakarta,Kota Jakarta Utara
+Indonesia,Jambi,Kota Jambi
+Indonesia,Papua,Kota Jayapura
+Indonesia,Jawa Timur,Kota Kediri
+Indonesia,Sulawesi Tenggara,Kota Kendari
+Indonesia,Sulawesi Utara,Kota Kotamobagu
+Indonesia,Nusa Tenggara Timur,Kota Kupang
+Indonesia,Aceh,Kota Langsa
+Indonesia,Aceh,Kota Lhokseumawe
+Indonesia,Sumatera Selatan,Kota Lubuklinggau
+Indonesia,Jawa Timur,Kota Madiun
+Indonesia,Jawa Tengah,Kota Magelang
+Indonesia,Sulawesi Selatan,Kota Makassar
+Indonesia,Jawa Timur,Kota Malang
+Indonesia,Sulawesi Utara,Kota Manado
+Indonesia,Nusa Tenggara Barat,Kota Mataram
+Indonesia,Sumatera Utara,Kota Medan
+Indonesia,Lampung,Kota Metro
+Indonesia,Jawa Timur,Kota Mojokerto
+Indonesia,Sumatera Barat,Kota Padang
+Indonesia,Sumatera Barat,Kota Padang Panjang
+Indonesia,Sumatera Utara,Kota Padangsidimpuan
+Indonesia,Sumatera Selatan,Kota Pagar Alam
+Indonesia,Kalimantan Tengah,Kota Palangka Raya
+Indonesia,Sumatera Selatan,Kota Palembang
+Indonesia,Sulawesi Selatan,Kota Palopo
+Indonesia,Sulawesi Tengah,Kota Palu
+Indonesia,Kepulauan Bangka Belitung,Kota Pangkal Pinang
+Indonesia,Sulawesi Selatan,Kota Parepare
+Indonesia,Sumatera Barat,Kota Pariaman
+Indonesia,Jawa Timur,Kota Pasuruan
+Indonesia,Sumatera Barat,Kota Payakumbuh
+Indonesia,Jawa Tengah,Kota Pekalongan
+Indonesia,Riau,Kota Pekanbaru
+Indonesia,Sumatera Utara,Kota Pematang Siantar
+Indonesia,Kalimantan Barat,Kota Pontianak
+Indonesia,Sumatera Selatan,Kota Prabumulih
+Indonesia,Jawa Timur,Kota Probolinggo
+Indonesia,Aceh,Kota Sabang
+Indonesia,Jawa Tengah,Kota Salatiga
+Indonesia,Kalimantan Timur,Kota Samarinda
+Indonesia,Sumatera Barat,Kota Sawah Lunto
+Indonesia,Jawa Tengah,Kota Semarang
+Indonesia,Banten,Kota Serang
+Indonesia,Sumatera Utara,Kota Sibolga
+Indonesia,Kalimantan Barat,Kota Singkawang
+Indonesia,Sumatera Barat,Kota Solok
+Indonesia,Papua Barat,Kota Sorong
+Indonesia,Aceh,Kota Subulussalam
+Indonesia,Jawa Barat,Kota Sukabumi
+Indonesia,Jambi,Kota Sungai Penuh
+Indonesia,Jawa Timur,Kota Surabaya
+Indonesia,Jawa Tengah,Kota Surakarta
+Indonesia,Banten,Kota Tangerang
+Indonesia,Banten,Kota Tangerang Selatan
+Indonesia,Sumatera Utara,Kota Tanjung Balai
+Indonesia,Kepulauan Riau,Kota Tanjung Pinang
+Indonesia,Kalimantan Utara,Kota Tarakan
+Indonesia,Jawa Barat,Kota Tasikmalaya
+Indonesia,Sumatera Utara,Kota Tebing Tinggi
+Indonesia,Jawa Tengah,Kota Tegal
+Indonesia,Maluku Utara,Kota Ternate
+Indonesia,Maluku Utara,Kota Tidore Kepulauan
+Indonesia,Sulawesi Utara,Kota Tomohon
+Indonesia,Maluku,Kota Tual
+Indonesia,Daerah Istimewa Yogyakarta,Kota Yogyakarta
+Indonesia,Kalimantan Tengah,Kotawaringin Barat
+Indonesia,Kalimantan Tengah,Kotawaringin Timur
+Indonesia,Riau,Kuantan Singingi
+Indonesia,Kalimantan Barat,Kubu Raya
+Indonesia,Jawa Tengah,Kudus
+Indonesia,Daerah Istimewa Yogyakarta,Kulon Progo
+Indonesia,Jawa Barat,Kuningan
+Indonesia,Nusa Tenggara Timur,Kupang
+Indonesia,Kalimantan Timur,Kutai Barat
+Indonesia,Kalimantan Timur,Kutai Kartanegara
+Indonesia,Kalimantan Timur,Kutai Timur
+Indonesia,Sumatera Utara,Labuhan Batu
+Indonesia,Sumatera Utara,Labuhan Batu Selatan
+Indonesia,Sumatera Utara,Labuhan Batu Utara
+Indonesia,Sumatera Selatan,Lahat
+Indonesia,Kalimantan Tengah,Lamandau
+Indonesia,Jawa Timur,Lamongan
+Indonesia,Lampung,Lampung Barat
+Indonesia,Lampung,Lampung Selatan
+Indonesia,Lampung,Lampung Tengah
+Indonesia,Lampung,Lampung Timur
+Indonesia,Lampung,Lampung Utara
+Indonesia,Kalimantan Barat,Landak
+Indonesia,Sumatera Utara,Langkat
+Indonesia,Papua,Lanny Jaya
+Indonesia,Banten,Lebak
+Indonesia,Bengkulu,Lebong
+Indonesia,Nusa Tenggara Timur,Lembata
+Indonesia,Sumatera Barat,Lima Puluh Kota
+Indonesia,Kepulauan Riau,Lingga
+Indonesia,Nusa Tenggara Barat,Lombok Barat
+Indonesia,Nusa Tenggara Barat,Lombok Tengah
+Indonesia,Nusa Tenggara Barat,Lombok Timur
+Indonesia,Nusa Tenggara Barat,Lombok Utara
+Indonesia,Jawa Timur,Lumajang
+Indonesia,Sulawesi Selatan,Luwu
+Indonesia,Sulawesi Selatan,Luwu Timur
+Indonesia,Sulawesi Selatan,Luwu Utara
+Indonesia,Jawa Timur,Madiun
+Indonesia,Jawa Tengah,Magelang
+Indonesia,Jawa Timur,Magetan
+Indonesia,Kalimantan Timur,Mahakam Hulu
+Indonesia,Jawa Barat,Majalengka
+Indonesia,Sulawesi Barat,Majene
+Indonesia,Nusa Tenggara Timur,Malaka
+Indonesia,Jawa Timur,Malang
+Indonesia,Kalimantan Utara,Malinau
+Indonesia,Maluku,Maluku Barat Daya
+Indonesia,Maluku,Maluku Tengah
+Indonesia,Maluku,Maluku Tenggara
+Indonesia,Maluku,Maluku Tenggara Barat
+Indonesia,Sulawesi Barat,Mamasa
+Indonesia,Papua,Mamberamo Raya
+Indonesia,Papua,Mamberamo Tengah
+Indonesia,Sulawesi Barat,Mamuju
+Indonesia,Sulawesi Barat,Mamuju Tengah
+Indonesia,Sulawesi Barat,Mamuju Utara
+Indonesia,Sumatera Utara,Mandailing Natal
+Indonesia,Nusa Tenggara Timur,Manggarai
+Indonesia,Nusa Tenggara Timur,Manggarai Barat
+Indonesia,Nusa Tenggara Timur,Manggarai Timur
+Indonesia,Papua Barat,Manokwari
+Indonesia,Papua Barat,Manokwari Selatan
+Indonesia,Papua,Mappi
+Indonesia,Sulawesi Selatan,Maros
+Indonesia,Papua Barat,Maybrat
+Indonesia,Kalimantan Barat,Melawi
+Indonesia,Kalimantan Barat,Mempawah
+Indonesia,Jambi,Merangin
+Indonesia,Papua,Merauke
+Indonesia,Lampung,Mesuji
+Indonesia,Papua,Mimika
+Indonesia,Sulawesi Utara,Minahasa
+Indonesia,Sulawesi Utara,Minahasa Selatan
+Indonesia,Sulawesi Utara,Minahasa Tenggara
+Indonesia,Sulawesi Utara,Minahasa Utara
+Indonesia,Jawa Timur,Mojokerto
+Indonesia,Sulawesi Tengah,Morowali
+Indonesia,Sulawesi Tengah,Morowali Utara
+Indonesia,Sumatera Selatan,Muara Enim
+Indonesia,Jambi,Muaro Jambi
+Indonesia,Bengkulu,Mukomuko
+Indonesia,Sulawesi Tenggara,Muna
+Indonesia,Sulawesi Tenggara,Muna Barat
+Indonesia,Kalimantan Tengah,Murung Raya
+Indonesia,Sumatera Selatan,Musi Banyuasin
+Indonesia,Sumatera Selatan,Musi Rawas
+Indonesia,Sumatera Selatan,Musi Rawas Utara
+Indonesia,Papua,Nabire
+Indonesia,Aceh,Nagan Raya
+Indonesia,Nusa Tenggara Timur,Nagekeo
+Indonesia,Kepulauan Riau,Natuna
+Indonesia,Papua,Nduga
+Indonesia,Nusa Tenggara Timur,Ngada
+Indonesia,Jawa Timur,Nganjuk
+Indonesia,Jawa Timur,Ngawi
+Indonesia,Sumatera Utara,Nias
+Indonesia,Sumatera Utara,Nias Barat
+Indonesia,Sumatera Utara,Nias Selatan
+Indonesia,Sumatera Utara,Nias Utara
+Indonesia,Kalimantan Utara,Nunukan
+Indonesia,Sumatera Selatan,Ogan Ilir
+Indonesia,Sumatera Selatan,Ogan Komering Ilir
+Indonesia,Sumatera Selatan,Ogan Komering Ulu
+Indonesia,Sumatera Selatan,Ogan Komering Ulu Selatan
+Indonesia,Sumatera Selatan,Ogan Komering Ulu Timur
+Indonesia,Jawa Timur,Pacitan
+Indonesia,Sumatera Utara,Padang Lawas
+Indonesia,Sumatera Utara,Padang Lawas Utara
+Indonesia,Sumatera Barat,Padang Pariaman
+Indonesia,Sumatera Utara,Pakpak Bharat
+Indonesia,Jawa Timur,Pamekasan
+Indonesia,Banten,Pandeglang
+Indonesia,Jawa Barat,Pangandaran
+Indonesia,Sulawesi Selatan,Pangkajene Dan Kepulauan
+Indonesia,Papua,Paniai
+Indonesia,Sulawesi Tengah,Parigi Moutong
+Indonesia,Sumatera Barat,Pasaman
+Indonesia,Sumatera Barat,Pasaman Barat
+Indonesia,Kalimantan Timur,Paser
+Indonesia,Jawa Timur,Pasuruan
+Indonesia,Jawa Tengah,Pati
+Indonesia,Papua Barat,Pegunungan Arfak
+Indonesia,Papua,Pegunungan Bintang
+Indonesia,Jawa Tengah,Pekalongan
+Indonesia,Riau,Pelalawan
+Indonesia,Jawa Tengah,Pemalang
+Indonesia,Kalimantan Timur,Penajam Paser Utara
+Indonesia,Sumatera Selatan,Penukal Abab Lematang Ilir
+Indonesia,Lampung,Pesawaran
+Indonesia,Lampung,Pesisir Barat
+Indonesia,Sumatera Barat,Pesisir Selatan
+Indonesia,Aceh,Pidie
+Indonesia,Aceh,Pidie Jaya
+Indonesia,Sulawesi Selatan,Pinrang
+Indonesia,Gorontalo,Pohuwato
+Indonesia,Sulawesi Barat,Polewali Mandar
+Indonesia,Jawa Timur,Ponorogo
+Indonesia,Sulawesi Tengah,Poso
+Indonesia,Lampung,Pringsewu
+Indonesia,Jawa Timur,Probolinggo
+Indonesia,Kalimantan Tengah,Pulang Pisau
+Indonesia,Maluku Utara,Pulau Morotai
+Indonesia,Maluku Utara,Pulau Taliabu
+Indonesia,Papua,Puncak
+Indonesia,Papua,Puncak Jaya
+Indonesia,Jawa Tengah,Purbalingga
+Indonesia,Jawa Barat,Purwakarta
+Indonesia,Jawa Tengah,Purworejo
+Indonesia,Papua Barat,Raja Ampat
+Indonesia,Bengkulu,Rejang Lebong
+Indonesia,Jawa Tengah,Rembang
+Indonesia,Riau,Rokan Hilir
+Indonesia,Riau,Rokan Hulu
+Indonesia,Nusa Tenggara Timur,Rote Ndao
+Indonesia,Nusa Tenggara Timur,Sabu Raijua
+Indonesia,Kalimantan Barat,Sambas
+Indonesia,Sumatera Utara,Samosir
+Indonesia,Jawa Timur,Sampang
+Indonesia,Kalimantan Barat,Sanggau
+Indonesia,Papua,Sarmi
+Indonesia,Jambi,Sarolangun
+Indonesia,Kalimantan Barat,Sekadau
+Indonesia,Bengkulu,Seluma
+Indonesia,Jawa Tengah,Semarang
+Indonesia,Maluku,Seram Bagian Barat
+Indonesia,Maluku,Seram Bagian Timur
+Indonesia,Banten,Serang
+Indonesia,Sumatera Utara,Serdang Bedagai
+Indonesia,Kalimantan Tengah,Seruyan
+Indonesia,Riau,Siak
+Indonesia,Sulawesi Utara,Siau Tagulandang Biaro
+Indonesia,Sulawesi Selatan,Sidenreng Rappang
+Indonesia,Jawa Timur,Sidoarjo
+Indonesia,Sulawesi Tengah,Sigi
+Indonesia,Sumatera Barat,Sijunjung
+Indonesia,Nusa Tenggara Timur,Sikka
+Indonesia,Sumatera Utara,Simalungun
+Indonesia,Aceh,Simeulue
+Indonesia,Sulawesi Selatan,Sinjai
+Indonesia,Kalimantan Barat,Sintang
+Indonesia,Jawa Timur,Situbondo
+Indonesia,Daerah Istimewa Yogyakarta,Sleman
+Indonesia,Sumatera Barat,Solok
+Indonesia,Sumatera Barat,Solok Selatan
+Indonesia,Sulawesi Selatan,Soppeng
+Indonesia,Papua Barat,Sorong
+Indonesia,Papua Barat,Sorong Selatan
+Indonesia,Jawa Tengah,Sragen
+Indonesia,Jawa Barat,Subang
+Indonesia,Jawa Barat,Sukabumi
+Indonesia,Kalimantan Tengah,Sukamara
+Indonesia,Jawa Tengah,Sukoharjo
+Indonesia,Nusa Tenggara Timur,Sumba Barat
+Indonesia,Nusa Tenggara Timur,Sumba Barat Daya
+Indonesia,Nusa Tenggara Timur,Sumba Tengah
+Indonesia,Nusa Tenggara Timur,Sumba Timur
+Indonesia,Nusa Tenggara Barat,Sumbawa
+Indonesia,Nusa Tenggara Barat,Sumbawa Barat
+Indonesia,Jawa Barat,Sumedang
+Indonesia,Jawa Timur,Sumenep
+Indonesia,Papua,Supiori
+Indonesia,Kalimantan Selatan,Tabalong
+Indonesia,Bali,Tabanan
+Indonesia,Sulawesi Selatan,Takalar
+Indonesia,Papua Barat,Tambrauw
+Indonesia,Kalimantan Utara,Tana Tidung
+Indonesia,Sulawesi Selatan,Tana Toraja
+Indonesia,Kalimantan Selatan,Tanah Bumbu
+Indonesia,Sumatera Barat,Tanah Datar
+Indonesia,Kalimantan Selatan,Tanah Laut
+Indonesia,Banten,Tangerang
+Indonesia,Lampung,Tanggamus
+Indonesia,Jambi,Tanjung Jabung Barat
+Indonesia,Jambi,Tanjung Jabung Timur
+Indonesia,Sumatera Utara,Tapanuli Selatan
+Indonesia,Sumatera Utara,Tapanuli Tengah
+Indonesia,Sumatera Utara,Tapanuli Utara
+Indonesia,Kalimantan Selatan,Tapin
+Indonesia,Jawa Barat,Tasikmalaya
+Indonesia,Jambi,Tebo
+Indonesia,Jawa Tengah,Tegal
+Indonesia,Papua Barat,Teluk Bintuni
+Indonesia,Papua Barat,Teluk Wondama
+Indonesia,Jawa Tengah,Temanggung
+Indonesia,Nusa Tenggara Timur,Timor Tengah Selatan
+Indonesia,Nusa Tenggara Timur,Timor Tengah Utara
+Indonesia,Sumatera Utara,Toba Samosir
+Indonesia,Sulawesi Tengah,Tojo Una-Una
+Indonesia,Sulawesi Tengah,Toli-Toli
+Indonesia,Papua,Tolikara
+Indonesia,Sulawesi Selatan,Toraja Utara
+Indonesia,Jawa Timur,Trenggalek
+Indonesia,Jawa Timur,Tuban
+Indonesia,Lampung,Tulang Bawang Barat
+Indonesia,Lampung,Tulangbawang
+Indonesia,Jawa Timur,Tulungagung
+Indonesia,Jawa Barat,Waduk Cirata
+Indonesia,Jawa Tengah,Wadung Kedungombo
+Indonesia,Sulawesi Selatan,Wajo
+Indonesia,Sulawesi Tenggara,Wakatobi
+Indonesia,Papua,Waropen
+Indonesia,Lampung,Way Kanan
+Indonesia,Jawa Tengah,Wonogiri
+Indonesia,Jawa Tengah,Wonosobo
+Indonesia,Papua,Yahukimo
+Indonesia,Papua,Yalimo
+Philippines,Ilocos Region,Ilocos Norte
+Philippines,Ilocos Region,Ilocos Sur
+Philippines,Ilocos Region,La Union
+Philippines,Ilocos Region,Pangasinan
+Philippines,Cagayan Valley,Batanes
+Philippines,Cagayan Valley,Cagayan
+Philippines,Cagayan Valley,Isabela
+Philippines,Cagayan Valley,Nueva Vizcaya
+Philippines,Cagayan Valley,Quirino
+Philippines,Central Luzon,Bataan
+Philippines,Central Luzon,Bulacan
+Philippines,Central Luzon,Nueva Ecija
+Philippines,Central Luzon,Pampanga
+Philippines,Central Luzon,Tarlac
+Philippines,Central Luzon,Zambales
+Philippines,Central Luzon,Aurora
+Philippines,Calabarzon,Batangas
+Philippines,Calabarzon,Cavite
+Philippines,Calabarzon,Laguna
+Philippines,Calabarzon,Quezon
+Philippines,Calabarzon,Rizal
+Philippines,Bicol Region,Albay
+Philippines,Bicol Region,Camarines Norte
+Philippines,Bicol Region,Camarines Sur
+Philippines,Bicol Region,Catanduanes
+Philippines,Bicol Region,Masbate
+Philippines,Bicol Region,Sorsogon
+Philippines,Western Visayas,Aklan
+Philippines,Western Visayas,Antique
+Philippines,Western Visayas,Capiz
+Philippines,Western Visayas,Iloilo
+Philippines,Western Visayas,Negros Occidental
+Philippines,Western Visayas,Guimaras
+Philippines,Central Visayas,Bohol
+Philippines,Central Visayas,Cebu
+Philippines,Central Visayas,Negros Oriental
+Philippines,Central Visayas,Siquijor
+Philippines,Eastern Visayas,Eastern Samar
+Philippines,Eastern Visayas,Leyte
+Philippines,Eastern Visayas,Northern Samar
+Philippines,Eastern Visayas,Samar (Western Samar)
+Philippines,Eastern Visayas,Southern Leyte
+Philippines,Eastern Visayas,Biliran
+Philippines,Zamboanga Peninsula,Zamboanga del Norte
+Philippines,Zamboanga Peninsula,Zamboanga del Sur
+Philippines,Zamboanga Peninsula,Zamboanga Sibugay
+Philippines,Zamboanga Peninsula,City of Isabela (not a province)
+Philippines,Northern Mindanao,Bukidnon
+Philippines,Northern Mindanao,Camiguin
+Philippines,Northern Mindanao,Lanao del Norte
+Philippines,Northern Mindanao,Misamis Occidental
+Philippines,Northern Mindanao,Misamis Oriental
+Philippines,Davao Region,Davao del Norte
+Philippines,Davao Region,Davao del Sur
+Philippines,Davao Region,Davao Oriental
+Philippines,Davao Region,Davao de Oro (Compostela Valley)
+Philippines,Davao Region,Davao Occidental
+Philippines,Soccsksargen,Cotabato (North Cotabato)
+Philippines,Soccsksargen,South Cotabato
+Philippines,Soccsksargen,Sultan Kudarat
+Philippines,Soccsksargen,Sarangani
+Philippines,NCR,Metropolitan Manila First District
+Philippines,NCR,Metropolitan Manila Second District
+Philippines,NCR,Metropolitan Manila Third District
+Philippines,NCR,Metropolitan Manila Fourth District
+Philippines,CAR,Abra
+Philippines,CAR,Benguet
+Philippines,CAR,Ifugao
+Philippines,CAR,Kalinga
+Philippines,CAR,Mountain Province
+Philippines,CAR,Apayao
+Philippines,Caraga,Agusan del Norte
+Philippines,Caraga,Agusan del Sur
+Philippines,Caraga,Surigao del Norte
+Philippines,Caraga,Surigao del Sur
+Philippines,Caraga,Dinagat Islands
+Philippines,Mimaropa Region,Marinduque
+Philippines,Mimaropa Region,Occidental Mindoro
+Philippines,Mimaropa Region,Oriental Mindoro
+Philippines,Mimaropa Region,Palawan
+Philippines,Mimaropa Region,Romblon
+Philippines,BARMM,Basilan
+Philippines,BARMM,Lanao del Sur
+Philippines,BARMM,Sulu
+Philippines,BARMM,Tawi-Tawi
+Philippines,BARMM,Maguindanao del Norte
+Philippines,BARMM,Maguindanao del Sur
+Philippines,BARMM,Special Geographic Area
+Peru,Huancavelica,Acobamba
+Peru,Cusco,Acomayo
+Peru,Ancash,Aija
+Peru,Loreto,Alto Amazonas
+Peru,Huanuco,Ambo
+Peru,Apurimac,Andahuaylas
+Peru,Huancavelica,Angaraes
+Peru,Cusco,Anta
+Peru,Apurimac,Antabamba
+Peru,Ancash,Antonio Raymondi
+Peru,Arequipa,Arequipa
+Peru,La Libertad,Ascope
+Peru,Ancash,Asuncion
+Peru,Ucayali,Atalaya
+Peru,Piura,Ayabaca
+Peru,Apurimac,Aymaraes
+Peru,Puno,Azangaro
+Peru,Amazonas,Bagua
+Peru,Lima,Barranca
+Peru,San Martin,Bellavista
+Peru,La Libertad,Bolivar
+Peru,Ancash,Bolognesi
+Peru,Amazonas,Bongara
+Peru,Cajamarca,Cajabamba
+Peru,Cajamarca,Cajamarca
+Peru,Lima,Cajatambo
+Peru,Cusco,Calca
+Peru,Callao,Callao
+Peru,Arequipa,Camana
+Peru,Cusco,Canas
+Peru,Cusco,Canchis
+Peru,Tacna,Candarave
+Peru,Lima,Cañete
+Peru,Ayacucho,Cangallo
+Peru,Lima,Canta
+Peru,Puno,Carabaya
+Peru,Arequipa,Caraveli
+Peru,Ancash,Carhuaz
+Peru,Ancash,Carlos Fermin Fitzcarrald
+Peru,Ancash,Casma
+Peru,Arequipa,Castilla
+Peru,Huancavelica,Castrovirreyna
+Peru,Arequipa,Caylloma
+Peru,Cajamarca,Celendin
+Peru,Amazonas,Chachapoyas
+Peru,Junin,Chanchamayo
+Peru,La Libertad,Chepen
+Peru,Lambayeque,Chiclayo
+Peru,Ica,Chincha
+Peru,Apurimac,Chincheros
+Peru,Cajamarca,Chota
+Peru,Puno,Chucuito
+Peru,Cusco,Chumbivilcas
+Peru,Junin,Chupaca
+Peru,Huancavelica,Churcampa
+Peru,Junin,Concepcion
+Peru,Arequipa,Condesuyos
+Peru,Amazonas,Condorcanqui
+Peru,Tumbes,Contralmirante Villar
+Peru,Cajamarca,Contumaza
+Peru,Ucayali,Coronel Portillo
+Peru,Ancash,Corongo
+Peru,Apurimac,Cotabambas
+Peru,Cusco,Cusco
+Peru,Cajamarca,Cutervo
+Peru,Pasco,Daniel Alcides Carrion
+Peru,Loreto,Datem del Marañon
+Peru,Huanuco,Dos de Mayo
+Peru,Puno,El Collao
+Peru,San Martin,El Dorado
+Peru,Cusco,Espinar
+Peru,Lambayeque,Ferreñafe
+Peru,Moquegua,General Sanchez Cerro
+Peru,La Libertad,Gran Chimu
+Peru,Apurimac,Grau
+Peru,Huanuco,Huacaybamba
+Peru,Cajamarca,Hualgayoc
+Peru,San Martin,Huallaga
+Peru,Huanuco,Huamalies
+Peru,Ayacucho,Huamanga
+Peru,Ayacucho,Huanca Sancos
+Peru,Piura,Huancabamba
+Peru,Puno,Huancane
+Peru,Huancavelica,Huancavelica
+Peru,Junin,Huancayo
+Peru,Ayacucho,Huanta
+Peru,Huanuco,Huanuco
+Peru,Lima,Huaral
+Peru,Ancash,Huaraz
+Peru,Ancash,Huari
+Peru,Ancash,Huarmey
+Peru,Lima,Huarochiri
+Peru,Lima,Huaura
+Peru,Ancash,Huaylas
+Peru,Huancavelica,Huaytara
+Peru,Ica,Ica
+Peru,Moquegua,Ilo
+Peru,Arequipa,Islay
+Peru,Cajamarca,Jaen
+Peru,Junin,Jauja
+Peru,Tacna,Jorge Basadre
+Peru,La Libertad,Julcan
+Peru,Junin,Junin
+Peru,Cusco,La Convencion
+Peru,Ayacucho,La Mar
+Peru,Arequipa,La Union
+Peru,San Martin,Lamas
+Peru,Lambayeque,Lambayeque
+Peru,Puno,Lampa
+Peru,Huanuco,Lauricocha
+Peru,Huanuco,Leoncio Prado
+Peru,Lima,Lima
+Peru,Loreto,Loreto
+Peru,Ayacucho,Lucanas
+Peru,Amazonas,Luya
+Peru,Madre de Dios,Manu
+Peru,Huanuco,Marañon
+Peru,San Martin,Mariscal Caceres
+Peru,Ancash,Mariscal Luzuriaga
+Peru,Moquegua,Mariscal Nieto
+Peru,Loreto,Mariscal Ramon Castilla
+Peru,Loreto,Maynas
+Peru,Puno,Melgar
+Peru,Puno,Moho
+Peru,Piura,Morropon
+Peru,San Martin,Moyobamba
+Peru,Ica,Nasca
+Peru,Ancash,Ocros
+Peru,La Libertad,Otuzco
+Peru,Pasco,Oxapampa
+Peru,Lima,Oyon
+Peru,La Libertad,Pacasmayo
+Peru,Huanuco,Pachitea
+Peru,Ucayali,Padre Abad
+Peru,Piura,Paita
+Peru,Ancash,Pallasca
+Peru,Ica,Palpa
+Peru,Ayacucho,Parinacochas
+Peru,Cusco,Paruro
+Peru,Pasco,Pasco
+Peru,La Libertad,Pataz
+Peru,Ayacucho,Paucar del Sara Sara
+Peru,Cusco,Paucartambo
+Peru,San Martin,Picota
+Peru,Ica,Pisco
+Peru,Piura,Piura
+Peru,Ancash,Pomabamba
+Peru,Huanuco,Puerto Inca
+Peru,Puno,Puno
+Peru,Ucayali,Purus
+Peru,Loreto,Putumayo
+Peru,Cusco,Quispicanchi
+Peru,Ancash,Recuay
+Peru,Loreto,Requena
+Peru,San Martin,Rioja
+Peru,Amazonas,Rodriguez de Mendoza
+Peru,Puno,San Antonio de Putina
+Peru,Cajamarca,San Ignacio
+Peru,Cajamarca,San Marcos
+Peru,San Martin,San Martin
+Peru,Cajamarca,San Miguel
+Peru,Cajamarca,San Pablo
+Peru,Puno,San Roman
+Peru,La Libertad,Sanchez Carrion
+Peru,Puno,Sandia
+Peru,Ancash,Santa
+Peru,Cajamarca,Santa Cruz
+Peru,La Libertad,Santiago de Chuco
+Peru,Junin,Satipo
+Peru,Piura,Sechura
+Peru,Ancash,Sihuas
+Peru,Ayacucho,Sucre
+Peru,Piura,Sullana
+Peru,Tacna,Tacna
+Peru,Madre de Dios,Tahuamanu
+Peru,Piura,Talara
+Peru,Madre de Dios,Tambopata
+Peru,Tacna,Tarata
+Peru,Junin,Tarma
+Peru,Huancavelica,Tayacaja
+Peru,San Martin,Tocache
+Peru,La Libertad,Trujillo
+Peru,Tumbes,Tumbes
+Peru,Loreto,Ucayali
+Peru,Cusco,Urubamba
+Peru,Amazonas,Utcubamba
+Peru,Ayacucho,Victor Fajardo
+Peru,Ayacucho,Vilcas Huaman
+Peru,La Libertad,Viru
+Peru,Huanuco,Yarowilca
+Peru,Junin,Yauli
+Peru,Lima,Yauyos
+Peru,Ancash,Yungay
+Peru,Puno,Yunguyo
+Peru,Tumbes,Zarumilla
+Panama,Bocas del Toro,Bocas del Toro
+Panama,Bocas del Toro,Changuinola
+Panama,Bocas del Toro,Chiriquí Grande
+Panama,Chiriquí,Alanje
+Panama,Chiriquí,Barú
+Panama,Chiriquí,Boquerón
+Panama,Chiriquí,Boquete
+Panama,Chiriquí,Bugaba
+Panama,Chiriquí,David
+Panama,Chiriquí,Dolega
+Panama,Chiriquí,Gualaca
+Panama,Chiriquí,Remedios
+Panama,Chiriquí,Renacimiento
+Panama,Chiriquí,San Félix
+Panama,Chiriquí,San Lorenzo
+Panama,Chiriquí,Tolé
+Panama,Coclé,Aguadulce
+Panama,Coclé,Antón
+Panama,Coclé,La Pintada
+Panama,Coclé,Natá
+Panama,Coclé,Olá
+Panama,Coclé,Penonomé
+Panama,Colón,Chagres
+Panama,Colón,Colón
+Panama,Colón,Donoso
+Panama,Colón,Portobelo
+Panama,Colón,Santa Isabel
+Panama,Darién,Chepigana
+Panama,Darién,Pinogana
+Panama,Emberá,Cémaco
+Panama,Emberá,Sambú
+Panama,Herrera,Chitré
+Panama,Herrera,Las Minas
+Panama,Herrera,Los Pozos
+Panama,Herrera,Ocú
+Panama,Herrera,Parita
+Panama,Herrera,Pesé
+Panama,Herrera,Santa María
+Panama,Kuna Yala,Kuna Yala
+Panama,Los Santos,Guararé
+Panama,Los Santos,Las Tablas
+Panama,Los Santos,Los Santos
+Panama,Los Santos,Macaracas
+Panama,Los Santos,Pedasí
+Panama,Los Santos,Pocrí
+Panama,Los Santos,Tonosí
+Panama,Ngöbe Buglé,Besiko
+Panama,Ngöbe Buglé,Mironó
+Panama,Ngöbe Buglé,Müna
+Panama,Ngöbe Buglé,Nole Duima
+Panama,Ngöbe Buglé,Ñürüm
+Panama,Ngöbe Buglé,Kankintú
+Panama,Ngöbe Buglé,Kusapín
+Panama,Panamá Oeste,Arraiján
+Panama,Panamá Oeste,Capira
+Panama,Panamá Oeste,Chame
+Panama,Panamá Oeste,La Chorrera
+Panama,Panamá Oeste,San Carlos
+Panama,Panamá,Balboa
+Panama,Panamá,Chepo
+Panama,Panamá,Chimán
+Panama,Panamá,Panamá
+Panama,Panamá,San Miguelito
+Panama,Panamá,Taboga
+Panama,Veraguas,Atalaya
+Panama,Veraguas,Calobre
+Panama,Veraguas,Cañazas
+Panama,Veraguas,La Mesa
+Panama,Veraguas,Las Palmas
+Panama,Veraguas,Mariato
+Panama,Veraguas,Montijo
+Panama,Veraguas,Río de Jesús
+Panama,Veraguas,San Francisco
+Panama,Veraguas,Santa Fe
+Panama,Veraguas,Santiago
+Panama,Veraguas,Soná
+Nicaragua,Managua,Ticuantepe
+Nicaragua,León,Achuapa
+Nicaragua,Rivas,San Juan del Sur
+Nicaragua,Managua,San Rafael del Sur
+Nicaragua,Región Autónoma Costa Caribe Norte,Waspam
+Nicaragua,Matagalpa,El Tuma - La Dalia
+Nicaragua,Chinandega,Somotillo
+Nicaragua,Carazo,Dolores
+Nicaragua,Nueva Segovia,Jícaro
+Nicaragua,Región Autónoma Costa Caribe Norte,Siuna
+Nicaragua,Región Autónoma Costa Caribe Norte,Bonanza
+Nicaragua,Río San Juan,San Juan de Nicaragua
+Nicaragua,Chinandega,Posoltega
+Nicaragua,Chinandega,Cinco Pinos
+Nicaragua,Rivas,Buenos Aires
+Nicaragua,Madriz,Totogalpa
+Nicaragua,Granada,Diriá
+Nicaragua,Región Autónoma de la Costa Caribe Sur,La Cruz de Río Grande
+Nicaragua,Matagalpa,Ciudad Darío
+Nicaragua,Nueva Segovia,Jalapa
+Nicaragua,Madriz,Somoto
+Nicaragua,Chinandega,San Francisco del Norte
+Nicaragua,Nueva Segovia,San Fernando
+Nicaragua,Jinotega,El Cuá
+Nicaragua,Matagalpa,San Dionisio
+Nicaragua,Carazo,Diriamba
+Nicaragua,Matagalpa,Matiguás
+Nicaragua,Masaya,Niquinohomo
+Nicaragua,Masaya,La Concepción
+Nicaragua,Matagalpa,San Isidro
+Nicaragua,Boaco,San José de Los Remates
+Nicaragua,Rivas,Belén
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Bluefields
+Nicaragua,Managua,Tipitapa
+Nicaragua,Nueva Segovia,Quilalí
+Nicaragua,Boaco,Santa Lucía
+Nicaragua,Río San Juan,San Miguelito
+Nicaragua,Chontales,Santo Tomás
+Nicaragua,Matagalpa,Sébaco
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Nueva Guinea
+Nicaragua,Managua,Ciudad Sandino
+Nicaragua,Masaya,Nandasmo
+Nicaragua,Carazo,El Rosario
+Nicaragua,Jinotega,Wiwilí de Jinotega
+Nicaragua,Región Autónoma de la Costa Caribe Sur,El Rama
+Nicaragua,Chontales,La Libertad
+Nicaragua,León,El Jicaral
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Muelle de Los Bueyes
+Nicaragua,León,La Paz Centro
+Nicaragua,Managua,San Francisco Libre
+Nicaragua,León,Larreynaga
+Nicaragua,Chontales,Juigalpa
+Nicaragua,Nueva Segovia,Mozonte
+Nicaragua,Nueva Segovia,Murra
+Nicaragua,Nueva Segovia,Dipilto
+Nicaragua,Madriz,San Juan del Río Coco
+Nicaragua,Región Autónoma Costa Caribe Norte,Rosita
+Nicaragua,Madriz,Yalagüina
+Nicaragua,Chontales,Comalapa
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Paiwas
+Nicaragua,Carazo,Santa Teresa
+Nicaragua,Río San Juan,Morrito
+Nicaragua,Rivas,Rivas
+Nicaragua,Región Autónoma Costa Caribe Norte,Prinzapolka
+Nicaragua,Boaco,Teustepe
+Nicaragua,Chinandega,Chichigalpa
+Nicaragua,León,Santa Rosa del Peñón
+Nicaragua,Río San Juan,El Almendro
+Nicaragua,Jinotega,Jinotega
+Nicaragua,Madriz,Las Sabanas
+Nicaragua,Managua,Villa El Carmen
+Nicaragua,Jinotega,Santa María de Pantasma
+Nicaragua,León,Telica
+Nicaragua,Chinandega,Villanueva
+Nicaragua,Masaya,Nindirí
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Kukrahill
+Nicaragua,Boaco,San Lorenzo
+Nicaragua,Región Autónoma Costa Caribe Norte,Mulukukú
+Nicaragua,Chontales,San Francisco de Cuapa
+Nicaragua,Nueva Segovia,Macuelizo
+Nicaragua,Carazo,La Paz de Carazo
+Nicaragua,Rivas,Altagracia
+Nicaragua,Chontales,El Coral
+Nicaragua,Chontales,Santo Domingo
+Nicaragua,Región Autónoma Costa Caribe Norte,Waslala
+Nicaragua,Nueva Segovia,Ocotal
+Nicaragua,Matagalpa,Río Blanco
+Nicaragua,Chinandega,El Viejo
+Nicaragua,Granada,Nandaime
+Nicaragua,Estelí,San Nicolás
+Nicaragua,Río San Juan,El Castillo
+Nicaragua,Río San Juan,San Carlos
+Nicaragua,Chinandega,Puerto Morazán
+Nicaragua,Nueva Segovia,Santa María
+Nicaragua,Chontales,Villa Sandino
+Nicaragua,Chontales,San Pedro de Lóvago
+Nicaragua,Nueva Segovia,Ciudad Antigua
+Nicaragua,León,Quezalguaque
+Nicaragua,Carazo,La Conquista
+Nicaragua,Masaya,Masatepe
+Nicaragua,Chinandega,Chinandega
+Nicaragua,Carazo,San Marcos
+Nicaragua,Chontales,Acoyapa
+Nicaragua,Jinotega,San Sebastián de Yalí
+Nicaragua,Matagalpa,Rancho Grande
+Nicaragua,Managua,Mateare
+Nicaragua,Masaya,Catarina
+Nicaragua,Región Autónoma de la Costa Caribe Sur,El Ayote
+Nicaragua,Estelí,Pueblo Nuevo
+Nicaragua,Rivas,Cárdenas
+Nicaragua,Región Autónoma de la Costa Caribe Sur,El Tortuguero
+Nicaragua,Chinandega,San Pedro del Norte
+Nicaragua,Masaya,Tisma
+Nicaragua,Matagalpa,Matagalpa
+Nicaragua,Chinandega,Corinto
+Nicaragua,Matagalpa,Esquipulas
+Nicaragua,Masaya,San Juan de Oriente
+Nicaragua,Nueva Segovia,Wiwilí de Nueva Segovia
+Nicaragua,Rivas,Moyogalpa
+Nicaragua,León,León
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Laguna de Perlas
+Nicaragua,Estelí,San Juan de Limay
+Nicaragua,Estelí,La Trinidad
+Nicaragua,Madriz,Palacagüina
+Nicaragua,Jinotega,La Concordia
+Nicaragua,Jinotega,San Rafael del Norte
+Nicaragua,Carazo,Jinotepe
+Nicaragua,Rivas,Potosí
+Nicaragua,Chinandega,El Realejo
+Nicaragua,Granada,Diriomo
+Nicaragua,Managua,El Crucero
+Nicaragua,Matagalpa,San Ramón
+Nicaragua,Boaco,Boaco
+Nicaragua,Matagalpa,Muy Muy
+Nicaragua,León,El Sauce
+Nicaragua,León,Nagarote
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Desembocadura de Río Grande
+Nicaragua,Granada,Granada
+Nicaragua,Managua,Managua
+Nicaragua,Región Autónoma de la Costa Caribe Sur,Corn Island
+Nicaragua,Jinotega,San José de Bocay
+Nicaragua,Región Autónoma Costa Caribe Norte,Puerto Cabezas
+Nicaragua,Estelí,Estelí
+Nicaragua,Masaya,Masaya
+Nicaragua,Chinandega,Santo Tomás del Norte
+Nicaragua,Boaco,Camoapa
+Nicaragua,Rivas,Tola
+Nicaragua,Rivas,San Jorge
+Nicaragua,Matagalpa,Terrabona
+Nicaragua,Madriz,San José de Cusmapa
+Nicaragua,Madriz,San Lucas
+Nicaragua,Estelí,Condega
+Nicaragua,Madriz,Telpaneca
+Guatemala,Chimaltenango,Acatenango
+Guatemala,Jutiapa,Agua Blanca
+Guatemala,Huehuetenango,Aguacatán
+Guatemala,Quetzaltenango,Almolonga
+Guatemala,Sacatepéquez,Alotenango
+Guatemala,Guatemala,Amatitlán
+Guatemala,Sacatepéquez,Antigua Guatemala
+Guatemala,Jutiapa,Asunción Mita
+Guatemala,Jutiapa,Atescatempa
+Guatemala,San Marcos,Ayutla
+Guatemala,Santa Rosa,Barberena
+Guatemala,Huehuetenango,Barillas
+Guatemala,Zacapa,Cabañas
+Guatemala,Quetzaltenango,Cabricán
+Guatemala,Alta Verapaz,Cahabón
+Guatemala,Quetzaltenango,Cajolá
+Guatemala,Chiquimula,Camotán
+Guatemala,Quiché,Canillá
+Guatemala,Quetzaltenango,Cantel
+Guatemala,Santa Rosa,Casillas
+Guatemala,San Marcos,Catarina
+Guatemala,Alta Verapaz,Chahal
+Guatemala,Quiché,Chajul
+Guatemala,Retalhuleu,Champerico
+Guatemala,Huehuetenango,Chiantla
+Guatemala,Suchitepéquez,Chicacao
+Guatemala,Quiché,Chicamán
+Guatemala,Quiché,Chiché
+Guatemala,Quiché,Chichicastenango
+Guatemala,Chimaltenango,Chimaltenango
+Guatemala,Guatemala,Chinautla
+Guatemala,Quiché,Chinique
+Guatemala,Chiquimula,Chiquimula
+Guatemala,Santa Rosa,Chiquimulilla
+Guatemala,Alta Verapaz,Chisec
+Guatemala,Guatemala,Chuarrancho
+Guatemala,Sacatepéquez,Ciudad Vieja
+Guatemala,Quetzaltenango,Coatepeque
+Guatemala,Alta Verapaz,Cobán
+Guatemala,Quetzaltenango,Colomba
+Guatemala,Huehuetenango,Colotenango
+Guatemala,Chimaltenango,Comalapa
+Guatemala,Jutiapa,Comapa
+Guatemala,San Marcos,Comitancillo
+Guatemala,Sololá,Concepción
+Guatemala,Quetzaltenango,Concepción Chiquirichapa
+Guatemala,Huehuetenango,Concepción Huista
+Guatemala,Chiquimula,Concepción Las Minas
+Guatemala,San Marcos,Concepción Tutuapa
+Guatemala,Jutiapa,Conguaco
+Guatemala,Baja Verapaz,Cubulco
+Guatemala,Santa Rosa,Cuilapa
+Guatemala,Huehuetenango,Cuilco
+Guatemala,Quiché,Cunén
+Guatemala,Suchitepéquez,Cuyotenango
+Guatemala,Petén,Dolores
+Guatemala,Jutiapa,El Adelanto
+Guatemala,Retalhuleu,El Asintal
+Guatemala,Petén,El Chal
+Guatemala,Baja Verapaz,El Chol
+Guatemala,Izabal,El Estor
+Guatemala,El Progreso,El Jícaro
+Guatemala,Quetzaltenango,El Palmar
+Guatemala,Jutiapa,El Progreso
+Guatemala,San Marcos,El Quetzal
+Guatemala,San Marcos,El Rodeo
+Guatemala,Chimaltenango,El Tejar
+Guatemala,San Marcos,El Tumbador
+Guatemala,Escuintla,Escuintla
+Guatemala,Chiquimula,Esquipulas
+Guatemala,San Marcos,Esquipulas Palo Gordo
+Guatemala,Zacapa,Estanzuela
+Guatemala,Petén,Flores
+Guatemala,Quetzaltenango,Flores Costa Cuca
+Guatemala,Guatemala,Fraijanes
+Guatemala,Alta Verapaz,Fray Bartolomé de Las Casas
+Guatemala,Quetzaltenango,Génova
+Guatemala,Baja Verapaz,Granados
+Guatemala,Zacapa,Gualán
+Guatemala,Escuintla,Guanagazapa
+Guatemala,El Progreso,Guastatoya
+Guatemala,Guatemala,Guatemala
+Guatemala,Santa Rosa,Guazacapán
+Guatemala,Huehuetenango,Huehuetenango
+Guatemala,Quetzaltenango,Huitán
+Guatemala,Zacapa,Huité
+Guatemala,Chiquimula,Ipala
+Guatemala,Quiché,Ixcán
+Guatemala,San Marcos,Ixchiguán
+Guatemala,Huehuetenango,Ixtahuacán
+Guatemala,Escuintla,Iztapa
+Guatemala,Huehuetenango,Jacaltenango
+Guatemala,Jalapa,Jalapa
+Guatemala,Jutiapa,Jalpatagua
+Guatemala,Jutiapa,Jerez
+Guatemala,Chiquimula,Jocotán
+Guatemala,Sacatepéquez,Jocotenango
+Guatemala,Quiché,Joyabaj
+Guatemala,Jutiapa,Jutiapa
+Guatemala,San Marcos,La Blanca
+Guatemala,Escuintla,La Democracia
+Guatemala,Huehuetenango,La Democracia
+Guatemala,Quetzaltenango,La Esperanza
+Guatemala,Escuintla,La Gomera
+Guatemala,Huehuetenango,La Libertad
+Guatemala,Petén,La Libertad
+Guatemala,San Marcos,La Reforma
+Guatemala,Zacapa,La Unión
+Guatemala,Guatemala,Lago De Amatitlan
+Guatemala,Sololá,Lago De Atitlan
+Guatemala,Alta Verapaz,Lanquín
+Guatemala,Petén,Las Cruces
+Guatemala,Izabal,Lívingston
+Guatemala,Izabal,Los Amates
+Guatemala,Sacatepéquez,Magdalena Milpas Altas
+Guatemala,San Marcos,Malacatán
+Guatemala,Huehuetenango,Malacatancito
+Guatemala,Escuintla,Masagua
+Guatemala,Jalapa,Mataquescuintla
+Guatemala,Suchitepéquez,Mazatenango
+Guatemala,Petén,Melchor de Mencos
+Guatemala,Guatemala,Mixco
+Guatemala,Totonicapán,Momostenango
+Guatemala,Jalapa,Monjas
+Guatemala,Izabal,Morales
+Guatemala,El Progreso,Morazán
+Guatemala,Jutiapa,Moyuta
+Guatemala,Sololá,Nahualá
+Guatemala,Quiché,Nebaj
+Guatemala,Huehuetenango,Nentón
+Guatemala,Escuintla,Nueva Concepción
+Guatemala,Santa Rosa,Nueva Santa Rosa
+Guatemala,San Marcos,Nuevo Progreso
+Guatemala,Retalhuleu,Nuevo San Carlos
+Guatemala,San Marcos,Ocós
+Guatemala,Quetzaltenango,Olintepeque
+Guatemala,Chiquimula,Olopa
+Guatemala,Santa Rosa,Oratorio
+Guatemala,Quetzaltenango,Ostuncalco
+Guatemala,Quiché,Pachalum
+Guatemala,San Marcos,Pajapita
+Guatemala,Guatemala,Palencia
+Guatemala,Quetzaltenango,Palestina de Los Altos
+Guatemala,Escuintla,Palín
+Guatemala,Sololá,Panajachel
+Guatemala,Alta Verapaz,Panzós
+Guatemala,Chimaltenango,Parramos
+Guatemala,Jutiapa,Pasaco
+Guatemala,Sacatepéquez,Pastores
+Guatemala,Suchitepéquez,Patulul
+Guatemala,Chimaltenango,Patzicía
+Guatemala,Quiché,Patzité
+Guatemala,Chimaltenango,Patzún
+Guatemala,Guatemala,Petapa
+Guatemala,Huehuetenango,Petatán
+Guatemala,Chimaltenango,Pochuta
+Guatemala,Petén,Poptún
+Guatemala,Suchitepéquez,Pueblo Nuevo
+Guatemala,Santa Rosa,Pueblo Nuevo Viñas
+Guatemala,Izabal,Puerto Barrios
+Guatemala,Baja Verapaz,Purulhá
+Guatemala,Jutiapa,Quesada
+Guatemala,Quetzaltenango,Quetzaltenango
+Guatemala,Chiquimula,Quezaltepeque
+Guatemala,Baja Verapaz,Rabinal
+Guatemala,Alta Verapaz,Raxruhá
+Guatemala,Retalhuleu,Retalhuleu
+Guatemala,San Marcos,Río Blanco
+Guatemala,Suchitepéquez,Río Bravo
+Guatemala,Zacapa,Río Hondo
+Guatemala,Quiché,Sacapulas
+Guatemala,Baja Verapaz,Salamá
+Guatemala,Quetzaltenango,Salcajá
+Guatemala,Suchitepéquez,Samayac
+Guatemala,El Progreso,San Agustín Acasaguastlán
+Guatemala,Petén,San Andrés
+Guatemala,Chimaltenango,San Andrés Itzapa
+Guatemala,Quiché,San Andrés Sajcabajá
+Guatemala,Sololá,San Andrés Semetabaj
+Guatemala,Retalhuleu,San Andrés Villa Seca
+Guatemala,Totonicapán,San Andrés Xecul
+Guatemala,Sacatepéquez,San Antonio Aguas Calientes
+Guatemala,Huehuetenango,San Antonio Huista
+Guatemala,Quiché,San Antonio Ilotenango
+Guatemala,El Progreso,San Antonio La Paz
+Guatemala,Sololá,San Antonio Palopó
+Guatemala,San Marcos,San Antonio Sacatepéquez
+Guatemala,Suchitepéquez,San Antonio Suchitepéquez
+Guatemala,Totonicapán,San Bartolo
+Guatemala,Quiché,San Bartolomé Jocotenango
+Guatemala,Sacatepéquez,San Bartolomé Milpas Altas
+Guatemala,Petén,San Benito
+Guatemala,Suchitepéquez,San Bernardino
+Guatemala,Jalapa,San Carlos Alzatate
+Guatemala,Quetzaltenango,San Carlos Sija
+Guatemala,El Progreso,San Cristóbal Acasaguastlán
+Guatemala,San Marcos,San Cristóbal Cucho
+Guatemala,Totonicapán,San Cristóbal Totonicapán
+Guatemala,Alta Verapaz,San Cristóbal Verapaz
+Guatemala,Zacapa,San Diego
+Guatemala,Retalhuleu,San Felipe
+Guatemala,Petén,San Francisco
+Guatemala,Totonicapán,San Francisco El Alto
+Guatemala,Quetzaltenango,San Francisco La Unión
+Guatemala,Suchitepéquez,San Francisco Zapotitlán
+Guatemala,Suchitepéquez,San Gabriel
+Guatemala,Huehuetenango,San Gaspar Ixchil
+Guatemala,Chiquimula,San Jacinto
+Guatemala,Baja Verapaz,San Jerónimo
+Guatemala,Zacapa,San Jorge
+Guatemala,Escuintla,San José
+Guatemala,Petén,San José
+Guatemala,Jutiapa,San José Acatempa
+Guatemala,Sololá,San José Chacayá
+Guatemala,Guatemala,San José del Golfo
+Guatemala,Suchitepéquez,San José El Ídolo
+Guatemala,Chiquimula,San José La Arada
+Guatemala,Suchitepéquez,San José La Máquina
+Guatemala,San Marcos,San José Ojetenam
+Guatemala,Guatemala,San José Pinula
+Guatemala,Chimaltenango,San José Poaquil
+Guatemala,Huehuetenango,San Juan Atitán
+Guatemala,Suchitepéquez,San Juan Bautista
+Guatemala,Alta Verapaz,San Juan Chamelco
+Guatemala,Quiché,San Juan Cotzal
+Guatemala,Chiquimula,San Juan Ermita
+Guatemala,Huehuetenango,San Juan Ixcoy
+Guatemala,Sololá,San Juan La Laguna
+Guatemala,Guatemala,San Juan Sacatepéquez
+Guatemala,Santa Rosa,San Juan Tecuaco
+Guatemala,Suchitepéquez,San Lorenzo
+Guatemala,San Marcos,San Lorenzo
+Guatemala,Sacatepéquez,San Lucas Sacatepéquez
+Guatemala,Sololá,San Lucas Tolimán
+Guatemala,Petén,San Luis
+Guatemala,Jalapa,San Luis Jilotepeque
+Guatemala,Jalapa,San Manuel Chaparrón
+Guatemala,San Marcos,San Marcos
+Guatemala,Sololá,San Marcos La Laguna
+Guatemala,Chimaltenango,San Martín Jilotepeque
+Guatemala,Quetzaltenango,San Martín Sacatepéquez
+Guatemala,Retalhuleu,San Martín Zapotitlán
+Guatemala,Quetzaltenango,San Mateo
+Guatemala,Huehuetenango,San Mateo Ixtatán
+Guatemala,Huehuetenango,San Miguel Acatán
+Guatemala,Baja Verapaz,San Miguel Chicaj
+Guatemala,Sacatepéquez,San Miguel Dueñas
+Guatemala,San Marcos,San Miguel Ixtahuacán
+Guatemala,Suchitepéquez,San Miguel Panán
+Guatemala,Quetzaltenango,San Miguel Sigüila
+Guatemala,San Marcos,San Pablo
+Guatemala,Suchitepéquez,San Pablo Jocopilas
+Guatemala,Sololá,San Pablo La Laguna
+Guatemala,Guatemala,San Pedro Ayampuc
+Guatemala,Alta Verapaz,San Pedro Carchá
+Guatemala,Quiché,San Pedro Jocopilas
+Guatemala,Sololá,San Pedro La Laguna
+Guatemala,Huehuetenango,San Pedro Necta
+Guatemala,Jalapa,San Pedro Pinula
+Guatemala,Guatemala,San Pedro Sacatepéquez
+Guatemala,San Marcos,San Pedro Sacatepéquez
+Guatemala,Huehuetenango,San Rafael La Independencia
+Guatemala,Santa Rosa,San Rafael Las Flores
+Guatemala,Huehuetenango,San Rafael Petzal
+Guatemala,San Marcos,San Rafael Pie de la Cuesta
+Guatemala,Guatemala,San Raimundo
+Guatemala,Retalhuleu,San Sebastián
+Guatemala,Huehuetenango,San Sebastián Coatán
+Guatemala,Huehuetenango,San Sebastián Huehuetenango
+Guatemala,Escuintla,San Vicente Pacaya
+Guatemala,El Progreso,Sanarate
+Guatemala,El Progreso,Sansare
+Guatemala,Petén,Santa Ana
+Guatemala,Huehuetenango,Santa Ana Huista
+Guatemala,Chimaltenango,Santa Apolonia
+Guatemala,Suchitepéquez,Santa Bárbara
+Guatemala,Huehuetenango,Santa Bárbara
+Guatemala,Alta Verapaz,Santa Catalina La Tinta
+Guatemala,Sacatepéquez,Santa Catarina Barahona
+Guatemala,Sololá,Santa Catarina Ixtahuacán
+Guatemala,Jutiapa,Santa Catarina Mita
+Guatemala,Sololá,Santa Catarina Palopó
+Guatemala,Guatemala,Santa Catarina Pinula
+Guatemala,Sololá,Santa Clara La Laguna
+Guatemala,Chimaltenango,Santa Cruz Balanyá
+Guatemala,Quiché,Santa Cruz del Quiché
+Guatemala,Sololá,Santa Cruz La Laguna
+Guatemala,Retalhuleu,Santa Cruz Muluá
+Guatemala,Santa Rosa,Santa Cruz Naranjo
+Guatemala,Alta Verapaz,Santa Cruz Verapaz
+Guatemala,Huehuetenango,Santa Eulalia
+Guatemala,Escuintla,Santa Lucía Cotzumalguapa
+Guatemala,Totonicapán,Santa Lucía La Reforma
+Guatemala,Sacatepéquez,Santa Lucía Milpas Altas
+Guatemala,Sololá,Santa Lucía Utatlán
+Guatemala,Totonicapán,Santa María Chiquimula
+Guatemala,Sacatepéquez,Santa María de Jesús
+Guatemala,Santa Rosa,Santa María Ixhuatán
+Guatemala,Sololá,Santa María Visitación
+Guatemala,Santa Rosa,Santa Rosa de Lima
+Guatemala,Sololá,Santiago Atitlán
+Guatemala,Huehuetenango,Santiago Chimaltenango
+Guatemala,Sacatepéquez,Santiago Sacatepéquez
+Guatemala,Suchitepéquez,Santo Domingo Suchitepéquez
+Guatemala,Sacatepéquez,Santo Domingo Xenacoj
+Guatemala,Suchitepéquez,Santo Tomás La Unión
+Guatemala,Petén,Sayaxché
+Guatemala,Alta Verapaz,Senahú
+Guatemala,Quetzaltenango,Sibilia
+Guatemala,San Marcos,Sibinal
+Guatemala,San Marcos,Sipacapa
+Guatemala,Escuintla,Sipacate
+Guatemala,Escuintla,Siquinalá
+Guatemala,Sololá,Sololá
+Guatemala,Huehuetenango,Soloma
+Guatemala,Sacatepéquez,Sumpango
+Guatemala,San Marcos,Tacaná
+Guatemala,Alta Verapaz,Tactic
+Guatemala,San Marcos,Tajumulco
+Guatemala,Alta Verapaz,Tamahú
+Guatemala,Santa Rosa,Taxisco
+Guatemala,Chimaltenango,Tecpán Guatemala
+Guatemala,Huehuetenango,Tectitán
+Guatemala,Zacapa,Teculután
+Guatemala,San Marcos,Tejutla
+Guatemala,Escuintla,Tiquisate
+Guatemala,Huehuetenango,Todos Santos Cuchumatán
+Guatemala,Totonicapán,Totonicapán
+Guatemala,Alta Verapaz,Tucurú
+Guatemala,Huehuetenango,Unión Cantinil
+Guatemala,Quiché,Uspantán
+Guatemala,Zacapa,Usumatlán
+Guatemala,Guatemala,Villa Canales
+Guatemala,Guatemala,Villa Nueva
+Guatemala,Chimaltenango,Yepocapa
+Guatemala,Jutiapa,Yupiltepeque
+Guatemala,Zacapa,Zacapa
+Guatemala,Quiché,Zacualpa
+Guatemala,Jutiapa,Zapotitlán
+Guatemala,Chimaltenango,Zaragoza
+Guatemala,Quetzaltenango,Zunil
+Guatemala,Suchitepéquez,Zunilito
+Kenya,Uasin Gishu,Ainabkoi
+Kenya,Kericho,Ainamoi
+Kenya,Nandi,Aldai
+Kenya,Siaya,Alego Usonga
+Kenya,Migori,Awendo
+Kenya,Nakuru,Bahati
+Kenya,Garissa,Balambala
+Kenya,Mandera,Banissa
+Kenya,Baringo,Baringo Central
+Kenya,Baringo,Baringo North
+Kenya,Baringo,Baringo South
+Kenya,Kericho,Belgut
+Kenya,Kisii,Bobasi
+Kenya,Kisii,Bomachoge Borabu
+Kenya,Kisii,Bomachoge Chache
+Kenya,Bomet,Bomet Central
+Kenya,Bomet,Bomet East
+Kenya,Kisii,Bonchari
+Kenya,Siaya,Bondo
+Kenya,Nyamira,Borabu
+Kenya,Busia,Budalangi
+Kenya,Bungoma,Bumula
+Kenya,Tana River,Bura
+Kenya,Kericho,Buret
+Kenya,Kakamega,Butere
+Kenya,Busia,Butula
+Kenya,Meru,Buuri
+Kenya,Meru,Cental Imenti
+Kenya,Mombasa,Changamwe
+Kenya,Bomet,Chepalungu
+Kenya,Trans Nzoia,Cherangany
+Kenya,Nandi,Chesumei
+Kenya,Garissa,Dadaab
+Kenya,Nairobi,Dagoretti
+Kenya,Garissa,Dujis
+Kenya,Baringo,Eldama Ravine
+Kenya,Wajir,Eldas
+Kenya,Nairobi,Embakasi Central
+Kenya,Nairobi,Embakasi East
+Kenya,Nairobi,Embakasi North
+Kenya,Nairobi,Embakasi South
+Kenya,Nairobi,Embakasi West
+Kenya,Nandi,Emgwen
+Kenya,Vihiga,Emuhaya
+Kenya,Narok,Emurua Dikirr
+Kenya,Trans Nzoia,Endebess
+Kenya,Garissa,Fafi
+Kenya,Busia,Funyula
+Kenya,Embu,Gachoka
+Kenya,Tana River,Galole
+Kenya,Kilifi,Ganze
+Kenya,Tana River,Garsen
+Kenya,Murang'a,Gatanga
+Kenya,Kiambu,Gatundu North
+Kenya,Kiambu,Gatundu South
+Kenya,Siaya,Gem
+Kenya,Kirinyaga,Gichugu
+Kenya,Nakuru,Gilgil
+Kenya,Kiambu,Githunguri
+Kenya,Vihiga,Hamisi
+Kenya,Homa Bay,Homa Bay
+Kenya,Meru,Igembe Central
+Kenya,Meru,Igembe North
+Kenya,Meru,Igembe South
+Kenya,Garissa,Ijara
+Kenya,Kakamega,Ikolomani
+Kenya,Isiolo,Isiolo North
+Kenya,Isiolo,Isiolo South
+Kenya,Mombasa,Jomvu
+Kenya,Kiambu,Juja
+Kenya,Kiambu,Kabete
+Kenya,Homa Bay,Kabondo Kasipul
+Kenya,Bungoma,Kabuchai
+Kenya,West Pokot,Kacheliba
+Kenya,Makueni,Kaiti
+Kenya,Kajiado,Kajiado Central
+Kenya,Kajiado,Kajiado East
+Kenya,Kajiado,Kajiado North
+Kenya,Kajiado,Kajiado South
+Kenya,Kajiado,Kajiado West
+Kenya,Kilifi,Kaloleni
+Kenya,Nairobi,Kamukunji
+Kenya,Murang'a,Kandara
+Kenya,Bungoma,Kanduyi
+Kenya,Murang'a,Kangema
+Kenya,Machakos,Kangundo
+Kenya,West Pokot,Kapenguria
+Kenya,Uasin Gishu,Kapseret
+Kenya,Homa Bay,Karachuonyo
+Kenya,Nairobi,Kasarani
+Kenya,Homa Bay,Kasipul
+Kenya,Machakos,Kathiani
+Kenya,Elgeyo-Marakwet,Keiyo North
+Kenya,Elgeyo-Marakwet,Keiyo South
+Kenya,Uasin Gishu,Kesses
+Kenya,Kakamega,Khwisero
+Kenya,Kiambu,Kiambaa
+Kenya,Kiambu,Kiambu
+Kenya,Nairobi,Kibra
+Kenya,Makueni,Kibwezi East
+Kenya,Makueni,Kibwezi West
+Kenya,Nyeri,Kieni
+Kenya,Murang'a,Kigumo
+Kenya,Murang'a,Kiharu
+Kenya,Kiambu,Kikuyu
+Kenya,Narok,Kilgoris
+Kenya,Kilifi,Kilifi North
+Kenya,Kilifi,Kilifi South
+Kenya,Nairobi,Kilimani
+Kenya,Makueni,Kilome
+Kenya,Bungoma,Kimilili
+Kenya,Trans Nzoia,Kiminini
+Kenya,Kwale,Kinango
+Kenya,Nyandarua,Kinangop
+Kenya,Nyandarua,Kipipiri
+Kenya,Kericho,Kipkelion East
+Kenya,Kericho,Kipkelion West
+Kenya,Kirinyaga,Kirinyaga Central
+Kenya,Mombasa,Kisauni
+Kenya,Kisumu,Kisumu Central
+Kenya,Kisumu,Kisumu East
+Kenya,Kisumu,Kisumu West
+Kenya,Kitui,Kitui Central
+Kenya,Kitui,Kitui East
+Kenya,Kitui,Kitui Rural
+Kenya,Kitui,Kitui South
+Kenya,Kitui,Kitui West
+Kenya,Kisii,Kitutu Chache North
+Kenya,Kisii,Kitutu Chache South
+Kenya,Nyamira,Kitutu Masaba
+Kenya,Bomet,Konoin
+Kenya,Nakuru,Kuresoi North
+Kenya,Nakuru,Kuresoi South
+Kenya,Migori,Kuria East
+Kenya,Migori,Kuria West
+Kenya,Trans Nzoia,Kwanza
+Kenya,Mandera,Lafey
+Kenya,Garissa,Lagdera
+Kenya,Laikipia,Laikipia East
+Kenya,Laikipia,Laikipia North
+Kenya,Laikipia,Laikipia West
+Kenya,Marsabit,Laisamis
+Kenya,Lamu,Lamu East
+Kenya,Lamu,Lamu West
+Kenya,Nairobi,Langata
+Kenya,Kiambu,Lari
+Kenya,Mombasa,Likoni
+Kenya,Kakamega,Likuyani
+Kenya,Kiambu,Limuru
+Kenya,Turkana,Loima
+Kenya,Vihiga,Luanda
+Kenya,Kakamega,Lugari
+Kenya,Kwale,Lunga Lunga
+Kenya,Kakamega,Lurambi
+Kenya,Tharaka-Nithi,Maara
+Kenya,Machakos,Machakos Town
+Kenya,Kilifi,Magarini
+Kenya,Nairobi,Makadara
+Kenya,Makueni,Makueni
+Kenya,Kakamega,Malava
+Kenya,Kilifi,Malindi
+Kenya,Mandera,Mandera East
+Kenya,Mandera,Mandera North
+Kenya,Mandera,Mandera South
+Kenya,Mandera,Mandera West
+Kenya,Embu,Manyatta
+Kenya,Murang'a,Maragwa
+Kenya,Elgeyo-Marakwet,Marakwet East
+Kenya,Elgeyo-Marakwet,Marakwet West
+Kenya,Machakos,Masinga
+Kenya,Busia,Matayos
+Kenya,Nairobi,Mathare
+Kenya,Murang'a,Mathioya
+Kenya,Nyeri,Mathira
+Kenya,Kwale,Matuga
+Kenya,Kakamega,Matungu
+Kenya,Machakos,Matungulu
+Kenya,Machakos,Mavoko
+Kenya,Makueni,Mbooni
+Kenya,Baringo,Mogotio
+Kenya,Uasin Gishu,Moiben
+Kenya,Nakuru,Molo
+Kenya,Nandi,Mosop
+Kenya,Marsabit,Moyale
+Kenya,Kwale,Msambweni
+Kenya,Bungoma,Mt. Elgon
+Kenya,Kisumu,Muhoroni
+Kenya,Nyeri,Mukurweni
+Kenya,Kakamega,Mumias East
+Kenya,Kakamega,Mumias West
+Kenya,Mombasa,Mvita
+Kenya,Machakos,Mwala
+Kenya,Taita Taveta,Mwatate
+Kenya,Kirinyaga,Mwea
+Kenya,Kitui,Mwingi East
+Kenya,Kitui,Mwingi North
+Kenya,Kitui,Mwingi West
+Kenya,Nakuru,Naivasha
+Kenya,Nakuru,Nakuru Town East
+Kenya,Nakuru,Nakuru Town West
+Kenya,Busia,Nambale
+Kenya,Nandi,Nandi Hills
+Kenya,Narok,Narok East
+Kenya,Narok,Narok North
+Kenya,Narok,Narok South
+Kenya,Narok,Narok West
+Kenya,Kakamega,Navakholo
+Kenya,Nyandarua,Ndaragwa
+Kenya,Homa Bay,Ndhiwa
+Kenya,Kirinyaga,Ndia
+Kenya,Tharaka-Nithi,Nithi
+Kenya,Nakuru,Njoro
+Kenya,Marsabit,North Horr
+Kenya,Meru,North Imenti
+Kenya,Nyamira,North Mugirango
+Kenya,Kisumu,Nyakach
+Kenya,Mombasa,Nyali
+Kenya,Kisumu,Nyando
+Kenya,Kisii,Nyaribari Chache
+Kenya,Kisii,Nyaribari Masaba
+Kenya,Migori,Nyatike
+Kenya,Nyeri,Nyeri Town
+Kenya,Nyandarua,Ol Jorok
+Kenya,Nyandarua,Ol Kalou
+Kenya,Nyeri,Othaya
+Kenya,West Pokot,Pokot South
+Kenya,Kilifi,Rabai
+Kenya,Homa Bay,Rangwe
+Kenya,Siaya,Rarieda
+Kenya,Nakuru,Rongai
+Kenya,Migori,Rongo
+Kenya,Nairobi,Roysambu
+Kenya,Nairobi,Ruaraka
+Kenya,Kiambu,Ruiru
+Kenya,Embu,Runyenjes
+Kenya,Vihiga,Sabatia
+Kenya,Trans Nzoia,Saboti
+Kenya,Marsabit,Saku
+Kenya,Samburu,Samburu East
+Kenya,Samburu,Samburu North
+Kenya,Samburu,Samburu West
+Kenya,Kisumu,Seme
+Kenya,Kakamega,Shinyalu
+Kenya,Embu,Siakago
+Kenya,West Pokot,Sigor
+Kenya,Kericho,Sigowet/Soin
+Kenya,Bungoma,Sirisia
+Kenya,Bomet,Sotik
+Kenya,Meru,South Imenti
+Kenya,Kisii,South Mugirango
+Kenya,Uasin Gishu,Soy
+Kenya,Nairobi,Starehe
+Kenya,Homa Bay,Suba North
+Kenya,Homa Bay,Suba South
+Kenya,Nakuru,Subukia
+Kenya,Migori,Suna East
+Kenya,Migori,Suna West
+Kenya,Wajir,Tarbaj
+Kenya,Taita Taveta,Taveta
+Kenya,Busia,Teso North
+Kenya,Busia,Teso South
+Kenya,Nyeri,Tetu
+Kenya,Tharaka-Nithi,Tharaka
+Kenya,Kiambu,Thika Town
+Kenya,Baringo,Tiaty
+Kenya,Meru,Tigania East
+Kenya,Meru,Tigania West
+Kenya,Nandi,Tinderet
+Kenya,Bungoma,Tongaren
+Kenya,Uasin Gishu,Turbo
+Kenya,Turkana,Turkana Central
+Kenya,Turkana,Turkana East
+Kenya,Turkana,Turkana North
+Kenya,Turkana,Turkana South
+Kenya,Turkana,Turkana West
+Kenya,Siaya,Ugenya
+Kenya,Siaya,Ugunja
+Kenya,Migori,Uriri
+Kenya,Vihiga,Vihiga
+Kenya,Taita Taveta,Voi
+Kenya,Wajir,Wajir East
+Kenya,Wajir,Wajir North
+Kenya,Wajir,Wajir South
+Kenya,Wajir,Wajir West
+Kenya,Bungoma,Webuye East
+Kenya,Bungoma,Webuye West
+Kenya,Nyamira,West Mugirango
+Kenya,Nairobi,Westlands
+Kenya,Taita Taveta,Wundanyi
+Kenya,Machakos,Yatta
+Haiti,Grande'Anse,Abricots
+Haiti,North,Acul du Nord
+Haiti,North-West,Anse-a-Foleur
+Haiti,South-East,Anse-a-Pitre
+Haiti,Nippes,Anse-a-Veau
+Haiti,West,Anse a Galets
+Haiti,Grande'Anse,Anse d'Hainault
+Haiti,Artibonite,Anse Rouge
+Haiti,South,Aquin
+Haiti,West,Arcahaie
+Haiti,Nippes,Arnaud
+Haiti,South,Arniquet
+Haiti,North,Bahon
+Haiti,North-West,Baie de Henne
+Haiti,South-East,Bainet
+Haiti,Nippes,Baraderes
+Haiti,North,Bas Limbe
+Haiti,North-West,Bassin Bleu
+Haiti,Grande'Anse,Beaumont
+Haiti,Centre,Belladere
+Haiti,South-East,Belle Anse
+Haiti,North-West,Bombardopolis
+Haiti,Grande'Anse,Bonbon
+Haiti,North,Borgne
+Haiti,Centre,Boucan Carre
+Haiti,West,Cabaret
+Haiti,South,Camp-Perrin
+Haiti,North,Cap-Haitien
+Haiti,North-East,Capotille
+Haiti,North-East,Caracol
+Haiti,North-East,Carice
+Haiti,West,Carrefour
+Haiti,South,Cavaillon
+Haiti,South-East,Cayes-Jacmel
+Haiti,Centre,Cerca Carvajal
+Haiti,Centre,Cerca La Source
+Haiti,Grande'Anse,Chambellan
+Haiti,North-West,Chamsolme
+Haiti,South,Chantal
+Haiti,South,Chardonnieres
+Haiti,West,Cite Soleil
+Haiti,Grande'Anse,Corail
+Haiti,West,Cornillon / Grand Bois
+Haiti,South,Coteaux
+Haiti,South-East,Cotes de Fer
+Haiti,West,Croix-Des-Bouquets
+Haiti,Grande'Anse,Dame Marie
+Haiti,West,Delmas
+Haiti,Artibonite,Desdunes
+Haiti,Artibonite,Dessalines
+Haiti,North,Dondon
+Haiti,Artibonite,Ennery
+Haiti,North-East,Ferrier
+Haiti,West,Fonds-Verrettes
+Haiti,Nippes,Fonds des Negres
+Haiti,North-East,Fort-Liberte
+Haiti,West,Ganthier
+Haiti,Artibonite,Gonaives
+Haiti,Nippes,Grand-Boucan
+Haiti,West,Grand-Goave
+Haiti,South-East,Grand Gosier
+Haiti,North,Grande Riviere Du Nord
+Haiti,Artibonite,Grande Saline
+Haiti,West,Gressier
+Haiti,Artibonite,Gros Morne
+Haiti,Centre,Hinche
+Haiti,South,Ile a Vache
+Haiti,South-East,Jacmel
+Haiti,North-West,Jean Rabel
+Haiti,Grande'Anse,Jeremie
+Haiti,West,Kenscoff
+Haiti,Nippes,L'Asile
+Haiti,Artibonite,L'Estere
+Haiti,Artibonite,La Chapelle
+Haiti,North-West,La Tortue
+Haiti,South-East,La Vallee
+Haiti,North,La Victoire
+Haiti,Centre,Lascahobas
+Haiti,West,Leogane
+Haiti,South,Les Anglais
+Haiti,South,Les Cayes
+Haiti,Grande'Anse,Les Irois
+Haiti,North,Limbe
+Haiti,North,Limonade
+Haiti,Centre,Maissade
+Haiti,South,Maniche
+Haiti,South-East,Marigot
+Haiti,Artibonite,Marmelade
+Haiti,North,Milot
+Haiti,Nippes,Miragoane
+Haiti,Centre,Mirebalais
+Haiti,North-West,Mole Saint Nicolas
+Haiti,North-East,Mombin Crochu
+Haiti,North-East,Mont-Organise
+Haiti,Grande'Anse,Moron
+Haiti,North-East,Ouanaminthe
+Haiti,Nippes,Paillant
+Haiti,North-East,Perches
+Haiti,Grande'Anse,Pestel
+Haiti,West,Petion-Ville
+Haiti,West,Petit-Goave
+Haiti,Nippes,Petit Trou de Nippes
+Haiti,Artibonite,Petite Riviere de l'Artibonite
+Haiti,Nippes,Petite Riviere de Nippes
+Haiti,North,Pignon
+Haiti,North,Pilate
+Haiti,North,Plaine du Nord
+Haiti,North,Plaisance
+Haiti,Nippes,Plaisance du Sud
+Haiti,West,Pointe a Raquette
+Haiti,South,Port-a-Piment
+Haiti,West,Port-au-Prince
+Haiti,North-West,Port-de-Paix
+Haiti,North,Port-Margot
+Haiti,South,Port-Salut
+Haiti,North,Quartier Morin
+Haiti,North,Ranquitte
+Haiti,South,Roche a Bateau
+Haiti,Grande'Anse,Roseaux
+Haiti,North-West,Saint-Louis du Nord
+Haiti,Artibonite,Saint-Marc
+Haiti,Artibonite,Saint-Michel de l'Attalaye
+Haiti,North,Saint-Raphael
+Haiti,South,Saint Jean du Sud
+Haiti,South,Saint Louis du Sud
+Haiti,North-East,Sainte Suzanne
+Haiti,Centre,Saut d'Eau
+Haiti,Centre,Savanette
+Haiti,West,Tabarre
+Haiti,Artibonite,Terre Neuve
+Haiti,North-East,Terrier Rouge
+Haiti,South-East,Thiotte
+Haiti,Centre,Thomassique
+Haiti,West,Thomazeau
+Haiti,Centre,Thomonde
+Haiti,South,Tiburon
+Haiti,South,Torbeck
+Haiti,North-East,Trou du Nord
+Haiti,North-East,Vallieres
+Haiti,Artibonite,Verrettes
+Côte d'Ivoire,Indenie-Djuablin,Abengourou
+Côte d'Ivoire,District Autonome D'Abidjan,Abidjan
+Côte d'Ivoire,Sud-Comoe,Aboisso
+Côte d'Ivoire,Sud-Comoe,Adiaké
+Côte d'Ivoire,Me,Adzopé
+Nepal,Agneby-Tiassa,Agboville
+Côte d'Ivoire,Indenie-Djuablin,Agnibilékrou
+Côte d'Ivoire,Me,Akoupé
+Côte d'Ivoire,Me,Alépé
+Côte d'Ivoire,Moronou,Arrah
+Côte d'Ivoire,District Autonome De Yamoussoukro,Attiégouakro
+Côte d'Ivoire,Guemon,Bangolo
+Côte d'Ivoire,Gbeke,Béoumi
+Côte d'Ivoire,Indenie-Djuablin,Béttié
+Côte d'Ivoire,Tonkpi,Biankouma
+Côte d'Ivoire,Cavally,Bloléquin
+Côte d'Ivoire,N'Zi,Bocanda
+Côte d'Ivoire,Gontougo,Bondoukou
+Côte d'Ivoire,Moronou,Bongouanou
+Côte d'Ivoire,Gbeke,Botro
+Côte d'Ivoire,Marahoue,Bouaflé
+Côte d'Ivoire,Gbeke,Bouaké
+Côte d'Ivoire,Bounkani,Bouna
+Côte d'Ivoire,Bagoue,Boundiali
+Côte d'Ivoire,Nawa,Buyo
+Côte d'Ivoire,Hambol,Dabakala
+Côte d'Ivoire,Grands Ponts,Dabou
+Côte d'Ivoire,Haut-Sassandra,Daloa
+Côte d'Ivoire,Tonkpi,Danané
+Côte d'Ivoire,Iffou,Daoukro
+Côte d'Ivoire,Bere,Dianra
+Côte d'Ivoire,Belier,Didievi
+Côte d'Ivoire,Poro,Dikodougou
+Côte d'Ivoire,N'Zi,Dimbokro
+Côte d'Ivoire,Loh-Djiboua,Divo
+Côte d'Ivoire,Belier,Djekanou
+Côte d'Ivoire,Bounkani,Doropo
+Côte d'Ivoire,Guemon,Duékoué
+Côte d'Ivoire,Guemon,Facobly
+Côte d'Ivoire,Tchologo,Ferkessédougou
+Côte d'Ivoire,Gbokle,Fresco
+Côte d'Ivoire,Goh,Gagnoa
+Côte d'Ivoire,Kabadougou,Gbeleban
+Côte d'Ivoire,Sud-Comoe,Grand-Bassam
+Côte d'Ivoire,Grands Ponts,Grand-Lahou
+Côte d'Ivoire,Nawa,Guéyo
+Côte d'Ivoire,Cavally,Guiglo
+Côte d'Ivoire,Loh-Djiboua,Guitry
+Côte d'Ivoire,Haut-Sassandra,Issia
+Côte d'Ivoire,Grands Ponts,Jacqueville
+Côte d'Ivoire,Worodougou,Kani
+Côte d'Ivoire,Folon,Kaniasso
+Côte d'Ivoire,Hambol,Katiola
+Côte d'Ivoire,Tchologo,Kong
+Côte d'Ivoire,Poro,Korhogo
+Côte d'Ivoire,Bafing,Koro
+Côte d'Ivoire,N'Zi,Kouassi-Kouassikro
+Côte d'Ivoire,Guemon,Kouibly
+Côte d'Ivoire,Gontougo,Koun Fao
+Côte d'Ivoire,Bere,Kounahiri
+Côte d'Ivoire,Bagoue,Kouto
+Côte d'Ivoire,Loh-Djiboua,Lakota
+Côte d'Ivoire,Iffou,M'Bahiakro
+Côte d'Ivoire,Moronou,M'Batto
+Côte d'Ivoire,Poro,M'Bengué
+Côte d'Ivoire,Kabadougou,Madinani
+Côte d'Ivoire,Tonkpi,Man
+Côte d'Ivoire,Bere,Mankono
+Côte d'Ivoire,Nawa,Méagui
+Côte d'Ivoire,Folon,Minignan
+Côte d'Ivoire,Bounkani,Nassian
+Côte d'Ivoire,Hambol,Niakaramandougou
+Côte d'Ivoire,Kabadougou,Odienne
+Côte d'Ivoire,Tchologo,Ouangolodougou
+Côte d'Ivoire,Bafing,Ouaninou
+Côte d'Ivoire,Goh,Oumé
+Côte d'Ivoire,Iffou,Prikro
+Côte d'Ivoire,Gbeke,Sakassou
+Côte d'Ivoire,Kabadougou,Samatiguila
+Côte d'Ivoire,San Pedro,San Pédro
+Côte d'Ivoire,Gontougo,Sandegue
+Côte d'Ivoire,Gbokle,Sassandra
+Côte d'Ivoire,Worodougou,Séguéla
+Côte d'Ivoire,Kabadougou,Séguélon
+Nepal,Agneby-Tiassa,Sikensi
+Côte d'Ivoire,Poro,Sinématiali
+Côte d'Ivoire,Marahoue,Sinfra
+Côte d'Ivoire,Tonkpi,Sipilou
+Côte d'Ivoire,Nawa,Soubré
+Nepal,Agneby-Tiassa,Taabo
+Côte d'Ivoire,San Pedro,Tabou
+Côte d'Ivoire,Cavally,Taï
+Côte d'Ivoire,Gontougo,Tanda
+Côte d'Ivoire,Bounkani,Téhini
+Côte d'Ivoire,Bagoue,Tengrela
+Côte d'Ivoire,Sud-Comoe,Tiapoum
+Nepal,Agneby-Tiassa,Tiassalé
+Côte d'Ivoire,Belier,Tiébissou
+Côte d'Ivoire,Bafing,Touba
+Côte d'Ivoire,Cavally,Toulepleu
+Côte d'Ivoire,Belier,Toumodi
+Côte d'Ivoire,Gontougo,Transua
+Côte d'Ivoire,Haut-Sassandra,Vavoua
+Côte d'Ivoire,Me,Yakassé-Attobrou
+Côte d'Ivoire,District Autonome De Yamoussoukro,Yamoussoukro
+Côte d'Ivoire,Tonkpi,Zouan-Hounien
+Côte d'Ivoire,Haut-Sassandra,Zoukougbeu
+Côte d'Ivoire,Marahoue,Zuénoula
+Mozambique,Zambezia,Alto Molocue
+Mozambique,Cabo Delgado,Ancuabe
+Mozambique,Nampula,Angoche
+Mozambique,Tete,Angonia
+Mozambique,Cabo Delgado,Balama
+Mozambique,Manica,Barue
+Mozambique,Gaza,Bilene
+Mozambique,Maputo,Boane
+Mozambique,Sofala,Buzi
+Mozambique,Tete,Cahora Bassa
+Mozambique,Sofala,Caia
+Mozambique,Tete,Changara
+Mozambique,Sofala,Chemba
+Mozambique,Sofala,Cheringoma
+Mozambique,Sofala,Chibabava
+Mozambique,Gaza,Chibuto
+Mozambique,Gaza,Chicualacuala
+Mozambique,Tete,Chifunde
+Mozambique,Gaza,Chigubo
+Mozambique,Niassa,Chimbonila
+Mozambique,Zambezia,Chinde
+Mozambique,Cabo Delgado,Chiure
+Mozambique,Tete,Chiuta
+Mozambique,Gaza,Chokwe
+Mozambique,Gaza,Chongoene
+Mozambique,Sofala,Cidade Da Beira
+Mozambique,Maputo,Cidade Da Matola
+Mozambique,Manica,Cidade De Chimoio
+Mozambique,Inhambane,Cidade De Inhambane
+Mozambique,Niassa,Cidade De Lichinga
+Mozambique,Maputo City,Cidade De Maputo
+Mozambique,Nampula,Cidade De Nampula
+Mozambique,Cabo Delgado,Cidade De Pemba
+Mozambique,Zambezia,Cidade De Quelimane
+Mozambique,Tete,Cidade De Tete
+Mozambique,Gaza,Cidade De Xai-Xai
+Mozambique,Niassa,Cuamba
+Mozambique,Zambezia,Derre
+Mozambique,Tete,Doa
+Mozambique,Sofala,Dondo
+Mozambique,Nampula,Erati
+Mozambique,Inhambane,Funhalouro
+Mozambique,Zambezia,Gile
+Mozambique,Manica,Gondola
+Mozambique,Sofala,Gorongosa
+Mozambique,Inhambane,Govuro
+Mozambique,Gaza,Guija
+Mozambique,Manica,Guro
+Mozambique,Zambezia,Gurue
+Mozambique,Inhambane,Homoine
+Mozambique,Cabo Delgado,Ibo
+Mozambique,Zambezia,Ile
+Mozambique,Nampula,Ilha De Moçambique
+Mozambique,Niassa,Ilha Licom
+Mozambique,Niassa,Ilha Risunodo
+Mozambique,Inhambane,Inharrime
+Mozambique,Inhambane,Inhassoro
+Mozambique,Zambezia,Inhassunge
+Mozambique,Inhambane,Jangamo
+Mozambique,Niassa,Lago
+Mozambique,Niassa,Lago Niassa
+Mozambique,Nampula,Lalaua
+Mozambique,Nampula,Larde
+Mozambique,Gaza,Limpopo
+Mozambique,Nampula,Liúpo
+Mozambique,Zambezia,Luabo
+Mozambique,Zambezia,Lugela
+Mozambique,Gaza,Mabalane
+Mozambique,Inhambane,Mabote
+Mozambique,Tete,Macanga
+Mozambique,Manica,Macate
+Mozambique,Sofala,Machanga
+Mozambique,Manica,Machaze
+Mozambique,Cabo Delgado,Macomia
+Mozambique,Manica,Macossa
+Mozambique,Zambezia,Maganja Da Costa
+Mozambique,Tete,Magoe
+Mozambique,Maputo,Magude
+Mozambique,Niassa,Majune
+Mozambique,Nampula,Malema
+Mozambique,Niassa,Mandimba
+Mozambique,Gaza,Mandlakaze
+Mozambique,Maputo,Manhiça
+Mozambique,Manica,Manica
+Mozambique,Gaza,Mapai
+Mozambique,Zambezia,Maquival
+Mozambique,Tete,Marara
+Mozambique,Tete,Maravia
+Mozambique,Sofala,Maringue
+Mozambique,Maputo,Marracuene
+Mozambique,Sofala,Marromeu
+Mozambique,Niassa,Marrupa
+Mozambique,Gaza,Massangena
+Mozambique,Inhambane,Massinga
+Mozambique,Gaza,Massingir
+Mozambique,Maputo,Matutuine
+Mozambique,Niassa,Maua
+Mozambique,Niassa,Mavago
+Mozambique,Inhambane,Maxixe
+Mozambique,Niassa,Mecanhelas
+Mozambique,Nampula,Meconta
+Mozambique,Nampula,Mecuburi
+Mozambique,Cabo Delgado,Mecufi
+Mozambique,Niassa,Mecula
+Mozambique,Cabo Delgado,Meluco
+Mozambique,Nampula,Memba
+Mozambique,Niassa,Metarica
+Mozambique,Cabo Delgado,Metuge
+Mozambique,Zambezia,Milange
+Mozambique,Maputo,Moamba
+Mozambique,Tete,Moatize
+Mozambique,Cabo Delgado,Mocimboa Da Praia
+Mozambique,Zambezia,Mocuba
+Mozambique,Zambezia,Mocubela
+Mozambique,Nampula,Mogincual
+Mozambique,Nampula,Mogovolas
+Mozambique,Zambezia,Molumbo
+Mozambique,Nampula,Moma
+Mozambique,Nampula,Monapo
+Mozambique,Cabo Delgado,Montepuez
+Mozambique,Zambezia,Mopeia
+Mozambique,Zambezia,Morrumbala
+Mozambique,Inhambane,Morrumbene
+Mozambique,Nampula,Mossuril
+Mozambique,Manica,Mossurize
+Mozambique,Sofala,Muanza
+Mozambique,Nampula,Muecate
+Mozambique,Cabo Delgado,Mueda
+Mozambique,Niassa,Muembe
+Mozambique,Cabo Delgado,Muidumbe
+Mozambique,Zambezia,Mulevala
+Mozambique,Nampula,Murrupula
+Mozambique,Tete,Mutarara
+Mozambique,Nampula,Nacala
+Mozambique,Nampula,Nacala-A-Velha
+Mozambique,Nampula,Nacaroa
+Mozambique,Maputo,Namaacha
+Mozambique,Zambezia,Namacurra
+Mozambique,Zambezia,Namarroi
+Mozambique,Cabo Delgado,Namuno
+Mozambique,Cabo Delgado,Nangade
+Mozambique,Niassa,Ngauma
+Mozambique,Sofala,Nhamatanda
+Mozambique,Zambezia,Nicoadala
+Mozambique,Niassa,Nipepe
+Mozambique,Cabo Delgado,Palma
+Mozambique,Inhambane,Panda
+Mozambique,Zambezia,Pebane
+Mozambique,Cabo Delgado,Quissanga
+Mozambique,Nampula,Rapale
+Mozambique,Nampula,Ribaue
+Mozambique,Niassa,Sanga
+Mozambique,Manica,Sussundenga
+Mozambique,Manica,Tambara
+Mozambique,Tete,Tsangano
+Mozambique,Manica,Vanduzi
+Mozambique,Inhambane,Vilankulo
+Mozambique,Inhambane,Zavala
+Mozambique,Tete,Zumbu
+Peru,Apurimac,Abancay
+Liberia,Bomi,Klay
+Liberia,Bong,Kakata
+Liberia,Grand Bassa,District #3
+Liberia,Grand Gedeh,Gbao
+Liberia,Grand Kru,Buah
+Liberia,Lofa,Zorzor
+Liberia,Maryland,Harper
+Liberia,Montserrado,Greater Monrovia
+Liberia,Nimba,Sanniquellie
+Liberia,River Gee,Glaro
+Liberia,Sinoe,Greenville
+Liberia,Gbarpolu,Bopolu
+Liberia,Rivercess,Central Rivercess
+Liberia,Rivercess,Jo River
+Liberia,Grand Bassa,District #4
+Liberia,Rivercess,Zartlahn
+Liberia,Grand Bassa,District #2
+Liberia,Grand Bassa,District #1
+Liberia,Grand Bassa,St. John River
+Liberia,Rivercess,Doedain
+Liberia,Grand Bassa,Neekreen
+Liberia,Rivercess,Bearwor
+Liberia,Rivercess,Fen River
+Liberia,Rivercess,Norwein
+Liberia,Rivercess,Sam Gbalor
+Panama,Ngöbe Buglé,Jirondai
+Tanzania,Arusha,Meru
+Tanzania,Arusha,Monduli
+Tanzania,Dodoma,Chemba
+Tanzania,Arusha,Arusha Urban
+Tanzania,Arusha,Karatu
+Tanzania,Arusha,Ngorongoro
+Tanzania,Arusha,Arusha
+Tanzania,Arusha,Longido
+Tanzania,Kilimanjaro,Rombo
+Tanzania,Kilimanjaro,Mwanga
+Tanzania,Kilimanjaro,Same
+Tanzania,Kilimanjaro,Moshi
+Tanzania,Kilimanjaro,Hai
+Tanzania,Kilimanjaro,Moshi Urban
+Tanzania,Kilimanjaro,Siha
+Tanzania,Tanga,Lushoto
+Tanzania,Tanga,Korogwe
+Tanzania,Tanga,Muheza
+Tanzania,Tanga,Tanga Urban
+Tanzania,Tanga,Pangani
+Tanzania,Tanga,Handeni
+Tanzania,Tanga,Kilindi
+Tanzania,Tanga,Mkinga
+Tanzania,Tanga,Korogwe Township Authority
+Tanzania,Tanga,Handeni Mji
+Tanzania,Morogoro,Kilosa
+Tanzania,Morogoro,Morogoro
+Tanzania,Morogoro,Kilombero
+Tanzania,Morogoro,Ulanga
+Tanzania,Morogoro,Morogoro Urban
+Tanzania,Morogoro,Mvomero
+Tanzania,Morogoro,Gairo
+Tanzania,Pwani,Bagamoyo
+Tanzania,Pwani,Kibaha
+Tanzania,Pwani,Kisarawe
+Tanzania,Pwani,Mkuranga
+Tanzania,Pwani,Rufiji
+Tanzania,Pwani,Mafia
+Tanzania,Pwani,Kibaha Urban
+Tanzania,Dar-es-salaam,Kinondoni
+Tanzania,Dar-es-salaam,Ilala
+Tanzania,Dar-es-salaam,Temeke
+Tanzania,Lindi,Kilwa
+Tanzania,Lindi,Lindi
+Tanzania,Lindi,Nachingwea
+Tanzania,Lindi,Liwale
+Tanzania,Lindi,Ruangwa
+Tanzania,Lindi,Lindi Urban
+Tanzania,Mtwara,Mtwara
+Tanzania,Mtwara,Newala
+Tanzania,Mtwara,Masasi
+Tanzania,Mtwara,Tandahimba
+Tanzania,Mtwara,Mtwara Urban
+Tanzania,Mtwara,Nanyumbu
+Tanzania,Mtwara,Masasi  Township Authority
+Tanzania,Ruvuma,Tunduru
+Tanzania,Ruvuma,Songea
+Tanzania,Ruvuma,Mbinga
+Tanzania,Ruvuma,Songea Urban
+Tanzania,Ruvuma,Namtumbo
+Tanzania,Ruvuma,Nyasa
+Tanzania,Iringa,Iringa
+Tanzania,Iringa,Mufindi
+Tanzania,Iringa,Iringa Urban
+Tanzania,Iringa,Kilolo
+Tanzania,Iringa,Mafinga Township Authority
+Tanzania,Mbeya,Chunya
+Tanzania,Songwe,Songwe
+Tanzania,Mbeya,Mbeya
+Tanzania,Mbeya,Kyela
+Tanzania,Mbeya,Rungwe
+Tanzania,Songwe,Ileje
+Tanzania,Songwe,Mbozi
+Tanzania,Mbeya,Mbarali
+Tanzania,Mbeya,Mbeya Urban
+Tanzania,Songwe,Momba
+Tanzania,Songwe,Tunduma
+Tanzania,Singida,Iramba
+Tanzania,Singida,Singida
+Tanzania,Singida,Manyoni
+Tanzania,Singida,Singida Urban
+Tanzania,Singida,Ikungi
+Tanzania,Singida,Mkalama
+Tanzania,Tabora,Nzega
+Tanzania,Tabora,Igunga
+Tanzania,Tabora,Uyui
+Tanzania,Tabora,Urambo
+Tanzania,Tabora,Sikonge
+Tanzania,Tabora,Tabora Urban
+Tanzania,Tabora,Kaliua
+Tanzania,Rukwa,Kalambo
+Tanzania,Rukwa,Sumbawanga
+Tanzania,Rukwa,Nkasi
+Tanzania,Rukwa,Sumbawanga Urban
+Tanzania,Kigoma,Kibondo
+Tanzania,Kigoma,Kasulu
+Tanzania,Kigoma,Kigoma
+Tanzania,Kigoma,Kigoma  Urban
+Tanzania,Kigoma,Uvinza
+Tanzania,Kigoma,Buhigwe
+Tanzania,Kigoma,Kakonko
+Tanzania,Kigoma,Kasulu Township Authority
+Tanzania,Shinyanga,Shinyanga Urban
+Tanzania,Shinyanga,Kishapu
+Tanzania,Shinyanga,Shinyanga
+Tanzania,Shinyanga,Kahama
+Tanzania,Shinyanga,Kahama Township Authority
+Tanzania,Kagera,Karagwe
+Tanzania,Kagera,Bukoba
+Tanzania,Kagera,Muleba
+Tanzania,Kagera,Biharamulo
+Tanzania,Kagera,Ngara
+Tanzania,Kagera,Bukoba Urban
+Tanzania,Kagera,Missenyi
+Tanzania,Kagera,Kyerwa
+Tanzania,Mwanza,Ukerewe
+Tanzania,Mwanza,Magu
+Tanzania,Mwanza,Nyamagana
+Tanzania,Mwanza,Kwimba
+Tanzania,Mwanza,Sengerema
+Tanzania,Mwanza,Ilemela
+Tanzania,Mwanza,Misungwi
+Tanzania,Mara,Tarime
+Tanzania,Mara,Serengeti
+Tanzania,Mara,Musoma
+Tanzania,Mara,Bunda
+Tanzania,Mara,Rorya
+Tanzania,Mara,Butiam
+Tanzania,Manyara,Babati
+Tanzania,Manyara,Hanang
+Tanzania,Manyara,Mbulu
+Tanzania,Manyara,Simanjiro
+Tanzania,Manyara,Kiteto
+Tanzania,Manyara,Babati Urban
+Tanzania,Njombe,Njombe Urban
+Tanzania,Njombe,Wanging'ombe
+Tanzania,Njombe,Makete
+Tanzania,Njombe,Njombe
+Tanzania,Njombe,Ludewa
+Tanzania,Njombe,Makambako Township Authority
+Tanzania,Katavi,Mpanda Urban
+Tanzania,Katavi,Mpanda
+Tanzania,Katavi,Mlele
+Tanzania,Simiyu,Bariadi
+Tanzania,Simiyu,Itilima
+Tanzania,Simiyu,Meatu
+Tanzania,Simiyu,Maswa
+Tanzania,Simiyu,Busega
+Tanzania,Geita,Geita
+Tanzania,Geita,Nyang'hwale
+Tanzania,Geita,Mbogwe
+Tanzania,Geita,Bukombe
+Tanzania,Geita,Chato
+Tanzania,Kaskazini Unguja,Kaskazini A
+Tanzania,Kaskazini Unguja,Kaskazini B
+Tanzania,Kusini Unguja,Kati
+Tanzania,Kusini Unguja,Kusini
+Tanzania,Mjini Magharibi,Magharibi
+Tanzania,Mjini Magharibi,Mjini
+Tanzania,Kaskazini Pemba,Wete
+Tanzania,Kaskazini Pemba,Micheweni
+Tanzania,Kusini Pemba,Chake Chake
+Tanzania,Kusini Pemba,Mkoani
+Tanzania,Mara,Musoma Urban
+El Salvador,Ahuachapán,Ahuachapán Centro
+El Salvador,Ahuachapán,Ahuachapán Norte
+El Salvador,Ahuachapán,Ahuachapán Sur
+El Salvador,Cabañas,Cabañas Este
+El Salvador,Cabañas,Cabañas Oeste
+El Salvador,Chalatenango,Chalatenango Centro
+El Salvador,Chalatenango,Chalatenango Norte
+El Salvador,Chalatenango,Chalatenango Sur
+El Salvador,Chalatenango,Embalse Cerron Grande
+El Salvador,Cuscatlán,Cuscatlán Norte
+El Salvador,Cuscatlán,Cuscatlán Sur
+El Salvador,La Libertad,La Libertad Centro
+El Salvador,La Libertad,La Libertad Costa
+El Salvador,La Libertad,La Libertad Este
+El Salvador,La Libertad,La Libertad Norte
+El Salvador,La Libertad,La Libertad Oeste
+El Salvador,La Libertad,La Libertad Sur
+El Salvador,La Paz,La Paz Centro
+El Salvador,La Paz,La Paz Este
+El Salvador,La Paz,La Paz Oeste
+El Salvador,La Unión,La Unión Norte
+El Salvador,La Unión,La Unión Sur
+El Salvador,Morazán,Morazán Norte
+El Salvador,Morazán,Morazán Sur
+El Salvador,San Miguel,San Miguel Centro
+El Salvador,San Miguel,San Miguel Norte
+El Salvador,San Miguel,San Miguel Oeste
+El Salvador,San Salvador,San Salvador Centro
+El Salvador,San Salvador,San Salvador Este
+El Salvador,San Salvador,San Salvador Norte
+El Salvador,San Salvador,San Salvador Oeste
+El Salvador,San Salvador,San Salvador Sur
+El Salvador,San Salvador,Lago de Llopango
+El Salvador,San Vicente,San Vicente Norte
+El Salvador,San Vicente,San Vicente Sur
+El Salvador,Santa Ana,Santa Ana Centro
+El Salvador,Santa Ana,Santa Ana Este
+El Salvador,Santa Ana,Santa Ana Norte
+El Salvador,Santa Ana,Santa Ana Oeste
+El Salvador,Santa Ana,Lago de Guija
+El Salvador,Santa Ana,Lago de Coatepeque
+El Salvador,Sonsonate,Sonsonate Centro
+El Salvador,Sonsonate,Sonsonate Este
+El Salvador,Sonsonate,Sonsonate Norte
+El Salvador,Sonsonate,Sonsonate Oeste
+El Salvador,Usulután,Usulután Este
+El Salvador,Usulután,Usulután Norte
+El Salvador,Usulután,Usulután Oeste
+Malawi,Northern,Chitipa
+Malawi,Northern,Karonga
+Malawi,Northern,Nkhatabay
+Malawi,Northern,Rumphi
+Malawi,Northern,Mzimba
+Malawi,Northern,Likoma
+Malawi,Northern,Mzuzu City
+Malawi,Central,Kasungu
+Malawi,Central,Nkhotakota
+Malawi,Central,Ntchisi
+Malawi,Central,Dowa
+Malawi,Central,Salima
+Malawi,Central,Lilongwe
+Malawi,Central,Mchinji
+Malawi,Central,Dedza
+Malawi,Central,Ntcheu
+Malawi,Central,Lilongwe City
+Malawi,Southern,Mangochi
+Malawi,Southern,Machinga
+Malawi,Southern,Zomba
+Malawi,Southern,Chiradzulu
+Malawi,Southern,Blantyre
+Malawi,Southern,Mwanza
+Malawi,Southern,Thyolo
+Malawi,Southern,Mulanje
+Malawi,Southern,Phalombe
+Malawi,Southern,Chikwawa
+Malawi,Southern,Nsanje
+Malawi,Southern,Balaka
+Malawi,Southern,Neno
+Malawi,Southern,Zomba City
+Malawi,Southern,Blantyre City
+Nepal,Koshi,Taplejung
+Nepal,Koshi,Panchthar
+Nepal,Koshi,Ilam
+Nepal,Koshi,Jhapa
+Nepal,Koshi,Morang
+Nepal,Koshi,Sunsari
+Nepal,Koshi,Dhankuta
+Nepal,Koshi,Terhathum
+Nepal,Koshi,Sankhuwasabha
+Nepal,Koshi,Bhojpur
+Nepal,Koshi,Solukhumbu
+Nepal,Koshi,Khotang
+Nepal,Koshi,Okhaldhunga
+Nepal,Koshi,Udayapur
+Nepal,Madhesh,Saptari
+Nepal,Madhesh,Siraha
+Nepal,Madhesh,Dhanusa
+Nepal,Madhesh,Mahottari
+Nepal,Madhesh,Sarlahi
+Nepal,Madhesh,Rautahat
+Nepal,Madhesh,Bara
+Nepal,Madhesh,Parsa
+Nepal,Bagmati,Sindhuli
+Nepal,Bagmati,Ramechhap
+Nepal,Bagmati,Dolakha
+Nepal,Bagmati,Sindhupalchok
+Nepal,Bagmati,Kavrepalanchok
+Nepal,Bagmati,Lalitpur
+Nepal,Bagmati,Bhaktapur
+Nepal,Bagmati,Kathmandu
+Nepal,Bagmati,Nuwakot
+Nepal,Bagmati,Rasuwa
+Nepal,Bagmati,Dhading
+Nepal,Bagmati,Makwanpur
+Nepal,Bagmati,Chitawan
+Nepal,Gandaki,Gorkha
+Nepal,Gandaki,Lamjung
+Nepal,Gandaki,Manang
+Nepal,Gandaki,Kaski
+Nepal,Gandaki,Tanahu
+Nepal,Gandaki,Syangja
+Nepal,Gandaki,Parbat
+Nepal,Gandaki,Baglung
+Nepal,Gandaki,Myagdi
+Nepal,Gandaki,Mustang
+Nepal,Gandaki,Nawalparasi East
+Nepal,Lumbini,Palpa
+Nepal,Lumbini,Nawalparasi West
+Nepal,Lumbini,Rupandehi
+Nepal,Lumbini,Kapilbastu
+Nepal,Lumbini,Arghakhanchi
+Nepal,Lumbini,Gulmi
+Nepal,Lumbini,Rukum East
+Nepal,Lumbini,Rolpa
+Nepal,Lumbini,Pyuthan
+Nepal,Lumbini,Dang
+Nepal,Lumbini,Banke
+Nepal,Lumbini,Bardiya
+Nepal,Karnali,Rukum West
+Nepal,Karnali,Salyan
+Nepal,Karnali,Surkhet
+Nepal,Karnali,Jajarkot
+Nepal,Karnali,Dailekh
+Nepal,Karnali,Dolpa
+Nepal,Karnali,Jumla
+Nepal,Karnali,Kalikot
+Nepal,Karnali,Mugu
+Nepal,Karnali,Humla
+Nepal,Sudur Paschim,Bajhang
+Nepal,Sudur Paschim,Bajura
+Nepal,Sudur Paschim,Achham
+Nepal,Sudur Paschim,Doti
+Nepal,Sudur Paschim,Kailali
+Nepal,Sudur Paschim,Kanchanpur
+Nepal,Sudur Paschim,Dadeldhura
+Nepal,Sudur Paschim,Baitadi
+Nepal,Sudur Paschim,Darchula
+Tanzania,Dodoma,Kondoa
+Tanzania,Dodoma,Mpwapwa
+Tanzania,Dodoma,Kongwa
+Tanzania,Dodoma,Chamwino
+Tanzania,Dodoma,Dodoma Urban
+Tanzania,Dodoma,Bahi
+Eswatini,Hhohho,Timphisini
+Eswatini,Hhohho,Ntfonjeni
+Eswatini,Hhohho,Mayiwane
+Eswatini,Hhohho,Mhlangatane
+Eswatini,Hhohho,Ndzingeni
+Eswatini,Hhohho,Madlangempisi
+Eswatini,Hhohho,Maphalaleni
+Eswatini,Hhohho,Pigg's Peak
+Eswatini,Hhohho,Nkhaba
+Eswatini,Hhohho,Motjane
+Eswatini,Hhohho,Mbabane West
+Eswatini,Hhohho,Mbabane East
+Eswatini,Hhohho,Hhukwini
+Eswatini,Hhohho,Lobamba
+Eswatini,Manzini,Mkhiweni
+Eswatini,Manzini,Kukhanyeni
+Eswatini,Manzini,Mafutseni
+Eswatini,Manzini,Mthongwaneni
+Eswatini,Manzini,Manzini North
+Eswatini,Manzini,Manzini South
+Eswatini,Manzini,Kwaluseni
+Eswatini,Manzini,Ludzeludze
+Eswatini,Manzini,Lobamba Lomdzala
+Eswatini,Manzini,Nhlambeni
+Eswatini,Manzini,Ntondozi
+Eswatini,Manzini,La-Mgabhi
+Eswatini,Manzini,Mhlambanyatsi
+Eswatini,Manzini,Mangcongco
+Eswatini,Manzini,Ngwempisi
+Eswatini,Manzini,Mahlangatsha
+Eswatini,Shiselweni,Kubuta
+Eswatini,Shiselweni,Nkwene
+Eswatini,Shiselweni,Mtsambama
+Eswatini,Shiselweni,Gege
+Eswatini,Shiselweni,Mbangweni
+Eswatini,Shiselweni,Maseyisini
+Eswatini,Shiselweni,Sandleni
+Eswatini,Shiselweni,Ngudzeni
+Eswatini,Shiselweni,Zombodze
+Eswatini,Shiselweni,Shiselweni
+Eswatini,Shiselweni,Hosea
+Eswatini,Shiselweni,Sigwe
+Eswatini,Shiselweni,Matsanjeni South
+Eswatini,Shiselweni,Somntongo
+Eswatini,Lubombo,Lubuli
+Eswatini,Lubombo,Sithobela
+Eswatini,Lubombo,Nkilongo
+Eswatini,Lubombo,Siphofaneni
+Eswatini,Lubombo,Mpolonjeni
+Eswatini,Lubombo,Matsanjeni North
+Eswatini,Lubombo,Lugongolweni
+Eswatini,Lubombo,Dvokodvweni
+Eswatini,Lubombo,Hlane
+Eswatini,Lubombo,Mhlume
+Eswatini,Lubombo,Lomahasha
+Panama,Bocas del Toro,Almirante
+Honduras,Islas de La Bahia,Guanaja
+Honduras,Islas de La Bahia,Jose Santos Guardiola
+Honduras,Islas de La Bahia,Roatan
+Honduras,Colon,Trujillo
+Honduras,Colon,Iriona
+Honduras,Colon,Santa Rosa de Aguan
+Honduras,Atlantida,Tela
+Honduras,Colon,Limon
+Honduras,Colon,Santa Fe
+Honduras,Cortes,Puerto Cortes
+Honduras,Colon,Balfate
+Honduras,Colon,Bonito Oriental
+Honduras,Atlantida,Arizona
+Honduras,Atlantida,Esparta
+Honduras,Atlantida,Jutiapa
+Honduras,Cortes,Omoa
+Honduras,Atlantida,La Ceiba
+Honduras,Atlantida,La Masica
+Honduras,Atlantida,San Francisco
+Honduras,Atlantida,El Porvenir
+Honduras,Colon,Tocoa
+Honduras,Cortes,Choloma
+Honduras,Colon,Sonaguera
+Honduras,Yoro,El Progreso
+Honduras,Yoro,El Negrito
+Honduras,Cortes,San Pedro Sula
+Honduras,Yoro,Olanchito
+Honduras,Olancho,San Esteban
+Honduras,Cortes,La Lima
+Honduras,Colon,Saba
+Honduras,Santa Barbara,Quimistan
+Honduras,Yoro,Yoro
+Honduras,Olancho,Gualaco
+Honduras,Yoro,Morazan
+Honduras,Santa Barbara,Azacualpa
+Honduras,Cortes,San Manuel
+Honduras,Santa Barbara,Chinda
+Honduras,Santa Barbara,Trinidad
+Honduras,Santa Barbara,Proteccion
+Honduras,Copan,Nueva Arcadia
+Honduras,Cortes,San Antonio de Cortes
+Honduras,Santa Barbara,San Jose de Colinas
+Honduras,Copan,El Paraiso
+Honduras,Santa Barbara,San Luis
+Honduras,Olancho,Mangulile
+Honduras,Olancho,Dulce Nombre de Culmi
+Honduras,Olancho,Jano
+Honduras,Yoro,Yorito
+Honduras,Cortes,Santa Cruz de Yojoa
+Honduras,Yoro,Victoria
+Honduras,Olancho,Guata
+Honduras,Copan,La Jigua
+Honduras,Copan,Copan Ruinas
+Honduras,Copan,Cabana
+Honduras,Lempira,La Union
+Honduras,Comayagua,San Luis
+Honduras,Olancho,Manto
+Honduras,Comayagua,San Jose del Potrero
+Honduras,Comayagua,La Libertad
+Honduras,Lempira,Lepaera
+Honduras,Copan,Santa Rosa de Copan
+Honduras,Olancho,Guayape
+Honduras,Santa Barbara,Concepcion del Sur
+Honduras,Comayagua,Meambar
+Honduras,Comayagua,Taulabe
+Honduras,Comayagua,Minas de Oro
+Honduras,Copan,San Juan de Opoa
+Honduras,Santa Barbara,San Pedro Zacapa
+Honduras,Santa Barbara,El Nispero
+Honduras,Olancho,Salama
+Honduras,Comayagua,Ojos de Agua
+Honduras,Santa Barbara,Ceguaca
+Honduras,Comayagua,El Rosario
+Honduras,Olancho,Juticalpa
+Honduras,Intibuca,San Francisco de Opalaca
+Honduras,Intibuca,Intibuca
+Honduras,Comayagua,Siguatepeque
+Honduras,Olancho,Concordia
+Honduras,Lempira,La Iguala
+Honduras,Francisco Morazan,Cedros
+Honduras,Lempira,Belen
+Honduras,Olancho,San Francisco de Becerra
+Honduras,Comayagua,Comayagua
+Honduras,Olancho,Campamento
+Honduras,Comayagua,San Jerónimo
+Honduras,Lempira,Gracias
+Honduras,Ocotepeque,Concepcion
+Honduras,Francisco Morazan,Guaimaca
+Honduras,Ocotepeque,Dolores Merendon
+Honduras,Copan,Corquin
+Honduras,Intibuca,San Isidro
+Honduras,Cortes,Villanueva
+Honduras,Yoro,Arenal
+Honduras,Olancho,Esquipulas del Norte
+Honduras,Yoro,Jocon
+Honduras,Santa Barbara,Petoa
+Honduras,Santa Barbara,Macuelizo
+Honduras,Santa Barbara,San Marcos
+Honduras,Cortes,Pimienta
+Honduras,Copan,Florida
+Honduras,Olancho,La Union
+Honduras,Santa Barbara,Concepcion del Norte
+Honduras,Cortes,Potrerillos
+Honduras,Yoro,Santa Rita
+Honduras,Copan,San Antonio
+Honduras,Santa Barbara,Ilama
+Honduras,Cortes,San Francisco de Yojoa
+Honduras,Olancho,Catacamas
+Honduras,Yoro,Sulaco
+Honduras,Santa Barbara,Naranjito
+Honduras,Copan,San Nicolas
+Honduras,Santa Barbara,Gualala
+Honduras,Francisco Morazan,Marale
+Honduras,Santa Barbara,Nuevo Celilac
+Honduras,Olancho,Yocon
+Honduras,Santa Barbara,Atima
+Honduras,Copan,San Jeronimo
+Honduras,Santa Barbara,Santa Barbara
+Honduras,Francisco Morazan,Orica
+Honduras,Olancho,Guarizama
+Honduras,Copan,Trinidad de Copan
+Honduras,Copan,Santa Rita
+Honduras,Santa Barbara,San Nicolas
+Honduras,Olancho,El Rosario
+Honduras,Copan,Dolores
+Honduras,Olancho,San Francisco de La Paz
+Honduras,Copan,San Jose
+Honduras,Copan,Concepción
+Honduras,Comayagua,Las Lajas
+Honduras,Olancho,Santa Maria del Real
+Honduras,Santa Barbara,Las Vegas
+Honduras,Copan,Veracruz
+Honduras,Santa Barbara,San Vicente Centenario
+Honduras,Copan,Dulce Nombre
+Honduras,Santa Barbara,Arada
+Honduras,Copan,San Agustin
+Honduras,Olancho,Silca
+Honduras,Francisco Morazan,El Porvenir
+Honduras,Francisco Morazan,San Ignacio
+Honduras,Santa Barbara,Santa Rita
+Honduras,Copan,La Union
+Honduras,Santa Barbara,San Francisco de Ojuera
+Honduras,Comayagua,Esquias
+Honduras,Lempira,San Rafael
+Honduras,Comayagua,San Jose de Comayagua
+Honduras,Copan,Cucuyagua
+Honduras,Lempira,Las Flores
+Honduras,Comayagua,La Trinidad
+Honduras,Ocotepeque,San Fernando
+Honduras,Ocotepeque,San Jorge
+Honduras,Lempira,Talgua
+Honduras,Ocotepeque,La Encarnacion
+Honduras,Ocotepeque,Lucerna
+Honduras,Intibuca,Jesus de Otoro
+Honduras,Intibuca,La Esperanza
+Honduras,Ocotepeque,Fraternidad
+Honduras,Copan,San Pedro
+Honduras,Ocotepeque,Sensenti
+Honduras,Francisco Morazan,Vallecillo
+Honduras,Ocotepeque,La Labor
+Honduras,Ocotepeque,Santa Fe
+Honduras,Ocotepeque,Belen Gualcho
+Honduras,Ocotepeque,Sinuapa
+Honduras,Lempira,La Campa
+Honduras,Olancho,Patuca
+Honduras,Lempira,San Manuel Colohete
+Honduras,Intibuca,Masaguara
+Honduras,Ocotepeque,Ocotepeque
+Honduras,Ocotepeque,San Francisco del Valle
+Honduras,Intibuca,San Juan
+Honduras,Francisco Morazan,Talanga
+Honduras,Ocotepeque,San Marcos
+Honduras,Intibuca,San Miguelito
+Honduras,Lempira,San Sebastian
+Honduras,Lempira,Santa Cruz
+Honduras,Lempira,San Marcos de Caiquin
+Honduras,Comayagua,Ajuterique
+Honduras,La Paz,Santiago de Puringla
+Honduras,El Paraiso,Teupasenti
+Honduras,Lempira,Cololaca
+Honduras,Ocotepeque,Mercedes
+Honduras,Francisco Morazan,San Juan de Flores
+Honduras,Intibuca,Yamaranguila
+Honduras,La Paz,La Paz
+Honduras,Comayagua,Lejamani
+Honduras,Comayagua,Villa de San Antonio
+Honduras,Francisco Morazan,Distrito Central
+Honduras,Lempira,Erandique
+Honduras,El Paraiso,Danli
+Honduras,Lempira,San Andres
+Honduras,La Paz,Santa Maria
+Honduras,La Paz,Cane
+Honduras,Lempira,Guarita
+Honduras,Intibuca,Dolores
+Honduras,La Paz,San Pedro de Tutule
+Honduras,Lempira,Tomala
+Honduras,El Paraiso,Moroceli
+Honduras,Lempira,Tambla
+Honduras,La Paz,San Jose
+Honduras,El Paraiso,Trojes
+Honduras,Comayagua,Humuya
+Honduras,Comayagua,San Sebastian
+Honduras,La Paz,Marcala
+Honduras,Comayagua,Lamani
+Honduras,Francisco Morazan,Villa de San Francisco
+Honduras,La Paz,Chinacla
+Honduras,Francisco Morazan,Valle de Angeles
+Honduras,Lempira,San Francisco
+Honduras,La Paz,Guajiquiro
+Honduras,Lempira,Valladolid
+Honduras,Francisco Morazan,Lepaterique
+Honduras,Lempira,Gualcince
+Honduras,Lempira,San Juan Guarita
+Honduras,La Paz,Opatoro
+Honduras,Intibuca,San Marcos de Sierra
+Honduras,La Paz,Yarula
+Honduras,Francisco Morazan,Santa Lucia
+Honduras,El Paraiso,Jacaleapa
+Honduras,La Paz,Santa Elena
+Honduras,Lempira,La Virtud
+Honduras,Lempira,Piraera
+Honduras,El Paraiso,Potrerillos
+Honduras,Francisco Morazan,San Antonio de Oriente
+Honduras,La Paz,Santa Ana
+Honduras,Intibuca,Concepcion
+Honduras,Lempira,Candelaria
+Honduras,La Paz,Cabanas
+Honduras,Lempira,Mapulaca
+Honduras,Intibuca,Colomoncagua
+Honduras,La Paz,Aguanqueterique
+Honduras,El Paraiso,Yuscaran
+Honduras,Intibuca,Camasca
+Honduras,Lempira,Virginia
+Honduras,Francisco Morazan,Tatumbla
+Honduras,Francisco Morazan,Ojojona
+Honduras,Intibuca,San Antonio
+Honduras,El Paraiso,San Matias
+Honduras,La Paz,San Juan
+Honduras,La Paz,Mercedes de Oriente
+Honduras,Francisco Morazan,Maraita
+Honduras,Francisco Morazan,Santa Ana
+Honduras,Intibuca,Magdalena
+Honduras,Intibuca,Santa Lucia
+Honduras,El Paraiso,Guinope
+Honduras,Francisco Morazan,San Buenaventura
+Honduras,Francisco Morazan,Curaren
+Honduras,El Paraiso,El Paraiso
+Honduras,La Paz,San Antonio del Norte
+Honduras,El Paraiso,Alauca
+Honduras,Francisco Morazan,Reitoca
+Honduras,Francisco Morazan,Sabanagrande
+Honduras,La Paz,Lauterique
+Honduras,El Paraiso,Oropoli
+Honduras,Valle,Caridad
+Honduras,Francisco Morazan,Nueva Armenia
+Honduras,Francisco Morazan,Alubaren
+Honduras,El Paraiso,Yauyupe
+Honduras,El Paraiso,San Lucas
+Honduras,Valle,Aramecina
+Honduras,Francisco Morazan,San Miguelito
+Honduras,Francisco Morazan,La Venta
+Honduras,El Paraiso,San Antonio de Flores
+Honduras,Choluteca,San Jose
+Honduras,El Paraiso,Texiguat
+Honduras,Valle,Langue
+Honduras,Francisco Morazan,La Libertad
+Honduras,Valle,San Francisco de Coray
+Honduras,Choluteca,Duyure
+Honduras,El Paraiso,Vado Ancho
+Honduras,Valle,Goascoran
+Honduras,Choluteca,Pespire
+Honduras,Choluteca,San Antonio de Flores
+Honduras,Choluteca,San Isidro
+Honduras,El Paraiso,Soledad
+Honduras,Valle,Nacaome
+Honduras,Choluteca,Morolica
+Honduras,El Paraiso,Liure
+Honduras,Choluteca,San Marcos de Colon
+Honduras,Choluteca,Orocuina
+Honduras,Valle,Alianza
+Honduras,Choluteca,Apacilagua
+Honduras,Valle,San Lorenzo
+Honduras,Choluteca,Choluteca
+Honduras,Choluteca,El Corpus
+Honduras,Choluteca,Marcovia
+Honduras,Valle,Amapala
+Honduras,Choluteca,Santa Ana de Yusguare
+Honduras,Choluteca,Concepcion de Maria
+Honduras,Choluteca,Namasigue
+Honduras,Choluteca,El Triunfo
+Honduras,Islas de La Bahia,Utila
+Honduras,Gracias a Dios,Juan Francisco  Bulnes
+Honduras,Gracias a Dios,Ramón Villeda Morales
+Honduras,Gracias a Dios,Wampusirpi
+Honduras,Gracias a Dios,Ahuas
+Honduras,Gracias a Dios,Puerto Lempira
+Honduras,Gracias a Dios,Brus Laguna
+Honduras,Santa Barbara,Nueva Frontera
+Colombia,Antioquia,Abejorral
+Colombia,Norte de Santander,Ábrego
+Colombia,Antioquia,Abriaquí
+Colombia,Meta,Acacías
+Colombia,Chocó,Acandí
+Colombia,Huila,Acevedo
+Colombia,Bolívar,Achí
+Colombia,Huila,Agrado
+Colombia,Cundinamarca,Agua de Dios
+Colombia,Cesar,Aguachica
+Colombia,Santander,Aguada
+Colombia,Caldas,Aguadas
+Colombia,Casanare,Aguazul
+Colombia,Cesar,Agustín Codazzi
+Colombia,Huila,Aipe
+Colombia,Cundinamarca,Albán
+Colombia,Nariño,Albán
+Colombia,Caquetá,Albania
+Colombia,La Guajira,Albania
+Colombia,Santander,Albania
+Colombia,Valle del Cauca,Alcalá
+Colombia,Nariño,Aldana
+Colombia,Antioquia,Alejandría
+Colombia,Magdalena,Algarrobo
+Colombia,Huila,Algeciras
+Colombia,Cauca,Almaguer
+Colombia,Boyacá,Almeida
+Colombia,Tolima,Alpujarra
+Colombia,Huila,Altamira
+Colombia,Chocó,Alto Baudó
+Colombia,Bolívar,Altos del Rosario
+Colombia,Tolima,Alvarado
+Colombia,Antioquia,Amagá
+Colombia,Antioquia,Amalfi
+Colombia,Tolima,Ambalema
+Colombia,Cundinamarca,Anapoima
+Colombia,Nariño,Ancuya
+Colombia,Valle del Cauca,Andalucía
+Colombia,Antioquia,Andes
+Colombia,Antioquia,Angelópolis
+Colombia,Antioquia,Angostura
+Colombia,Cundinamarca,Anolaima
+Colombia,Antioquia,Anorí
+Colombia,Caldas,Anserma
+Colombia,Valle del Cauca,Ansermanuevo
+Colombia,Antioquia,Anzá
+Colombia,Tolima,Anzoátegui
+Colombia,Antioquia,Apartadó
+Colombia,Risaralda,Apía
+Colombia,Cundinamarca,Apulo
+Colombia,Boyacá,Aquitania
+Colombia,Magdalena,Aracataca
+Colombia,Caldas,Aranzazu
+Colombia,Santander,Aratoca
+Colombia,Arauca,Arauca
+Colombia,Arauca,Arauquita
+Colombia,Cundinamarca,Arbeláez
+Colombia,Nariño,Arboleda
+Colombia,Norte de Santander,Arboledas
+Colombia,Antioquia,Arboletes
+Colombia,Boyacá,Arcabuco
+Colombia,Bolívar,Arenal
+Colombia,Antioquia,Argelia
+Colombia,Cauca,Argelia
+Colombia,Valle del Cauca,Argelia
+Colombia,Magdalena,Ariguaní
+Colombia,Bolívar,Arjona
+Colombia,Antioquia,Armenia
+Colombia,Quindio,Armenia
+Colombia,Tolima,Armero
+Colombia,Bolívar,Arroyohondo
+Colombia,Cesar,Astrea
+Colombia,Tolima,Ataco
+Colombia,Chocó,Atrato
+Colombia,Córdoba,Ayapel
+Colombia,Chocó,Bagadó
+Colombia,Chocó,Bahía Solano
+Colombia,Chocó,Bajo Baudó
+Colombia,Cauca,Balboa
+Colombia,Risaralda,Balboa
+Colombia,Atlántico,Baranoa
+Colombia,Huila,Baraya
+Colombia,Nariño,Barbacoas
+Colombia,Antioquia,Barbosa
+Colombia,Santander,Barbosa
+Colombia,Santander,Barichara
+Colombia,Meta,Barranca de Upía
+Colombia,Santander,Barrancabermeja
+Colombia,La Guajira,Barrancas
+Colombia,Bolívar,Barranco de Loba
+Colombia,Guainía,Barrancominas
+Colombia,Atlántico,Barranquilla
+Colombia,Cesar,Becerril
+Colombia,Caldas,Belalcázar
+Colombia,Boyacá,Belén
+Colombia,Nariño,Belén
+Colombia,Caquetá,Belén de los Andaquíes
+Colombia,Risaralda,Belén de Umbría
+Colombia,Antioquia,Bello
+Colombia,Antioquia,Belmira
+Colombia,Cundinamarca,Beltrán
+Colombia,Boyacá,Berbeo
+Colombia,Antioquia,Betania
+Colombia,Boyacá,Betéitiva
+Colombia,Antioquia,Betulia
+Colombia,Santander,Betulia
+Colombia,Cundinamarca,Bituima
+Colombia,Boyacá,Boavita
+Colombia,Norte de Santander,Bochalema
+Colombia,"Bogotá, D.C.","Bogotá, D.C."
+Colombia,Cundinamarca,Bojacá
+Colombia,Chocó,Bojayá
+Colombia,Cauca,Bolívar
+Colombia,Santander,Bolívar
+Colombia,Valle del Cauca,Bolívar
+Colombia,Cesar,Bosconia
+Colombia,Boyacá,Boyacá
+Colombia,Antioquia,Briceño
+Colombia,Boyacá,Briceño
+Colombia,Santander,Bucaramanga
+Colombia,Norte de Santander,Bucarasica
+Colombia,Valle del Cauca,Buenaventura
+Colombia,Boyacá,Buenavista
+Colombia,Córdoba,Buenavista
+Colombia,Quindio,Buenavista
+Colombia,Sucre,Buenavista
+Colombia,Cauca,Buenos Aires
+Colombia,Nariño,Buesaco
+Colombia,Valle del Cauca,Bugalagrande
+Colombia,Antioquia,Buriticá
+Colombia,Boyacá,Busbanzá
+Colombia,Cundinamarca,Cabrera
+Colombia,Santander,Cabrera
+Colombia,Meta,Cabuyaro
+Colombia,Guainía,Cacahual
+Colombia,Antioquia,Cáceres
+Colombia,Cundinamarca,Cachipay
+Colombia,Norte de Santander,Cáchira
+Colombia,Norte de Santander,Cácota
+Colombia,Antioquia,Caicedo
+Colombia,Valle del Cauca,Caicedonia
+Colombia,Sucre,Caimito
+Colombia,Tolima,Cajamarca
+Colombia,Cauca,Cajibío
+Colombia,Cundinamarca,Cajicá
+Colombia,Bolívar,Calamar
+Colombia,Guaviare,Calamar
+Colombia,Quindio,Calarcá
+Colombia,Antioquia,Caldas
+Colombia,Boyacá,Caldas
+Colombia,Cauca,Caldono
+Colombia,Valle del Cauca,Cali
+Colombia,Santander,California
+Colombia,Valle del Cauca,Calima
+Colombia,Cauca,Caloto
+Colombia,Antioquia,Campamento
+Colombia,Atlántico,Campo de la Cruz
+Colombia,Huila,Campoalegre
+Colombia,Boyacá,Campohermoso
+Colombia,Córdoba,Canalete
+Colombia,Antioquia,Cañasgordas
+Colombia,Atlántico,Candelaria
+Colombia,Valle del Cauca,Candelaria
+Colombia,Bolívar,Cantagallo
+Colombia,Cundinamarca,Caparrapí
+Colombia,Santander,Capitanejo
+Colombia,Cundinamarca,Cáqueza
+Colombia,Antioquia,Caracolí
+Colombia,Antioquia,Caramanta
+Colombia,Santander,Carcasí
+Colombia,Antioquia,Carepa
+Colombia,Tolima,Carmen de Apicalá
+Colombia,Cundinamarca,Carmen de Carupa
+Colombia,Chocó,Carmen del Darién
+Colombia,Antioquia,Carolina
+Colombia,Bolívar,Cartagena de Indias
+Colombia,Caquetá,Cartagena del Chairá
+Colombia,Valle del Cauca,Cartago
+Colombia,Vaupés,Carurú
+Colombia,Tolima,Casabianca
+Colombia,Meta,Castilla la Nueva
+Colombia,Antioquia,Caucasia
+Colombia,Santander,Cepitá
+Colombia,Córdoba,Cereté
+Colombia,Boyacá,Cerinza
+Colombia,Santander,Cerrito
+Colombia,Magdalena,Cerro de San Antonio
+Colombia,Chocó,Cértegui
+Colombia,Nariño,Chachagüí
+Colombia,Cundinamarca,Chaguaní
+Colombia,Sucre,Chalán
+Colombia,Casanare,Chámeza
+Colombia,Tolima,Chaparral
+Colombia,Santander,Charalá
+Colombia,Santander,Charta
+Colombia,Cundinamarca,Chía
+Colombia,Antioquia,Chigorodó
+Colombia,Santander,Chima
+Colombia,Córdoba,Chimá
+Colombia,Cesar,Chimichagua
+Colombia,Norte de Santander,Chinácota
+Colombia,Boyacá,Chinavita
+Colombia,Caldas,Chinchiná
+Colombia,Córdoba,Chinú
+Colombia,Cundinamarca,Chipaque
+Colombia,Santander,Chipatá
+Colombia,Boyacá,Chiquinquirá
+Colombia,Boyacá,Chíquiza
+Colombia,Cesar,Chiriguaná
+Colombia,Boyacá,Chiscas
+Colombia,Boyacá,Chita
+Colombia,Norte de Santander,Chitagá
+Colombia,Boyacá,Chitaraque
+Colombia,Boyacá,Chivatá
+Colombia,Magdalena,Chivolo
+Colombia,Boyacá,Chivor
+Colombia,Cundinamarca,Choachí
+Colombia,Cundinamarca,Chocontá
+Colombia,Bolívar,Cicuco
+Colombia,Magdalena,Ciénaga
+Colombia,Córdoba,Ciénaga de Oro
+Colombia,Boyacá,Ciénega
+Colombia,Santander,Cimitarra
+Colombia,Quindio,Circasia
+Colombia,Antioquia,Cisneros
+Colombia,Antioquia,Ciudad Bolívar
+Colombia,Bolívar,Clemencia
+Colombia,Antioquia,Cocorná
+Colombia,Tolima,Coello
+Colombia,Cundinamarca,Cogua
+Colombia,Huila,Colombia
+Colombia,Nariño,Colón
+Colombia,Putumayo,Colón
+Colombia,Sucre,Colosó
+Colombia,Boyacá,Cómbita
+Colombia,Antioquia,Concepción
+Colombia,Santander,Concepción
+Colombia,Antioquia,Concordia
+Colombia,Magdalena,Concordia
+Colombia,Chocó,Condoto
+Colombia,Santander,Confines
+Colombia,Nariño,Consacá
+Colombia,Nariño,Contadero
+Colombia,Santander,Contratación
+Colombia,Norte de Santander,Convención
+Colombia,Antioquia,Copacabana
+Colombia,Boyacá,Coper
+Colombia,Bolívar,Córdoba
+Colombia,Nariño,Córdoba
+Colombia,Quindio,Córdoba
+Colombia,Cauca,Corinto
+Colombia,Santander,Coromoro
+Colombia,Sucre,Corozal
+Colombia,Boyacá,Corrales
+Colombia,Cundinamarca,Cota
+Colombia,Córdoba,Cotorra
+Colombia,Boyacá,Covarachía
+Colombia,Sucre,Coveñas
+Colombia,Tolima,Coyaima
+Colombia,Arauca,Cravo Norte
+Colombia,Nariño,Cuaspud Carlosama
+Colombia,Boyacá,Cubará
+Colombia,Meta,Cubarral
+Colombia,Boyacá,Cucaita
+Colombia,Cundinamarca,Cucunubá
+Colombia,Norte de Santander,Cucutilla
+Colombia,Boyacá,Cuítiva
+Colombia,Meta,Cumaral
+Colombia,Vichada,Cumaribo
+Colombia,Nariño,Cumbal
+Colombia,Nariño,Cumbitara
+Colombia,Tolima,Cunday
+Colombia,Caquetá,Curillo
+Colombia,Santander,Curití
+Colombia,Cesar,Curumaní
+Colombia,Antioquia,Dabeiba
+Colombia,Valle del Cauca,Dagua
+Colombia,La Guajira,Dibulla
+Colombia,La Guajira,Distracción
+Colombia,Tolima,Dolores
+Colombia,Antioquia,Donmatías
+Colombia,Risaralda,Dosquebradas
+Colombia,Boyacá,Duitama
+Colombia,Norte de Santander,Durania
+Colombia,Antioquia,Ebéjico
+Colombia,Valle del Cauca,El Águila
+Colombia,Antioquia,El Bagre
+Colombia,Magdalena,El Banco
+Colombia,Valle del Cauca,El Cairo
+Colombia,Meta,El Calvario
+Colombia,Chocó,El Cantón del San Pablo
+Colombia,Norte de Santander,El Carmen
+Colombia,Chocó,El Carmen de Atrato
+Colombia,Bolívar,El Carmen de Bolívar
+Colombia,Santander,El Carmen de Chucuri
+Colombia,Antioquia,El Carmen de Viboral
+Colombia,Meta,El Castillo
+Colombia,Valle del Cauca,El Cerrito
+Colombia,Nariño,El Charco
+Colombia,Boyacá,El Cocuy
+Colombia,Cundinamarca,El Colegio
+Colombia,Cesar,El Copey
+Colombia,Caquetá,El Doncello
+Colombia,Meta,El Dorado
+Colombia,Valle del Cauca,El Dovio
+Colombia,Amazonas,El Encanto
+Colombia,Boyacá,El Espino
+Colombia,Santander,El Guacamayo
+Colombia,Bolívar,El Guamo
+Colombia,Chocó,El Litoral del San Juan
+Colombia,La Guajira,El Molino
+Colombia,Cesar,El Paso
+Colombia,Caquetá,El Paujíl
+Colombia,Nariño,El Peñol
+Colombia,Bolívar,El Peñón
+Colombia,Cundinamarca,El Peñón
+Colombia,Santander,El Peñón
+Colombia,Magdalena,El Piñón
+Colombia,Santander,El Playón
+Colombia,Magdalena,El Retén
+Colombia,Guaviare,El Retorno
+Colombia,Sucre,El Roble
+Colombia,Cundinamarca,El Rosal
+Colombia,Nariño,El Rosario
+Colombia,Antioquia,El Santuario
+Colombia,Nariño,El Tablón de Gómez
+Colombia,Cauca,El Tambo
+Colombia,Nariño,El Tambo
+Colombia,Norte de Santander,El Tarra
+Colombia,Norte de Santander,El Zulia
+Colombia,Huila,Elías
+Colombia,Santander,Encino
+Colombia,Santander,Enciso
+Colombia,Antioquia,Entrerríos
+Colombia,Antioquia,Envigado
+Colombia,Tolima,Espinal
+Colombia,Cundinamarca,Facatativá
+Colombia,Tolima,Falan
+Colombia,Caldas,Filadelfia
+Colombia,Quindio,Filandia
+Colombia,Boyacá,Firavitoba
+Colombia,Tolima,Flandes
+Colombia,Caquetá,Florencia
+Colombia,Cauca,Florencia
+Colombia,Boyacá,Floresta
+Colombia,Santander,Florián
+Colombia,Valle del Cauca,Florida
+Colombia,Santander,Floridablanca
+Colombia,Cundinamarca,Fómeque
+Colombia,La Guajira,Fonseca
+Colombia,Arauca,Fortul
+Colombia,Cundinamarca,Fosca
+Colombia,Nariño,Francisco Pizarro
+Colombia,Antioquia,Fredonia
+Colombia,Tolima,Fresno
+Colombia,Antioquia,Frontino
+Colombia,Meta,Fuente de Oro
+Colombia,Magdalena,Fundación
+Colombia,Nariño,Funes
+Colombia,Cundinamarca,Funza
+Colombia,Cundinamarca,Fúquene
+Colombia,Cundinamarca,Fusagasugá
+Colombia,Cundinamarca,Gachalá
+Colombia,Cundinamarca,Gachancipá
+Colombia,Boyacá,Gachantivá
+Colombia,Cundinamarca,Gachetá
+Colombia,Santander,Galán
+Colombia,Atlántico,Galapa
+Colombia,Sucre,Galeras
+Colombia,Cundinamarca,Gama
+Colombia,Cesar,Gamarra
+Colombia,Santander,Gámbita
+Colombia,Boyacá,Gámeza
+Colombia,Boyacá,Garagoa
+Colombia,Huila,Garzón
+Colombia,Quindio,Génova
+Colombia,Huila,Gigante
+Colombia,Valle del Cauca,Ginebra
+Colombia,Antioquia,Giraldo
+Colombia,Cundinamarca,Girardot
+Colombia,Antioquia,Girardota
+Colombia,Santander,Girón
+Colombia,Antioquia,Gómez Plata
+Colombia,Cesar,González
+Colombia,Norte de Santander,Gramalote
+Colombia,Antioquia,Granada
+Colombia,Cundinamarca,Granada
+Colombia,Meta,Granada
+Colombia,Santander,Guaca
+Colombia,Boyacá,Guacamayas
+Colombia,Valle del Cauca,Guacarí
+Colombia,Cauca,Guachené
+Colombia,Cundinamarca,Guachetá
+Colombia,Nariño,Guachucal
+Colombia,Valle del Cauca,Guadalajara de Buga
+Colombia,Antioquia,Guadalupe
+Colombia,Huila,Guadalupe
+Colombia,Santander,Guadalupe
+Colombia,Cundinamarca,Guaduas
+Colombia,Nariño,Guaitarilla
+Colombia,Nariño,Gualmatán
+Colombia,Magdalena,Guamal
+Colombia,Meta,Guamal
+Colombia,Tolima,Guamo
+Colombia,Cauca,Guapi
+Colombia,Santander,Guapotá
+Colombia,Sucre,Guaranda
+Colombia,Antioquia,Guarne
+Colombia,Cundinamarca,Guasca
+Colombia,Antioquia,Guatapé
+Colombia,Cundinamarca,Guataquí
+Colombia,Cundinamarca,Guatavita
+Colombia,Boyacá,Guateque
+Colombia,Risaralda,Guática
+Colombia,Santander,Guavatá
+Colombia,Cundinamarca,Guayabal de Síquima
+Colombia,Cundinamarca,Guayabetal
+Colombia,Boyacá,Guayatá
+Colombia,Santander,Güepsa
+Colombia,Boyacá,Güicán de la Sierra
+Colombia,Cundinamarca,Gutiérrez
+Colombia,Norte de Santander,Hacarí
+Colombia,Bolívar,Hatillo de Loba
+Colombia,Santander,Hato
+Colombia,Casanare,Hato Corozal
+Colombia,La Guajira,Hatonuevo
+Colombia,Antioquia,Heliconia
+Colombia,Norte de Santander,Herrán
+Colombia,Tolima,Herveo
+Colombia,Antioquia,Hispania
+Colombia,Huila,Hobo
+Colombia,Tolima,Honda
+Colombia,Tolima,Ibagué
+Colombia,Tolima,Icononzo
+Colombia,Nariño,Iles
+Colombia,Nariño,Imués
+Colombia,Guainía,Inírida
+Colombia,Cauca,Inzá
+Colombia,Nariño,Ipiales
+Colombia,Huila,Íquira
+Colombia,Huila,Isnos
+Colombia,Chocó,Istmina
+Colombia,Antioquia,Itagüí
+Colombia,Antioquia,Ituango
+Colombia,Boyacá,Iza
+Colombia,Cauca,Jambaló
+Colombia,Valle del Cauca,Jamundí
+Colombia,Antioquia,Jardín
+Colombia,Boyacá,Jenesano
+Colombia,Antioquia,Jericó
+Colombia,Boyacá,Jericó
+Colombia,Cundinamarca,Jerusalén
+Colombia,Santander,Jesús María
+Colombia,Santander,Jordán
+Colombia,Atlántico,Juan de Acosta
+Colombia,Cundinamarca,Junín
+Colombia,Chocó,Juradó
+Colombia,Córdoba,La Apartada
+Colombia,Huila,La Argentina
+Colombia,Santander,La Belleza
+Colombia,Cundinamarca,La Calera
+Colombia,Boyacá,La Capilla
+Colombia,Antioquia,La Ceja
+Colombia,Risaralda,La Celia
+Colombia,Amazonas,La Chorrera
+Colombia,Nariño,La Cruz
+Colombia,Valle del Cauca,La Cumbre
+Colombia,Caldas,La Dorada
+Colombia,Norte de Santander,La Esperanza
+Colombia,Antioquia,La Estrella
+Colombia,Nariño,La Florida
+Colombia,Cesar,La Gloria
+Colombia,Guainía,La Guadalupe
+Colombia,Cesar,La Jagua de Ibirico
+Colombia,La Guajira,La Jagua del Pilar
+Colombia,Nariño,La Llanada
+Colombia,Meta,La Macarena
+Colombia,Caldas,La Merced
+Colombia,Cundinamarca,La Mesa
+Colombia,Caquetá,La Montañita
+Colombia,Cundinamarca,La Palma
+Colombia,Cesar,La Paz
+Colombia,Santander,La Paz
+Colombia,Amazonas,La Pedrera
+Colombia,Cundinamarca,La Peña
+Colombia,Antioquia,La Pintada
+Colombia,Huila,La Plata
+Colombia,Norte de Santander,La Playa
+Colombia,Vichada,La Primavera
+Colombia,Casanare,La Salina
+Colombia,Cauca,La Sierra
+Colombia,Quindio,La Tebaida
+Colombia,Nariño,La Tola
+Colombia,Antioquia,La Unión
+Colombia,Nariño,La Unión
+Colombia,Sucre,La Unión
+Colombia,Valle del Cauca,La Unión
+Colombia,Boyacá,La Uvita
+Colombia,Cauca,La Vega
+Colombia,Cundinamarca,La Vega
+Colombia,Boyacá,La Victoria
+Colombia,Valle del Cauca,La Victoria
+Colombia,Amazonas,La Victoria
+Colombia,Risaralda,La Virginia
+Colombia,Norte de Santander,Labateca
+Colombia,Boyacá,Labranzagrande
+Colombia,Santander,Landázuri
+Colombia,Santander,Lebrija
+Colombia,Nariño,Leiva
+Colombia,Meta,Lejanías
+Colombia,Cundinamarca,Lenguazaque
+Colombia,Tolima,Lérida
+Colombia,Amazonas,Leticia
+Colombia,Tolima,Líbano
+Colombia,Antioquia,Liborina
+Colombia,Nariño,Linares
+Colombia,Chocó,Lloró
+Colombia,Cauca,López de Micay
+Colombia,Córdoba,Lorica
+Colombia,Nariño,Los Andes
+Colombia,Córdoba,Los Córdobas
+Colombia,Sucre,Los Palmitos
+Colombia,Norte de Santander,Los Patios
+Colombia,Santander,Los Santos
+Colombia,Norte de Santander,Lourdes
+Colombia,Atlántico,Luruaco
+Colombia,Boyacá,Macanal
+Colombia,Santander,Macaravita
+Colombia,Antioquia,Maceo
+Colombia,Cundinamarca,Machetá
+Colombia,Cundinamarca,Madrid
+Colombia,Bolívar,Magangué
+Colombia,Nariño,Magüí
+Colombia,Bolívar,Mahates
+Colombia,La Guajira,Maicao
+Colombia,Sucre,Majagual
+Colombia,Santander,Málaga
+Colombia,Atlántico,Malambo
+Colombia,Nariño,Mallama
+Colombia,Atlántico,Manatí
+Colombia,La Guajira,Manaure
+Colombia,Cesar,Manaure Balcón del Cesar
+Colombia,Casanare,Maní
+Colombia,Caldas,Manizales
+Colombia,Cundinamarca,Manta
+Colombia,Caldas,Manzanares
+Colombia,Meta,Mapiripán
+Colombia,Guainía,Mapiripana
+Colombia,Bolívar,Margarita
+Colombia,Bolívar,María La Baja
+Colombia,Antioquia,Marinilla
+Colombia,Boyacá,Maripí
+Colombia,Caldas,Marmato
+Colombia,Caldas,Marquetalia
+Colombia,Risaralda,Marsella
+Colombia,Caldas,Marulanda
+Colombia,Santander,Matanza
+Colombia,Antioquia,Medellín
+Colombia,Cundinamarca,Medina
+Colombia,Chocó,Medio Atrato
+Colombia,Chocó,Medio Baudó
+Colombia,Chocó,Medio San Juan
+Colombia,Tolima,Melgar
+Colombia,Cauca,Mercaderes
+Colombia,Meta,Mesetas
+Colombia,Caquetá,Milán
+Colombia,Boyacá,Miraflores
+Colombia,Guaviare,Miraflores
+Colombia,Cauca,Miranda
+Colombia,Amazonas,Mirití - Paraná
+Colombia,Risaralda,Mistrató
+Colombia,Vaupés,Mitú
+Colombia,Putumayo,Mocoa
+Colombia,Santander,Mogotes
+Colombia,Santander,Molagavita
+Colombia,Córdoba,Momil
+Colombia,Bolívar,Mompós
+Colombia,Boyacá,Mongua
+Colombia,Boyacá,Monguí
+Colombia,Boyacá,Moniquirá
+Colombia,Córdoba,Moñitos
+Colombia,Antioquia,Montebello
+Colombia,Bolívar,Montecristo
+Colombia,Córdoba,Montelíbano
+Colombia,Quindio,Montenegro
+Colombia,Córdoba,Montería
+Colombia,Casanare,Monterrey
+Colombia,Bolívar,Morales
+Colombia,Cauca,Morales
+Colombia,Caquetá,Morelia
+Colombia,Guainía,Morichal
+Colombia,Sucre,Morroa
+Colombia,Cundinamarca,Mosquera
+Colombia,Nariño,Mosquera
+Colombia,Boyacá,Motavita
+Colombia,Tolima,Murillo
+Colombia,Antioquia,Murindó
+Colombia,Antioquia,Mutatá
+Colombia,Norte de Santander,Mutiscua
+Colombia,Boyacá,Muzo
+Colombia,Antioquia,Nariño
+Colombia,Cundinamarca,Nariño
+Colombia,Nariño,Nariño
+Colombia,Huila,Nátaga
+Colombia,Tolima,Natagaima
+Colombia,Antioquia,Nechí
+Colombia,Antioquia,Necoclí
+Colombia,Caldas,Neira
+Colombia,Huila,Neiva
+Colombia,Cundinamarca,Nemocón
+Colombia,Cundinamarca,Nilo
+Colombia,Cundinamarca,Nimaima
+Colombia,Boyacá,Nobsa
+Colombia,Cundinamarca,Nocaima
+Colombia,Caldas,Norcasia
+Colombia,Bolívar,Norosí
+Colombia,Chocó,Nóvita
+Colombia,Magdalena,Nueva Granada
+Colombia,Boyacá,Nuevo Colón
+Colombia,Casanare,Nunchía
+Colombia,Chocó,Nuquí
+Colombia,Valle del Cauca,Obando
+Colombia,Santander,Ocamonte
+Colombia,Norte de Santander,Ocaña
+Colombia,Santander,Oiba
+Colombia,Boyacá,Oicatá
+Colombia,Antioquia,Olaya
+Colombia,Nariño,Olaya Herrera
+Colombia,Santander,Onzaga
+Colombia,Huila,Oporapa
+Colombia,Putumayo,Orito
+Colombia,Casanare,Orocué
+Colombia,Tolima,Ortega
+Colombia,Nariño,Ospina
+Colombia,Boyacá,Otanche
+Colombia,Sucre,Ovejas
+Colombia,Boyacá,Pachavita
+Colombia,Cundinamarca,Pacho
+Colombia,Vaupés,Pacoa
+Colombia,Caldas,Pácora
+Colombia,Cauca,Padilla
+Colombia,Boyacá,Páez
+Colombia,Cauca,Páez
+Colombia,Huila,Paicol
+Colombia,Cesar,Pailitas
+Colombia,Cundinamarca,Paime
+Colombia,Boyacá,Paipa
+Colombia,Boyacá,Pajarito
+Colombia,Huila,Palermo
+Colombia,Caldas,Palestina
+Colombia,Huila,Palestina
+Colombia,Santander,Palmar
+Colombia,Atlántico,Palmar de Varela
+Colombia,Santander,Palmas del Socorro
+Colombia,Valle del Cauca,Palmira
+Colombia,Sucre,Palmito
+Colombia,Tolima,Palocabildo
+Colombia,Norte de Santander,Pamplona
+Colombia,Norte de Santander,Pamplonita
+Colombia,Guainía,Pana Pana
+Colombia,Cundinamarca,Pandi
+Colombia,Boyacá,Panqueba
+Colombia,Vaupés,Papunahua
+Colombia,Santander,Páramo
+Colombia,Cundinamarca,Paratebueno
+Colombia,Cundinamarca,Pasca
+Colombia,Nariño,Pasto
+Colombia,Cauca,Patía
+Colombia,Boyacá,Pauna
+Colombia,Boyacá,Paya
+Colombia,Casanare,Paz de Ariporo
+Colombia,Boyacá,Paz de Río
+Colombia,Magdalena,Pedraza
+Colombia,Cesar,Pelaya
+Colombia,Antioquia,Peñol
+Colombia,Caldas,Pensilvania
+Colombia,Antioquia,Peque
+Colombia,Risaralda,Pereira
+Colombia,Boyacá,Pesca
+Colombia,Cauca,Piamonte
+Colombia,Santander,Piedecuesta
+Colombia,Tolima,Piedras
+Colombia,Cauca,Piendamó - Tunía
+Colombia,Quindio,Pijao
+Colombia,Magdalena,Pijiño del Carmen
+Colombia,Santander,Pinchote
+Colombia,Bolívar,Pinillos
+Colombia,Atlántico,Piojó
+Colombia,Boyacá,Pisba
+Colombia,Huila,Pital
+Colombia,Huila,Pitalito
+Colombia,Magdalena,Pivijay
+Colombia,Tolima,Planadas
+Colombia,Córdoba,Planeta Rica
+Colombia,Magdalena,Plato
+Colombia,Nariño,Policarpa
+Colombia,Atlántico,Polonuevo
+Colombia,Atlántico,Ponedera
+Colombia,Cauca,Popayán
+Colombia,Casanare,Pore
+Colombia,Nariño,Potosí
+Colombia,Valle del Cauca,Pradera
+Colombia,Tolima,Prado
+Colombia,Nariño,Providencia
+Colombia,"Archipiélago de San Andrés, Providencia y Santa Catalina",Providencia
+Colombia,Cesar,Pueblo Bello
+Colombia,Córdoba,Pueblo Nuevo
+Colombia,Risaralda,Pueblo Rico
+Colombia,Antioquia,Pueblorrico
+Colombia,Magdalena,Puebloviejo
+Colombia,Santander,Puente Nacional
+Colombia,Nariño,Puerres
+Colombia,Amazonas,Puerto Alegría
+Colombia,Amazonas,Puerto Arica
+Colombia,Putumayo,Puerto Asís
+Colombia,Antioquia,Puerto Berrío
+Colombia,Boyacá,Puerto Boyacá
+Colombia,Putumayo,Puerto Caicedo
+Colombia,Vichada,Puerto Carreño
+Colombia,Atlántico,Puerto Colombia
+Colombia,Guainía,Puerto Colombia
+Colombia,Meta,Puerto Concordia
+Colombia,Córdoba,Puerto Escondido
+Colombia,Meta,Puerto Gaitán
+Colombia,Putumayo,Puerto Guzmán
+Colombia,Putumayo,Puerto Leguízamo
+Colombia,Córdoba,Puerto Libertador
+Colombia,Meta,Puerto Lleras
+Colombia,Meta,Puerto López
+Colombia,Antioquia,Puerto Nare
+Colombia,Amazonas,Puerto Nariño
+Colombia,Santander,Puerto Parra
+Colombia,Caquetá,Puerto Rico
+Colombia,Meta,Puerto Rico
+Colombia,Arauca,Puerto Rondón
+Colombia,Cundinamarca,Puerto Salgar
+Colombia,Norte de Santander,Puerto Santander
+Colombia,Amazonas,Puerto Santander
+Colombia,Cauca,Puerto Tejada
+Colombia,Antioquia,Puerto Triunfo
+Colombia,Santander,Puerto Wilches
+Colombia,Cundinamarca,Pulí
+Colombia,Nariño,Pupiales
+Colombia,Cauca,Puracé
+Colombia,Tolima,Purificación
+Colombia,Córdoba,Purísima de la Concepción
+Colombia,Cundinamarca,Quebradanegra
+Colombia,Cundinamarca,Quetame
+Colombia,Chocó,Quibdó
+Colombia,Quindio,Quimbaya
+Colombia,Risaralda,Quinchía
+Colombia,Boyacá,Quípama
+Colombia,Cundinamarca,Quipile
+Colombia,Norte de Santander,Ragonvalia
+Colombia,Boyacá,Ramiriquí
+Colombia,Boyacá,Ráquira
+Colombia,Casanare,Recetor
+Colombia,Bolívar,Regidor
+Colombia,Antioquia,Remedios
+Colombia,Magdalena,Remolino
+Colombia,Atlántico,Repelón
+Colombia,Meta,Restrepo
+Colombia,Valle del Cauca,Restrepo
+Colombia,Antioquia,Retiro
+Colombia,Cundinamarca,Ricaurte
+Colombia,Nariño,Ricaurte
+Colombia,Cesar,Río de Oro
+Colombia,Chocó,Río Iró
+Colombia,Chocó,Río Quito
+Colombia,Bolívar,Río Viejo
+Colombia,Tolima,Rioblanco
+Colombia,Valle del Cauca,Riofrío
+Colombia,La Guajira,Riohacha
+Colombia,Antioquia,Rionegro
+Colombia,Santander,Rionegro
+Colombia,Caldas,Riosucio
+Colombia,Chocó,Riosucio
+Colombia,Caldas,Risaralda
+Colombia,Huila,Rivera
+Colombia,Nariño,Roberto Payán
+Colombia,Valle del Cauca,Roldanillo
+Colombia,Tolima,Roncesvalles
+Colombia,Boyacá,Rondón
+Colombia,Cauca,Rosas
+Colombia,Tolima,Rovira
+Colombia,Santander,Sabana de Torres
+Colombia,Atlántico,Sabanagrande
+Colombia,Antioquia,Sabanalarga
+Colombia,Atlántico,Sabanalarga
+Colombia,Casanare,Sabanalarga
+Colombia,Magdalena,Sabanas de San Ángel
+Colombia,Antioquia,Sabaneta
+Colombia,Boyacá,Saboyá
+Colombia,Casanare,Sácama
+Colombia,Boyacá,Sáchica
+Colombia,Córdoba,Sahagún
+Colombia,Huila,Saladoblanco
+Colombia,Caldas,Salamina
+Colombia,Magdalena,Salamina
+Colombia,Norte de Santander,Salazar
+Colombia,Tolima,Saldaña
+Colombia,Quindio,Salento
+Colombia,Antioquia,Salgar
+Colombia,Boyacá,Samacá
+Colombia,Caldas,Samaná
+Colombia,Nariño,Samaniego
+Colombia,Sucre,Sampués
+Colombia,Huila,San Agustín
+Colombia,Cesar,San Alberto
+Colombia,Santander,San Andrés
+Colombia,"Archipiélago de San Andrés, Providencia y Santa Catalina",San Andrés
+Colombia,Antioquia,San Andrés de Cuerquía
+Colombia,Córdoba,San Andrés de Sotavento
+Colombia,Nariño,San Andrés de Tumaco
+Colombia,Córdoba,San Antero
+Colombia,Tolima,San Antonio
+Colombia,Cundinamarca,San Antonio del Tequendama
+Colombia,Santander,San Benito
+Colombia,Sucre,San Benito Abad
+Colombia,Cundinamarca,San Bernardo
+Colombia,Nariño,San Bernardo
+Colombia,Córdoba,San Bernardo del Viento
+Colombia,Norte de Santander,San Calixto
+Colombia,Antioquia,San Carlos
+Colombia,Córdoba,San Carlos
+Colombia,Meta,San Carlos de Guaroa
+Colombia,Cundinamarca,San Cayetano
+Colombia,Norte de Santander,San Cayetano
+Colombia,Bolívar,San Cristóbal
+Colombia,Cesar,San Diego
+Colombia,Boyacá,San Eduardo
+Colombia,Bolívar,San Estanislao
+Colombia,Guainía,San Felipe
+Colombia,Bolívar,San Fernando
+Colombia,Antioquia,San Francisco
+Colombia,Cundinamarca,San Francisco
+Colombia,Putumayo,San Francisco
+Colombia,Santander,San Gil
+Colombia,Bolívar,San Jacinto
+Colombia,Bolívar,San Jacinto del Cauca
+Colombia,Antioquia,San Jerónimo
+Colombia,Santander,San Joaquín
+Colombia,Caldas,San José
+Colombia,Norte de Santander,San José de Cúcuta
+Colombia,Antioquia,San José de la Montaña
+Colombia,Santander,San José de Miranda
+Colombia,Boyacá,San José de Pare
+Colombia,Sucre,San José de Toluviejo
+Colombia,Córdoba,San José de Uré
+Colombia,Caquetá,San José del Fragua
+Colombia,Guaviare,San José del Guaviare
+Colombia,Chocó,San José del Palmar
+Colombia,Meta,San Juan de Arama
+Colombia,Sucre,San Juan de Betulia
+Colombia,Cundinamarca,San Juan de Rioseco
+Colombia,Antioquia,San Juan de Urabá
+Colombia,La Guajira,San Juan del Cesar
+Colombia,Bolívar,San Juan Nepomuceno
+Colombia,Meta,San Juanito
+Colombia,Nariño,San Lorenzo
+Colombia,Antioquia,San Luis
+Colombia,Tolima,San Luis
+Colombia,Boyacá,San Luis de Gaceno
+Colombia,Casanare,San Luis de Palenque
+Colombia,Sucre,San Luis de Sincé
+Colombia,Sucre,San Marcos
+Colombia,Cesar,San Martín
+Colombia,Meta,San Martín
+Colombia,Bolívar,San Martín de Loba
+Colombia,Boyacá,San Mateo
+Colombia,Santander,San Miguel
+Colombia,Putumayo,San Miguel
+Colombia,Boyacá,San Miguel de Sema
+Colombia,Sucre,San Onofre
+Colombia,Bolívar,San Pablo
+Colombia,Nariño,San Pablo
+Colombia,Boyacá,San Pablo de Borbur
+Colombia,Sucre,San Pedro
+Colombia,Valle del Cauca,San Pedro
+Colombia,Nariño,San Pedro de Cartago
+Colombia,Antioquia,San Pedro de los Milagros
+Colombia,Antioquia,San Pedro de Urabá
+Colombia,Córdoba,San Pelayo
+Colombia,Antioquia,San Rafael
+Colombia,Antioquia,San Roque
+Colombia,Cauca,San Sebastián
+Colombia,Magdalena,San Sebastián de Buenavista
+Colombia,Tolima,San Sebastián de Mariquita
+Colombia,Santander,San Vicente de Chucurí
+Colombia,Caquetá,San Vicente del Caguán
+Colombia,Antioquia,San Vicente Ferrer
+Colombia,Magdalena,San Zenón
+Colombia,Nariño,Sandoná
+Colombia,Magdalena,Santa Ana
+Colombia,Antioquia,Santa Bárbara
+Colombia,Nariño,Santa Bárbara
+Colombia,Santander,Santa Bárbara
+Colombia,Magdalena,Santa Bárbara de Pinto
+Colombia,Bolívar,Santa Catalina
+Colombia,Antioquia,Santa Fé de Antioquia
+Colombia,Santander,Santa Helena del Opón
+Colombia,Tolima,Santa Isabel
+Colombia,Atlántico,Santa Lucía
+Colombia,Boyacá,Santa María
+Colombia,Huila,Santa María
+Colombia,Magdalena,Santa Marta
+Colombia,Bolívar,Santa Rosa
+Colombia,Cauca,Santa Rosa
+Colombia,Risaralda,Santa Rosa de Cabal
+Colombia,Antioquia,Santa Rosa de Osos
+Colombia,Boyacá,Santa Rosa de Viterbo
+Colombia,Bolívar,Santa Rosa del Sur
+Colombia,Vichada,Santa Rosalía
+Colombia,Boyacá,Santa Sofía
+Colombia,Nariño,Santacruz
+Colombia,Boyacá,Santana
+Colombia,Cauca,Santander de Quilichao
+Colombia,Norte de Santander,Santiago
+Colombia,Putumayo,Santiago
+Colombia,Sucre,Santiago de Tolú
+Colombia,Antioquia,Santo Domingo
+Colombia,Atlántico,Santo Tomás
+Colombia,Risaralda,Santuario
+Colombia,Nariño,Sapuyes
+Colombia,Arauca,Saravena
+Colombia,Norte de Santander,Sardinata
+Colombia,Cundinamarca,Sasaima
+Colombia,Boyacá,Sativanorte
+Colombia,Boyacá,Sativasur
+Colombia,Antioquia,Segovia
+Colombia,Cundinamarca,Sesquilé
+Colombia,Valle del Cauca,Sevilla
+Colombia,Boyacá,Siachoque
+Colombia,Cundinamarca,Sibaté
+Colombia,Putumayo,Sibundoy
+Colombia,Norte de Santander,Silos
+Colombia,Cundinamarca,Silvania
+Colombia,Cauca,Silvia
+Colombia,Santander,Simacota
+Colombia,Cundinamarca,Simijaca
+Colombia,Bolívar,Simití
+Colombia,Sucre,Sincelejo
+Colombia,Chocó,Sipí
+Colombia,Magdalena,Sitionuevo
+Colombia,Cundinamarca,Soacha
+Colombia,Boyacá,Soatá
+Colombia,Boyacá,Socha
+Colombia,Santander,Socorro
+Colombia,Boyacá,Socotá
+Colombia,Boyacá,Sogamoso
+Colombia,Caquetá,Solano
+Colombia,Atlántico,Soledad
+Colombia,Caquetá,Solita
+Colombia,Boyacá,Somondoco
+Colombia,Antioquia,Sonsón
+Colombia,Antioquia,Sopetrán
+Colombia,Bolívar,Soplaviento
+Colombia,Cundinamarca,Sopó
+Colombia,Boyacá,Sora
+Colombia,Boyacá,Soracá
+Colombia,Boyacá,Sotaquirá
+Colombia,Cauca,Sotará - Paispamba
+Colombia,Santander,Suaita
+Colombia,Atlántico,Suan
+Colombia,Cauca,Suárez
+Colombia,Tolima,Suárez
+Colombia,Huila,Suaza
+Colombia,Cundinamarca,Subachoque
+Colombia,Cauca,Sucre
+Colombia,Santander,Sucre
+Colombia,Sucre,Sucre
+Colombia,Cundinamarca,Suesca
+Colombia,Cundinamarca,Supatá
+Colombia,Caldas,Supía
+Colombia,Santander,Suratá
+Colombia,Cundinamarca,Susa
+Colombia,Boyacá,Susacón
+Colombia,Boyacá,Sutamarchán
+Colombia,Cundinamarca,Sutatausa
+Colombia,Boyacá,Sutatenza
+Colombia,Cundinamarca,Tabio
+Colombia,Chocó,Tadó
+Colombia,Bolívar,Talaigua Nuevo
+Colombia,Cesar,Tamalameque
+Colombia,Casanare,Támara
+Colombia,Arauca,Tame
+Colombia,Antioquia,Támesis
+Colombia,Nariño,Taminango
+Colombia,Nariño,Tangua
+Colombia,Vaupés,Taraira
+Colombia,Amazonas,Tarapacá
+Colombia,Antioquia,Tarazá
+Colombia,Huila,Tarqui
+Colombia,Antioquia,Tarso
+Colombia,Boyacá,Tasco
+Colombia,Casanare,Tauramena
+Colombia,Cundinamarca,Tausa
+Colombia,Huila,Tello
+Colombia,Cundinamarca,Tena
+Colombia,Magdalena,Tenerife
+Colombia,Cundinamarca,Tenjo
+Colombia,Boyacá,Tenza
+Colombia,Norte de Santander,Teorama
+Colombia,Huila,Teruel
+Colombia,Huila,Tesalia
+Colombia,Cundinamarca,Tibacuy
+Colombia,Boyacá,Tibaná
+Colombia,Boyacá,Tibasosa
+Colombia,Cundinamarca,Tibirita
+Colombia,Norte de Santander,Tibú
+Colombia,Córdoba,Tierralta
+Colombia,Huila,Timaná
+Colombia,Cauca,Timbío
+Colombia,Cauca,Timbiquí
+Colombia,Boyacá,Tinjacá
+Colombia,Boyacá,Tipacoque
+Colombia,Bolívar,Tiquisio
+Colombia,Antioquia,Titiribí
+Colombia,Boyacá,Toca
+Colombia,Cundinamarca,Tocaima
+Colombia,Cundinamarca,Tocancipá
+Colombia,Boyacá,Togüí
+Colombia,Antioquia,Toledo
+Colombia,Norte de Santander,Toledo
+Colombia,Santander,Tona
+Colombia,Boyacá,Tópaga
+Colombia,Cundinamarca,Topaipí
+Colombia,Cauca,Toribío
+Colombia,Valle del Cauca,Toro
+Colombia,Boyacá,Tota
+Colombia,Cauca,Totoró
+Colombia,Casanare,Trinidad
+Colombia,Valle del Cauca,Trujillo
+Colombia,Atlántico,Tubará
+Colombia,Córdoba,Tuchín
+Colombia,Valle del Cauca,Tuluá
+Colombia,Boyacá,Tunja
+Colombia,Boyacá,Tununguá
+Colombia,Nariño,Túquerres
+Colombia,Bolívar,Turbaco
+Colombia,Bolívar,Turbaná
+Colombia,Antioquia,Turbo
+Colombia,Boyacá,Turmequé
+Colombia,Boyacá,Tuta
+Colombia,Boyacá,Tutazá
+Colombia,Cundinamarca,Ubalá
+Colombia,Cundinamarca,Ubaque
+Colombia,Valle del Cauca,Ulloa
+Colombia,Boyacá,Úmbita
+Colombia,Cundinamarca,Une
+Colombia,Chocó,Unguía
+Colombia,Chocó,Unión Panamericana
+Colombia,Antioquia,Uramita
+Colombia,Meta,Uribe
+Colombia,La Guajira,Uribia
+Colombia,Antioquia,Urrao
+Colombia,La Guajira,Urumita
+Colombia,Atlántico,Usiacurí
+Colombia,Cundinamarca,Útica
+Colombia,Antioquia,Valdivia
+Colombia,Córdoba,Valencia
+Colombia,Santander,Valle de San José
+Colombia,Tolima,Valle de San Juan
+Colombia,Putumayo,Valle del Guamuez
+Colombia,Cesar,Valledupar
+Colombia,Antioquia,Valparaíso
+Colombia,Caquetá,Valparaíso
+Colombia,Antioquia,Vegachí
+Colombia,Santander,Vélez
+Colombia,Tolima,Venadillo
+Colombia,Antioquia,Venecia
+Colombia,Cundinamarca,Venecia
+Colombia,Boyacá,Ventaquemada
+Colombia,Cundinamarca,Vergara
+Colombia,Valle del Cauca,Versalles
+Colombia,Santander,Vetas
+Colombia,Cundinamarca,Vianí
+Colombia,Caldas,Victoria
+Colombia,Antioquia,Vigía del Fuerte
+Colombia,Valle del Cauca,Vijes
+Colombia,Norte de Santander,Villa Caro
+Colombia,Boyacá,Villa de Leyva
+Colombia,Cundinamarca,Villa de San Diego de Ubaté
+Colombia,Norte de Santander,Villa del Rosario
+Colombia,Cauca,Villa Rica
+Colombia,Putumayo,Villagarzón
+Colombia,Cundinamarca,Villagómez
+Colombia,Tolima,Villahermosa
+Colombia,Caldas,Villamaría
+Colombia,Bolívar,Villanueva
+Colombia,La Guajira,Villanueva
+Colombia,Santander,Villanueva
+Colombia,Casanare,Villanueva
+Colombia,Cundinamarca,Villapinzón
+Colombia,Tolima,Villarrica
+Colombia,Meta,Villavicencio
+Colombia,Huila,Villavieja
+Colombia,Cundinamarca,Villeta
+Colombia,Cundinamarca,Viotá
+Colombia,Boyacá,Viracachá
+Colombia,Meta,Vistahermosa
+Colombia,Caldas,Viterbo
+Colombia,Cundinamarca,Yacopí
+Colombia,Nariño,Yacuanquer
+Colombia,Huila,Yaguará
+Colombia,Antioquia,Yalí
+Colombia,Antioquia,Yarumal
+Colombia,Vaupés,Yavaraté
+Colombia,Antioquia,Yolombó
+Colombia,Antioquia,Yondó
+Colombia,Casanare,Yopal
+Colombia,Valle del Cauca,Yotoco
+Colombia,Valle del Cauca,Yumbo
+Colombia,Bolívar,Zambrano
+Colombia,Santander,Zapatoca
+Colombia,Magdalena,Zapayán
+Colombia,Antioquia,Zaragoza
+Colombia,Valle del Cauca,Zarzal
+Colombia,Boyacá,Zetaquira
+Colombia,Cundinamarca,Zipacón
+Colombia,Cundinamarca,Zipaquirá
+Colombia,Magdalena,Zona Bananera
+Sudan,South Kordofan,Abassiya
+Sudan,River Nile,Abu Hamad
+Sudan,Sennar,Abu Hujar
+Sudan,East Darfur,Abu Jabrah
+Sudan,South Kordofan,Abu Jubayhah
+Sudan,East Darfur,Abu Karinka
+Sudan,South Kordofan,Abu Kershola
+Sudan,West Kordofan,Abu Zabad
+Sudan,West Kordofan,Abyei
+Sudan,Abyei PCA,Abyei PCA area
+Sudan,Northern,Ad Dabbah
+Sudan,Sennar,Ad Dali
+Sudan,River Nile,Ad Damar
+Sudan,Sennar,Ad Dinder
+Sudan,White Nile,Ad Diwaim
+Sudan,East Darfur,Ad Du'ayn
+Sudan,East Darfur,Adila
+Sudan,West Darfur,Ag Geneina
+Sudan,Red Sea,Agig
+Sudan,White Nile,Aj Jabalain
+Sudan,River Nile,Al Buhaira
+Sudan,South Kordofan,Al Buram
+Sudan,Northern,Al Burgaig
+Sudan,Gedaref,Al Butanah
+Sudan,West Kordofan,Al Dibab
+Sudan,Gedaref,Al Fao
+Sudan,Gedaref,Al Fashaga
+Sudan,North Darfur,Al Fasher
+Sudan,East Darfur,Al Firdous
+Sudan,Gedaref,Al Galabat Al Gharbyah - Kassab
+Sudan,Red Sea,Al Ganab
+Sudan,White Nile,Al Gitaina
+Sudan,Northern,Al Golid
+Sudan,Aj Jazirah,Al Hasahisa
+Sudan,West Kordofan,Al Idia
+Sudan,Aj Jazirah,Al Kamlin
+Sudan,West Kordofan,Al Khiwai
+Sudan,North Darfur,Al Koma
+Sudan,Blue Nile,Al Kurmuk
+Sudan,West Kordofan,Al Lagowa
+Sudan,North Darfur,Al Lait
+Sudan,South Kordofan,Al Leri
+Sudan,Gedaref,Al Mafaza
+Sudan,North Darfur,Al Malha
+Sudan,Aj Jazirah,Al Manaqil
+Sudan,River Nile,Al Matama
+Sudan,West Kordofan,Al Meiram
+Sudan,South Kordofan,Al Quoz
+Sudan,Aj Jazirah,Al Qurashi
+Sudan,Gedaref,Al Qureisha
+Sudan,South Darfur,Al Radoum
+Sudan,South Darfur,Al Wihda
+Sudan,West Kordofan,An Nuhud
+Sudan,Gedaref,Ar Rahad
+Sudan,North Kordofan,Ar Rahad
+Sudan,South Kordofan,Ar Rashad
+Sudan,South Kordofan,Ar Reif Ash Shargi
+Sudan,Blue Nile,Ar Rusayris
+Sudan,South Darfur,As Salam - SD
+Sudan,West Kordofan,As Salam - WK
+Sudan,White Nile,As Salam / Ar Rawat
+Sudan,North Darfur,As Serief
+Sudan,Sennar,As Suki
+Sudan,South Darfur,As Sunta
+Sudan,West Kordofan,As Sunut
+Sudan,East Darfur,Assalaya
+Sudan,Blue Nile,At Tadamon - BN
+Sudan,South Kordofan,At Tadamon - SK
+Sudan,North Darfur,At Tawisha
+Sudan,North Darfur,At Tina
+Sudan,River Nile,Atbara
+Sudan,Central Darfur,Azum
+Sudan,West Kordofan,Babanusa
+Sudan,East Darfur,Bahr Al Arab
+Sudan,Khartoum,Bahri
+Sudan,North Kordofan,Bara
+Sudan,River Nile,Barbar
+Sudan,Gedaref,Basundah
+Sudan,Blue Nile,Baw
+Sudan,West Darfur,Beida
+Sudan,South Darfur,Beliel
+Sudan,Central Darfur,Bendasi
+Sudan,South Darfur,Buram
+Sudan,South Darfur,Damso
+Sudan,North Darfur,Dar As Salam
+Sudan,South Kordofan,Delami
+Sudan,Northern,Delgo
+Sudan,South Kordofan,Dilling
+Sudan,Northern,Dongola
+Sudan,Red Sea,Dordieb
+Sudan,South Darfur,Ed Al Fursan
+Sudan,Blue Nile,Ed Damazine
+Sudan,West Darfur,Foro Baranga
+Sudan,Gedaref,Gala'a Al Nahal
+Sudan,Gedaref,Galabat Ash-Shargiah
+Sudan,North Kordofan,Gebrat Al Sheikh
+Sudan,Blue Nile,Geisan
+Sudan,South Darfur,Gereida
+Sudan,South Kordofan,Ghadeer
+Sudan,North Kordofan,Gharb Bara
+Sudan,Central Darfur,Gharb Jabal Marrah
+Sudan,West Kordofan,Ghubaish
+Sudan,White Nile,Guli
+Sudan,South Kordofan,Habila - SK
+Sudan,West Darfur,Habila - WD
+Sudan,Red Sea,Hala'ib
+Sudan,Northern,Halfa
+Sudan,Kassala,Halfa Aj Jadeedah
+Sudan,Red Sea,Haya
+Sudan,South Kordofan,Heiban
+Sudan,Aj Jazirah,Janub Al Jazirah
+Sudan,Khartoum,Jebel Awlia
+Sudan,West Darfur,Jebel Moon
+Sudan,Red Sea,Jubayt Elma'aadin
+Sudan,South Kordofan,Kadugli
+Sudan,Khartoum,Karrari
+Sudan,South Darfur,Kas
+Sudan,South Darfur,Kateila
+Sudan,North Darfur,Kebkabiya
+Sudan,West Kordofan,Keilak
+Sudan,North Darfur,Kelemando
+Sudan,West Darfur,Kereneik
+Sudan,North Darfur,Kernoi
+Sudan,Khartoum,Khartoum
+Sudan,White Nile,Kosti
+Sudan,South Darfur,Kubum
+Sudan,West Darfur,Kulbus
+Sudan,North Darfur,Kutum
+Sudan,Gedaref,Madeinat Al Gedaref
+Sudan,Kassala,Madeinat Kassala
+Sudan,Aj Jazirah,Medani Al Kubra
+Sudan,North Darfur,Melit
+Sudan,South Darfur,Mershing
+Sudan,Northern,Merwoe
+Sudan,Central Darfur,Mukjar
+Sudan,South Darfur,Nitega
+Sudan,South Darfur,Nyala Janoub
+Sudan,South Darfur,Nyala Shimal
+Sudan,Red Sea,Port Sudan
+Sudan,White Nile,Rabak
+Sudan,South Darfur,Rehaid Albirdi
+Sudan,Kassala,Reifi Aroma
+Sudan,Kassala,Reifi Gharb Kassala
+Sudan,Kassala,Reifi Hamashkureib
+Sudan,Kassala,Reifi Kassla
+Sudan,Kassala,Reifi Khashm Elgirba
+Sudan,Kassala,Reifi Nahr Atbara
+Sudan,Kassala,Reifi Shamal Ad Delta
+Sudan,Kassala,Reifi Telkok
+Sudan,Kassala,Reifi Wad Elhilaiw
+Sudan,North Darfur,Saraf Omra
+Sudan,Red Sea,Sawakin
+Sudan,Sennar,Sennar
+Sudan,Central Darfur,Shamal Jabal Marrah
+Sudan,South Darfur,Sharg Aj Jabal
+Sudan,Aj Jazirah,Sharg Al Jazirah
+Sudan,Khartoum,Sharg An Neel
+Sudan,Sennar,Sharg Sennar
+Sudan,South Darfur,Shattaya
+Sudan,North Kordofan,Sheikan
+Sudan,River Nile,Shendi
+Sudan,East Darfur,Shia'ria
+Sudan,Sennar,Sinja
+Sudan,Red Sea,Sinkat
+Sudan,West Darfur,Sirba
+Sudan,North Kordofan,Soudari
+Sudan,South Kordofan,Talawdi
+Sudan,North Darfur,Tawila
+Sudan,Red Sea,Tawkar
+Sudan,White Nile,Tendalti
+Sudan,South Darfur,Tulus
+Sudan,Aj Jazirah,Um Algura
+Sudan,Khartoum,Um Bada
+Sudan,North Darfur,Um Baru
+Sudan,South Darfur,Um Dafoug
+Sudan,North Kordofan,Um Dam Haj Ahmed
+Sudan,Central Darfur,Um Dukhun
+Sudan,South Kordofan,Um Durein
+Sudan,Khartoum,Um Durman
+Sudan,North Darfur,Um Kadadah
+Sudan,North Kordofan,Um Rawaba
+Sudan,White Nile,Um Rimta
+Sudan,Blue Nile,Wad Al Mahi
+Sudan,West Kordofan,Wad Bandah
+Sudan,Central Darfur,Wadi Salih
+Sudan,Gedaref,Wasat Al Gedaref
+Sudan,Central Darfur,Wasat Jabal Marrah
+Sudan,East Darfur,Yassin
+Sudan,Central Darfur,Zalingi
+South Sudan,Central Equatoria,Juba
+South Sudan,Central Equatoria,Kajo-keji
+South Sudan,Central Equatoria,Lainya
+South Sudan,Central Equatoria,Morobo
+South Sudan,Central Equatoria,Terekeka
+South Sudan,Central Equatoria,Yei
+South Sudan,Eastern Equatoria,Budi
+South Sudan,Eastern Equatoria,Ikotos
+South Sudan,Eastern Equatoria,Kapoeta East
+South Sudan,Eastern Equatoria,Kapoeta North
+South Sudan,Eastern Equatoria,Kapoeta South
+South Sudan,Eastern Equatoria,Lafon
+South Sudan,Eastern Equatoria,Magwi
+South Sudan,Eastern Equatoria,Torit
+South Sudan,Jonglei,Akobo
+South Sudan,Jonglei,Ayod
+South Sudan,Jonglei,Bor South
+South Sudan,Jonglei,Canal/Pigi
+South Sudan,Jonglei,Duk
+South Sudan,Jonglei,Fangak
+South Sudan,Jonglei,Nyirol
+South Sudan,Jonglei,Pibor
+South Sudan,Jonglei,Pochalla
+South Sudan,Jonglei,Twic East
+South Sudan,Jonglei,Uror
+South Sudan,Lakes,Awerial
+South Sudan,Lakes,Cueibet
+South Sudan,Lakes,Rumbek Centre
+South Sudan,Lakes,Rumbek East
+South Sudan,Lakes,Rumbek North
+South Sudan,Lakes,Wulu
+South Sudan,Lakes,Yirol East
+South Sudan,Lakes,Yirol West
+South Sudan,Northern Bahr el Ghazal,Aweil Centre
+South Sudan,Northern Bahr el Ghazal,Aweil East
+South Sudan,Northern Bahr el Ghazal,Aweil North
+South Sudan,Northern Bahr el Ghazal,Aweil South
+South Sudan,Northern Bahr el Ghazal,Aweil West
+South Sudan,Unity,Abiemnhom
+South Sudan,Unity,Guit
+South Sudan,Unity,Koch
+South Sudan,Unity,Leer
+South Sudan,Unity,Mayendit
+South Sudan,Unity,Mayom
+South Sudan,Unity,Panyijiar
+South Sudan,Unity,Pariang
+South Sudan,Unity,Rubkona
+South Sudan,Upper Nile,Baliet
+South Sudan,Upper Nile,Fashoda
+South Sudan,Upper Nile,Longochuk
+South Sudan,Upper Nile,Luakpiny/Nasir
+South Sudan,Upper Nile,Maban
+South Sudan,Upper Nile,Maiwut
+South Sudan,Upper Nile,Malakal
+South Sudan,Upper Nile,Manyo
+South Sudan,Upper Nile,Melut
+South Sudan,Upper Nile,Panyikang
+South Sudan,Upper Nile,Renk
+South Sudan,Upper Nile,Ulang
+South Sudan,Warrap,Gogrial East
+South Sudan,Warrap,Gogrial West
+South Sudan,Warrap,Tonj East
+South Sudan,Warrap,Tonj North
+South Sudan,Warrap,Tonj South
+South Sudan,Warrap,Twic
+South Sudan,Western Bahr el Ghazal,Jur River
+South Sudan,Western Bahr el Ghazal,Raja
+South Sudan,Western Bahr el Ghazal,Wau
+South Sudan,Western Equatoria,Ezo
+South Sudan,Western Equatoria,Ibba
+South Sudan,Western Equatoria,Maridi
+South Sudan,Western Equatoria,Mundri East
+South Sudan,Western Equatoria,Mundri West
+South Sudan,Western Equatoria,Mvolo
+South Sudan,Western Equatoria,Nagero
+South Sudan,Western Equatoria,Nzara
+South Sudan,Western Equatoria,Tambura
+South Sudan,Western Equatoria,Yambio
+South Sudan,Abyei Region,Abyei Region
