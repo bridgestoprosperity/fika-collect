@@ -1,24 +1,19 @@
 import { uploadPresignerRequestSchema, } from "./util/requestSchema.js";
-import { responseSchema } from "./util/responseSchema.js";
 import generatePresignedUrl from "./util/presignUrl.js";
 import { fromError } from "zod-validation-error";
 import HttpError from "./util/httpError.js";
 import s3 from "./util/s3.js";
 
 /**
- * Lambda handler function to generate a pre-signed upload URL.
+ * Vercel handler function to generate a pre-signed upload URL.
  * @module handler
  *
- * @param {Object} event - The event object containing the request data.
- * @param {string} event.body - The JSON stringified body of the request.
- * @param {Object} event.body.file_type - The type of the file to be uploaded.
- * @param {Object} event.body.survey_id - The ID of the survey associated with the file.
+ * @param {Request} request - The request object.
+ * @param {Object} request.body - The JSON body of the request.
+ * @param {string} request.body.file_type - The type of the file to be uploaded.
+ * @param {string} request.body.survey_id - The ID of the survey associated with the file.
  *
- * @returns {Object} The response object.
- * @returns {number} response.statusCode - The HTTP status code.
- * @returns {string} response.body - The JSON stringified body of the response.
- * @returns {Object} response.body.uploadURL - The pre-signed URL for file upload (on success).
- * @returns {Object} response.body.error - The error message (on failure).
+ * @returns {Response} The response object with uploadURL or error.
  *
  * @throws {Error} - If an error occurs during processing.
  */
@@ -27,33 +22,57 @@ export async function POST(request: Request) {
     const requestParams = uploadPresignerRequestSchema.safeParse(await request.json());
 
     if (!requestParams.success) {
-      return responseSchema.parse({
-        statusCode: 400,
-        body: JSON.stringify({
+      return new Response(
+        JSON.stringify({
           error: fromError(requestParams.error).toString(),
         }),
-      });
+        {
+          status: 400,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      );
     }
 
     const uploadURL: string = await generatePresignedUrl(s3, requestParams.data);
 
-    return responseSchema.parse({
-      statusCode: 200,
-      body: JSON.stringify({ uploadURL }),
-    });
+    return new Response(
+      JSON.stringify({ uploadURL }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
+    );
   } catch (error: unknown) {
     // Don't log errors in test mode
     if (process.env.NODE_ENV !== 'test') console.error(error);
 
     if (error instanceof HttpError) {
-      return {
-        statusCode: error.statusCode,
-        body: error.message,
-      };
+      return new Response(
+        JSON.stringify({ error: error.message }),
+        {
+          status: error.statusCode,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      );
     }
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Internal server error" }),
-    };
+    return new Response(
+      JSON.stringify({ error: "Internal server error" }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
+    );
   }
 }

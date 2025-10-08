@@ -1,10 +1,8 @@
 import { surveySubmissionRequestSchema, } from "./util/requestSchema.js";
 import { fromError } from "zod-validation-error";
-import { responseSchema } from "./util/responseSchema.js";
 import { uploadResponseToS3 } from "./util/uploadResponse.js";
 import HttpError from "./util/httpError.js";
 import s3 from "./util/s3.js";
-import type { ResponseType } from "./util/responseType.js";
 
 /**
  * Handle submitted survey JSON

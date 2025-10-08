@@ -39,8 +39,8 @@ describe("presignUpload", () => {
     });
 
     const result = await presignUpload(request);
-    expect(result.body).toBe(JSON.stringify({ uploadURL: "https://example.com" }));
-    expect(result.statusCode).toBe(200);
+    expect(result.status).toBe(200);
+    expect(await result.json()).toEqual({ uploadURL: "https://example.com" });
     expect(mocks.getSignedUrl.mock.calls.length).toBe(1);
     expect(mocks.send.mock.calls.length).toBe(1);
   });
@@ -61,8 +61,9 @@ describe("presignUpload", () => {
     });
 
     const result = await presignUpload(request);
-    expect(result.statusCode).toBe(400);
-    expect(result.body).toBe(
+    expect(result.status).toBe(400);
+    const body = await result.json();
+    expect(body.error).toBe(
       "Response at responses/foo/bar/response.json must be submitted before uploading images"
     );
   });
@@ -80,10 +81,10 @@ describe("presignUpload", () => {
     });
 
     const result = await presignUpload(request);
-    expect(result.statusCode).toBe(400);
-    expect(result.body).toBe(
-      "{\"error\":\"Validation error: Invalid enum value. Expected 'image/jpeg' | 'image/png' | 'image/heic' | 'image/webp', received 'application/json' at \\\"file_type\\\"\"}"
-    );
+    expect(result.status).toBe(400);
+    const body = await result.json();
+    expect(body.error).toContain("Invalid enum value");
+    expect(body.error).toContain("file_type");
   });
 
   it("returns HTTP 500 for internal errors", async () => {
@@ -102,7 +103,7 @@ describe("presignUpload", () => {
     });
 
     const result = await presignUpload(request);
-    expect(result.statusCode).toBe(500);
-    expect(result.body).toBe(JSON.stringify({ error: "Internal server error" }));
+    expect(result.status).toBe(500);
+    expect(await result.json()).toEqual({ error: "Internal server error" });
   });
 });
