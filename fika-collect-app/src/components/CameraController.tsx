@@ -16,6 +16,7 @@ import {
 } from 'react-native-vision-camera';
 import {type CameraDevice, type PhotoFile} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
+import {colors, spacing, fontSize, fontWeight, borderRadius} from '../theme';
 
 interface ConfirmPhotoProps {
   file: PhotoFile;
@@ -26,26 +27,28 @@ interface ConfirmPhotoProps {
 function StyledButton({
   title,
   onPress,
-  color = 'white',
-  backgroundColor = 'black',
+  variant = 'default',
 }: {
   title: string;
   onPress: () => void;
-  color?: string;
-  backgroundColor?: string;
+  variant?: 'default' | 'primary';
 }) {
   return (
     <Pressable
       accessibilityLabel={title}
       onPress={onPress}
       style={({pressed}) => [
-        {
-          backgroundColor: pressed ? 'gray' : backgroundColor,
-          padding: 10,
-          borderRadius: 5,
-        },
+        styles.styledButton,
+        variant === 'primary' && styles.styledButtonPrimary,
+        pressed && styles.styledButtonPressed,
       ]}>
-      <Text style={{color, fontSize: 18}}>{title}</Text>
+      <Text
+        style={[
+          styles.styledButtonText,
+          variant === 'primary' && styles.styledButtonTextPrimary,
+        ]}>
+        {title}
+      </Text>
     </Pressable>
   );
 }
@@ -54,7 +57,7 @@ function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
   const {getString} = useLocalization();
   return (
     <SafeAreaView style={styles.cameraContainer}>
-      <View style={styles.topRow}></View>
+      <View style={styles.topRow} />
       <BlastedImage
         source={{uri: pathFromFile(file)}}
         width={Dimensions.get('window').width}
@@ -64,17 +67,13 @@ function ConfirmPhoto({file, onConfirm, onRetake}: ConfirmPhotoProps) {
       />
       <View style={styles.bottomRow}>
         <View style={styles.captureRowLeft}>
-          <StyledButton
-            title={getString('retakePhotoButton')}
-            onPress={onRetake}
-            color="white"
-          />
+          <StyledButton title={getString('retakePhotoButton')} onPress={onRetake} />
         </View>
         <View style={styles.captureRowRight}>
           <StyledButton
             title={getString('usePhotoButton')}
             onPress={onConfirm}
-            color="white"
+            variant="primary"
           />
         </View>
       </View>
@@ -163,14 +162,13 @@ export default function CameraController({
   }
 
   const capture = async () => {
-    if (!camera.current) return;
+    if (!camera.current) {return;}
     setFile(await camera.current.takePhoto());
-    //onCapture && onCapture(await camera.current.takePhoto());
   };
 
   const retake = () => setFile(null);
   const confirm = () => {
-    if (!file) return;
+    if (!file) {return;}
     onCapture(pathFromFile(file));
   };
 
@@ -180,7 +178,7 @@ export default function CameraController({
 
   return (
     <SafeAreaView style={styles.cameraContainer}>
-      <View style={styles.topRow}></View>
+      <View style={styles.topRow} />
       <Camera
         enableLocation={hasLocationPermission}
         style={styles.camera}
@@ -191,7 +189,7 @@ export default function CameraController({
       />
       <View style={styles.bottomRow}>
         <View style={styles.captureRowLeft}>
-          <StyledButton title="Cancel" onPress={cancel} color="white" />
+          <StyledButton title="Cancel" onPress={cancel} />
         </View>
         <View style={styles.captureRowCenter}>
           <Pressable
@@ -215,27 +213,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#111',
+    padding: spacing.lg,
   },
   errorMessage: {
-    fontSize: 22,
-    color: 'red',
+    fontSize: fontSize['2xl'],
+    color: colors.error,
     fontStyle: 'italic',
-    marginBottom: 50,
+    marginBottom: spacing['2xl'],
+    textAlign: 'center',
   },
   cameraContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'black',
+    backgroundColor: '#000',
   },
   camera: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  cancelButton: {
-    color: 'white',
-    fontSize: 22,
   },
   topRow: {
     height: 80,
@@ -247,24 +244,24 @@ const styles = StyleSheet.create({
   captureButtonOuter: {
     width: 70,
     height: 70,
-    borderRadius: 50,
-    backgroundColor: 'white',
+    borderRadius: 35,
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
   },
   captureButtonMiddle: {
     width: 60,
     height: 60,
-    borderRadius: 50,
-    backgroundColor: 'black',
+    borderRadius: 30,
+    backgroundColor: '#000',
     justifyContent: 'center',
     alignItems: 'center',
   },
   captureButtonInner: {
-    width: 55,
-    height: 55,
-    borderRadius: 50,
-    backgroundColor: 'white',
+    width: 54,
+    height: 54,
+    borderRadius: 27,
+    backgroundColor: '#fff',
   },
   captureRowLeft: {
     flex: 1,
@@ -281,5 +278,28 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  styledButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    paddingVertical: spacing.sm + 2,
+    paddingHorizontal: spacing.md,
+    borderRadius: borderRadius.md,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+  },
+  styledButtonPrimary: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  styledButtonPressed: {
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+  },
+  styledButtonText: {
+    color: '#fff',
+    fontSize: fontSize.lg,
+    fontWeight: fontWeight.medium,
+  },
+  styledButtonTextPrimary: {
+    color: colors.textInverse,
   },
 });

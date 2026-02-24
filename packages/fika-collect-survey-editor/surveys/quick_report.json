@@ -6,7 +6,7 @@
     {
       "id": "severity",
       "type": "multiple_choice",
-      "question": "What is the severity of the obstacle?",
+      "question": "What is the sev of the obstacle?",
       "options": [
         "Level 1 - Minor",
         "Level 2 - Moderate",

@@ -10,10 +10,8 @@ import {
   Switch,
   KeyboardAvoidingView,
   Modal,
-  Button,
   Dimensions,
   Platform,
-  Appearance,
 } from 'react-native';
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
@@ -34,8 +32,20 @@ import {useNetInfo} from '@react-native-community/netinfo';
 import Geolocation from '@react-native-community/geolocation';
 import {useLocalization} from '../hooks/useLocalization';
 import {useLocationLookup} from '../hooks/useLocationLookup';
-
-const isLightTheme = Appearance.getColorScheme() === 'light';
+import {
+  colors,
+  spacing,
+  fontSize,
+  fontWeight,
+  borderRadius,
+  shadows,
+} from '../theme';
+import {
+  AnimatedCheckbox,
+  AnimatedTextInput,
+  LoadingSpinner,
+  ProgressBar,
+} from './ui';
 
 type SurveyScreenProps = {
   route: {params: SurveyParams};
@@ -81,13 +91,11 @@ function ShortAnswerQuestion({
         <Text style={styles.surveyQuestionText}>
           {localize(question.question)}
         </Text>
-        <TextInput
+        <AnimatedTextInput
           inputMode={inputMode}
-          style={styles.textInputBox}
           value={response.value}
           onChangeText={text => onChange(text)}
           placeholder={localize(question.hint)}
-          placeholderTextColor={'#666'}
         />
       </View>
     </SurveyQuestionWrapper>
@@ -142,14 +150,11 @@ function LongAnswerQuestion({
         <Text style={styles.surveyQuestionText}>
           {localize(question.question)}
         </Text>
-        <TextInput
-          style={styles.multiLineTextInputBox}
+        <AnimatedTextInput
           multiline
-          textAlignVertical="top"
           value={response.value}
           onChangeText={text => onChange(text)}
           placeholder={localize(question.hint)}
-          placeholderTextColor={'#666'}
         />
       </View>
     </SurveyQuestionWrapper>
@@ -185,6 +190,8 @@ function BooleanQuestion({
           <Switch
             value={response.value === 'yes'}
             onValueChange={value => onChange(value ? 'yes' : 'no')}
+            trackColor={{false: colors.border, true: colors.primaryLight}}
+            thumbColor={response.value === 'yes' ? colors.primary : colors.borderDark}
           />
           <Text style={styles.booleanValue}>
             {response.value === 'yes'
@@ -193,7 +200,7 @@ function BooleanQuestion({
           </Text>
         </View>
         {placeholder ? (
-          <View style={{marginTop: 40}}>
+          <View style={{marginTop: spacing.xl}}>
             <Text style={styles.hint}>{localize(placeholder)}</Text>
           </View>
         ) : null}
@@ -228,8 +235,8 @@ function MultipleChoiceQuestion({
         <Picker
           itemStyle={sharedStyles.pickerItem}
           style={sharedStyles.picker}
-          dropdownIconRippleColor={isLightTheme ? '#ccc' : '#444'}
-          dropdownIconColor={isLightTheme ? '#000' : '#fff'}
+          dropdownIconRippleColor={colors.border}
+          dropdownIconColor={colors.text}
           selectedValue={response.value}
           onValueChange={value => onChange(value)}>
           {question.options &&
@@ -258,14 +265,24 @@ function MultiSelectQuestion({
   const {question} = response;
   const {localize} = useLocalization();
 
-  const selectedOptions = response.value || [];
+  const currentSelectedOptions = response.value || [];
   const options = question.options || [];
 
   const initialSelectedState = options.map(option =>
-    selectedOptions.includes(option.en.trim()),
+    currentSelectedOptions.includes(option.en.trim()),
   );
   const [selectedState, setSelectedValues] =
     useState<boolean[]>(initialSelectedState);
+
+  const handleToggle = (index: number) => {
+    const newSelectedState = [...selectedState];
+    newSelectedState[index] = !newSelectedState[index];
+    setSelectedValues(newSelectedState);
+    const newSelectedOptions = options
+      .filter((_, i) => newSelectedState[i])
+      .map(({en}) => en.trim());
+    onChange(newSelectedOptions);
+  };
 
   return (
     <SurveyQuestionWrapper
@@ -280,29 +297,12 @@ function MultiSelectQuestion({
         </Text>
 
         {options.map((option, index) => (
-          <View key={`option-${index}`} style={styles.booleanRow}>
-            <Pressable
-              style={styles.multiselectRow}
-              onPress={() => {
-                const newSelectedState = [...selectedState];
-                newSelectedState[index] = !newSelectedState[index];
-                setSelectedValues(newSelectedState);
-                const selectedOptions = options
-                  .filter((_, i) => newSelectedState[i])
-                  .map(({en}) => en.trim());
-                onChange(selectedOptions);
-              }}>
-              <View
-                style={[
-                  styles.multiselectCheckbox,
-                  selectedState[index] && styles.multiselectCheckboxChecked,
-                ]}
-              />
-              <Text style={styles.multiselectCheckboxText}>
-                {localize(option)}
-              </Text>
-            </Pressable>
-          </View>
+          <AnimatedCheckbox
+            key={`option-${index}`}
+            checked={selectedState[index]}
+            onPress={() => handleToggle(index)}
+            label={localize(option)}
+          />
         ))}
       </View>
     </SurveyQuestionWrapper>
@@ -349,7 +349,6 @@ function AdminLocationQuestion({
     return <Text>{getString('errorLoadingLocations')}</Text>;
   }
 
-  // Step through the nested object structure according to the path
   function navigatePath(path: string[]): string[] | null {
     let curobj: {[key: string]: any} = locations as {[key: string]: any};
     if (!curobj) {
@@ -359,11 +358,8 @@ function AdminLocationQuestion({
       if (path[i] in curobj) {
         curobj = curobj[path[i]];
       } else if (Array.isArray(curobj)) {
-        // If the current object is an array, we are at the end of the path
-        // and there is nothing further to navigate.
         return null;
       } else if (!curobj) {
-        // Unexpected case where the path part does not exist
         return null;
       }
     }
@@ -441,15 +437,15 @@ function AdminLocationQuestion({
                 <View
                   style={[
                     sharedStyles.sectionHeaderContainer,
-                    {marginTop: 50},
+                    {marginTop: spacing['2xl']},
                   ]}>
                   <Text style={sharedStyles.sectionHeaderText}>
                     {getString('selectYourLocation')}
                   </Text>
 
                   <Picker
-                    dropdownIconRippleColor={isLightTheme ? '#ccc' : '#444'}
-                    dropdownIconColor={isLightTheme ? '#000' : '#fff'}
+                    dropdownIconRippleColor={colors.border}
+                    dropdownIconColor={colors.text}
                     style={sharedStyles.picker}
                     itemStyle={sharedStyles.pickerItem}
                     selectedValue={curPathPart}
@@ -470,37 +466,12 @@ function AdminLocationQuestion({
                 </View>
               </View>
             )}
-            {
-              null /*
-            <View style={styles.locationButtonContainer}>
-              <Pressable
-                onPress={prev}
-                style={({pressed}) => [
-                  sharedStyles.button,
-                  sharedStyles.buttonSecondary,
-                  locationPath.length === 0 ? sharedStyles.buttonDisabled : {},
-                  pressed ? sharedStyles.buttonPressed : {},
-                ]}>
-                <Text style={sharedStyles.buttonText}>Back</Text>
-              </Pressable>
-              <Pressable
-                onPress={next}
-                style={({pressed}) => [
-                  sharedStyles.button,
-                  pressed ? sharedStyles.buttonPressed : {},
-                ]}>
-                <Text style={sharedStyles.buttonText}>Select</Text>
-              </Pressable>
-            </View>*/
-            }
           </View>
         )}
       </View>
     </SurveyQuestionWrapper>
   );
 }
-
-let GEOLOCATION_AUTHORIZATION: boolean | null = null;
 
 function GeolocationQuestion({
   response,
@@ -577,17 +548,25 @@ function GeolocationQuestion({
         <Text style={styles.surveyQuestionText}>
           {localize(question.question)}
         </Text>
-        <Button
-          title={getString('geolocationGetLocationButton')}
-          onPress={getLocation}
-        />
-        <View style={{marginTop: 40}}>
+        <Pressable
+          style={({pressed}) => [
+            styles.locationButton,
+            pressed && {backgroundColor: colors.primaryPressed},
+          ]}
+          onPress={getLocation}>
+          <Text style={styles.locationButtonText}>
+            {getString('geolocationGetLocationButton')}
+          </Text>
+        </Pressable>
+        <View style={{marginTop: spacing.xl}}>
           <TextInput
             style={styles.textInputBox}
             value={response.stringValue}
             editable={false}
           />
-          <Text style={[styles.warning, {marginTop: 10}]}>{statusMessage}</Text>
+          <Text style={[styles.statusMessage, {marginTop: spacing.sm}]}>
+            {statusMessage}
+          </Text>
         </View>
       </View>
     </SurveyQuestionWrapper>
@@ -641,20 +620,31 @@ function PhotoQuestion({
                 height={Dimensions.get('window').width * 0.8}
               />
             </View>
-            <Button
-              onPress={() => onChange('')}
-              title="Use a different photo"
-            />
+            <Pressable
+              style={({pressed}) => [
+                styles.photoButton,
+                styles.photoButtonSecondary,
+                pressed && {backgroundColor: colors.surfacePressed},
+              ]}
+              onPress={() => onChange('')}>
+              <Text style={styles.photoButtonSecondaryText}>
+                Use a different photo
+              </Text>
+            </Pressable>
           </View>
         ) : (
           <View>
             {hasCameraPermission ? (
               device ? (
-                <View style={{marginBottom: 15}}>
-                  <Button
-                    onPress={() => setCameraVisible(true)}
-                    title="Take photo"
-                  />
+                <View style={{marginBottom: spacing.md}}>
+                  <Pressable
+                    style={({pressed}) => [
+                      styles.photoButton,
+                      pressed && {backgroundColor: colors.primaryPressed},
+                    ]}
+                    onPress={() => setCameraVisible(true)}>
+                    <Text style={styles.photoButtonText}>Take photo</Text>
+                  </Pressable>
                   <Modal
                     visible={cameraVisible}
                     onRequestClose={() => setCameraVisible(false)}
@@ -677,18 +667,25 @@ function PhotoQuestion({
                 {getString('cameraPermissionRequired')}
               </Text>
             )}
-            <Button
+            <Pressable
+              style={({pressed}) => [
+                styles.photoButton,
+                styles.photoButtonSecondary,
+                pressed && {backgroundColor: colors.surfacePressed},
+              ]}
               onPress={async () => {
                 const result = await launchImageLibrary({
                   mediaType: 'photo',
                   selectionLimit: 1,
                 });
                 const uri = result?.assets?.[0]?.uri;
-                if (!uri) return;
+                if (!uri) {return;}
                 onChange(uri);
-              }}
-              title={getString('selectPhotoFromLibrary')}
-            />
+              }}>
+              <Text style={styles.photoButtonSecondaryText}>
+                {getString('selectPhotoFromLibrary')}
+              </Text>
+            </Pressable>
           </View>
         )}
       </View>
@@ -789,13 +786,12 @@ function SurveyQuestionWrapper(props: SurveyQuestionWrapperProps) {
       <View style={styles.buttonContainer}>
         <Pressable
           style={({pressed}) => [
-            sharedStyles.button,
-            sharedStyles.buttonSecondary,
-            styles.submitRowButton,
-            pressed ? sharedStyles.buttonSecondaryPressed : {},
+            styles.navButton,
+            styles.navButtonSecondary,
+            pressed && {backgroundColor: colors.surfacePressed},
           ]}
           onPress={onPrevious}>
-          <Text style={sharedStyles.buttonText}>
+          <Text style={styles.navButtonSecondaryText}>
             {questionIndex > 0
               ? getString('previousButton')
               : getString('backButton')}
@@ -806,14 +802,13 @@ function SurveyQuestionWrapper(props: SurveyQuestionWrapperProps) {
         </Text>
         <Pressable
           style={({pressed}) => [
-            sharedStyles.button,
-            styles.submitRowButton,
-            canContinue ? {} : sharedStyles.buttonDisabled,
-            pressed ? sharedStyles.buttonPressed : {},
+            styles.navButton,
+            canContinue ? {} : styles.buttonDisabled,
+            pressed && canContinue ? {backgroundColor: colors.primaryPressed} : {},
           ]}
           disabled={!canContinue}
           onPress={onNext}>
-          <Text style={sharedStyles.buttonText}>
+          <Text style={styles.navButtonText}>
             {getString(
               questionIndex === questionCount - 1
                 ? 'submitButton'
@@ -864,9 +859,6 @@ export default function SurveyScreen(props: SurveyScreenProps) {
           onPress: async () => {
             await surveyResponseManager.storeResponse(response);
 
-            // It seems that netInfo.isInternetReachable is not reliable, at least based on
-            // testing in the iOS simulator. Instead, we will use isConnected in DEV mode
-            // and isInternetReachable in production mode.
             if (
               netInfo.isInternetReachable ||
               (__DEV__ === true && netInfo.isConnected)
@@ -934,7 +926,7 @@ export default function SurveyScreen(props: SurveyScreenProps) {
   };
 
   useEffect(() => {
-    if (!submitting || submitted) return;
+    if (!submitting || submitted) {return;}
     surveyResponseManager
       .uploadResponse(response)
       .then(() => {
@@ -954,13 +946,18 @@ export default function SurveyScreen(props: SurveyScreenProps) {
       });
   }, [submitting, submitted, surveyResponseManager, navigation, response]);
 
+  const progress = (questionIndex + 1) / questionCount;
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}
-      style={{flex: 1}}>
+      style={{flex: 1, backgroundColor: colors.surface}}>
       <View style={styles.titleContainer}>
         <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
+        <View style={styles.progressBarContainer}>
+          <ProgressBar progress={progress} height={4} />
+        </View>
       </View>
       <SurveyQuestion
         key={questionIndex}
@@ -975,7 +972,8 @@ export default function SurveyScreen(props: SurveyScreenProps) {
       {submitting && (
         <View style={styles.overlay}>
           <View style={styles.progressContainer}>
-            <Text style={styles.progressText}>Submitting...</Text>
+            <LoadingSpinner size={40} />
+            <Text style={styles.progressText}>{getString('submitting')}</Text>
           </View>
         </View>
       )}
@@ -988,92 +986,118 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    padding: 15,
-    paddingTop: 30,
+    padding: spacing.md,
+    paddingTop: spacing.lg,
   },
   titleContainer: {
     flex: 0,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
+    paddingVertical: spacing.sm + 4,
+    paddingHorizontal: spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    backgroundColor: '#e8e8e8',
+    borderBottomColor: colors.border,
+    backgroundColor: colors.background,
+  },
+  progressBarContainer: {
+    width: '100%',
+    marginTop: spacing.sm,
   },
   surveyTitle: {
-    color: '#333',
-    fontSize: 22,
+    color: colors.text,
+    fontSize: fontSize['2xl'],
     marginTop: 0,
     marginBottom: 0,
-    fontWeight: 700,
+    fontWeight: fontWeight.bold,
   },
   surveyQuestion: {
-    marginBottom: 25,
+    marginBottom: spacing.lg,
     width: '100%',
   },
   surveyQuestionText: {
-    marginBottom: 25,
-    fontSize: 20,
+    marginBottom: spacing.lg,
+    fontSize: fontSize.xl,
     lineHeight: 30,
+    color: colors.text,
   },
   feedbackText: {
-    fontSize: 18,
+    fontSize: fontSize.lg,
+    color: colors.textSecondary,
+    fontWeight: fontWeight.medium,
   },
   buttonContainer: {
-    height: 50,
-    marginBottom: 10,
-    paddingLeft: 15,
-    paddingRight: 15,
+    height: 56,
+    marginBottom: spacing.sm,
+    paddingHorizontal: spacing.md,
     justifyContent: 'space-between',
     alignItems: 'center',
     flex: 0,
     flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+    backgroundColor: colors.surface,
   },
   textInputBox: {
-    fontSize: 18,
-    height: 40,
-    borderColor: 'gray',
+    fontSize: fontSize.lg,
+    height: 48,
+    borderColor: colors.border,
     borderWidth: 1,
-    padding: 10,
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    backgroundColor: colors.background,
+    color: colors.text,
   },
   multiLineTextInputBox: {
-    fontSize: 18,
-    height: 200,
-    borderColor: 'gray',
+    fontSize: fontSize.lg,
+    height: 160,
+    borderColor: colors.border,
     borderWidth: 1,
-    padding: 10,
+    borderRadius: borderRadius.md,
+    padding: spacing.md,
+    backgroundColor: colors.background,
+    color: colors.text,
   },
   booleanRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: spacing.sm,
   },
   booleanValue: {
-    marginLeft: 10,
-    fontSize: 20,
+    marginLeft: spacing.md,
+    fontSize: fontSize.xl,
     minWidth: 50,
+    color: colors.text,
   },
   hint: {
-    fontSize: 18,
-    color: '#666',
+    fontSize: fontSize.base,
+    color: colors.textSecondary,
     fontStyle: 'italic',
+    lineHeight: 24,
   },
   camera: {
     height: 400,
   },
-  imagePreview: {},
+  imagePreview: {
+    borderRadius: borderRadius.md,
+  },
   previewContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: spacing.md,
   },
   warning: {
-    fontSize: 18,
-    color: '#666',
+    fontSize: fontSize.base,
+    color: colors.textSecondary,
     fontStyle: 'italic',
     alignSelf: 'center',
-    marginBottom: 20,
+    marginBottom: spacing.md,
+  },
+  statusMessage: {
+    fontSize: fontSize.sm,
+    color: colors.textSecondary,
+    fontStyle: 'italic',
   },
   overlay: {
     position: 'absolute',
@@ -1081,81 +1105,146 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: colors.overlay,
     justifyContent: 'center',
     alignItems: 'center',
   },
   progressContainer: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
+    backgroundColor: colors.surface,
+    padding: spacing.lg,
+    borderRadius: borderRadius.lg,
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
     height: 100,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    ...shadows.lg,
   },
   progressText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: fontSize.lg,
+    fontWeight: fontWeight.semibold,
     textAlign: 'center',
-    color: '#333',
-    marginBottom: 10,
+    color: colors.text,
   },
   multiselectRow: {
     width: '100%',
-    padding: 10,
-    marginLeft: 30,
+    paddingVertical: spacing.sm + 4,
+    paddingHorizontal: spacing.md,
+    marginBottom: spacing.xs,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    borderRadius: borderRadius.md,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   multiselectCheckbox: {
     flex: 0,
-    width: 25,
-    height: 25,
-    borderWidth: 1,
-    borderColor: '#333',
-    backgroundColor: 'white',
-    marginRight: 10,
-    borderRadius: 4,
+    width: 24,
+    height: 24,
+    borderWidth: 2,
+    borderColor: colors.borderDark,
+    backgroundColor: colors.surface,
+    marginRight: spacing.md,
+    borderRadius: borderRadius.sm,
     alignItems: 'center',
     justifyContent: 'center',
   },
   multiselectCheckboxChecked: {
-    backgroundColor: '#367845',
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  checkmark: {
+    color: colors.textInverse,
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.bold,
   },
   multiselectCheckboxText: {
-    marginLeft: 8,
-    fontSize: 16,
+    flex: 1,
+    fontSize: fontSize.base,
+    color: colors.text,
   },
   locationButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginTop: 10,
+    marginTop: spacing.sm,
   },
   locationEchoRow: {
-    marginTop: 20,
-    marginBottom: 20,
-    minHeight: 60,
+    marginTop: spacing.md,
+    marginBottom: spacing.md,
+    minHeight: 48,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: spacing.md,
+    backgroundColor: colors.primaryLight,
+    borderRadius: borderRadius.md,
   },
   locationEchoText: {
-    lineHeight: 30,
-    fontSize: 18,
-    color: '#367845',
-    fontWeight: 'bold',
+    lineHeight: 24,
+    fontSize: fontSize.base,
+    color: colors.primary,
+    fontWeight: fontWeight.semibold,
   },
-  submitRowButton: {
+  navButton: {
+    backgroundColor: colors.primary,
+    paddingVertical: spacing.sm + 2,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.md,
     minWidth: 100,
     alignItems: 'center',
+  },
+  navButtonSecondary: {
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  navButtonText: {
+    fontSize: fontSize.base,
+    color: colors.textInverse,
+    fontWeight: fontWeight.medium,
+  },
+  navButtonSecondaryText: {
+    fontSize: fontSize.base,
+    color: colors.textSecondary,
+    fontWeight: fontWeight.medium,
+  },
+  buttonDisabled: {
+    opacity: 0.5,
+  },
+  locationButton: {
+    backgroundColor: colors.primary,
+    paddingVertical: spacing.sm + 4,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.md,
+    alignItems: 'center',
+  },
+  locationButtonText: {
+    fontSize: fontSize.base,
+    color: colors.textInverse,
+    fontWeight: fontWeight.medium,
+  },
+  photoButton: {
+    backgroundColor: colors.primary,
+    paddingVertical: spacing.sm + 4,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.md,
+    alignItems: 'center',
+    marginBottom: spacing.sm,
+  },
+  photoButtonSecondary: {
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  photoButtonText: {
+    fontSize: fontSize.base,
+    color: colors.textInverse,
+    fontWeight: fontWeight.medium,
+  },
+  photoButtonSecondaryText: {
+    fontSize: fontSize.base,
+    color: colors.textSecondary,
+    fontWeight: fontWeight.medium,
   },
 });

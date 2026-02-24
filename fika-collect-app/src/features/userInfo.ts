@@ -79,7 +79,7 @@ export const userInfoSlice = createSlice({
     builder.addCase(postConsent.rejected, (state, action) => {
       console.error('Failed to submit consent:', action);
     });
-  }
+  },
 });
 
 export { postConsent };

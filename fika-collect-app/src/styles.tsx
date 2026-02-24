@@ -1,60 +1,68 @@
-import {StyleSheet} from 'react-native';
-import {Platform, Appearance} from 'react-native';
-
-const isLightTheme = Appearance.getColorScheme() === 'light';
+import {StyleSheet, Platform} from 'react-native';
+import {colors, spacing, fontSize, borderRadius} from './theme';
 
 export default StyleSheet.create({
   button: {
-    backgroundColor: 'green',
-    padding: 10,
-    borderRadius: 5,
-    marginLeft: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
+    backgroundColor: colors.primary,
+    paddingVertical: spacing.sm + 2,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.md,
+    marginLeft: spacing.sm,
   },
   buttonSecondary: {
-    backgroundColor: '#666',
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.primary,
+  },
+  buttonSecondaryText: {
+    color: colors.primary,
   },
   buttonDanger: {
-    backgroundColor: '#c00',
+    backgroundColor: colors.error,
   },
   buttonDangerPressed: {
-    backgroundColor: '#a00',
+    backgroundColor: colors.errorPressed,
   },
   buttonPressed: {
-    backgroundColor: 'darkgreen',
+    backgroundColor: colors.primaryPressed,
   },
   buttonSecondaryPressed: {
-    backgroundColor: '#444',
+    backgroundColor: colors.surfacePressed,
   },
   buttonText: {
-    fontSize: 18,
-    color: 'white',
+    fontSize: fontSize.lg,
+    color: colors.textInverse,
+    fontWeight: '500',
   },
   buttonDisabled: {
     opacity: 0.5,
   },
   sectionHeaderContainer: {
     width: '100%',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 8,
-    marginBottom: 20,
+    paddingVertical: spacing.sm + 2,
+    paddingHorizontal: spacing.md,
+    backgroundColor: colors.background,
+    borderRadius: borderRadius.md,
+    marginBottom: spacing.md,
   },
   sectionHeaderText: {
     textTransform: 'uppercase',
-    marginBottom: 10,
+    marginBottom: spacing.sm,
+    color: colors.textSecondary,
+    fontSize: fontSize.sm,
+    fontWeight: '600',
+    letterSpacing: 0.5,
   },
   picker: {
-    backgroundColor: isLightTheme ? '#eee' : '#333',
+    backgroundColor: colors.background,
     borderWidth: 1,
-    borderColor: '#cccccc',
+    borderColor: colors.border,
     height: Platform.OS === 'android' ? 60 : 210,
     width: '100%',
-    borderRadius: 3,
+    borderRadius: borderRadius.md,
   },
   pickerItem: {
-    color: isLightTheme ? 'black' : 'white',
+    color: colors.text,
+    fontSize: fontSize.base,
   },
 });

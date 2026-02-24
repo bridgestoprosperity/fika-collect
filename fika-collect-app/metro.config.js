@@ -14,8 +14,8 @@ const config = {
     path.resolve(__dirname, '..', 'packages'),
 
     // Necessary for it to resolve zod as used by fika-collect-survey-schema
-    path.resolve(__dirname, '..', 'node_modules')
-  ]
+    path.resolve(__dirname, '..', 'node_modules'),
+  ],
 };
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), config);

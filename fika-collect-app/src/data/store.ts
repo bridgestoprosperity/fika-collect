@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import logger from 'redux-logger'
+import logger from 'redux-logger';
 import announcementsReducer from '../features/announcements';
 import localizationReducer from '../features/localization';
 import userInfoReducer from '../features/userInfo';
@@ -16,7 +16,7 @@ export const store = configureStore({
       wares.push(logger);
     }
     return wares;
-  }
+  },
 });
 
 

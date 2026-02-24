@@ -7,7 +7,7 @@ React Native survey app, together with supporting infrastructure.
 To use the development server, you must copy [env.development.json.sample](./env.development.json.sample) to a file in the root project directory named `env.development.json` and update its values. You will need a access key and secret key for the fika-collect-vercel-develop IAM user which you may create [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-vercel-develop?section=permissions).
 
 ```sh
-cd packages/fika-collect-vercel
+cd fika-collect-app
 npm start
 ```
 

@@ -261,7 +261,7 @@ export class SurveyResponseManager extends EventEmitter {
 
     const surveyDirs = await RNFS.readDir(STORAGE_DIR);
     for (const surveyDir of surveyDirs) {
-      if (!(await surveyDir.isDirectory())) continue;
+      if (!(await surveyDir.isDirectory())) {continue;}
 
       for (const responseDir of await RNFS.readDir(surveyDir.path)) {
         if (!(await responseDir.isDirectory())) {
