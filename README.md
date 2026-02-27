@@ -23,7 +23,7 @@ and running
 
 Confirm the local server is running at http://localhost:3000/api/v1/surveys.
 
-To build, navigate to `fika-collect/fika-collect-app` and run
+To build, navigate to `fika-collect/fika-collect-app/android` and run
 `./gradlew bundleRelease`
 
 Release will be located at `fika-collect/fika-collect-app/android/app/build/outputs/bundle/release/app-release.aab`

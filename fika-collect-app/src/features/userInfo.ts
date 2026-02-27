@@ -25,8 +25,8 @@ if (!storedUserId) {
 const initialState: UserInfoState = {
   userId: storedUserId,
   terms: userInfoStorage.getString('terms') || '',
-  termsAccepted: false,//userInfoStorage.getBool('termsAccepted') || false,
-  termAcceptanceSubmitted: false,//userInfoStorage.getBool('termAcceptanceSubmitted') || false,
+  termsAccepted: userInfoStorage.getBool('termsAccepted') || false,
+  termAcceptanceSubmitted: userInfoStorage.getBool('termAcceptanceSubmitted') || false,
 };
 
 const postConsent = createAsyncThunk('postConsent', async ({ consentText }: { consentText: string }, { rejectWithValue, getState }) => {
