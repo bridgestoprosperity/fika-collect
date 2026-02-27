@@ -13,7 +13,7 @@
       "methods": ["GET"]
     },
     {
-      "src": "/api/v1/constent",
+      "src": "/api/v1/consent",
       "dest": "api/consent.ts",
       "methods": ["POST"]
     },

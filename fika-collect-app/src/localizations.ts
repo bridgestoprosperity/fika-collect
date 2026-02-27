@@ -314,6 +314,17 @@ const localizations: Record<Locale, Localization> = {
     'fr': 'Sélectionnez votre localisation ci-dessous',
     'aa': 'Iddoo kee armaan gadi filadhu',
   },
+  submitting: {
+    'en': 'Submitting...',
+    'rw': 'Kohereza...',
+    'sw': 'Inatuma...',
+    'am': 'በማስገባት ላይ...',
+    'om': 'Erguuf jira...',
+    'ti': 'እናቐርብ ኣሎና...',
+    'so': 'La gudbinayaa...',
+    'fr': 'Envoi en cours...',
+    'aa': 'Erginsanni...',
+  },
 };
 
 export type { Localization };

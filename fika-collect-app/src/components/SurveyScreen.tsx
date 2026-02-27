@@ -12,6 +12,8 @@ import {
   Modal,
   Dimensions,
   Platform,
+  Appearance,
+  PermissionsAndroid,
 } from 'react-native';
 import {type SurveyResponseManager} from '../data/SurveyResponseManager';
 import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
@@ -22,10 +24,7 @@ import {useNavigation} from '@react-navigation/native';
 import sharedStyles from '../styles';
 import CameraController from './CameraController';
 import {useCameraPermission} from 'react-native-vision-camera';
-import {
-  useCameraDevice,
-  useLocationPermission,
-} from 'react-native-vision-camera';
+import {useCameraDevice} from 'react-native-vision-camera';
 import BlastedImage from 'react-native-blasted-image';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNetInfo} from '@react-native-community/netinfo';
@@ -487,31 +486,26 @@ function GeolocationQuestion({
   const {localize, getString} = useLocalization();
   const [getLocationInitiated, setGetLocationInitiated] = useState(false);
 
-  const {hasPermission, requestPermission} = useLocationPermission();
-
   const getLocation = async () => {
-    if (hasPermission) {
-      setStatusMessage(getString('gelocationRequesting'));
-      setGetLocationInitiated(true);
-    } else {
-      requestPermission().then(granted => {
-        if (granted) {
-          setStatusMessage(getString('gelocationRequesting'));
-          setGetLocationInitiated(true);
-        } else {
-          setStatusMessage(getString('geolocationDenied'));
-          Alert.alert(
-            getString('geolocationDenied'),
-            getString('geolocationPleaseEnable'),
-          );
-          setGetLocationInitiated(false);
-        }
-      });
+    if (Platform.OS === 'android') {
+      const status = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      );
+      if (status !== PermissionsAndroid.RESULTS.GRANTED) {
+        setStatusMessage(getString('geolocationDenied'));
+        Alert.alert(
+          getString('geolocationDenied'),
+          getString('geolocationPleaseEnable'),
+        );
+        return;
+      }
     }
+    setStatusMessage(getString('gelocationRequesting'));
+    setGetLocationInitiated(true);
   };
 
   useEffect(() => {
-    if (!hasPermission || !getLocationInitiated) {
+    if (!getLocationInitiated) {
       return;
     }
     Geolocation.getCurrentPosition(
@@ -535,7 +529,7 @@ function GeolocationQuestion({
       },
       {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
     );
-  }, [hasPermission, getLocationInitiated, onChange, response, getString]);
+  }, [getLocationInitiated, onChange, response, getString]);
 
   return (
     <SurveyQuestionWrapper

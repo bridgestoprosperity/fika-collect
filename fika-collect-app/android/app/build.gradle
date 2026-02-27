@@ -94,8 +94,8 @@ android {
         applicationId "com.fikacollect"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 10
-        versionName "1.2.0"
+        versionCode 12
+        versionName "1.1.3"
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON"

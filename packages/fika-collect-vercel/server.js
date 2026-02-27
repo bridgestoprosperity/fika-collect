@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 for (const route of vercelJson.routes) {
-  if (route.src && route.dest) {
+  if (route.src && route.dest && route.dest.startsWith('api/')) {
     const methods = route.methods || ["GET"];
     const path = route.src.replace(/^\//, ""); // Remove leading slash
     const srcName = route.dest

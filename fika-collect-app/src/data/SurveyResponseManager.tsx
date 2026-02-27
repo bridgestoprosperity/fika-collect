@@ -1,11 +1,12 @@
 import {Platform} from 'react-native';
+import {BASE_URL} from '../config';
 import {Buffer} from 'buffer';
 import {SurveyResponse} from './SurveyResponse';
 import type {Survey} from 'fika-collect-survey-schema';
 import * as RNFS from '@dr.pogodin/react-native-fs';
 import {nanoid} from 'nanoid';
 import {EventEmitter} from 'event-emitter3';
-import version from '../version';
+import {VERSION} from '../version';
 
 const STORAGE_DIR =
   Platform.OS === 'ios'
@@ -14,14 +15,6 @@ const STORAGE_DIR =
 
 console.log(STORAGE_DIR);
 
-// AWS API Gateway URL for uploading responses
-// **DO NOT USE** since Vercel DNS prohibits setting up a second CAA (Certificate
-// Authorization Authority) record for the domain, which is required for AWS
-// Certificate Manager to issue a certificate. Without this, the API Gateway
-// will not work with HTTPS.
-//const BASE_URL = 'https://f54u12dkn2.execute-api.us-west-1.amazonaws.com';
-
-const BASE_URL = 'https://app.fikadigital.org/api/v1';
 
 const TO_UPLOAD_DIR = 'to_upload';
 const UPLOADED_DIR = 'uploaded';
@@ -170,7 +163,7 @@ export class SurveyResponseManager extends EventEmitter {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-App-Version': version.version,
+            'X-App-Version': VERSION,
           },
           body: JSON.stringify({response: responseJson}),
         });
@@ -214,7 +207,7 @@ export class SurveyResponseManager extends EventEmitter {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-App-Version': version.version,
+            'X-App-Version': VERSION,
           },
           body: JSON.stringify(body),
         });

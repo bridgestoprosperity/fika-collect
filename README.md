@@ -6,12 +6,27 @@ React Native survey app, together with supporting infrastructure.
 
 To use the development server, you must copy [env.development.json.sample](./env.development.json.sample) to a file in the root project directory named `env.development.json` and update its values. You will need a access key and secret key for the fika-collect-vercel-develop IAM user which you may create [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/details/fika-collect-vercel-develop?section=permissions).
 
+navigate to `fika-collect/fika-collect-app`
 ```sh
 cd fika-collect-app
 npm start
 ```
 
+then run navigate to `fika-collect/packages/fika-collect-vercel`
+and run:
+` npm start`
+
+then start the android emulator by navigating to:
+`fika-collect/fika-collect-app`
+and running
+`npm run android`
+
 Confirm the local server is running at http://localhost:3000/api/v1/surveys.
+
+To build, navigate to `fika-collect/fika-collect-app` and run
+`./gradlew bundleRelease`
+
+Release will be located at `fika-collect/fika-collect-app/android/app/build/outputs/bundle/release/app-release.aab`
 
 ## Components
 
