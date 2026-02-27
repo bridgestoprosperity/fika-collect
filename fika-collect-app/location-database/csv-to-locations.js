@@ -14,9 +14,9 @@ const result = {};
 fs.createReadStream(csvFilePath)
   .pipe(parse({columns: true, trim: true}))
   .on('data', row => {
-    const adminLevel0 = row['adminLevel0'] || row[Object.keys(row)[0]];
-    const adminLevel1 = row['adminLevel1'] || row[Object.keys(row)[1]];
-    const adminLevel2 = row['adminLevel2'] || row[Object.keys(row)[2]];
+    const adminLevel0 = row.adminLevel0 || row[Object.keys(row)[0]];
+    const adminLevel1 = row.adminLevel1 || row[Object.keys(row)[1]];
+    const adminLevel2 = row.adminLevel2 || row[Object.keys(row)[2]];
 
     if (!adminLevel0 || !adminLevel1 || !adminLevel2) {
       return;

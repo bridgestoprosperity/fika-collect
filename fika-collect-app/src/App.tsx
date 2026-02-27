@@ -12,10 +12,7 @@ import {Provider} from 'react-redux';
 import {store} from './data/store';
 import Geolocation from '@react-native-community/geolocation';
 import {useLocalization} from './hooks/useLocalization';
-
-//import {useContext, useEffect} from 'react';
-//import SurveyResponseManagerContext from './data/SurveyResponseManagerContext';
-//import {useNetInfo} from '@react-native-community/netinfo';
+import {colors, fontSize, fontWeight, spacing} from './theme';
 
 Geolocation.setRNConfiguration({
   skipPermissionRequests: false,
@@ -52,10 +49,12 @@ function LocalizedTabLabel({
     consent: 'consentScreenTitle',
   };
   const string = ROUTE_NAME_TO_STRING[label] || label;
-  const color = focused ? '#367845' : '#888';
-  const fontWeight = focused ? 'bold' : 'normal';
+  const color = focused ? colors.primary : colors.textSecondary;
+  const weight = focused ? fontWeight.semibold : fontWeight.normal;
   return (
-    <Text style={{fontSize: 16, color, fontWeight}}>{getString(string)}</Text>
+    <Text style={{fontSize: fontSize.sm, color, fontWeight: weight}}>
+      {getString(string)}
+    </Text>
   );
 }
 
@@ -70,7 +69,12 @@ function LocalizedHeader({label}: {label: string}) {
   };
   const string = ROUTE_NAME_TO_STRING[label] || label;
   return (
-    <Text style={{fontSize: 24, color: 'white', fontWeight: 500}}>
+    <Text
+      style={{
+        fontSize: fontSize['3xl'],
+        color: colors.textInverse,
+        fontWeight: fontWeight.medium,
+      }}>
       {getString(string)}
     </Text>
   );
@@ -81,13 +85,19 @@ const HomeStack = createBottomTabNavigator({
   screenOptions: ({route}) => ({
     headerShown: true,
     headerStyle: {
-      backgroundColor: '#367845',
+      backgroundColor: colors.primary,
     },
-    tabBarActiveTintColor: '#367845',
+    tabBarActiveTintColor: colors.primary,
+    tabBarInactiveTintColor: colors.textSecondary,
     tabBarStyle: {
-      height: Platform.OS === 'ios' ? 92 : 65,
+      height: Platform.OS === 'ios' ? 88 : 64,
+      paddingBottom: Platform.OS === 'ios' ? spacing.lg : spacing.sm,
+      paddingTop: spacing.sm,
+      backgroundColor: colors.surface,
+      borderTopWidth: 1,
+      borderTopColor: colors.border,
     },
-    headerTintColor: 'white',
+    headerTintColor: colors.textInverse,
     tabBarIcon: ({size, color}) => {
       let iconName;
       if (route.name === 'surveys') {
@@ -99,8 +109,8 @@ const HomeStack = createBottomTabNavigator({
       }
       return <Text style={{fontSize: size, color}}>{iconName}</Text>;
     },
-    tabBarActiveBackgroundColor: '#e0f2e0',
-    tabBarInactiveBackgroundColor: 'white',
+    tabBarActiveBackgroundColor: colors.primaryLight,
+    tabBarInactiveBackgroundColor: colors.surface,
     tabBarLabel: props => {
       return <LocalizedTabLabel label={route.name} focused={props.focused} />;
     },
@@ -167,17 +177,6 @@ const RootStack = createStackNavigator({
 const Navigation = createStaticNavigation(RootStack);
 
 export default function Home() {
-  /*
-  const responseManager = useContext(SurveyResponseManagerContext);
-  const netInfo = useNetInfo();
-  useEffect(() => {
-    if (!netInfo.isInternetReachable) {
-      return;
-    }
-    responseManager.uploadResponses();
-  }, [responseManager, netInfo.isInternetReachable]);
-  */
-
   return (
     <Provider store={store}>
       <Navigation />

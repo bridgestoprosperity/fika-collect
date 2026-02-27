@@ -313,7 +313,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Fadlan hoos ka xulo goobtaada',
     'fr': 'Sélectionnez votre localisation ci-dessous',
     'aa': 'Iddoo kee armaan gadi filadhu',
-  }
+  },
 };
 
 export type { Localization };

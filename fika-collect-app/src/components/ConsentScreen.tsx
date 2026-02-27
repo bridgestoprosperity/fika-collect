@@ -8,31 +8,57 @@ import {
 } from 'react-native';
 import Markdown from '@ronradtke/react-native-markdown-display';
 import {useAppDispatch} from '../hooks';
-//import {assignRandomUserId} from '../features/userInfo';
 import {postConsent} from '../features/userInfo';
 import {useNavigation} from '@react-navigation/native';
-import sharedStyles from '../styles';
+import {colors, spacing, fontSize, fontWeight, borderRadius} from '../theme';
 
 const terms = `# App Disclosure - Fika Collect
 
 Fika collect helps users report transportation barriers - places where travel is unsafe or difficult.
-Your reports help [Bridges to Prosperity](https://bridgestoprosperity.org/) and local government/infrastructure
+Your reports help [Fika](https://fika.org/) and local government/infrastructure
 partners identify and plan solutions.
 
 Information will be stored securely online in the United States or another location with adequate data protection standards.
+This app is not designed for children under 16. If you are under 16, please only use this app with the supervision and permission of a parent or guardian.
 
-This app is not designed for children under 16. If you are under 16, please only use this pap with the supervision
-and permission of a parent or guardian.
-
-**Data requiring your consent:**
-
-- GPS location of the barrier
-- Photos of the barrier
+Information collected:
+GPS location of the barrier
+- Photo of the barrier
 - Your phone number (for possible follow-up)
 
-Sharing this information is optional, but without it, you won't be able to submit reports through the app.
+Submitting this information is voluntary, but required if you want to use this application. By submitting a survey via this app, you acknowledge that this information will be used for infrastructure planning purposes.
+
 
 **Do you agree to share this information?**`;
+
+const markdownStyles = {
+  body: {
+    color: colors.text,
+    fontSize: fontSize.base,
+    lineHeight: 24,
+  },
+  heading1: {
+    color: colors.text,
+    fontSize: fontSize['3xl'],
+    fontWeight: fontWeight.bold,
+    marginBottom: spacing.md,
+  },
+  paragraph: {
+    marginBottom: spacing.md,
+  },
+  link: {
+    color: colors.link,
+  },
+  strong: {
+    fontWeight: fontWeight.semibold,
+  },
+  bullet_list: {
+    marginBottom: spacing.md,
+  },
+  list_item: {
+    marginBottom: spacing.xs,
+  },
+};
 
 export default function ConsentScreen() {
   const dispatch = useAppDispatch();
@@ -43,12 +69,13 @@ export default function ConsentScreen() {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        contentInsetAdjustmentBehavior="automatic">
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}>
         <View style={styles.container}>
-          <Markdown>{terms}</Markdown>
+          <Markdown style={markdownStyles}>{terms}</Markdown>
         </View>
         <View style={styles.btnContainer}>
           <Pressable
@@ -57,10 +84,10 @@ export default function ConsentScreen() {
               navigation.goBack();
             }}
             style={({pressed}) => [
-              sharedStyles.button,
-              pressed && sharedStyles.buttonPressed,
+              styles.agreeButton,
+              pressed && styles.agreeButtonPressed,
             ]}>
-            <Text style={sharedStyles.buttonText}>I Agree</Text>
+            <Text style={styles.agreeButtonText}>I Agree</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -69,16 +96,41 @@ export default function ConsentScreen() {
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: colors.surface,
+  },
+  scrollView: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    padding: 20,
+    padding: spacing.md,
   },
   btnContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 20,
-    marginTop: 20,
+    gap: spacing.md,
+    marginTop: spacing.md,
+    marginBottom: spacing.xl,
+    paddingHorizontal: spacing.md,
+  },
+  agreeButton: {
+    flex: 1,
+    backgroundColor: colors.primary,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.xl,
+    borderRadius: borderRadius.md,
+    alignItems: 'center',
+  },
+  agreeButtonPressed: {
+    backgroundColor: colors.primaryPressed,
+  },
+  agreeButtonText: {
+    color: colors.textInverse,
+    fontSize: fontSize.lg,
+    fontWeight: fontWeight.semibold,
   },
 });

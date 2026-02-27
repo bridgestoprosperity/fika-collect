@@ -7,6 +7,7 @@ import {
   selectDismissedIds,
   dismissAnnouncement,
 } from '../features/announcements';
+import {colors, spacing, fontSize, fontWeight, borderRadius} from '../theme';
 
 interface AnnouncementProps {
   id: string;
@@ -30,7 +31,7 @@ function Announcement(props: AnnouncementProps) {
     <View
       style={[
         styles.container,
-        {backgroundColor: backgroundColor || '#ffbb88'},
+        {backgroundColor: backgroundColor || colors.warningLight},
       ]}>
       <View style={styles.lhs}>
         <Text style={styles.alertIcon}>{emoji || '⚠️'}</Text>
@@ -51,10 +52,13 @@ function Announcement(props: AnnouncementProps) {
         )}
       </View>
       <View style={styles.rhs}>
-        <Pressable onPress={() => {}}>
-          <Text style={styles.dismiss} onPress={() => dismiss(id)}>
-            Dismiss
-          </Text>
+        <Pressable
+          style={({pressed}) => [
+            styles.dismissButton,
+            pressed && styles.dismissButtonPressed,
+          ]}
+          onPress={() => dismiss(id)}>
+          <Text style={styles.dismissText}>Dismiss</Text>
         </Pressable>
       </View>
     </View>
@@ -74,7 +78,7 @@ export default function Announcements() {
   return (
     <View>
       {announcements.map((announcement, i) => {
-        if (dismissedIds.includes(announcement.id)) return null;
+        if (dismissedIds.includes(announcement.id)) {return null;}
         return <Announcement key={i} {...announcement} />;
       })}
     </View>
@@ -84,39 +88,61 @@ export default function Announcements() {
 const styles = StyleSheet.create({
   lhs: {
     flex: 0,
-    width: 50,
+    width: 44,
     alignContent: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: spacing.xs,
   },
   alertIcon: {
-    fontSize: 20,
-    textShadowColor: 'black',
-    textShadowOffset: {width: 0, height: 0},
-    textShadowRadius: 2,
+    fontSize: fontSize.xl,
   },
-  content: {flex: 1},
-  rhs: {flex: 0, width: 60, justifyContent: 'center', marginLeft: 10},
+  content: {
+    flex: 1,
+  },
+  rhs: {
+    flex: 0,
+    width: 70,
+    justifyContent: 'flex-start',
+    marginLeft: spacing.sm,
+    paddingTop: spacing.xs,
+  },
   container: {
     flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'center',
+    alignContent: 'flex-start',
+    justifyContent: 'flex-start',
     width: '100%',
-    padding: 15,
+    padding: spacing.md,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: fontSize.lg,
+    fontWeight: fontWeight.semibold,
+    color: colors.text,
+    marginBottom: spacing.xs,
   },
   body: {
-    fontSize: 16,
-    marginTop: 5,
+    fontSize: fontSize.base,
+    color: colors.text,
+    lineHeight: 22,
   },
   url: {
-    color: 'blue',
-    marginTop: 5,
-    fontSize: 16,
+    color: colors.link,
+    marginTop: spacing.sm,
+    fontSize: fontSize.base,
+    fontWeight: fontWeight.medium,
   },
-  dismiss: {
-    color: '#cc6600',
+  dismissButton: {
+    paddingVertical: spacing.xs,
+    paddingHorizontal: spacing.sm,
+    borderRadius: borderRadius.sm,
+  },
+  dismissButtonPressed: {
+    backgroundColor: colors.surfacePressed,
+  },
+  dismissText: {
+    color: colors.warning,
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.medium,
   },
 });

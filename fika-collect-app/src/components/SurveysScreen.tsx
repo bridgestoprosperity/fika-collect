@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useContext, useEffect, useState} from 'react';
-import {View, ScrollView, StyleSheet, Text, Pressable} from 'react-native';
+import {View, ScrollView, StyleSheet, Text} from 'react-native';
 import {useLocalization} from '../hooks/useLocalization';
 import {useNavigation} from '@react-navigation/native';
 import {type StackNavigation} from '../App';
@@ -10,6 +10,13 @@ import {SurveySchemaManager} from '../data/SurveySchemaManager';
 import {SurveyResponse} from '../data/SurveyResponse';
 import Announcements from './Announcements';
 import {useAppSelector} from '../hooks';
+import {AnimatedCard} from './ui';
+import {
+  colors,
+  spacing,
+  fontSize,
+  fontWeight,
+} from '../theme';
 
 function SurveyButton({survey}: {survey: Survey}) {
   const navigation = useNavigation<StackNavigation>();
@@ -19,7 +26,6 @@ function SurveyButton({survey}: {survey: Survey}) {
   const termsAccepted = useAppSelector(state => state.userInfo.termsAccepted);
 
   const beginSurvey = () => {
-    // Construct a single response instance. We will mutate this object as the user answers questions.
     const response = new SurveyResponse(survey, userId);
     navigation.navigate('survey', {response});
   };
@@ -32,22 +38,17 @@ function SurveyButton({survey}: {survey: Survey}) {
   }, [navigation, termsAccepted]);
 
   return (
-    <Pressable
-      onPress={() => beginSurvey()}
-      style={({pressed}) => [
-        styles.surveyButton,
-        pressed ? styles.surveyButtonPressed : {},
-      ]}>
-      <View style={{flex: 1}}>
+    <AnimatedCard onPress={beginSurvey} style={styles.surveyButton}>
+      <View style={styles.surveyContent}>
         <Text style={styles.surveyTitle}>{localize(survey.title)}</Text>
         <Text style={styles.surveyDescription}>
           {localize(survey.description)}
         </Text>
       </View>
       <View style={styles.chevronContainer}>
-        <Text style={styles.chevron}>〉</Text>
+        <Text style={styles.chevron}>›</Text>
       </View>
-    </Pressable>
+    </AnimatedCard>
   );
 }
 
@@ -66,7 +67,7 @@ export default function SurveysScreen() {
   }, [surveyManager]);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollView}>
       <Announcements />
       <View style={styles.container}>
         {surveys.map(survey => (
@@ -78,44 +79,44 @@ export default function SurveysScreen() {
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    padding: spacing.md,
   },
   surveyButton: {
     flexDirection: 'row',
-    borderColor: '#aaa',
-    borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: spacing.sm + 4,
     width: '100%',
-    padding: 15,
-    backgroundColor: 'white',
-    borderRadius: 4,
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
   },
-  surveyButtonPressed: {
-    backgroundColor: 'lightgray',
+  surveyContent: {
+    flex: 1,
   },
   surveyTitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 5,
+    fontSize: fontSize['2xl'],
+    fontWeight: fontWeight.semibold,
+    marginBottom: spacing.xs,
+    color: colors.text,
   },
   surveyDescription: {
-    fontSize: 16,
+    fontSize: fontSize.base,
+    color: colors.textSecondary,
+    lineHeight: 22,
   },
   chevronContainer: {
     flex: 0,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingLeft: spacing.sm,
   },
   chevron: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: fontWeight.normal,
+    color: colors.textHint,
   },
 });

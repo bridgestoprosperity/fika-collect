@@ -46,7 +46,7 @@ export const announcementsSlice = createSlice({
   initialState,
   reducers: {
     dismissAnnouncement: (state, action) => {
-      if (state.dismissedIds.includes(action.payload)) return;
+      if (state.dismissedIds.includes(action.payload)) {return;}
       state.dismissedIds.push(action.payload);
       announcementsStorage.setArray('dismissedIds', state.dismissedIds);
     },
@@ -62,7 +62,7 @@ export const announcementsSlice = createSlice({
       .addCase(fetchAnnouncements.fulfilled, (state, action) => {
         const existingIds = new Set(state.announcements.map(({ id }) => id));
         for (const announcement of action.payload) {
-          if (existingIds.has(announcement.id)) continue;
+          if (existingIds.has(announcement.id)) {continue;}
           state.announcements.push(announcement);
         }
         state.status = 'idle';

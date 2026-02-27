@@ -44,7 +44,7 @@ export const localizationSlice = createSlice({
       if (state.localeOverride) {
         state.locale.unshift(state.localeOverride);
       }
-    }
+    },
   },
 });
 

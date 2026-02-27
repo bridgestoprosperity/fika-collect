@@ -20,7 +20,7 @@ function useLocalization() {
       }
       return localizedText;
     }
-  };
+  }
 
   function getString(key: string): string {
     const localizedStrings = localizations[key] || {};

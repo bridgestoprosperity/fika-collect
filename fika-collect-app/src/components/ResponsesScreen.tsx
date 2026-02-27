@@ -4,7 +4,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  Pressable,
   Alert,
   SafeAreaView,
 } from 'react-native';
@@ -16,6 +15,15 @@ import SurveyResponseManagerContext from '../data/SurveyResponseManagerContext';
 import {useFocusEffect} from '@react-navigation/native';
 import {useNetInfo} from '@react-native-community/netinfo';
 import {useLocalization} from '../hooks/useLocalization';
+import {AnimatedButton, AnimatedCard, LoadingSpinner} from './ui';
+import {
+  colors,
+  spacing,
+  fontSize,
+  fontWeight,
+  borderRadius,
+  shadows,
+} from '../theme';
 
 interface ResponseProps {
   response: SurveyResponse;
@@ -28,7 +36,7 @@ function SubmittedResponse(props: ResponseProps) {
   const {localize} = useLocalization();
 
   return (
-    <View key={response.id} style={styles.submittedResponseCard}>
+    <AnimatedCard style={styles.submittedResponseCard}>
       <View style={styles.lhs}>
         <Text style={styles.submittedResponseTitle}>
           {localize(response.schema.title)}
@@ -38,24 +46,21 @@ function SubmittedResponse(props: ResponseProps) {
             Submitted at {response.submittedAt?.toLocaleString()}
           </Text>
         ) : (
-          <Text style={styles.submittedResponseDate}>
-            Response has not been uploaded
-          </Text>
+          <View style={styles.pendingBadge}>
+            <Text style={styles.pendingBadgeText}>Pending upload</Text>
+          </View>
         )}
       </View>
       {!uploaded && (
         <View style={styles.rhs}>
-          <Pressable
-            style={({pressed}) => [
-              styles.retryButton,
-              pressed && styles.retryButtonPressed,
-            ]}
-            onPress={() => onRetry(response)}>
-            <Text style={styles.retryButtonText}>Retry</Text>
-          </Pressable>
+          <AnimatedButton
+            title="Retry"
+            variant="danger"
+            onPress={() => onRetry(response)}
+          />
         </View>
       )}
-    </View>
+    </AnimatedCard>
   );
 }
 
@@ -72,11 +77,32 @@ export default function ResponsesScreen() {
     SurveyResponseManagerContext,
   );
 
+  const fetchResponses = useCallback(() => {
+    responseManager
+      .getResponses()
+      .then(fetchedResponses => {
+        const fetchedIds = fetchedResponses.map(item => item.response.id);
+        const currentIds = responses
+          ? responses.map(item => item.response.id)
+          : null;
+        if (JSON.stringify(currentIds) === JSON.stringify(fetchedIds)) {
+          return;
+        }
+        const sortedResponses = fetchedResponses.sort((a, b) => {
+          if (a.uploaded === b.uploaded) {
+            return 0;
+          }
+          return a.uploaded ? 1 : -1;
+        });
+        setResponses(sortedResponses);
+      })
+      .catch(error => {
+        console.error('error fetching responses', error);
+      });
+  }, [responseManager, responses]);
+
   const onRetry = useCallback(
     (response: SurveyResponse) => {
-      // It seems that netInfo.isInternetReachable is not reliable, at least based on
-      // testing in the iOS simulator. Instead, we will use isConnected in DEV mode
-      // and isInternetReachable in production mode.
       if (
         netInfo.isInternetReachable ||
         (__DEV__ === true && netInfo.isConnected)
@@ -106,44 +132,22 @@ export default function ResponsesScreen() {
           );
         });
     },
-    [netInfo, surveyResponseManager],
+    [netInfo, surveyResponseManager, fetchResponses],
   );
-
-  const fetchResponses = useCallback(() => {
-    responseManager
-      .getResponses()
-      .then(fetchedResponses => {
-        const fetchedIds = fetchedResponses.map(item => item.response.id);
-        const currentIds = responses
-          ? responses.map(item => item.response.id)
-          : null;
-        if (JSON.stringify(currentIds) === JSON.stringify(fetchedIds)) {
-          return;
-        }
-        const sortedResponses = fetchedResponses.sort((a, b) => {
-          if (a.uploaded === b.uploaded) {
-            return 0;
-          }
-          return a.uploaded ? 1 : -1;
-        });
-        setResponses(sortedResponses);
-      })
-      .catch(error => {
-        console.error('error fetching responses', error);
-      });
-  });
 
   useFocusEffect(
     useCallback(() => {
       fetchResponses();
-    }, []),
+    }, [fetchResponses]),
   );
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ScrollView>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
-          {responses === null && <Text>Loading...</Text>}
+          {responses === null && (
+            <Text style={styles.loadingText}>Loading...</Text>
+          )}
           {responses !== null && responses.length === 0 && (
             <Text style={styles.noResp}>No submitted surveys</Text>
           )}
@@ -162,6 +166,7 @@ export default function ResponsesScreen() {
       {submitting && (
         <View style={styles.overlay}>
           <View style={styles.progressContainer}>
+            <LoadingSpinner size={40} />
             <Text style={styles.progressText}>Submitting...</Text>
           </View>
         </View>
@@ -171,55 +176,63 @@ export default function ResponsesScreen() {
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  scrollView: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    padding: spacing.md,
   },
   submittedResponseCard: {
-    backgroundColor: 'white',
-    padding: 20,
-    marginBottom: 10,
-    width: '100%',
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 5,
     flexDirection: 'row',
+    marginBottom: spacing.sm + 4,
+    width: '100%',
   },
   lhs: {
     flex: 1,
   },
   rhs: {
     flex: 0,
-  },
-  retryButton: {
-    backgroundColor: '#ee0000',
-    borderRadius: 4,
-  },
-  retryButtonPressed: {
-    backgroundColor: '#ff8888',
-  },
-  retryButtonText: {
-    color: 'white',
-    fontSize: 13,
-    fontWeight: 700,
-    paddingHorizontal: 8,
-    paddingVertical: 7,
+    justifyContent: 'center',
   },
   submittedResponseTitle: {
-    fontSize: 18,
-    marginBottom: 10,
+    fontSize: fontSize.lg,
+    fontWeight: fontWeight.medium,
+    marginBottom: spacing.xs,
+    color: colors.text,
   },
   submittedResponseDate: {
-    fontSize: 14,
-    color: '#666',
+    fontSize: fontSize.sm,
+    color: colors.textSecondary,
+  },
+  pendingBadge: {
+    backgroundColor: colors.warningLight,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+    borderRadius: borderRadius.sm,
+    alignSelf: 'flex-start',
+  },
+  pendingBadgeText: {
+    fontSize: fontSize.xs,
+    color: colors.warning,
+    fontWeight: fontWeight.medium,
   },
   noResp: {
     fontStyle: 'italic',
-    fontSize: 18,
-    color: '#666',
-    marginTop: 50,
+    fontSize: fontSize.lg,
+    color: colors.textSecondary,
+    marginTop: spacing['2xl'],
+  },
+  loadingText: {
+    fontSize: fontSize.base,
+    color: colors.textSecondary,
+    marginTop: spacing.xl,
   },
   overlay: {
     position: 'absolute',
@@ -227,32 +240,24 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: colors.overlay,
     justifyContent: 'center',
     alignItems: 'center',
   },
   progressContainer: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
+    backgroundColor: colors.surface,
+    padding: spacing.lg,
+    borderRadius: borderRadius.lg,
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
     height: 100,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    ...shadows.lg,
   },
   progressText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: fontSize.lg,
+    fontWeight: fontWeight.semibold,
     textAlign: 'center',
-    color: '#333',
-    marginBottom: 10,
+    color: colors.text,
   },
 });
