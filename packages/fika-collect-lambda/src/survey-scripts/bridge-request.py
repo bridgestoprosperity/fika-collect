@@ -198,18 +198,26 @@ def map_survey_to_salesforce(survey_data: Dict, bucket: str) -> Dict:
     # Extract admin location hierarchy - now it's a direct array
     admin_location = get_response_value(responses, "admin_location")
 
-    # Handle both old format (object with selection) and new format (direct array)
-    if isinstance(admin_location, dict):
-        # Old format: {'selection': [...]}
-        selection = admin_location.get("selection", [])
-    elif isinstance(admin_location, list):
-        # New format: direct array
-        selection = admin_location
+    # Old format (portal): {'selection': ['Africa', 'East Africa', 'Zambia', ...], 'code': ..., 'id': ...}
+    #   - country is at index 2, level1 at 3, level2 at 4, level3 at 5
+    # New format (app): {'location': ['Zambia', 'Northern', 'Mbala']}
+    #   - country is at index 0, level1 at 1, level2 at 2, no level3
+    if isinstance(admin_location, dict) and "selection" in admin_location:
+        selection = admin_location["selection"]
+        selection_padded = selection + [""] * (6 - len(selection))
+        country = selection_padded[2] or None
+        level1 = selection_padded[3] or None
+        level2 = selection_padded[4] or None
+        level3 = selection_padded[5] or None
+    elif isinstance(admin_location, dict) and "location" in admin_location:
+        selection = admin_location["location"]
+        selection_padded = selection + [""] * (3 - len(selection))
+        country = selection_padded[0] or None
+        level1 = selection_padded[1] or None
+        level2 = selection_padded[2] or None
+        level3 = None
     else:
-        selection = []
-
-    # Pad selection array to ensure we have enough elements
-    selection_padded = selection + [""] * (6 - len(selection))
+        country = level1 = level2 = level3 = None
 
     # Extract GPS coordinates
     location = get_response_value(responses, "location")
@@ -267,16 +275,10 @@ def map_survey_to_salesforce(survey_data: Dict, bucket: str) -> Dict:
         "External_Id__c": survey_data.get("id"),
         "Test__c": is_test,
         "Phone_Number__c": get_response_value(responses, "phone_number"),
-        "Country__c": selection_padded[2] if len(selection_padded) > 2 else None,
-        "Level_1_Government__c": (
-            selection_padded[3] if len(selection_padded) > 3 else None
-        ),
-        "Level_2_Government__c": (
-            selection_padded[4] if len(selection_padded) > 4 else None
-        ),
-        "Level_3_Government__c": (
-            selection_padded[5] if len(selection_padded) > 5 else None
-        ),
+        "Country__c": country,
+        "Level_1_Government__c": level1,
+        "Level_2_Government__c": level2,
+        "Level_3_Government__c": level3,
         "Closest_Community__c": get_response_value(responses, "closest_community"),
         "River_Name__c": get_response_value(responses, "river_name"),
         "GPS__latitude__s": latitude,

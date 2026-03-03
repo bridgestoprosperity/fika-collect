@@ -488,16 +488,21 @@ function GeolocationQuestion({
 
   const getLocation = async () => {
     if (Platform.OS === 'android') {
-      const status = await PermissionsAndroid.request(
+      const alreadyGranted = await PermissionsAndroid.check(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
       );
-      if (status !== PermissionsAndroid.RESULTS.GRANTED) {
-        setStatusMessage(getString('geolocationDenied'));
-        Alert.alert(
-          getString('geolocationDenied'),
-          getString('geolocationPleaseEnable'),
+      if (!alreadyGranted) {
+        const status = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         );
-        return;
+        if (status !== PermissionsAndroid.RESULTS.GRANTED) {
+          setStatusMessage(getString('geolocationDenied'));
+          Alert.alert(
+            getString('geolocationDenied'),
+            getString('geolocationPleaseEnable'),
+          );
+          return;
+        }
       }
     }
     setStatusMessage(getString('gelocationRequesting'));
