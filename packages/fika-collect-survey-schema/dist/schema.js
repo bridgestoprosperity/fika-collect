@@ -11,6 +11,7 @@ const LOCALE_LABELS = {
     'aa': 'Qafar af',
     'am': 'አማርኛ',
     'ti': 'ትግርኛ',
+    'es': 'Español',
 };
 const ENGLISH_LOCALE_LABELS = {
     'en': 'English',
@@ -22,6 +23,7 @@ const ENGLISH_LOCALE_LABELS = {
     'aa': 'Afar',
     'am': 'Amharic',
     'ti': 'Tigrinya',
+    'es': 'Spanish',
 };
 const LocaleStringSchema = z.string().min(2).max(2);
 const I18NTextSchema = z.preprocess((val) => {

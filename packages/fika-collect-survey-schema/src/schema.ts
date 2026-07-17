@@ -12,6 +12,7 @@ const LOCALE_LABELS: Record<string, string> = {
   'aa': 'Qafar af',
   'am': 'አማርኛ',
   'ti': 'ትግርኛ',
+  'es': 'Español',
 };
 
 const ENGLISH_LOCALE_LABELS: Record<string, string> = {
@@ -24,6 +25,7 @@ const ENGLISH_LOCALE_LABELS: Record<string, string> = {
   'aa': 'Afar',
   'am': 'Amharic',
   'ti': 'Tigrinya',
+  'es': 'Spanish',
 };
 
 const LocaleStringSchema = z.string().min(2).max(2);

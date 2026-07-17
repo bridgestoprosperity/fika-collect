@@ -22,6 +22,10 @@ const questionTypeLabels = {
   boolean: "Yes/no",
   photo: "Photo",
   location: "Location",
+  admin_location: "Admin location",
+  numeric: "Numeric",
+  email: "Email",
+  phone: "Phone",
 };
 
 async function fetchSurveySchema(

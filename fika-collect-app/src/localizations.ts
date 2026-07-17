@@ -16,6 +16,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Khalad',
     'aa': 'Cubbuu',
     'fr': 'Erreur',
+    'es': 'Error',
   },
   surveysScreenTitle: {
     'en': 'Surveys',
@@ -27,6 +28,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Sahan',
     'aa': 'Qoranno',
     'fr': 'Enquêtes',
+    'es': 'Encuestas',
   },
   myResponsesScreenTitle: {
     'en': 'My Responses',
@@ -38,6 +40,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Jawaabtayda',
     'aa': 'Deebii Koo',
     'fr': 'Mes Réponses',
+    'es': 'Mis Respuestas',
   },
   settingsScreenTitle: {
     'en': 'Settings',
@@ -49,6 +52,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Dejinta',
     'aa': 'Qindaa\'ina',
     'fr': 'Paramètres',
+    'es': 'Configuración',
   },
   preferredLanguage: {
     'en': 'Preferred Language',
@@ -60,6 +64,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Luuqada la doorbiday',
     'aa': 'Af filatame',
     'fr': 'Langue Préférée',
+    'es': 'Idioma Preferido',
   },
   backButton: {
     'en': 'Back',
@@ -71,6 +76,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Gadaal',
     'aa': 'Duuba',
     'fr': 'Retour',
+    'es': 'Atrás',
   },
   nextButton: {
     'en': 'Next',
@@ -82,6 +88,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Midka',
     'aa': 'Itti aanu',
     'fr': 'Suivant',
+    'es': 'Siguiente',
   },
   previousButton: {
     'en': 'Previous',
@@ -93,6 +100,7 @@ const localizations: Record<Locale, Localization> = {
     'ti': 'ዝሓለፈ',
     'so': 'Ee hore',
     'aa': 'Kan duraa',
+    'es': 'Anterior',
   },
   submitButton: {
     'en': 'Submit',
@@ -104,6 +112,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Dir',
     'fr': 'Soumettre',
     'aa': 'Galchi',
+    'es': 'Enviar',
   },
   cancelButton: {
     'en': 'Cancel',
@@ -115,6 +124,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Burin',
     'fr': 'Annuler',
     'aa': 'Haquu',
+    'es': 'Cancelar',
   },
   noCameraAvailable: {
     'en': 'No camera available',
@@ -126,6 +136,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Ma jiro sawire la heli karo',
     'fr': 'Aucune caméra disponible',
     'aa': 'Kaameeraa hin jiru',
+    'es': 'No hay cámara disponible',
   },
   selectPhotoFromLibrary: {
     'en': 'Select photo from library',
@@ -137,6 +148,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Sawir ka xulo maktabadda sawirada',
     'fr': 'Sélectionner une photo depuis la bibliothèque',
     'aa': 'Suuraa galmee keessaa filadhu',
+    'es': 'Seleccionar foto de la biblioteca',
   },
   cameraPermissionRequired: {
     'en': 'Camera permission is required to take a photo',
@@ -148,6 +160,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Sawir qaadista waa in la helo ogolaansho sawire',
     'fr': 'L\'autorisation de la caméra est requise pour prendre une photo',
     'aa': 'Hayyama kaameeraa suuraa fudhachuuf barbaachisa',
+    'es': 'Se requiere permiso de cámara para tomar una foto',
   },
   retakePhotoButton: {
     'en': 'Retake Photo',
@@ -159,6 +172,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Sawirka dib u qaado',
     'fr': 'Reprendre la photo',
     'aa': 'Suuraa haaromsaa',
+    'es': 'Volver a tomar la foto',
   },
   usePhotoButton: {
     'en': 'Use Photo',
@@ -170,6 +184,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Sawirka isticmaal',
     'fr': 'Utiliser la photo',
     'aa': 'Suuraa fayyadami',
+    'es': 'Usar foto',
   },
   booleanQuestionYes: {
     'en': 'Yes',
@@ -181,6 +196,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Haa',
     'fr': 'Oui',
     'aa': 'Eeyyee',
+    'es': 'Sí',
   },
   booleanQuestionNo: {
     'en': 'No',
@@ -192,6 +208,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Maya',
     'fr': 'Non',
     'aa': 'Lakkii',
+    'es': 'No',
   },
   discardResponseTitle: {
     'en': 'Discard Response',
@@ -203,6 +220,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Tuur Jawaabta',
     'fr': 'Rejeter la réponse',
     'aa': 'Deebii dhiisi',
+    'es': 'Descartar Respuesta',
   },
   discardResponseMessage: {
     'en': 'Are you sure you want to discard this response?',
@@ -214,6 +232,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Ma hubtaa inaad tirtirto jawaabtaan?',
     'fr': 'Êtes-vous sûr de vouloir rejeter cette réponse?',
     'aa': 'Deebii kana dhiisuuf mirkaneeffataa?',
+    'es': '¿Está seguro de que desea descartar esta respuesta?',
   },
   discardButton: {
     'en': 'Discard',
@@ -225,6 +244,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Tirtir',
     'fr': 'Rejeter',
     'aa': 'Dhiisi',
+    'es': 'Descartar',
   },
   gelocationRequesting: {
     'en': 'Requesting location...',
@@ -236,6 +256,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Goobta la raadinayo...',
     'fr': 'Demande de la localisation...',
     'aa': 'Iddoo gaafachaa jirra...',
+    'es': 'Solicitando ubicación...',
   },
   geolocationDenied: {
     'en': 'Location permission denied.',
@@ -247,6 +268,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Oggolaanshaha goobta waa la diiday.',
     'fr': 'Autorisation de localisation refusée.',
     'aa': 'Hayyama iddoo dhoorkame.',
+    'es': 'Permiso de ubicación denegado.',
   },
   geolocationPleaseEnable: {
     'en': 'Please enable location services in your device settings',
@@ -258,6 +280,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Fadlan adeegyada goobta ku hawl geli dejimaha qalabkaaga',
     'fr': 'Veuillez activer les services de localisation dans les paramètres de votre appareil',
     'aa': 'Tajaajila iddoo settings keessa banuu',
+    'es': 'Por favor active los servicios de ubicación en la configuración de su dispositivo',
   },
   geolocationUnable: {
     'en': 'Unable to get location',
@@ -269,6 +292,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Goobta lama heli karo',
     'fr': 'Impossible d\'obtenir la localisation',
     'aa': 'Iddoo argachuu hin dandeenye',
+    'es': 'No se pudo obtener la ubicación',
   },
   geolocationGetLocationButton: {
     'en': 'Get Location',
@@ -280,6 +304,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Hel Goobta',
     'fr': 'Obtenir la localisation',
     'aa': 'Iddoo argadhu',
+    'es': 'Obtener Ubicación',
   },
   loadingLocations: {
     'en': 'Loading locations...',
@@ -291,6 +316,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Goobaha la raadinayo...',
     'fr': 'Chargement des localisations...',
     'aa': 'Iddoowwan fe\'amaa jiru...',
+    'es': 'Cargando ubicaciones...',
   },
   errorLoadingLocations: {
     'en': 'Error loading locations',
@@ -302,6 +328,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Raadinta goobaha khaladku kujiro',
     'fr': 'Erreur lors du chargement des localisations',
     'aa': 'Dogoggora iddoowwan fe\'uuf',
+    'es': 'Error al cargar ubicaciones',
   },
   selectYourLocation: {
     'en': 'Select your location below',
@@ -313,6 +340,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'Fadlan hoos ka xulo goobtaada',
     'fr': 'Sélectionnez votre localisation ci-dessous',
     'aa': 'Iddoo kee armaan gadi filadhu',
+    'es': 'Seleccione su ubicación a continuación',
   },
   submitting: {
     'en': 'Submitting...',
@@ -324,6 +352,7 @@ const localizations: Record<Locale, Localization> = {
     'so': 'La gudbinayaa...',
     'fr': 'Envoi en cours...',
     'aa': 'Erginsanni...',
+    'es': 'Enviando...',
   },
 };
 
