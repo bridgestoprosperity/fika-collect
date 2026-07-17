@@ -164,98 +164,113 @@ Uganda,Eastern,Tororo
 Uganda,Central,Wakiso
 Uganda,Northern,Yumbe
 Uganda,Northern,Zombo
-Ethiopia,Somali,Afder
-Ethiopia,Gambela,Agnewak
-Ethiopia,SNNP,Alle
-Ethiopia,SNNP,Amaro
-Ethiopia,Oromia,Arsi
-Ethiopia,Benishangul Gumz,Assosa
-Ethiopia,Amhara,Awi
-Ethiopia,Afar,Awsi /Zone 1
-Ethiopia,Oromia,Bale
-Ethiopia,SNNP,Basketo
-Ethiopia,South West Ethiopia,Bench Sheko
-Ethiopia,Oromia,Borena
-Ethiopia,Oromia,Buno Bedele
-Ethiopia,SNNP,Burji
-Ethiopia,Tigray,Central
-Ethiopia,Amhara,Central Gondar
-Ethiopia,Somali,Daawa
-Ethiopia,South West Ethiopia,Dawuro
-Ethiopia,SNNP,Derashe
-Ethiopia,Dire Dawa,Dire Dawa rural
-Ethiopia,Dire Dawa,Dire Dawa urban
-Ethiopia,Somali,Doolo
-Ethiopia,Oromia,East Bale
-Ethiopia,Amhara,East Gojam
-Ethiopia,Oromia,East Hararge
-Ethiopia,Oromia,East Shewa
-Ethiopia,Oromia,East Wellega
-Ethiopia,Tigray,Eastern
-Ethiopia,Somali,Erer
-Ethiopia,Somali,Fafan
-Ethiopia,Afar,Fanti /Zone 4
-Ethiopia,Oromia,Finfine Special
-Ethiopia,Afar,Gabi /Zone 3
-Ethiopia,SNNP,Gamo
-Ethiopia,SNNP,Gedeo
-Ethiopia,SNNP,Gofa
-Ethiopia,Oromia,Guji
-Ethiopia,SNNP,Guraghe
-Ethiopia,SNNP,Hadiya
-Ethiopia,SNNP,Halaba
-Ethiopia,Harari,Harari
-Ethiopia,Afar,Hari /Zone 5
-Ethiopia,Oromia,Horo Gudru Wellega
-Ethiopia,Oromia,Ilu Aba Bora
-Ethiopia,Gambela,Itang Special woreda
-Ethiopia,Somali,Jarar
-Ethiopia,Oromia,Jimma
-Ethiopia,Benishangul Gumz,Kamashi
-Ethiopia,South West Ethiopia,Kefa
-Ethiopia,Oromia,Kelem Wellega
-Ethiopia,SNNP,Kembata Tembaro
-Ethiopia,Afar,Kilbati /Zone2
-Ethiopia,SNNP,Konso
-Ethiopia,South West Ethiopia,Konta Special
-Ethiopia,Somali,Korahe
-Ethiopia,Somali,Liban
-Ethiopia,Gambela,Majang
-Ethiopia,Benishangul Gumz,Mao Komo Special
-Ethiopia,Tigray,Mekelle
-Ethiopia,Benishangul Gumz,Metekel
-Ethiopia,South West Ethiopia,Mirab Omo
-Ethiopia,Somali,Nogob
-Ethiopia,Amhara,North Gondar
-Ethiopia,Amhara,North Shewa (AM)
-Ethiopia,Oromia,North Shewa (OR)
-Ethiopia,Amhara,North Wello
 Ethiopia,Tigray,North Western
-Ethiopia,Gambela,Nuwer
-Ethiopia,Amhara,Oromia
-Ethiopia,Addis Ababa,Region 14
-Ethiopia,Somali,Shabelle
-Ethiopia,South West Ethiopia,Sheka
-Ethiopia,Sidama,Sidama
-Ethiopia,SNNP,Siltie
-Ethiopia,Somali,Siti
-Ethiopia,Tigray,South Eastern
-Ethiopia,Amhara,South Gondar
-Ethiopia,SNNP,South Omo
-Ethiopia,Amhara,South Wello
-Ethiopia,Oromia,South West Shewa
+Ethiopia,Tigray,Central
+Ethiopia,Tigray,Eastern
 Ethiopia,Tigray,Southern
-Ethiopia,Amhara,Wag Hamra
-Ethiopia,Oromia,West Arsi
+Ethiopia,Tigray,South Eastern
+Ethiopia,Tigray,Mekelle
+Ethiopia,Afar,Awsi/Zone 1
+Ethiopia,Afar,Kilbati/Zone 2
+Ethiopia,Afar,Gabi/Zone 3
+Ethiopia,Afar,Fanti/Zone 4
+Ethiopia,Afar,Hari/Zone 5
+Ethiopia,Afar,Mahi/Zone 6
+Ethiopia,Amhara,North Gondar
+Ethiopia,Amhara,South Gondar
+Ethiopia,Amhara,North Wello
+Ethiopia,Amhara,South Wello
+Ethiopia,Amhara,North Shewa (AM)
+Ethiopia,Amhara,East Gojam
 Ethiopia,Amhara,West Gojam
+Ethiopia,Amhara,Wag Hamra
+Ethiopia,Amhara,Awi
+Ethiopia,Amhara,Oromo Nationality Administration
+Ethiopia,Amhara,Central Gondar
 Ethiopia,Amhara,West Gondar
-Ethiopia,Oromia,West Guji
-Ethiopia,Oromia,West Hararge
-Ethiopia,Oromia,West Shewa
+Ethiopia,Amhara,North Gojam
+Ethiopia,Amhara,Bahir Dar town Admin
 Ethiopia,Oromia,West Wellega
-Ethiopia,Tigray,Western
-Ethiopia,SNNP,Wolayita
-Ethiopia,SNNP,Yem Special
+Ethiopia,Oromia,East Wellega
+Ethiopia,Oromia,Ilu Aba Bora
+Ethiopia,Oromia,Jimma
+Ethiopia,Oromia,West Shewa
+Ethiopia,Oromia,North Shewa (OR)
+Ethiopia,Oromia,East Shewa
+Ethiopia,Oromia,Arsi
+Ethiopia,Oromia,West Hararge
+Ethiopia,Oromia,East Hararge
+Ethiopia,Oromia,Bale
+Ethiopia,Oromia,Borena
+Ethiopia,Oromia,South West Shewa
+Ethiopia,Oromia,Guji
+Ethiopia,Oromia,West Guji
+Ethiopia,Oromia,Buno Bedele
+Ethiopia,Oromia,West Arsi
+Ethiopia,Oromia,Kelem Wellega
+Ethiopia,Oromia,Horo Gudru Wellega
+Ethiopia,Oromia,Shager City
+Ethiopia,Oromia,East Bale
+Ethiopia,Oromia,East Borena
+Ethiopia,Somali,Siti
+Ethiopia,Somali,Fafan
+Ethiopia,Somali,Jarar
+Ethiopia,Somali,Erer
+Ethiopia,Somali,Korahe
+Ethiopia,Somali,Shabelle
+Ethiopia,Somali,Doolo
+Ethiopia,Somali,Afder
+Ethiopia,Somali,Liban
+Ethiopia,Somali,Nogob
+Ethiopia,Somali,Daawa
+Ethiopia,Benishangul-Gumuz,Metekel
+Ethiopia,Benishangul-Gumuz,Assosa
+Ethiopia,Benishangul-Gumuz,Kamashi
+Ethiopia,Benishangul-Gumuz,Mao-komo Special
+Ethiopia,Central Ethiopia,Kebena Special
+Ethiopia,Central Ethiopia,Guraghe
+Ethiopia,Central Ethiopia,Hadiya
+Ethiopia,Central Ethiopia,Kembata
+Ethiopia,Central Ethiopia,East Guraghe
+Ethiopia,Central Ethiopia,Halaba
+Ethiopia,Central Ethiopia,Siltie
+Ethiopia,Central Ethiopia,Yem
+Ethiopia,Central Ethiopia,Mareko Special
+Ethiopia,Central Ethiopia,Tembaro Special
+Ethiopia,South Ethiopia,Wolayita
+Ethiopia,South Ethiopia,Gamo
+Ethiopia,South Ethiopia,Gofa
+Ethiopia,South Ethiopia,Basketo
+Ethiopia,South Ethiopia,Ari
+Ethiopia,South Ethiopia,Alle Special
+Ethiopia,South Ethiopia,Derashe
+Ethiopia,South Ethiopia,Kore
+Ethiopia,South Ethiopia,Konso
+Ethiopia,South Ethiopia,Burji
+Ethiopia,South Ethiopia,Gedeo
+Ethiopia,South Ethiopia,South Omo
+Ethiopia,South West Ethiopia,Sheka
+Ethiopia,South West Ethiopia,Kefa
+Ethiopia,South West Ethiopia,Bench Sheko
+Ethiopia,South West Ethiopia,Dawuro
+Ethiopia,South West Ethiopia,West Omo
+Ethiopia,South West Ethiopia,Konta
+Ethiopia,Gambela,Nuwer
+Ethiopia,Gambela,Agnewak
+Ethiopia,Gambela,Majang
+Ethiopia,Gambela,Itang Special
+Ethiopia,Harari,Harari
+Ethiopia,Addis Ababa,Region 14
+Ethiopia,Dire Dawa,Dire Dawa urban
+Ethiopia,Dire Dawa,Dire Dawa rural
+Ethiopia,Sidama,Hawassa town Admin
+Ethiopia,Sidama,Northern
+Ethiopia,Sidama,Central
+Ethiopia,Sidama,Southern
+Ethiopia,Sidama,Eastern
+Ethiopia,Contested,Area 1
+Ethiopia,Contested,Area 2
+Ethiopia,Contested,Area 3
 Zambia,Central,Chibombo
 Zambia,Central,Chisamba
 Zambia,Central,Chitambo
@@ -2253,7 +2268,7 @@ Haiti,South,Chantal
 Haiti,South,Chardonnieres
 Haiti,West,Cite Soleil
 Haiti,Grande'Anse,Corail
-Haiti,West,Cornillon / Grand Bois
+Haiti,West,Cornillon/ Grand Bois
 Haiti,South,Coteaux
 Haiti,South-East,Cotes de Fer
 Haiti,West,Croix-Des-Bouquets
@@ -4508,7 +4523,7 @@ Sudan,South Kordofan,Ar Reif Ash Shargi
 Sudan,Blue Nile,Ar Rusayris
 Sudan,South Darfur,As Salam - SD
 Sudan,West Kordofan,As Salam - WK
-Sudan,White Nile,As Salam / Ar Rawat
+Sudan,White Nile,As Salam/Ar Rawat
 Sudan,North Darfur,As Serief
 Sudan,Sennar,As Suki
 Sudan,South Darfur,As Sunta
