@@ -94,7 +94,7 @@ android {
         applicationId "com.fikacollect"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16
+        versionCode 17
         versionName "1.2.0"
         externalNativeBuild {
             cmake {
